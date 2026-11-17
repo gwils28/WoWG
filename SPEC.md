@@ -8,14 +8,14 @@ Web app locale pour suivre sa progression dans des domaines d'intérêt sous for
 
 ## 2. Concepts et vocabulaire
 
-| Terme | Définition |
-|---|---|
-| Domaine | Grand thème (ex. Sport / santé, Langues / culture). Contient 2 à 3 spécialisations. |
-| Spécialisation | Un arbre de talents (ex. Langues : Anglais, Japonais). |
-| Talent | Nœud de l'arbre : nom, description, icône, position (palier, colonne), rang max (1 à 5). |
-| Rang | Niveau d'un talent (ex. 2/5). Chaque rang a un critère concret décrit en texte (ex. "Tenir 20 min de conversation"). |
-| Prérequis | Lien parent vers enfant : l'enfant se débloque quand le parent atteint le rang requis (par défaut : rang max du parent). |
-| Événement de rang | Gain ou retrait d'un rang, daté, avec note facultative. Source de vérité de la progression. |
+| Terme             | Définition                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Domaine           | Grand thème (ex. Sport / santé, Langues / culture). Contient 2 à 3 spécialisations.                                      |
+| Spécialisation    | Un arbre de talents (ex. Langues : Anglais, Japonais).                                                                   |
+| Talent            | Nœud de l'arbre : nom, description, icône, position (palier, colonne), rang max (1 à 5).                                 |
+| Rang              | Niveau d'un talent (ex. 2/5). Chaque rang a un critère concret décrit en texte (ex. "Tenir 20 min de conversation").     |
+| Prérequis         | Lien parent vers enfant : l'enfant se débloque quand le parent atteint le rang requis (par défaut : rang max du parent). |
+| Événement de rang | Gain ou retrait d'un rang, daté, avec note facultative. Source de vérité de la progression.                              |
 
 Domaines initiaux : Sport / santé, Langues / culture.
 
@@ -56,6 +56,7 @@ Domaines initiaux : Sport / santé, Langues / culture.
 ## 7. Périmètre
 
 ### MVP (v1)
+
 - Schéma d'arbre + skill `generate-tree`.
 - Import avec prévisualisation et diff, édition de talents.
 - Affichage des arbres, rangs avec notes, règles de prérequis.
@@ -64,10 +65,12 @@ Domaines initiaux : Sport / santé, Langues / culture.
 - Export / import JSON de toute la progression (sauvegarde).
 
 ### v2
+
 - Succès (achievements) débloqués automatiquement (ex. premier talent ultime, 10 rangs en un mois).
 - Objectifs / quêtes : talents ciblés avec échéance, suivi sur l'accueil.
 
 ### Hors périmètre pour l'instant
+
 - Mobile, hébergement distant, multi-utilisateur, authentification, IA intégrée à l'app.
 
 ## 8. Technique
