@@ -31,7 +31,11 @@ export const TalentSchema = z.object({
   ultimate: z.boolean().optional(),
 });
 
-const TreeFileBaseSchema = z.object({
+/**
+ * Structure seule, sans règles croisées. Sert à relire un arbre déjà stocké : une règle ajoutée
+ * plus tard ne doit pas rendre illisibles les données existantes.
+ */
+export const TreeFileStructureSchema = z.object({
   schemaVersion: z.literal(1),
   domain: z.object({ id: slug, name: z.string().min(1), icon }),
   specialization: z.object({
@@ -47,7 +51,7 @@ const TreeFileBaseSchema = z.object({
   talents: z.array(TalentSchema).min(1),
 });
 
-export const TreeFileSchema = TreeFileBaseSchema.superRefine((tree, ctx) => {
+export const TreeFileSchema = TreeFileStructureSchema.superRefine((tree, ctx) => {
   const byId = new Map<string, z.infer<typeof TalentSchema>>();
   const positions = new Map<string, string>();
 
@@ -130,9 +134,42 @@ export const TreeFileSchema = TreeFileBaseSchema.superRefine((tree, ctx) => {
           message: `rang requis ${p.rank} supérieur au rang max de "${p.talentId}" (${parent.maxRank})`,
         });
       }
+      if (parent.tier < t.tier) {
+        const blocked = arrowCells(parent, t)
+          .map((cell) => positions.get(`${cell.tier}:${cell.column}`))
+          .filter((id): id is string => id !== undefined);
+        if (blocked.length > 0) {
+          ctx.addIssue({
+            code: 'custom',
+            path,
+            message: `la flèche "${p.talentId}" → "${t.id}" traverse ${blocked.map((b) => `"${b}"`).join(', ')} : déplace l'un des talents`,
+          });
+        }
+      }
     });
   });
 });
+
+type Cell = { tier: number; column: number };
+
+/**
+ * Cases traversées par la flèche parent → enfant (extrémités exclues), selon le tracé de l'UI :
+ * même colonne, descente verticale ; sinon horizontale sur la ligne du parent jusqu'à la colonne
+ * de l'enfant, puis descente.
+ */
+export function arrowCells(parent: Cell, child: Cell): Cell[] {
+  const cells: Cell[] = [];
+  if (parent.column !== child.column) {
+    const step = child.column > parent.column ? 1 : -1;
+    for (let c = parent.column + step; c !== child.column + step; c += step) {
+      cells.push({ tier: parent.tier, column: c });
+    }
+  }
+  for (let tier = parent.tier + 1; tier < child.tier; tier++) {
+    cells.push({ tier, column: child.column });
+  }
+  return cells;
+}
 
 export type Prerequisite = z.infer<typeof PrerequisiteSchema>;
 export type Talent = z.infer<typeof TalentSchema>;
@@ -169,5 +206,5 @@ export function parseTree(input: unknown): ParseResult {
 
 /** JSON Schema pour la skill generate-tree (les règles croisées restent dans superRefine). */
 export function treeJsonSchema() {
-  return z.toJSONSchema(TreeFileBaseSchema, { io: 'input' });
+  return z.toJSONSchema(TreeFileStructureSchema, { io: 'input' });
 }

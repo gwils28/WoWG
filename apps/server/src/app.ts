@@ -7,7 +7,7 @@ import {
   diffTrees,
   formatIssues,
   parseTree,
-  TreeFileSchema,
+  TreeFileStructureSchema,
   type TreeFile,
 } from '@wowg/shared';
 import type { Db } from './db';
@@ -49,7 +49,7 @@ const BackupSchema = z.object({
   version: z.literal(1),
   specializations: z.array(
     z.object({
-      tree: TreeFileSchema,
+      tree: TreeFileStructureSchema,
       sourcePath: z.string().nullable(),
       importedAt: z.string(),
       updatedAt: z.string(),

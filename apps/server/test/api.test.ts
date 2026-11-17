@@ -253,3 +253,18 @@ describe('personnage, journal et sauvegarde', () => {
     expect(res.body.errors[0]).toMatch(/spécialisation absente/);
   });
 });
+
+describe('compatibilité des données stockées', () => {
+  it('relit un arbre stocké même s’il viole une règle croisée ajoutée depuis', async () => {
+    const db = openDb(':memory:');
+    const tree = sample();
+    tree.talents[3].column = 2; // flèche bloquée : invalide aujourd'hui, accepté autrefois
+    db.prepare(
+      `INSERT INTO specializations (id, domain_id, definition, source_path, imported_at, updated_at)
+       VALUES ('course-a-pied', 'sport-sante', ?, NULL, 'x', 'x')`,
+    ).run(JSON.stringify(tree));
+    const legacy = createApp({ db, treesDir });
+    const res = await legacy.request('/api/specializations/course-a-pied');
+    expect(res.status).toBe(200);
+  });
+});

@@ -23,6 +23,7 @@ Si l'arbre existe déjà, lis-le d'abord et ne demande que ce qui change.
 - Branches : 2 ou 3 axes lisibles (une colonne ou deux par axe), qui se rejoignent vers l'ultime.
 - Rangs : 1 à 5. Chaque entrée de `ranks` est un critère **concret, vérifiable et daté par l'utilisateur** (une performance, un volume, une production, un examen). Jamais "être à l'aise avec", "maîtriser".
 - Prérequis : uniquement vers un palier inférieur. `rank` absent = rang max du parent ; donne un `rank` plus bas quand un niveau partiel suffit. Évite les chaînes où tout dépend d'un seul talent.
+- Flèches : une flèche part horizontalement sur la ligne du parent jusqu'à la colonne de l'enfant, puis descend. Aucune case sur ce trajet ne doit être occupée (la validation le refuse). Le plus simple : placer l'enfant dans la colonne du parent, ou laisser libre la case du coude.
 - Identifiants : kebab-case, stables, sans accents (`ecoute-active`). Ne renomme jamais l'id d'un talent existant : la progression y est attachée. Pour un changement de sens, crée un nouveau talent.
 - Icônes : `game-icons:<nom>`. Vérifie que le nom existe : `node -e "const s=require('@iconify-json/game-icons/icons.json');console.log(Object.keys(s.icons).filter(n=>n.includes(process.argv[1])).join(' '))" <motclé>` (une fois le paquet installé dans `apps/web`). Sinon, choisis un nom probable et signale-le.
 - Textes en français. `description` : une phrase sur ce que le talent représente.

@@ -46,7 +46,7 @@
       "description": "Étirements et sommeil.",
       "icon": "game-icons:night-sleep",
       "tier": 2,
-      "column": 2,
+      "column": 3,
       "maxRank": 1,
       "ranks": ["Routine d'étirements 4 semaines d'affilée"]
     },

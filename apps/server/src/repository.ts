@@ -1,6 +1,6 @@
 import {
   currentRanks,
-  TreeFileSchema,
+  TreeFileStructureSchema,
   type RankDelta,
   type RankEvent,
   type Ranks,
@@ -45,8 +45,8 @@ interface EventRow {
 const toSpec = (r: SpecRow): StoredSpecialization => ({
   id: r.id,
   domainId: r.domain_id,
-  // la définition a été validée à l'écriture ; on la revalide pour récupérer les valeurs par défaut
-  tree: TreeFileSchema.parse(JSON.parse(r.definition)),
+  // validée en entier à l'écriture ; à la lecture, structure seule (une règle ajoutée depuis ne casse rien)
+  tree: TreeFileStructureSchema.parse(JSON.parse(r.definition)),
   sourcePath: r.source_path,
   importedAt: r.imported_at,
   updatedAt: r.updated_at,

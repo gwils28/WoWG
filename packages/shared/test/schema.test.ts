@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseTree, treeJsonSchema } from '../src';
+import { arrowCells, parseTree, treeJsonSchema } from '../src';
 import { rawSample } from './helpers';
 
 const errorsOf = (raw: unknown) => {
@@ -75,6 +75,31 @@ describe('treeJsonSchema', () => {
     expect(schema.type).toBe('object');
     expect(schema.required).toEqual(
       expect.arrayContaining(['schemaVersion', 'domain', 'specialization', 'grid', 'talents']),
+    );
+  });
+});
+
+describe('arrowCells et flèches bloquées', () => {
+  it('liste les cases traversées, extrémités exclues', () => {
+    expect(arrowCells({ tier: 1, column: 2 }, { tier: 4, column: 2 })).toEqual([
+      { tier: 2, column: 2 },
+      { tier: 3, column: 2 },
+    ]);
+    expect(arrowCells({ tier: 1, column: 1 }, { tier: 3, column: 3 })).toEqual([
+      { tier: 1, column: 2 },
+      { tier: 1, column: 3 },
+      { tier: 2, column: 3 },
+    ]);
+    expect(arrowCells({ tier: 2, column: 3 }, { tier: 3, column: 2 })).toEqual([
+      { tier: 2, column: 2 },
+    ]);
+  });
+
+  it('refuse une flèche qui traverse un talent', () => {
+    const raw = rawSample();
+    raw.talents[3].column = 2; // récupération sous le coude de fractionné → semi-marathon
+    expect(errorsOf(raw)).toMatch(
+      /la flèche "fractionne" → "semi-marathon" traverse "recuperation"/,
     );
   });
 });
