@@ -13,7 +13,7 @@ export interface TreeDiff {
   added: Talent[];
   removed: Talent[];
   modified: TalentChange[];
-  /** Talents supprimés qui ont de la progression : elle est conservée mais orpheline. */
+  /** Talents supprimés par ce changement qui ont de la progression : elle est conservée mais orpheline. */
   orphans: { id: string; name: string; rank: number }[];
   /** Talents dont le rang courant dépasse le nouveau rang max. */
   overflows: { id: string; name: string; rank: number; maxRank: number }[];
@@ -60,9 +60,10 @@ export function diffTrees(previous: TreeFile | null, next: TreeFile, ranks: Rank
     return fields.length ? [{ id: t.id, name: t.name, fields }] : [];
   });
 
-  const orphans = Object.entries(ranks)
-    .filter(([id, rank]) => rank > 0 && !nextById.has(id))
-    .map(([id, rank]) => ({ id, name: prevById.get(id)?.name ?? id, rank }));
+  // seuls les orphelins créés par ce changement (une progression déjà orpheline n'est pas répétée)
+  const orphans = removed
+    .filter((t) => (ranks[t.id] ?? 0) > 0)
+    .map((t) => ({ id: t.id, name: t.name, rank: ranks[t.id] ?? 0 }));
   const overflows = next.talents
     .filter((t) => (ranks[t.id] ?? 0) > t.maxRank)
     .map((t) => ({ id: t.id, name: t.name, rank: ranks[t.id] ?? 0, maxRank: t.maxRank }));

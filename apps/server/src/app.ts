@@ -182,8 +182,9 @@ export function createApp({ db, treesDir }: AppOptions) {
     const body = await readBody(c, ImportBody);
     const tree = await loadImport(body);
     const existing = repo.getSpecialization(tree.specialization.id);
-    const diff = diffTrees(existing?.tree ?? null, tree, existing ? repo.ranks(existing.id) : {});
-    return c.json({ tree, diff, targetPath: body.path ?? canonicalTreePath(tree) });
+    const ranks = existing ? repo.ranks(existing.id) : {};
+    const diff = diffTrees(existing?.tree ?? null, tree, ranks);
+    return c.json({ tree, ranks, diff, targetPath: body.path ?? canonicalTreePath(tree) });
   });
 
   app.post('/import/apply', async (c) => {

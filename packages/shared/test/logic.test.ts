@@ -104,6 +104,11 @@ describe('points et niveau', () => {
 });
 
 describe('diffTrees', () => {
+  it('ne répète pas une progression déjà orpheline', () => {
+    const diff = diffTrees(tree, structuredClone(tree), { 'ancien-talent': 2 });
+    expect(diff.orphans).toEqual([]);
+  });
+
   it('marque tout comme ajouté pour un nouvel arbre', () => {
     const diff = diffTrees(null, tree);
     expect(diff.isNew).toBe(true);

@@ -100,6 +100,7 @@ describe('import', () => {
     expect(preview.body.diff.orphans).toEqual([
       { id: 'recuperation', name: 'Récupération', rank: 1 },
     ]);
+    expect(preview.body.ranks).toEqual({ recuperation: 1 });
 
     await call('POST', '/import/apply', { content: tree });
     const detail = await call('GET', '/specializations/course-a-pied');
