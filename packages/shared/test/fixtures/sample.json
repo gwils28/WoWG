@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "domain": { "id": "sport-sante", "name": "Sport / santé", "icon": "game-icons:muscle-up" },
+  "specialization": {
+    "id": "course-a-pied",
+    "name": "Course à pied",
+    "description": "Arbre de test : endurance, vitesse et objectif semi-marathon.",
+    "icon": "game-icons:run"
+  },
+  "grid": { "tiers": 3, "columns": 3 },
+  "talents": [
+    {
+      "id": "endurance",
+      "name": "Endurance de base",
+      "description": "Courir longtemps à allure facile.",
+      "icon": "game-icons:heart-beats",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": ["Courir 20 min sans pause", "Courir 40 min sans pause", "Courir 1 h sans pause"]
+    },
+    {
+      "id": "cadence",
+      "name": "Cadence",
+      "description": "Foulée légère et régulière.",
+      "icon": "game-icons:metronome",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": ["Tenir 170 pas/min sur 10 min", "Tenir 175 pas/min sur 30 min"]
+    },
+    {
+      "id": "fractionne",
+      "name": "Fractionné",
+      "description": "Séances d'intervalles.",
+      "icon": "game-icons:stopwatch",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": ["6 x 400 m", "10 x 400 m"],
+      "prerequisites": [{ "talentId": "endurance", "rank": 2 }]
+    },
+    {
+      "id": "recuperation",
+      "name": "Récupération",
+      "description": "Étirements et sommeil.",
+      "icon": "game-icons:night-sleep",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 1,
+      "ranks": ["Routine d'étirements 4 semaines d'affilée"]
+    },
+    {
+      "id": "semi-marathon",
+      "name": "Semi-marathon",
+      "description": "Finir un semi-marathon.",
+      "icon": "game-icons:laurel-crown",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 1,
+      "ranks": ["Terminer un semi-marathon officiel"],
+      "prerequisites": [{ "talentId": "fractionne" }, { "talentId": "cadence", "rank": 1 }],
+      "ultimate": true
+    }
+  ]
+}
