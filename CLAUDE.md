@@ -2,12 +2,13 @@
 
 Web app locale (TS full-stack) de suivi de progression sous forme d'arbres de talents inspirés de WoW. Besoin complet : `SPEC.md`.
 
-Plan : `docs/PLAN.md` (phases 0 à 7). Statut : phases 0 à 3 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`). Suivante : phase 4, front.
+Plan : `docs/PLAN.md` (phases 0 à 7). Statut : phases 0 à 4 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`, front `apps/web` : accueil + arbre). Suivante : phase 5, import et édition.
 
 ## Commandes
 
 - `npm test` (Vitest, tous les paquets), `npm run lint`, `npm run typecheck`
 - `npm run validate-tree -- <fichier.json>` : seule validation qui fait foi pour un arbre
+- `npm run dev` : API (3001) + Vite (http://127.0.0.1:5173, proxy `/api`). Mêmes variables d'environnement que `npm start`.
 - `npm start` : serveur sur http://127.0.0.1:3001 (base `data/wowg.sqlite`, arbres `trees/`). Variables `WOWG_DATA_DIR`, `WOWG_TREES_DIR`, `PORT` pour tester sans toucher aux vraies données.
 - `npm run export-schema` : régénère `schemas/tree.schema.json` après toute modif de `schema.ts`
 

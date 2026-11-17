@@ -23,10 +23,15 @@
 
 ## Écarts au plan
 
+- Phase 4 : règle de validation ajoutée, une flèche de prérequis ne doit traverser aucun talent (`arrowCells` dans `schema.ts`, même tracé que l'UI). La fixture a été ajustée (récupération en colonne 3).
+- Phase 4 : à la lecture (base, sauvegarde), seul `TreeFileStructureSchema` est appliqué, pour qu'une règle ajoutée plus tard ne rende pas les données existantes illisibles. Les règles croisées s'appliquent à l'écriture (import, édition).
+
 - Phase 3 : toutes les routes sont dans `apps/server/src/app.ts` (environ 250 lignes) plutôt qu'un dossier `routes/`. À découper si le fichier grossit.
 
 ## Pièges
 
+- Le bundle web dépasse 500 kB à cause de la collection d'icônes embarquée (hors ligne voulu). Acceptable en local ; à découper si besoin.
+- `npm audit` signale `picomatch` (ReDoS) : dépendance d'outillage de dev uniquement, non embarquée.
 - `npm i -w <paquet> @wowg/shared` échoue (le paquet n'est pas sur le registre) : ajouter `"@wowg/shared": "*"` à la main dans `dependencies`, puis `npm i`.
 - Ne pas arrêter le serveur de test avec `pkill -f` sur un motif présent dans la commande en cours : cela tue aussi le shell.
 - npm 11 bloque les scripts d'installation : `esbuild` (via tsx/vitest) fonctionne sans son postinstall, qui n'est qu'une vérification.
