@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { NavLink, Outlet, Route, Routes } from 'react-router';
 import { api } from './lib/api';
 import { HomePage } from './pages/HomePage';
+import { ImportPage } from './pages/ImportPage';
 import { SpecializationPage } from './pages/SpecializationPage';
 
 function Layout() {
@@ -56,7 +57,7 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="specialisation/:id" element={<SpecializationPage />} />
         <Route path="journal" element={<Soon title="Journal" phase={6} />} />
-        <Route path="import" element={<Soon title="Import" phase={5} />} />
+        <Route path="import" element={<ImportPage />} />
         <Route path="*" element={<Soon title="Page introuvable" phase={0} />} />
       </Route>
     </Routes>

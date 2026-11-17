@@ -23,6 +23,9 @@
 
 ## Écarts au plan
 
+- Phase 5 : `diffTrees` ne signale plus que les orphelins créés par le changement (une progression déjà orpheline n'est pas répétée à chaque import ou édition).
+- Phase 5 : en édition, le domaine et la grille ne sont pas modifiables dans l'app (à changer dans le fichier via la skill). L'identifiant d'un talent n'est modifiable que tant qu'il n'est pas enregistré ; pour un nouveau talent, il suit le nom tant qu'il n'a pas été personnalisé.
+- Phase 5 : quitter la page en cours d'édition jette le brouillon sans confirmation.
 - Phase 4 : règle de validation ajoutée, une flèche de prérequis ne doit traverser aucun talent (`arrowCells` dans `schema.ts`, même tracé que l'UI). La fixture a été ajustée (récupération en colonne 3).
 - Phase 4 : à la lecture (base, sauvegarde), seul `TreeFileStructureSchema` est appliqué, pour qu'une règle ajoutée plus tard ne rende pas les données existantes illisibles. Les règles croisées s'appliquent à l'écriture (import, édition).
 
@@ -30,6 +33,7 @@
 
 ## Pièges
 
+- Écrire une séquence d'échappement unicode (antislash u + 4 chiffres) dans un appel d'outil la transforme en vrai caractère (constaté pour le tiret cadratin et pour les diacritiques combinants d'une regex). Utiliser des classes Unicode (`\p{Diacritic}`) ou `String.fromCharCode`.
 - Le bundle web dépasse 500 kB à cause de la collection d'icônes embarquée (hors ligne voulu). Acceptable en local ; à découper si besoin.
 - `npm audit` signale `picomatch` (ReDoS) : dépendance d'outillage de dev uniquement, non embarquée.
 - `npm i -w <paquet> @wowg/shared` échoue (le paquet n'est pas sur le registre) : ajouter `"@wowg/shared": "*"` à la main dans `dependencies`, puis `npm i`.

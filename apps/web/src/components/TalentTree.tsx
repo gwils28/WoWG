@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  arrowCells,
   findTalent,
   missingPrerequisites,
   requiredRank,
@@ -9,21 +10,34 @@ import {
   type TalentState,
   type TreeFile,
 } from '@wowg/shared';
-import { arrowPath, CELL, ICON, talentCenter, treeSize } from '../lib/layout';
+import { arrowPath, CELL, ICON, PAD, talentCenter, treeSize } from '../lib/layout';
 import { GameIcon } from './GameIcon';
+
+export type TalentMark = 'added' | 'modified';
+
+export interface EditHandlers {
+  selectedId: string | null;
+  invalidIds: Set<string>;
+  onSelect: (id: string) => void;
+  onEmptyCell: (tier: number, column: number) => void;
+}
 
 interface Props {
   tree: TreeFile;
   ranks: Ranks;
-  /** Sans handlers, l'arbre est en lecture seule (prévisualisation d'import). */
+  /** Mode jeu : monter / retirer des rangs. */
   onAdd?: (talent: Talent, quick: boolean) => void;
   onRemove?: (talent: Talent) => void;
+  /** Mode édition : sélection d'un talent, ajout sur une case vide. */
+  edit?: EditHandlers;
+  /** Prévisualisation d'import : talents ajoutés ou modifiés. */
+  marks?: Record<string, TalentMark>;
 }
 
-export function TalentTree({ tree, ranks, onAdd, onRemove }: Props) {
+export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props) {
   const [hovered, setHovered] = useState<string | null>(null);
   const { width, height } = treeSize(tree);
-  const readOnly = !onAdd;
+  const interactive = Boolean(onAdd || edit);
 
   const arrows = tree.talents.flatMap((child) =>
     child.prerequisites.flatMap((p) => {
@@ -34,14 +48,53 @@ export function TalentTree({ tree, ranks, onAdd, onRemove }: Props) {
     }),
   );
   const hoveredTalent = hovered ? findTalent(tree, hovered) : undefined;
+  const occupied = new Set(tree.talents.map((t) => `${t.tier}:${t.column}`));
+  // une case sur le trajet d'une flèche ne peut pas accueillir de talent (validation)
+  const onArrow = new Set(
+    tree.talents.flatMap((child) =>
+      child.prerequisites.flatMap((p) => {
+        const parent = findTalent(tree, p.talentId);
+        return parent && parent.tier < child.tier
+          ? arrowCells(parent, child).map((c) => `${c.tier}:${c.column}`)
+          : [];
+      }),
+    ),
+  );
 
   return (
-    <div className="talent-tree" style={{ width, height }}>
+    <div className={`talent-tree${edit ? ' talent-tree--edit' : ''}`} style={{ width, height }}>
       <div className="talent-tree__tiers" aria-hidden>
         {Array.from({ length: tree.grid.tiers }, (_, i) => (
-          <div key={i} className="talent-tree__tier" style={{ top: 16 + i * CELL, height: CELL }} />
+          <div
+            key={i}
+            className="talent-tree__tier"
+            style={{ top: PAD + i * CELL, height: CELL }}
+          />
         ))}
       </div>
+
+      {edit &&
+        Array.from({ length: tree.grid.tiers }, (_, i) =>
+          Array.from({ length: tree.grid.columns }, (_, j) => {
+            const tier = i + 1;
+            const column = j + 1;
+            const key = `${tier}:${column}`;
+            if (occupied.has(key) || onArrow.has(key)) return null;
+            const c = talentCenter({ tier, column });
+            return (
+              <button
+                key={`${tier}:${column}`}
+                type="button"
+                className="empty-cell"
+                style={{ left: c.x - ICON / 2, top: c.y - ICON / 2, width: ICON, height: ICON }}
+                aria-label={`Ajouter un talent palier ${tier} colonne ${column}`}
+                onClick={() => edit.onEmptyCell(tier, column)}
+              >
+                +
+              </button>
+            );
+          }),
+        )}
 
       <svg className="talent-tree__arrows" width={width} height={height} aria-hidden>
         <defs>
@@ -70,21 +123,35 @@ export function TalentTree({ tree, ranks, onAdd, onRemove }: Props) {
         ))}
       </svg>
 
-      {tree.talents.map((t) => (
-        <TalentNode
-          key={t.id}
-          talent={t}
-          rank={ranks[t.id] ?? 0}
-          state={talentState(tree, ranks, t.id)}
-          readOnly={readOnly}
-          onHover={setHovered}
-          onAdd={onAdd}
-          onRemove={onRemove}
-        />
-      ))}
+      {tree.talents.map((t) => {
+        const classes = [
+          edit?.selectedId === t.id && 'talent--selected',
+          edit?.invalidIds.has(t.id) && 'talent--invalid',
+          marks?.[t.id] && `talent--mark-${marks[t.id]}`,
+          !interactive && 'talent--readonly',
+        ].filter(Boolean);
+        return (
+          <TalentNode
+            key={t.id}
+            talent={t}
+            rank={ranks[t.id] ?? 0}
+            state={talentState(tree, ranks, t.id)}
+            extraClass={classes.join(' ')}
+            onHover={setHovered}
+            onClick={(quick) => (edit ? edit.onSelect(t.id) : onAdd?.(t, quick))}
+            onRemove={edit ? undefined : onRemove && (() => onRemove(t))}
+          />
+        );
+      })}
 
       {hoveredTalent && (
-        <TalentTooltip tree={tree} ranks={ranks} talent={hoveredTalent} readOnly={readOnly} />
+        <TalentTooltip
+          tree={tree}
+          ranks={ranks}
+          talent={hoveredTalent}
+          hint={edit ? 'Clic : modifier ce talent.' : undefined}
+          playable={Boolean(onAdd)}
+        />
       )}
     </div>
   );
@@ -94,38 +161,38 @@ function TalentNode({
   talent,
   rank,
   state,
-  readOnly,
+  extraClass,
   onHover,
-  onAdd,
+  onClick,
   onRemove,
 }: {
   talent: Talent;
   rank: number;
   state: TalentState;
-  readOnly: boolean;
+  extraClass: string;
   onHover: (id: string | null) => void;
-  onAdd?: Props['onAdd'];
-  onRemove?: Props['onRemove'];
+  onClick: (quick: boolean) => void;
+  onRemove?: () => void;
 }) {
   const c = talentCenter(talent);
   return (
     <button
       type="button"
-      className={`talent talent--${state}${talent.ultimate ? ' talent--ultimate' : ''}${readOnly ? ' talent--readonly' : ''}`}
+      className={`talent talent--${state}${talent.ultimate ? ' talent--ultimate' : ''} ${extraClass}`}
       style={{ left: c.x - ICON / 2, top: c.y - ICON / 2, width: ICON, height: ICON }}
       aria-label={`${talent.name}, rang ${rank} sur ${talent.maxRank}`}
       onMouseEnter={() => onHover(talent.id)}
       onMouseLeave={() => onHover(null)}
       onFocus={() => onHover(talent.id)}
       onBlur={() => onHover(null)}
-      onClick={(e) => onAdd?.(talent, e.shiftKey)}
+      onClick={(e) => onClick(e.shiftKey)}
       onContextMenu={(e) => {
         if (!onRemove) return;
         e.preventDefault();
-        onRemove(talent);
+        onRemove();
       }}
       onKeyDown={(e) => {
-        if (e.key === 'Delete' || e.key === 'Backspace') onRemove?.(talent);
+        if (e.key === 'Delete' || e.key === 'Backspace') onRemove?.();
       }}
     >
       <GameIcon icon={talent.icon} size={ICON - 14} className="talent__icon" />
@@ -142,12 +209,14 @@ function TalentTooltip({
   tree,
   ranks,
   talent,
-  readOnly,
+  hint,
+  playable,
 }: {
   tree: TreeFile;
   ranks: Ranks;
   talent: Talent;
-  readOnly: boolean;
+  hint?: string;
+  playable: boolean;
 }) {
   const rank = ranks[talent.id] ?? 0;
   const c = talentCenter(talent);
@@ -158,6 +227,12 @@ function TalentTooltip({
     : { left: c.x + ICON / 2 + 12, top: c.y - ICON / 2 };
   const next = talent.ranks[rank];
   const current = rank > 0 ? talent.ranks[rank - 1] : undefined;
+  const playHint = [
+    next && missing.length === 0 ? 'Clic : monter un rang.' : '',
+    rank > 0 ? 'Clic droit : retirer un rang.' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div className="tooltip" style={style} role="tooltip">
@@ -183,12 +258,7 @@ function TalentTooltip({
           {m.required})
         </p>
       ))}
-      {!readOnly && (
-        <p className="tooltip__hint">
-          {next && missing.length === 0 ? 'Clic : monter un rang. ' : ''}
-          {rank > 0 ? 'Clic droit : retirer un rang.' : ''}
-        </p>
-      )}
+      {(hint || (playable && playHint)) && <p className="tooltip__hint">{hint ?? playHint}</p>}
     </div>
   );
 }

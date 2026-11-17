@@ -2,7 +2,7 @@
 
 Web app locale (TS full-stack) de suivi de progression sous forme d'arbres de talents inspirés de WoW. Besoin complet : `SPEC.md`.
 
-Plan : `docs/PLAN.md` (phases 0 à 7). Statut : phases 0 à 4 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`, front `apps/web` : accueil + arbre). Suivante : phase 5, import et édition.
+Plan : `docs/PLAN.md` (phases 0 à 7). Statut : phases 0 à 5 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`, front `apps/web` : accueil, arbre, import, édition). Suivante : phase 6, journal et sauvegarde.
 
 ## Commandes
 

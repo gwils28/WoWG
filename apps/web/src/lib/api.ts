@@ -31,6 +31,7 @@ export interface RankEventView {
 
 export interface ImportPreview {
   tree: TreeFile;
+  ranks: Ranks;
   diff: TreeDiff;
   targetPath: string;
 }
@@ -72,6 +73,8 @@ export const api = {
       'DELETE',
       `/specializations/${specId}/talents/${talentId}/ranks`,
     ),
+  updateSpecialization: (id: string, tree: TreeFile) =>
+    request<{ specialization: SpecDetail; diff: TreeDiff }>('PUT', `/specializations/${id}`, tree),
   treeFiles: () => request<string[]>('GET', '/tree-files'),
   previewImport: (source: { path: string } | { content: unknown }) =>
     request<ImportPreview>('POST', '/import/preview', source),
