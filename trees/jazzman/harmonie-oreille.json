@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "jazzman",
+    "name": "Jazzman",
+    "icon": "game-icons:saxophone"
+  },
+  "specialization": {
+    "id": "harmonie-oreille",
+    "name": "Harmonie et oreille",
+    "description": "Théorie appliquée, oreille et relevés à l'oreille, jusqu'à composer un thème.",
+    "icon": "game-icons:musical-score"
+  },
+  "grid": {
+    "tiers": 6,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "intervalles",
+      "name": "Intervalles et gammes",
+      "description": "Les bases, sans compter sur les doigts.",
+      "icon": "game-icons:musical-keyboard",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Nommer 10 intervalles écrits en moins d'1 min, sans compter",
+        "Réciter l'armure des 12 gammes majeures sans hésiter"
+      ]
+    },
+    {
+      "id": "accords-septieme",
+      "name": "Accords de septième",
+      "description": "Les 4 accords du jazz : maj7, 7, m7, m7b5.",
+      "icon": "game-icons:piano-keys",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Écrire les notes des 4 types depuis 4 fondamentales en 2 min",
+        "Depuis les 12 fondamentales",
+        "Trouver 12 arpèges demandés au hasard sur la touche en 1 min, sans compter"
+      ]
+    },
+    {
+      "id": "oreille-intervalles",
+      "name": "Oreille : intervalles",
+      "description": "Reconnaître les intervalles à l'écoute.",
+      "icon": "game-icons:tune-pitch",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "8 intervalles ascendants sur 10 (appli d'entraînement)",
+        "9 sur 10, ascendants et descendants"
+      ]
+    },
+    {
+      "id": "ecoute-active",
+      "name": "Écoute active",
+      "description": "Suivre la forme d'un morceau pendant qu'on l'écoute.",
+      "icon": "game-icons:headphones",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Repérer la forme (blues, AABA) et compter les chorus sur 10 morceaux",
+        "Même exercice sur 30 morceaux, sans se perdre"
+      ]
+    },
+    {
+      "id": "degres",
+      "name": "Degrés et fonctions",
+      "description": "Les accords d'une tonalité et leur rôle.",
+      "icon": "game-icons:stairs",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Nommer les accords des 7 degrés en do, fa, si bémol et mi bémol",
+        "Dans les 12 tonalités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "intervalles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ii-v-i",
+      "name": "ii-V-I",
+      "description": "La cadence au cœur des standards.",
+      "icon": "game-icons:cycle",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Arpèges d'un ii-V-I majeur dans 4 tonalités",
+        "ii-V-I mineur dans 4 tonalités",
+        "ii-V-I majeur et mineur dans les 12 tonalités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "accords-septieme",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "oreille-accords",
+      "name": "Oreille : accords",
+      "description": "Reconnaître la couleur d'un accord.",
+      "icon": "game-icons:sound-waves",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Reconnaître maj7, 7, m7 et m7b5 : 8 sur 10",
+        "9 sur 10, renversements compris"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "oreille-intervalles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "releve-lignes",
+      "name": "Relevé de lignes",
+      "description": "Relever des lignes de basse sur disque, la méthode d'apprentissage du jazz.",
+      "icon": "game-icons:quill-ink",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 4,
+      "ranks": [
+        "4 mesures de ligne de basse relevées à l'oreille",
+        "Un chorus de blues (12 mesures)",
+        "Un chorus de walking complet sur un AABA",
+        "Rejouer avec le disque le chorus relevé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecoute-active",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "modes",
+      "name": "Modes",
+      "description": "Les couleurs de la gamme majeure, utiles pour les lignes et les solos.",
+      "icon": "game-icons:spiral-arrow",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Les 7 modes de la gamme majeure nommés et joués depuis do",
+        "Dorien et mixolydien dans 6 tonalités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "degres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "formes",
+      "name": "Formes des standards",
+      "description": "Lire une grille en degrés : blues jazz, AABA, rhythm changes.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "5 standards analysés en degrés sur la grille",
+        "Rhythm changes analysé et joué",
+        "10 grilles analysées en degrés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ii-v-i",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "oreille-progressions",
+      "name": "Oreille : progressions",
+      "description": "Entendre où va la grille.",
+      "icon": "game-icons:psychic-waves",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Distinguer à l'écoute un ii-V-I majeur d'un mineur : 8 sur 10",
+        "Relever à l'oreille les accords d'un blues"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "oreille-accords",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "transposer",
+      "name": "Transposer",
+      "description": "Changer de tonalité à la demande, par exemple pour accompagner un chanteur en jam.",
+      "icon": "game-icons:swirl-string",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un blues dans 4 tonalités",
+        "Un standard dans 3 tonalités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "formes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrire-walking",
+      "name": "Écrire une walking",
+      "description": "Composer ses propres lignes, sur papier puis à l'instrument.",
+      "icon": "game-icons:fountain-pen",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Écrire une ligne de walking de 12 mesures sur blues et la jouer",
+        "Écrire et jouer une walking complète sur un AABA"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "releve-lignes",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "substitutions",
+      "name": "Substitutions",
+      "description": "Enrichir une grille : triton, diminués de passage.",
+      "icon": "game-icons:key",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Substitution tritonique jouée sur 3 ii-V",
+        "Diminués de passage placés et joués sur un standard"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "modes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "releve-grille",
+      "name": "Relevé de grille",
+      "description": "Relever toute une grille à l'oreille, sans partition.",
+      "icon": "game-icons:archive-research",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "La grille complète d'un standard relevée à l'oreille",
+        "3 grilles complètes relevées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "oreille-progressions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "composer",
+      "name": "Compositeur",
+      "description": "Écrire son propre morceau, thème et grille.",
+      "icon": "game-icons:quill",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Composer un blues (thème et grille) et le jouer",
+        "Composer un thème AABA avec sa grille, joué avec d'autres musiciens ou enregistré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "substitutions",
+          "rank": 1
+        },
+        {
+          "talentId": "transposer",
+          "rank": 1
+        },
+        {
+          "talentId": "releve-grille",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

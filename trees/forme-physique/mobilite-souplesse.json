@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-physique",
+    "name": "Forme physique",
+    "icon": "game-icons:muscle-up"
+  },
+  "specialization": {
+    "id": "mobilite-souplesse",
+    "name": "Mobilité et souplesse",
+    "description": "Étirements, mobilité articulaire et habitudes contre la position assise, avec des tests mesurables.",
+    "icon": "game-icons:lotus"
+  },
+  "grid": {
+    "tiers": 6,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "flechisseurs-hanche",
+      "name": "Hanches libérées",
+      "description": "Étirer les fléchisseurs de hanche raidis par la position assise.",
+      "icon": "game-icons:contortionist",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Étirement en fente basse 2 × 45 s/côté, 5 jours sur 7 pendant 2 semaines",
+        "Même routine tenue 6 semaines d'affilée"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "mobilite-thoracique",
+      "name": "Ouverture thoracique",
+      "description": "Redonner de la rotation et de l'extension au haut du dos.",
+      "icon": "game-icons:spine-arrow",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Routine de 5 min (rotations à quatre pattes, extensions sur chaise) 3 fois/semaine pendant 4 semaines",
+        "Même routine 3 fois/semaine pendant 12 semaines"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "respiration",
+      "name": "Respiration",
+      "description": "Respiration lente et diaphragmatique pour relâcher avant d'étirer.",
+      "icon": "game-icons:windy-stripes",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 min de respiration lente (6 cycles/min) 5 jours sur 7 pendant 2 semaines",
+        "Même pratique tenue 6 semaines"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "pauses-actives",
+      "name": "Pauses actives",
+      "description": "Poste adapté à 2,08 m et coupures régulières de la position assise.",
+      "icon": "game-icons:office-chair",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Poste réglé (écran à hauteur des yeux, assise adaptée) et 2 min debout chaque heure, 5 jours ouvrés d'affilée",
+        "Pauses de chaque heure tenues 4 semaines d'affilée"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "chevilles",
+      "name": "Chevilles mobiles",
+      "description": "Flexion de cheville, clé du squat talons au sol à ta taille.",
+      "icon": "game-icons:foot-plaster",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Test genou-mur : genou au mur avec le pied à 8 cm, des deux côtés",
+        "Pied à 10 cm, des deux côtés",
+        "Pied à 12 cm, des deux côtés"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "ouverture-pectoraux",
+      "name": "Ouverture des pectoraux",
+      "description": "Contrer les épaules enroulées vers l'avant devant l'écran.",
+      "icon": "game-icons:muscular-torso",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Étirement des pectoraux à l'encadrement de porte 2 × 45 s, 5 jours sur 7 pendant 4 semaines",
+        "Même routine tenue 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mobilite-thoracique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "seance-stretching",
+      "name": "Séance de stretching",
+      "description": "Une vraie séance d'étirements, en plus des routines courtes.",
+      "icon": "game-icons:meditation",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Séance de 15 min, 2 fois par semaine pendant 4 semaines",
+        "Séance de 20 min, 2 fois par semaine pendant 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "respiration",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reveil-mobilite",
+      "name": "Réveil mobilité",
+      "description": "Dérouiller le dos et les hanches dès le lever.",
+      "icon": "game-icons:sunrise",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 min au réveil (chat-vache, rotations, étirements) 5 jours sur 7 pendant 4 semaines",
+        "Même routine tenue 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pauses-actives",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "squat-profond",
+      "name": "Squat profond",
+      "description": "Tenir la position accroupie, talons au sol, buste redressé.",
+      "icon": "game-icons:weight-lifting-down",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Tenir 30 s en squat profond talons au sol, appui des mains autorisé",
+        "Tenir 1 min sans appui",
+        "Tenir 2 min, buste redressé, sans appui"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chevilles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epaules-libres",
+      "name": "Épaules libres",
+      "description": "Lever les bras et passer les mains dans le dos sans compenser avec le dos.",
+      "icon": "game-icons:hand",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Dos plaqué au mur, monter les bras tendus jusqu'à toucher le mur avec les pouces",
+        "Mains dans le dos (une par le haut, une par le bas) : doigts qui se touchent du côté le plus facile",
+        "Doigts qui se touchent des deux côtés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ouverture-pectoraux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ischio-jambiers",
+      "name": "Chaîne postérieure",
+      "description": "Souplesse des ischio-jambiers et du bas du dos, testée debout jambes tendues.",
+      "icon": "game-icons:leg",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 4,
+      "ranks": [
+        "Debout jambes tendues, bout des doigts à mi-tibia",
+        "Bout des doigts aux chevilles",
+        "Bout des doigts au sol",
+        "Paumes à plat au sol"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "seance-stretching",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "etirements-quotidiens",
+      "name": "Étirements quotidiens",
+      "description": "Un peu chaque jour plutôt que beaucoup de temps en temps.",
+      "icon": "game-icons:calendar",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 min d'étirements chaque jour pendant 30 jours",
+        "10 min d'étirements chaque jour pendant 90 jours"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reveil-mobilite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "hanches-90-90",
+      "name": "Rotation des hanches",
+      "description": "Rotation interne et externe des hanches en position 90/90.",
+      "icon": "game-icons:clockwise-rotation",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Position 90/90 tenue 1 min de chaque côté, buste droit",
+        "10 transitions 90/90 d'un côté à l'autre sans les mains"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "squat-profond",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "yoga-pilates",
+      "name": "Yoga ou pilates",
+      "description": "Pratique guidée, en cours ou en vidéo, pour lier souplesse, gainage et respiration.",
+      "icon": "game-icons:lotus-flower",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "5 séances d'au moins 30 min",
+        "20 séances d'au moins 30 min",
+        "50 séances d'au moins 30 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ischio-jambiers",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "hanches-ouvertes",
+      "name": "Hanches ouvertes",
+      "description": "Amplitude des hanches en fente latérale et au sol.",
+      "icon": "game-icons:contortionist",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Squat cosaque (fente latérale profonde) : 5 rép. par côté, talon au sol",
+        "Assis en tailleur, dos droit sans appui, pendant 2 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "hanches-90-90",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "corps-delie",
+      "name": "Corps délié",
+      "description": "Le test de mobilité complet, validé après plusieurs mois de pratique.",
+      "icon": "game-icons:lotus",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dans la même semaine : squat profond tenu 2 min, paumes au sol jambes tendues, pouces au mur bras tendus dos plaqué, doigts qui se touchent dans le dos des deux côtés",
+        "Le même test validé à nouveau 3 mois plus tard"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "hanches-ouvertes",
+          "rank": 1
+        },
+        {
+          "talentId": "epaules-libres",
+          "rank": 2
+        },
+        {
+          "talentId": "yoga-pilates",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    },
+    {
+      "id": "seance-kine-osteo",
+      "name": "Séance kiné/Ostéo",
+      "description": "1 Séance par trimestre Ostéo / Kiné pour suivi",
+      "icon": "game-icons:nurse-male",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 1,
+      "ranks": [
+        "Critère du rang 1"
+      ],
+      "prerequisites": []
+    }
+  ]
+}

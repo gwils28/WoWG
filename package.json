@@ -12,9 +12,11 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc -p packages/shared && tsc -p apps/server",
+    "typecheck": "tsc -p packages/shared && tsc -p apps/server && tsc -p apps/web",
     "validate-tree": "tsx packages/shared/src/cli/validate-tree.ts",
-    "export-schema": "tsx packages/shared/src/cli/export-schema.ts"
+    "export-schema": "tsx packages/shared/src/cli/export-schema.ts",
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm run dev -w @wowg/server\" \"npm run dev -w @wowg/web\"",
+    "build": "npm run build -w @wowg/web"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -22,6 +24,7 @@
     "concurrently": "^10.0.7",
     "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "prettier": "^3.10.1",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",

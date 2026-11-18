@@ -6,6 +6,9 @@ import {
   diffTrees,
   levelFromPoints,
   levelProgress,
+  levelTier,
+  LEVEL_TIERS,
+  MAX_LEVEL,
   maxPoints,
   missingPrerequisites,
   pointsForLevel,
@@ -101,9 +104,35 @@ describe('points et niveau', () => {
     expect(levelProgress(8)).toEqual({ level: 4, points: 8, intoLevel: 2, toNext: 4 });
     expect(levelProgress(0)).toEqual({ level: 1, points: 0, intoLevel: 0, toNext: 1 });
   });
+
+  it('plafonne au niveau 100', () => {
+    expect(pointsForLevel(MAX_LEVEL)).toBe(4950);
+    expect(levelFromPoints(4949)).toBe(99);
+    expect(levelFromPoints(4950)).toBe(100);
+    expect(levelFromPoints(9000)).toBe(100);
+    expect(levelProgress(5000)).toEqual({ level: 100, points: 5000, intoLevel: 50, toNext: 0 });
+  });
+
+  it('range le niveau dans un des 5 paliers', () => {
+    expect([1, 20, 21, 40, 41, 60, 61, 80, 81, 100].map((l) => levelTier(l).index)).toEqual([
+      1, 1, 2, 2, 3, 3, 4, 4, 5, 5,
+    ]);
+    expect(LEVEL_TIERS.map((t) => [t.from, t.to])).toEqual([
+      [0, 20],
+      [21, 40],
+      [41, 60],
+      [61, 80],
+      [81, 100],
+    ]);
+  });
 });
 
 describe('diffTrees', () => {
+  it('ne répète pas une progression déjà orpheline', () => {
+    const diff = diffTrees(tree, structuredClone(tree), { 'ancien-talent': 2 });
+    expect(diff.orphans).toEqual([]);
+  });
+
   it('marque tout comme ajouté pour un nouvel arbre', () => {
     const diff = diffTrees(null, tree);
     expect(diff.isNew).toBe(true);

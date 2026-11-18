@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-physique",
+    "name": "Forme physique",
+    "icon": "game-icons:muscle-up"
+  },
+  "specialization": {
+    "id": "renforcement-fonctionnel",
+    "name": "Renforcement fonctionnel",
+    "description": "Routine au poids du corps pour un grand gabarit avec scoliose : force, gainage et régularité des séances.",
+    "icon": "game-icons:muscular-torso"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "rowing-inverse",
+      "name": "Rowing inversé",
+      "description": "Tirage horizontal à la barre : dorsaux, trapèzes, arrière d'épaules, contre la posture voûtée du bureau.",
+      "icon": "game-icons:pull",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 5,
+      "ranks": [
+        "Genoux fléchis à 90° : 3 × 12 rép., 1 s de pause omoplates serrées",
+        "Jambes tendues, talons au sol : 3 × 8 rép.",
+        "Jambes tendues, talons au sol : 4 × 12 rép.",
+        "Pieds surélevés sur un support bas : 3 × 8 rép.",
+        "Pieds surélevés : 4 × 12 rép. avec 1 s de pause en haut"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "pompes",
+      "name": "Pompes",
+      "description": "Poussée horizontale, coudes à 45° et bassin gainé malgré le grand levier.",
+      "icon": "game-icons:push",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 5,
+      "ranks": [
+        "Mains surélevées sur la barre : 3 × 15 rép., coudes à 45°",
+        "Au sol : 3 × 8 rép., bassin gainé",
+        "Au sol : 3 × 15 rép.",
+        "Au sol, descente lente de 3 s : 3 × 12 rép.",
+        "Pieds surélevés : 3 × 12 rép."
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "bird-dog",
+      "name": "Bird-dog",
+      "description": "Anti-rotation à quatre pattes : transverse et muscles profonds du dos, bassin immobile.",
+      "icon": "game-icons:kneeling",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "3 tours × 6 rép./côté, 2 s de tenue, bassin immobile, côté faible en premier",
+        "3 tours × 8 rép./côté, 2 s de tenue",
+        "Enchaîné sans reposer main ni genou : 3 tours × 8 rép./côté"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "rituel-seance",
+      "name": "Rituel de séance",
+      "description": "Échauffement systématique avant chaque séance.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Échauffement de 5 min avant 10 séances d'affilée",
+        "Échauffement de 5 min avant 30 séances d'affilée"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "squat",
+      "name": "Squat complet",
+      "description": "Poussée du bas du corps, buste redressé et talons au sol.",
+      "icon": "game-icons:weight-lifting-down",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 4,
+      "ranks": [
+        "Amplitude complète, descente 3 s, talons au sol : 3 × 10 rép.",
+        "Amplitude complète : 3 × 15 rép.",
+        "Pause de 2 s en bas : 3 × 15 rép.",
+        "Tempo 4 s en descente : 3 × 15 rép."
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "pont-fessier",
+      "name": "Pont fessier",
+      "description": "Extension de hanche sans cambrer : fessiers, ischio-jambiers, décharge lombaire.",
+      "icon": "game-icons:stone-bridge",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 4,
+      "ranks": [
+        "Deux jambes : 3 × 15 rép., 2 s en haut, bas du dos plaqué au départ",
+        "Deux jambes, pause de 3 s en haut : 3 × 15 rép.",
+        "Unilatéral : 3 × 8 rép./jambe, côté faible en premier",
+        "Unilatéral : 3 × 10 rép./jambe"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "planche-laterale",
+      "name": "Planche latérale",
+      "description": "Anti-inclinaison : obliques, carré des lombes, stabilisateurs latéraux de la scoliose.",
+      "icon": "game-icons:radial-balance",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 4,
+      "ranks": [
+        "Genoux fléchis : 3 tours × 25 s/côté, côté faible en premier",
+        "Genoux fléchis : 3 tours × 40 s/côté",
+        "Jambes tendues, pieds décalés : 3 tours × 40 s/côté",
+        "Jambes tendues, pieds superposés : 3 tours × 40 s/côté"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "regularite",
+      "name": "Régularité",
+      "description": "Tenir le rythme de 3 séances par semaine dans la durée.",
+      "icon": "game-icons:calendar",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 4,
+      "ranks": [
+        "3 séances/semaine pendant 4 semaines d'affilée",
+        "3 séances/semaine pendant 8 semaines d'affilée",
+        "3 séances/semaine pendant 12 semaines d'affilée",
+        "3 séances/semaine pendant 26 semaines (6 mois)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rituel-seance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fentes-inversees",
+      "name": "Fentes inversées",
+      "description": "Travail unilatéral des jambes et stabilité du bassin, en étirant les fléchisseurs de hanche.",
+      "icon": "game-icons:leg",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 4,
+      "ranks": [
+        "Fente arrière : 3 × 8 rép./jambe, côté faible en premier",
+        "Fente arrière : 3 × 10 rép./jambe",
+        "Pause de 2 s en bas : 3 × 10 rép./jambe",
+        "Fente bulgare (pied arrière sur support bas) : 3 × 10 rép./jambe"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "marche-ours",
+      "name": "Marche de l'ours",
+      "description": "Locomotion à quatre pattes, genoux décollés : épaules, sangle, cardio, sans charge sur la colonne.",
+      "icon": "game-icons:bear-face",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "3 tours × 20 s lents, genoux à 2 cm du sol, dos plat",
+        "3 tours × 30 s continus",
+        "3 tours × 40 s continus"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "equilibre",
+      "name": "Équilibre",
+      "description": "Stabilité sur un pied : chevilles, hanches et stabilisateurs du bassin.",
+      "icon": "game-icons:body-balance",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Tenir 30 s sur chaque pied, yeux ouverts, côté faible en premier",
+        "Tenir 30 s sur chaque pied, yeux fermés",
+        "Tenir 30 s sur chaque pied, yeux fermés, sur une serviette pliée en quatre"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "port-de-charges",
+      "name": "Porter lourd",
+      "description": "Marche du fermier : prise, gainage et posture en portant des charges du quotidien.",
+      "icon": "game-icons:weight",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "2 × 10 kg (bidons, sacs) sur 100 m sans poser, dos droit",
+        "2 × 15 kg sur 100 m sans poser"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pont-fessier",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "circuit-gainage",
+      "name": "Circuit gainage",
+      "description": "Les trois exercices de gainage enchaînés en circuit.",
+      "icon": "game-icons:stopwatch",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Circuit complet 3 tours (bird-dog, planche latérale, marche de l'ours) sans pause hors fin de tour, 6 séances d'affilée",
+        "Circuit 3 tours avec bird-dog enchaîné et planche jambes tendues"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-ours",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "relever-du-sol",
+      "name": "Se relever du sol",
+      "description": "Test fonctionnel : s'asseoir au sol et se relever avec le moins d'appuis possible.",
+      "icon": "game-icons:person",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Assis en tailleur, se relever avec un seul appui de main",
+        "Se relever sans aucun appui des mains ni des genoux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fentes-inversees",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "symetrie",
+      "name": "Symétrie",
+      "description": "La règle du côté faible appliquée jusqu'à effacer l'écart entre les côtés.",
+      "icon": "game-icons:life-in-the-balance",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "4 semaines de journal où chaque exercice unilatéral commence par le côté faible, même volume des deux côtés",
+        "Même variante des deux côtés sur fentes, pont unilatéral, bird-dog et planche latérale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "circuit-gainage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "force-complete",
+      "name": "Force complète",
+      "description": "Les variantes avancées du haut et du bas du corps validées ensemble.",
+      "icon": "game-icons:strong",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dans la même semaine : rowing jambes tendues 4 × 12, pompes au sol 3 × 15, squat avec pause 3 × 15",
+        "Dans la même semaine : rowing pieds surélevés 3 × 8, pompes descente 3 s 3 × 12, fente bulgare 3 × 8/jambe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "relever-du-sol",
+          "rank": 1
+        },
+        {
+          "talentId": "port-de-charges",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maitre-poids-du-corps",
+      "name": "Maître du poids du corps",
+      "description": "Toutes les dernières variantes de la routine, après 6 mois de pratique.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Dans la même semaine, après 6 mois de pratique : rowing et pompes pieds surélevés, squat tempo, fente bulgare, pont unilatéral, bird-dog enchaîné, planche pieds superposés, marche de l'ours 40 s"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "force-complete"
+        },
+        {
+          "talentId": "symetrie"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
