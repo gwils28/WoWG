@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "jazzman",
+    "name": "Jazzman",
+    "icon": "game-icons:saxophone"
+  },
+  "specialization": {
+    "id": "melomane-jazz",
+    "name": "Mélomane jazz",
+    "description": "Écoutes guidées par époque, grands contrebassistes, veille sur l'actualité et vie des clubs, jusqu'aux codes de la jam.",
+    "icon": "game-icons:headphones"
+  },
+  "grid": {
+    "tiers": 6,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "origines-swing",
+      "name": "Origines et swing",
+      "description": "Liste : Armstrong Hot Fives & Hot Sevens, Ellington The Blanton-Webster Band, Basie The Original American Decca Recordings, Goodman Carnegie Hall 1938, Django Reinhardt et le Quintette du Hot Club de France, Billie Holiday avec Lester Young (1937-1941).",
+      "icon": "game-icons:trumpet",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés",
+        "Un livre ou un documentaire sur l'histoire du jazz"
+      ]
+    },
+    {
+      "id": "discotheque",
+      "name": "Discothèque",
+      "description": "Albums écoutés en entier, chacun avec une fiche : musiciens, année, ce que fait la basse.",
+      "icon": "game-icons:book-cover",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 4,
+      "ranks": [
+        "10 albums fichés",
+        "25 albums fichés",
+        "50 albums fichés",
+        "100 albums fichés"
+      ]
+    },
+    {
+      "id": "contrebassistes",
+      "name": "Grands contrebassistes",
+      "description": "Liste : Jimmy Blanton, Oscar Pettiford, Ray Brown, Paul Chambers, Charles Mingus, Scott LaFaro, Ron Carter, Charlie Haden, Dave Holland, Christian McBride.",
+      "icon": "game-icons:violin",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Fiche sur 3 contrebassistes de la liste avec un album de chacun",
+        "Les 10 contrebassistes de la liste fichés",
+        "20 contrebassistes fichés (la liste et tes découvertes)"
+      ]
+    },
+    {
+      "id": "concerts",
+      "name": "Concerts",
+      "description": "Le jazz se vit en live.",
+      "icon": "game-icons:ticket",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Un concert de jazz en club",
+        "5 concerts",
+        "12 concerts sur une année"
+      ]
+    },
+    {
+      "id": "veille-downbeat",
+      "name": "Veille DownBeat",
+      "description": "Suivre l'actualité du jazz au fil des numéros du magazine.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Chaque numéro lu pendant 3 mois, avec un album découvert noté par numéro",
+        "Même rythme tenu 6 mois",
+        "Même rythme tenu 12 mois d'affilée"
+      ]
+    },
+    {
+      "id": "bebop",
+      "name": "Bebop",
+      "description": "Liste : Parker et Gillespie Bird and Diz, Parker The Savoy Recordings, Monk Genius of Modern Music, Bud Powell The Amazing Bud Powell Vol. 1, The Quintet Jazz at Massey Hall (Mingus à la basse).",
+      "icon": "game-icons:saxophone",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "origines-swing",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "oreille-bassiste",
+      "name": "Oreille de bassiste",
+      "description": "N'écouter que la basse dans un morceau.",
+      "icon": "game-icons:headphones",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Sur 10 morceaux, noter ce que fait la basse (two-feel, walking, pédale, solo)",
+        "Même exercice sur 30 morceaux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "discotheque",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jam-spectateur",
+      "name": "Jam en spectateur",
+      "description": "Observer une jam avant d'y jouer.",
+      "icon": "game-icons:theater",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une jam en spectateur, déroulé noté (qui appelle les morceaux, ordre des chorus, échanges)",
+        "3 jams dans 2 lieux différents"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "concerts",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "nouveautes",
+      "name": "Nouveautés",
+      "description": "Écouter le jazz qui sort aujourd'hui, à partir des chroniques lues.",
+      "icon": "game-icons:star-flag",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "5 albums de l'année écoutés et fichés",
+        "15 albums de l'année",
+        "Sa propre liste des 10 meilleurs albums de l'année, comparée à celle de DownBeat"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "veille-downbeat",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cool-hard-bop",
+      "name": "Cool et hard bop",
+      "description": "Liste : Miles Davis Birth of the Cool et 'Round About Midnight, Blakey Moanin', Rollins Saxophone Colossus, Cannonball Adderley Somethin' Else, Brubeck Time Out, Horace Silver Song for My Father.",
+      "icon": "game-icons:drum-kit",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bebop",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "leaders-contrebassistes",
+      "name": "Contrebassistes leaders",
+      "description": "Liste : Mingus Ah Um, Paul Chambers Bass on Top, Ray Brown Something for Lester, Charlie Haden Liberation Music Orchestra, Dave Holland Conference of the Birds, Christian McBride Gettin' to It, Avishai Cohen Gently Disturbed.",
+      "icon": "game-icons:guitar-bass-head",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contrebassistes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "codes-jam",
+      "name": "Codes de la jam",
+      "description": "Les règles tacites qui permettent de jouer avec des inconnus.",
+      "icon": "game-icons:hand-ok",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des codes écrite : annonce du morceau, intro, fin, signes pour les 4/4 et le retour au thème",
+        "Se présenter au maître de jam et discuter avec les musiciens"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jam-spectateur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "modal-free",
+      "name": "Modal et free",
+      "description": "Liste : Miles Davis Kind of Blue, Coltrane Giant Steps et A Love Supreme, Bill Evans Sunday at the Village Vanguard (Scott LaFaro), Ornette Coleman The Shape of Jazz to Come (Charlie Haden), Herbie Hancock Maiden Voyage (Ron Carter), Dolphy Out to Lunch!",
+      "icon": "game-icons:whirlwind",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cool-hard-bop",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "blind-test",
+      "name": "Blind test",
+      "description": "Reconnaître à l'aveugle.",
+      "icon": "game-icons:sound-waves",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Époque juste pour 8 morceaux sur 10",
+        "Contrebassiste juste pour 5 morceaux sur 10"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "oreille-bassiste",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reseau",
+      "name": "Réseau de musiciens",
+      "description": "Les musiciens rencontrés deviennent des partenaires de jeu.",
+      "icon": "game-icons:conversation",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Échanger ses coordonnées avec 3 musiciens rencontrés en jam ou en concert",
+        "Organiser une session de jeu avec 2 musiciens rencontrés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "codes-jam",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jazz-actuel",
+      "name": "Jazz actuel",
+      "description": "Liste : Weather Report Heavy Weather, Keith Jarrett Standards Vol. 1 (Gary Peacock), Brad Mehldau Art of the Trio Vol. 1, Esperanza Spalding Chamber Music Society, Kamasi Washington The Epic, Christian McBride Trio Live at the Village Vanguard.",
+      "icon": "game-icons:globe",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 albums de la liste écoutés et fichés",
+        "Un festival de jazz"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "modal-free",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "discographie",
+      "name": "Discographie complète",
+      "description": "Suivre un contrebassiste à travers toute sa carrière.",
+      "icon": "game-icons:bookshelf",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Toute la discographie de leader d'un contrebassiste écoutée et fichée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "leaders-contrebassistes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "melomane-accompli",
+      "name": "Mélomane accompli",
+      "description": "Une culture jazz assez large pour la raconter et la reconnaître.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Playlist commentée de 30 morceaux qui raconte l'histoire du jazz, de la Nouvelle-Orléans à aujourd'hui",
+        "Blind test de 20 morceaux : époque juste pour 16, contrebassiste juste pour 8"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jazz-actuel",
+          "rank": 1
+        },
+        {
+          "talentId": "blind-test",
+          "rank": 1
+        },
+        {
+          "talentId": "discographie",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

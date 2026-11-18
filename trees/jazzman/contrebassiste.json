@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "jazzman",
+    "name": "Jazzman",
+    "icon": "game-icons:saxophone"
+  },
+  "specialization": {
+    "id": "contrebassiste",
+    "name": "Contrebassiste",
+    "description": "Technique pizzicato, time, walking bass et répertoire : tenir sa place en jam session.",
+    "icon": "game-icons:violin"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "posture-et-son",
+      "name": "Posture et son",
+      "description": "Une contrebasse réglée à ta taille et un pizzicato qui sonne.",
+      "icon": "game-icons:violin",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pique réglée et posture vérifiée en vidéo, d'après les cours de ton ancien prof",
+        "Cordes à vide en pizz, 4 noires par corde au métronome à 80 : son égal, enregistré"
+      ]
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "description": "Le tempo intérieur : métronome sur les temps 2 et 4, comme un batteur.",
+      "icon": "game-icons:metronome",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 4,
+      "ranks": [
+        "Noires sur une gamme, métronome sur 2 et 4 à 60, 2 min sans décrocher",
+        "Même exercice à 100",
+        "Même exercice à 140",
+        "Tenir 2 min à 160, puis 2 min en ballade à 50"
+      ]
+    },
+    {
+      "id": "lecture",
+      "name": "Lecture",
+      "description": "Lire la clé de fa et les grilles sans compter dans sa tête.",
+      "icon": "game-icons:musical-score",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Nommer 20 notes en clé de fa en moins de 60 s (appli ou cartes)",
+        "20 notes en moins de 30 s",
+        "Déchiffrer du premier coup une ligne de walking écrite de 12 mesures à 80"
+      ]
+    },
+    {
+      "id": "routine",
+      "name": "Routine de pratique",
+      "description": "Tenir l'heure hebdomadaire dans la durée.",
+      "icon": "game-icons:calendar",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "1 h de pratique par semaine pendant 4 semaines d'affilée",
+        "1 h par semaine pendant 12 semaines d'affilée",
+        "1 h par semaine pendant 26 semaines (6 mois)"
+      ]
+    },
+    {
+      "id": "main-gauche",
+      "name": "Main gauche",
+      "description": "Doigtés Simandl et déplacements sur la touche.",
+      "icon": "game-icons:guitar-bass-head",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Gamme de do majeur sur une octave, doigté Simandl, à 60",
+        "Gammes de fa, si bémol, sol et ré majeur sur une octave",
+        "Les 12 gammes majeures sur une octave"
+      ]
+    },
+    {
+      "id": "fondamentales-quintes",
+      "name": "Fondamentales et quintes",
+      "description": "Le two-feel : blanches sur fondamentale et quinte, la base de l'accompagnement.",
+      "icon": "game-icons:musical-notes",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Blues en fa en blanches (fondamentale et quinte) sur play-along à 100",
+        "Two-feel sur un standard AABA sans perdre la grille"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "time",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "repertoire",
+      "name": "Répertoire",
+      "description": "Standards joués de bout en bout sur play-along, grille sous les yeux.",
+      "icon": "game-icons:book-pile",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 5,
+      "ranks": [
+        "3 standards",
+        "6 standards",
+        "10 standards",
+        "15 standards",
+        "25 standards"
+      ]
+    },
+    {
+      "id": "enregistrement",
+      "name": "S'enregistrer",
+      "description": "Se réécouter pour progresser sans prof.",
+      "icon": "game-icons:old-microphone",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "S'enregistrer sur un standard et noter 3 points à corriger à la réécoute",
+        "Un enregistrement par mois pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "justesse",
+      "name": "Justesse",
+      "description": "Jouer juste sans repères visuels, vérifié sur bourdon.",
+      "icon": "game-icons:tune-pitch",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Arpèges majeur 7 et mineur 7 dans 3 tonalités sur bourdon, justes à la réécoute",
+        "Mêmes arpèges dans 6 tonalités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "main-gauche",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "walking-bass",
+      "name": "Walking bass",
+      "description": "Une note par temps qui dessine la grille et fait swinguer.",
+      "icon": "game-icons:zigzag-tune",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 4,
+      "ranks": [
+        "Walking en noires sur blues en fa, fondamentale sur le temps 1, à 100",
+        "Walking avec notes de passage chromatiques sur blues en fa à 120",
+        "Walking sur un AABA (ex. Autumn Leaves) à 120, sans ligne écrite",
+        "Walking sur rhythm changes à 160"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fondamentales-quintes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "endurance-main",
+      "name": "Endurance de la main",
+      "description": "Tenir un morceau long sans crispation ni perte de son.",
+      "icon": "game-icons:fist",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Walking 5 min sans pause à 140, sans douleur",
+        "Walking 10 min sans pause à 160"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "justesse",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "variations-feel",
+      "name": "Variations de feel",
+      "description": "Changer de style rythmique selon le morceau appelé.",
+      "icon": "game-icons:drum",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Bossa (ex. Blue Bossa) sur play-along",
+        "Valse jazz à 3 temps (ex. Someday My Prince Will Come)",
+        "Ballade en blanches à 50 avec un son tenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "walking-bass",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "standards-de-memoire",
+      "name": "Standards de mémoire",
+      "description": "Jouer sans partition : la monnaie d'échange des jams.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 4,
+      "ranks": [
+        "1 standard par cœur (grille et walking)",
+        "5 standards par cœur",
+        "10 standards par cœur",
+        "20 standards par cœur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repertoire",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "grille-a-vue",
+      "name": "Grille à vue",
+      "description": "Accompagner un morceau inconnu en lisant la grille, comme quand quelqu'un l'appelle en jam.",
+      "icon": "game-icons:open-book",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Walking à vue sur une grille inconnue à 100, sans arrêt",
+        "Deux chorus à vue sur une grille inconnue à 140"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "variations-feel",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "solo",
+      "name": "Solo de basse",
+      "description": "Improviser un chorus sur la grille quand on te le propose.",
+      "icon": "game-icons:microphone",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Un chorus de blues en fa improvisé, enregistré",
+        "Un chorus sur un standard AABA",
+        "Échanges de 4 mesures sur un play-along de batterie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grille-a-vue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jouer-avec-autres",
+      "name": "Jouer avec d'autres",
+      "description": "Sortir des play-alongs : de vrais musiciens qui écoutent et réagissent.",
+      "icon": "game-icons:conversation",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Jouer un standard avec un autre musicien",
+        "Une répétition d'1 h avec au moins 2 musiciens",
+        "5 répétitions avec d'autres musiciens"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "enregistrement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jam-session",
+      "name": "Jam session",
+      "description": "Monter sur scène dans une jam ouverte et tenir la basse.",
+      "icon": "game-icons:saxophone",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Jouer un morceau dans une jam session publique",
+        "Jouer 3 morceaux dans la même soirée de jam, dont un avec un chorus de basse",
+        "Jouer dans 5 soirées de jam différentes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "solo",
+          "rank": 1
+        },
+        {
+          "talentId": "standards-de-memoire",
+          "rank": 2
+        },
+        {
+          "talentId": "jouer-avec-autres",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

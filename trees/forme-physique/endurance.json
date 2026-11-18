@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-physique",
+    "name": "Forme physique",
+    "icon": "game-icons:muscle-up"
+  },
+  "specialization": {
+    "id": "endurance",
+    "name": "Endurance",
+    "description": "Natation et vélo en partant de zéro, course progressive : objectif triathlon XS puis S.",
+    "icon": "game-icons:sprint"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "aisance-aquatique",
+      "name": "Aisance aquatique",
+      "description": "Se sentir bien dans l'eau avant de chercher à nager.",
+      "icon": "game-icons:water-splash",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 4,
+      "ranks": [
+        "5 cours ou séances encadrées par un maître-nageur",
+        "Tête sous l'eau : souffler 10 bulles d'affilée par le nez et la bouche",
+        "Flotter 10 s sur le ventre puis sur le dos, sans aide",
+        "Glisser 5 m bras tendus après une poussée au mur"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "premiers-tours-de-roue",
+      "name": "Premiers tours de roue",
+      "description": "Apprendre le vélo adulte, sur un cadre à ta taille (XL ou XXL), selle basse façon draisienne.",
+      "icon": "game-icons:dutch-bike",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Glisser 5 s pieds levés en poussant avec les pieds, selle basse",
+        "Démarrer seul et pédaler 50 m sans poser le pied",
+        "Freiner et s'arrêter pied à terre sur un repère choisi"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "marche-course",
+      "name": "Marche-course",
+      "description": "Démarrer la course en alternant avec la marche, sans brusquer le dos ni les genoux.",
+      "icon": "game-icons:walk",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Alterner 1 min de course et 2 min de marche pendant 20 min",
+        "Alterner 2 min de course et 1 min de marche pendant 30 min",
+        "Courir 10 min sans s'arrêter"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "marche-quotidienne",
+      "name": "Marche quotidienne",
+      "description": "Bouger chaque jour pour compenser le travail sédentaire.",
+      "icon": "game-icons:footsteps",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Moyenne de 6 000 pas/jour sur une semaine",
+        "Moyenne de 8 000 pas/jour sur 2 semaines",
+        "Moyenne de 10 000 pas/jour sur 4 semaines"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "respiration-aquatique",
+      "name": "Respiration aquatique",
+      "description": "Souffler sous l'eau et respirer sur le côté, la base du crawl.",
+      "icon": "game-icons:bubbles",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "25 m de battements de jambes avec planche, visage dans l'eau, respiration sur le côté",
+        "50 m de battements avec planche sans s'arrêter",
+        "25 m de rattrapé (un bras après l'autre) avec respiration sur le côté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "aisance-aquatique",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "maitrise-du-velo",
+      "name": "Maîtrise du vélo",
+      "description": "Diriger, signaler et changer de vitesse sans y penser.",
+      "icon": "game-icons:gear-stick",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Faire des huit dans un parking sans poser le pied",
+        "Lâcher une main 5 s pour signaler en roulant droit",
+        "Passer les vitesses en montée et en descente sans s'arrêter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premiers-tours-de-roue",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "course-continue",
+      "name": "Course continue",
+      "description": "Courir sans pause à allure facile.",
+      "icon": "game-icons:running-shoe",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Courir 20 min sans s'arrêter",
+        "Courir 30 min sans s'arrêter",
+        "Courir 5 km sans s'arrêter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-course",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "escaliers",
+      "name": "Escaliers",
+      "description": "Préférer l'escalier et en faire un test d'endurance.",
+      "icon": "game-icons:stairs",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Monter 5 étages sans s'arrêter",
+        "Monter 10 étages sans s'arrêter, en moins de 3 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-quotidienne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "crawl",
+      "name": "Crawl",
+      "description": "Nager le crawl en continu, de quelques longueurs à la distance du triathlon XS.",
+      "icon": "game-icons:waves",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 5,
+      "ranks": [
+        "25 m de crawl sans s'arrêter",
+        "50 m de crawl sans s'arrêter",
+        "100 m de crawl sans s'arrêter",
+        "200 m de crawl sans s'arrêter",
+        "400 m de crawl sans s'arrêter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "respiration-aquatique",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "rouler-sur-route",
+      "name": "Rouler sur route",
+      "description": "Sortir du parking : voie verte puis route.",
+      "icon": "game-icons:road",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Sortie de 5 km sur voie verte",
+        "10 km sur route avec circulation légère",
+        "20 km en moins de 1 h"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "maitrise-du-velo",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "allure",
+      "name": "Allure",
+      "description": "Gagner en vitesse sur 5 km, sans forcer sur les sorties faciles.",
+      "icon": "game-icons:stopwatch",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 km en moins de 35 min",
+        "5 km en moins de 30 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "course-continue",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "randonnee",
+      "name": "Randonnée",
+      "description": "Sorties longues en nature, avec du dénivelé.",
+      "icon": "game-icons:mountain-road",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Randonnée de 2 h",
+        "Randonnée de 4 h avec au moins 500 m de dénivelé positif"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "escaliers",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sortie-longue-velo",
+      "name": "Sortie longue à vélo",
+      "description": "Allonger les sorties pour tenir la partie vélo sans entamer la course.",
+      "icon": "game-icons:cycling",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Sortie de 30 km",
+        "Sortie de 50 km",
+        "Sortie de 2 h avec au moins 300 m de dénivelé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rouler-sur-route",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "course-longue",
+      "name": "Course longue",
+      "description": "Courir plus longtemps pour avoir de la marge sur la distance du triathlon S.",
+      "icon": "game-icons:sprint",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Courir 45 min sans s'arrêter",
+        "Courir 10 km sans s'arrêter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "allure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vitesse-velo",
+      "name": "Vitesse à vélo",
+      "description": "Tenir une allure régulière sur la distance du triathlon S.",
+      "icon": "game-icons:speedometer",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "20 km en moins de 50 min",
+        "20 km en moins de 45 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sortie-longue-velo",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "enchainements",
+      "name": "Enchaînements",
+      "description": "Courir juste après le vélo (jambes lourdes) et apprendre les transitions.",
+      "icon": "game-icons:finish-line",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "10 km de vélo puis 1 km de course, transition incluse",
+        "20 km de vélo puis 3 km de course",
+        "Simulation XS complète : 400 m de nage, 10 km de vélo, 2,5 km de course dans la même matinée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sortie-longue-velo",
+          "rank": 1
+        },
+        {
+          "talentId": "course-longue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-libre",
+      "name": "Eau libre",
+      "description": "Nager hors piscine : lac ou mer, sans ligne au fond ni mur pour se reposer.",
+      "icon": "game-icons:wave-surfer",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "100 m en lac ou en mer, accompagné",
+        "400 m en eau libre avec combinaison",
+        "750 m en eau libre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "crawl",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "triathlon",
+      "name": "Triathlète",
+      "description": "Terminer un triathlon officiel, du format découverte au sprint.",
+      "icon": "game-icons:checkered-flag",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Terminer un triathlon XS officiel (environ 400 m, 10 km, 2,5 km)",
+        "Terminer un triathlon S officiel (750 m, 20 km, 5 km)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-libre",
+          "rank": 2
+        },
+        {
+          "talentId": "enchainements",
+          "rank": 2
+        }
+      ]
+    }
+  ]
+}
