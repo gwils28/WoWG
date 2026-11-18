@@ -23,6 +23,8 @@
 
 ## Écarts au plan
 
+- Phase 6 : le jour d'un événement (regroupement du journal, filtres `from`/`to`) est la partie date de `occurredAt` stocké en UTC. Une date saisie est exacte ; un retrait (horodaté à l'instant, en UTC) fait entre minuit et 1 h heure de Paris est rangé la veille. Accepté pour l'instant.
+- Phase 6 : la sauvegarde est sur la page Journal (pas de page dédiée). La restauration fait un contrôle minimal côté client (format, listes présentes) pour la confirmation ; la validation complète reste celle du serveur.
 - Phase 5 : `diffTrees` ne signale plus que les orphelins créés par le changement (une progression déjà orpheline n'est pas répétée à chaque import ou édition).
 - Phase 5 : en édition, le domaine et la grille ne sont pas modifiables dans l'app (à changer dans le fichier via la skill). L'identifiant d'un talent n'est modifiable que tant qu'il n'est pas enregistré ; pour un nouveau talent, il suit le nom tant qu'il n'a pas été personnalisé.
 - Phase 5 : quitter la page en cours d'édition jette le brouillon sans confirmation.

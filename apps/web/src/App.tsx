@@ -3,6 +3,7 @@ import { NavLink, Outlet, Route, Routes } from 'react-router';
 import { api } from './lib/api';
 import { HomePage } from './pages/HomePage';
 import { ImportPage } from './pages/ImportPage';
+import { JournalPage } from './pages/JournalPage';
 import { SpecializationPage } from './pages/SpecializationPage';
 
 function Layout() {
@@ -41,11 +42,13 @@ function Layout() {
   );
 }
 
-function Soon({ title, phase }: { title: string; phase: number }) {
+function NotFound() {
   return (
     <section className="panel empty">
-      <h1>{title}</h1>
-      <p className="muted">Arrive en phase {phase} du plan.</p>
+      <h1>Page introuvable</h1>
+      <p className="muted">
+        <NavLink to="/">Retour au personnage</NavLink>
+      </p>
     </section>
   );
 }
@@ -56,9 +59,9 @@ export function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="specialisation/:id" element={<SpecializationPage />} />
-        <Route path="journal" element={<Soon title="Journal" phase={6} />} />
+        <Route path="journal" element={<JournalPage />} />
         <Route path="import" element={<ImportPage />} />
-        <Route path="*" element={<Soon title="Page introuvable" phase={0} />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

@@ -29,6 +29,25 @@ export interface RankEventView {
   note: string | null;
 }
 
+export interface JournalEntry extends RankEventView {
+  createdAt: string;
+  rankAfter: number;
+  maxRank: number | null;
+  talentName: string;
+  talentIcon: string | null;
+  /** talent retiré de l'arbre depuis l'événement */
+  orphan: boolean;
+  domain: TreeFile['domain'] | null;
+  specialization: TreeFile['specialization'] | null;
+}
+
+export interface JournalFilters {
+  domain?: string;
+  spec?: string;
+  from?: string;
+  to?: string;
+}
+
 export interface ImportPreview {
   tree: TreeFile;
   ranks: Ranks;
@@ -80,4 +99,14 @@ export const api = {
     request<ImportPreview>('POST', '/import/preview', source),
   applyImport: (source: { path: string } | { content: unknown }) =>
     request<{ specialization: SpecDetail; diff: TreeDiff }>('POST', '/import/apply', source),
+  journal: (filters: JournalFilters) => {
+    const qs = new URLSearchParams(
+      Object.entries(filters).filter((kv): kv is [string, string] => !!kv[1]),
+    ).toString();
+    return request<JournalEntry[]>('GET', `/journal${qs ? `?${qs}` : ''}`);
+  },
+  /** URL directe : le serveur renvoie un en-tête Content-Disposition */
+  backupUrl: '/api/backup',
+  restoreBackup: (backup: unknown) =>
+    request<{ specializations: number; events: number }>('POST', '/backup', backup),
 };
