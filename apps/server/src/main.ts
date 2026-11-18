@@ -9,6 +9,7 @@ import { openDb } from './db';
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const dataDir = process.env.WOWG_DATA_DIR ?? `${root}data`;
 const treesDir = process.env.WOWG_TREES_DIR ?? `${root}trees`;
+const portraitsDir = process.env.WOWG_PORTRAITS_DIR ?? `${root}portraits`;
 const webDist = `${root}apps/web/dist`;
 const port = Number(process.env.PORT ?? 3001);
 
@@ -16,7 +17,7 @@ mkdirSync(dataDir, { recursive: true });
 const db = openDb(`${dataDir}/wowg.sqlite`);
 
 const server = new Hono();
-server.route('/', createApp({ db, treesDir }));
+server.route('/', createApp({ db, treesDir, portraitsDir }));
 
 // En usage normal (npm start), le serveur sert aussi le front compilé.
 if (existsSync(webDist)) {

@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { Hono, type Context } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { z } from 'zod';
@@ -19,12 +22,21 @@ import {
   readTreeFile,
   writeTreeFile,
 } from './tree-files';
-import { character, specDetail, specSummary } from './views';
+import { character, PINNED_DOMAINS, pinnedDomains, specDetail, specSummary } from './views';
 
 export interface AppOptions {
   db: Db;
   treesDir: string;
+  /** Dossier des portraits palier-1.png ... palier-5.png (hors git). Absent : pas de portrait. */
+  portraitsDir?: string;
 }
+
+const PORTRAIT_TYPES: Record<string, string> = {
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  webp: 'image/webp',
+};
 
 const RankBody = z.object({
   note: z.string().trim().max(2000).optional(),
@@ -44,9 +56,13 @@ const JournalQuery = z.object({
   to: z.iso.date().optional(),
 });
 
+const PinBody = z.object({ pinned: z.boolean() });
+
 const BackupSchema = z.object({
   format: z.literal('wowg-backup'),
   version: z.literal(1),
+  // absent des sauvegardes antérieures aux épingles
+  preferences: z.record(z.string(), z.unknown()).optional(),
   specializations: z.array(
     z.object({
       tree: TreeFileStructureSchema,
@@ -95,7 +111,7 @@ async function readBody<T extends z.ZodType>(
 
 const toIso = (d?: string) => (d ? new Date(d).toISOString() : undefined);
 
-export function createApp({ db, treesDir }: AppOptions) {
+export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
   const repo = createRepository(db);
   const app = new Hono().basePath('/api');
 
@@ -126,7 +142,40 @@ export function createApp({ db, treesDir }: AppOptions) {
     return res.tree;
   }
 
-  app.get('/character', (c) => c.json(character(repo)));
+  /** Fichier du portrait d'un palier, s'il existe. */
+  function portraitFile(tier: number): { path: string; type: string } | null {
+    if (!portraitsDir) return null;
+    for (const [ext, type] of Object.entries(PORTRAIT_TYPES)) {
+      const path = join(portraitsDir, `palier-${tier}.${ext}`);
+      if (existsSync(path)) return { path, type };
+    }
+    return null;
+  }
+
+  app.get('/character', (c) =>
+    c.json(character(repo, (tier) => (portraitFile(tier) ? `/api/portraits/${tier}` : null))),
+  );
+
+  app.get('/portraits/:tier{[1-5]}', async (c) => {
+    const file = portraitFile(Number(c.req.param('tier')));
+    if (!file) return c.json({ errors: ['portrait introuvable'] }, 404);
+    return c.body(await readFile(file.path), 200, {
+      'content-type': file.type,
+      'cache-control': 'no-cache',
+    });
+  });
+
+  app.put('/domains/:id/pin', async (c) => {
+    const id = c.req.param('id');
+    const { pinned } = await readBody(c, PinBody);
+    if (!repo.listSpecializations().some((s) => s.domainId === id)) {
+      return c.json({ errors: [`domaine "${id}" inconnu`] }, 404);
+    }
+    const current = pinnedDomains(repo).filter((d) => d !== id);
+    const next = pinned ? [...current, id] : current;
+    repo.setPreference(PINNED_DOMAINS, next);
+    return c.json({ pinned: next });
+  });
 
   app.get('/specializations', (c) =>
     c.json(repo.listSpecializations().map((s) => specSummary(s, repo.ranks(s.id)))),
@@ -245,6 +294,7 @@ export function createApp({ db, treesDir }: AppOptions) {
           updatedAt,
         })),
       events: repo.listEvents(),
+      preferences: repo.preferences(),
     };
     const date = backup.exportedAt.slice(0, 10);
     c.header('Content-Disposition', `attachment; filename="wowg-backup-${date}.json"`);
@@ -263,6 +313,7 @@ export function createApp({ db, treesDir }: AppOptions) {
     repo.replaceAll(
       backup.specializations.map((s) => ({ ...s, id: s.tree.specialization.id })),
       backup.events,
+      backup.preferences,
     );
     return c.json({ specializations: backup.specializations.length, events: backup.events.length });
   });

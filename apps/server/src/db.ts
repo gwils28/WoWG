@@ -22,6 +22,12 @@ const MIGRATIONS: string[] = [
   );
   CREATE INDEX rank_events_spec ON rank_events(specialization_id);
   `,
+  `
+  CREATE TABLE preferences (
+    key   TEXT PRIMARY KEY,
+    value TEXT NOT NULL
+  );
+  `,
 ];
 
 export type Db = DatabaseSync;

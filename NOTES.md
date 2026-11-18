@@ -23,6 +23,9 @@
 
 ## Écarts au plan
 
+- Hors plan (entre phases 6 et 7) : classes. La barre du haut ne liste plus les domaines (intenable à plusieurs dizaines) : menu « Classes » (recherche, épinglées, récentes) et page `/classes`. Une classe s'ouvre sur `/classe/:domaine/:spé` ; `/specialisation/:id` redirige. Les épingles sont dans la table `preferences` (migration 2) et dans la sauvegarde (champ `preferences` facultatif : une sauvegarde plus ancienne se restaure sans épingle). « Récente » = dernière saisie de rang (date d'enregistrement, pas la date déclarée).
+- Hors plan : niveau plafonné à 100 (courbe inchangée, 4 950 points), 5 paliers de 20 niveaux (Novice, Initié, Aguerri, Vétéran, Légende) avec un portrait par palier sur la fiche personnage.
+- Portraits : rendus du jeu, donc jamais versionnés (règle « aucun asset Blizzard » pour le dépôt). Dossier `portraits/` ignoré par git (`WOWG_PORTRAITS_DIR`), fichiers `palier-1.png` à `palier-5.png` (png, jpg ou webp), servis par `GET /api/portraits/:palier`. Sans fichier, un emblème générique s'affiche. Les rendus d'origine (fond à motif d'un site de rendu) ont été détourés en PNG transparents ; le fond de scène est généré en CSS.
 - Phase 6 : le jour d'un événement (regroupement du journal, filtres `from`/`to`) est la partie date de `occurredAt` stocké en UTC. Une date saisie est exacte ; un retrait (horodaté à l'instant, en UTC) fait entre minuit et 1 h heure de Paris est rangé la veille. Accepté pour l'instant.
 - Phase 6 : la sauvegarde est sur la page Journal (pas de page dédiée). La restauration fait un contrôle minimal côté client (format, listes présentes) pour la confirmation ; la validation complète reste celle du serveur.
 - Phase 5 : `diffTrees` ne signale plus que les orphelins créés par le changement (une progression déjà orpheline n'est pas répétée à chaque import ou édition).
@@ -35,6 +38,8 @@
 
 ## Pièges
 
+- Avant de lancer un serveur de test, vérifier que les ports sont libres (`ss -ltn`) et lire le log de démarrage : si l'utilisateur a déjà `npm run dev` sur 3001, le serveur de test plante (EADDRINUSE) et les requêtes partent vers la vraie base. Utiliser `PORT=3101 WOWG_API_PORT=3101` et Vite en `--port 5174 --strictPort`, puis vérifier que `/api/character` répond avec une base vide avant d'écrire.
+- La validation d'un arbre ignore les clés inconnues : une clé mal placée (ex. `description` à la racine au lieu de `specialization.description`) passe sans erreur.
 - Écrire une séquence d'échappement unicode (antislash u + 4 chiffres) dans un appel d'outil la transforme en vrai caractère (constaté pour le tiret cadratin et pour les diacritiques combinants d'une regex). Utiliser des classes Unicode (`\p{Diacritic}`) ou `String.fromCharCode`.
 - Le bundle web dépasse 500 kB à cause de la collection d'icônes embarquée (hors ligne voulu). Acceptable en local ; à découper si besoin.
 - `npm audit` signale `picomatch` (ReDoS) : dépendance d'outillage de dev uniquement, non embarquée.

@@ -119,10 +119,31 @@ export function createRepository(db: Db) {
       return toEvent(row as unknown as EventRow);
     },
 
+    /** Préférences d'affichage (valeurs JSON), sauvegardées avec la progression. */
+    preferences(): Record<string, unknown> {
+      const rows = db.prepare('SELECT key, value FROM preferences ORDER BY key').all() as {
+        key: string;
+        value: string;
+      }[];
+      return Object.fromEntries(rows.map((r) => [r.key, JSON.parse(r.value)]));
+    },
+
+    setPreference(key: string, value: unknown) {
+      db.prepare(
+        `INSERT INTO preferences (key, value) VALUES (?, ?)
+         ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+      ).run(key, JSON.stringify(value));
+    },
+
     /** Remplace tout le contenu (restauration d'une sauvegarde). */
-    replaceAll(specs: Omit<StoredSpecialization, 'domainId'>[], events: StoredEvent[]) {
+    replaceAll(
+      specs: Omit<StoredSpecialization, 'domainId'>[],
+      events: StoredEvent[],
+      preferences: Record<string, unknown> = {},
+    ) {
       transaction(db, () => {
-        db.exec('DELETE FROM rank_events; DELETE FROM specializations;');
+        db.exec('DELETE FROM rank_events; DELETE FROM specializations; DELETE FROM preferences;');
+        for (const [key, value] of Object.entries(preferences)) this.setPreference(key, value);
         const insSpec = db.prepare(
           `INSERT INTO specializations (id, domain_id, definition, source_path, imported_at, updated_at)
            VALUES (?, ?, ?, ?, ?, ?)`,

@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- réponses JSON inspectées librement */
-import { mkdtempSync, mkdirSync, readFileSync, existsSync, copyFileSync, rmSync } from 'node:fs';
+import {
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  existsSync,
+  copyFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -201,7 +209,46 @@ describe('personnage, journal et sauvegarde', () => {
     const { body } = await call('GET', '/character');
     expect(body).toMatchObject({ level: 3, points: 3, intoLevel: 0, toNext: 3 });
     expect(body.domains).toHaveLength(1);
-    expect(body.domains[0]).toMatchObject({ points: 3, domain: { id: 'sport-sante' } });
+    expect(body.domains[0]).toMatchObject({
+      points: 3,
+      maxPoints: 9,
+      pinned: false,
+      domain: { id: 'sport-sante' },
+    });
+    expect(body.domains[0].lastActivityAt).toEqual(expect.any(String));
+    expect(body.tier).toEqual({ index: 1, name: 'Novice', from: 0, to: 20, portrait: null });
+  });
+
+  it('épingle et désépingle un domaine', async () => {
+    expect((await call('PUT', '/domains/sport-sante/pin', { pinned: true })).body).toEqual({
+      pinned: ['sport-sante'],
+    });
+    const char = (await call('GET', '/character')).body;
+    expect(char.pinned).toEqual(['sport-sante']);
+    expect(char.domains[0].pinned).toBe(true);
+    expect((await call('PUT', '/domains/sport-sante/pin', { pinned: false })).body.pinned).toEqual(
+      [],
+    );
+    expect((await call('PUT', '/domains/inconnu/pin', { pinned: true })).status).toBe(404);
+    expect((await call('PUT', '/domains/sport-sante/pin', { pinned: 'oui' })).status).toBe(400);
+  });
+
+  it('sert le portrait du palier quand il existe', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'wowg-portraits-'));
+    try {
+      writeFileSync(join(dir, 'palier-1.png'), 'png');
+      const withPortraits = createApp({ db: openDb(':memory:'), treesDir, portraitsDir: dir });
+      const char = (await (await withPortraits.request('/api/character')).json()) as any;
+      expect(char.tier.portrait).toBe('/api/portraits/1');
+      expect(char.portraits).toEqual(['/api/portraits/1', null, null, null, null]);
+      const img = await withPortraits.request('/api/portraits/1');
+      expect(img.status).toBe(200);
+      expect(img.headers.get('content-type')).toBe('image/png');
+      expect((await withPortraits.request('/api/portraits/2')).status).toBe(404);
+      expect((await withPortraits.request('/api/portraits/..%2Fsecret')).status).toBe(404);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it('liste le journal enrichi, du plus récent au plus ancien, avec filtres', async () => {
@@ -232,8 +279,13 @@ describe('personnage, journal et sauvegarde', () => {
   });
 
   it('exporte puis restaure toute la progression', async () => {
+    await call('PUT', '/domains/sport-sante/pin', { pinned: true });
     const backup = (await call('GET', '/backup')).body;
-    expect(backup).toMatchObject({ format: 'wowg-backup', version: 1 });
+    expect(backup).toMatchObject({
+      format: 'wowg-backup',
+      version: 1,
+      preferences: { pinnedDomains: ['sport-sante'] },
+    });
     expect(backup.events).toHaveLength(3);
 
     const fresh = createApp({ db: openDb(':memory:'), treesDir });
@@ -244,6 +296,15 @@ describe('personnage, journal et sauvegarde', () => {
     expect((await res.json()) as any).toEqual({ specializations: 1, events: 3 });
     const char = (await (await fresh.request('/api/character')).json()) as any;
     expect(char.points).toBe(3);
+    expect(char.pinned).toEqual(['sport-sante']);
+  });
+
+  it('restaure une sauvegarde antérieure aux préférences', async () => {
+    await call('PUT', '/domains/sport-sante/pin', { pinned: true });
+    const backup = (await call('GET', '/backup')).body;
+    delete backup.preferences;
+    expect((await call('POST', '/backup', backup)).status).toBe(200);
+    expect((await call('GET', '/character')).body.pinned).toEqual([]);
   });
 
   it('refuse une sauvegarde incohérente', async () => {

@@ -4,7 +4,9 @@ import { api } from './lib/api';
 import { HomePage } from './pages/HomePage';
 import { ImportPage } from './pages/ImportPage';
 import { JournalPage } from './pages/JournalPage';
-import { SpecializationPage } from './pages/SpecializationPage';
+import { ClassPage, LegacySpecRedirect } from './pages/ClassPage';
+import { ClassesPage } from './pages/ClassesPage';
+import { ClassesMenu } from './components/ClassesMenu';
 
 function Layout() {
   const { data } = useQuery({ queryKey: ['character'], queryFn: api.character });
@@ -18,15 +20,7 @@ function Layout() {
           <NavLink to="/" end>
             Personnage
           </NavLink>
-          {data?.domains.map((d) => (
-            <NavLink
-              key={d.domain.id}
-              to={`/specialisation/${d.specializations[0]?.id}`}
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-            >
-              {d.domain.name}
-            </NavLink>
-          ))}
+          <ClassesMenu character={data} />
           <NavLink to="/journal">Journal</NavLink>
           <NavLink to="/import">Import</NavLink>
         </nav>
@@ -58,7 +52,9 @@ export function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="specialisation/:id" element={<SpecializationPage />} />
+        <Route path="classes" element={<ClassesPage />} />
+        <Route path="classe/:domainId/:specId?" element={<ClassPage />} />
+        <Route path="specialisation/:id" element={<LegacySpecRedirect />} />
         <Route path="journal" element={<JournalPage />} />
         <Route path="import" element={<ImportPage />} />
         <Route path="*" element={<NotFound />} />

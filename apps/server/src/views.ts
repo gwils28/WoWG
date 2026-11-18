@@ -1,4 +1,11 @@
-import { levelProgress, maxPoints, pointsSpent, type Ranks } from '@wowg/shared';
+import {
+  LEVEL_TIERS,
+  levelProgress,
+  levelTier,
+  maxPoints,
+  pointsSpent,
+  type Ranks,
+} from '@wowg/shared';
 import type { Repository, StoredSpecialization } from './repository';
 
 export function orphansOf(spec: StoredSpecialization, ranks: Ranks) {
@@ -29,18 +36,62 @@ export function specDetail(spec: StoredSpecialization, ranks: Ranks) {
   };
 }
 
-export function character(repo: Repository) {
+export const PINNED_DOMAINS = 'pinnedDomains';
+
+/** Domaines épinglés encore présents, dans l'ordre d'épinglage. */
+export function pinnedDomains(repo: Repository): string[] {
+  const raw = repo.preferences()[PINNED_DOMAINS];
+  return Array.isArray(raw) ? raw.filter((x): x is string => typeof x === 'string') : [];
+}
+
+export function character(repo: Repository, portrait: (tier: number) => string | null) {
   const specs = repo.listSpecializations().map((s) => specSummary(s, repo.ranks(s.id)));
   const totalPoints = specs.reduce((sum, s) => sum + s.points, 0);
+
+  // dernière saisie (date d'enregistrement, pas la date déclarée) par spécialisation
+  const lastBySpec = new Map<string, string>();
+  for (const e of repo.listEvents()) {
+    const prev = lastBySpec.get(e.specializationId);
+    if (!prev || e.createdAt > prev) lastBySpec.set(e.specializationId, e.createdAt);
+  }
+
+  const pinned = pinnedDomains(repo);
   const domains = new Map<
     string,
-    { domain: (typeof specs)[number]['domain']; points: number; specializations: typeof specs }
+    {
+      domain: (typeof specs)[number]['domain'];
+      points: number;
+      maxPoints: number;
+      lastActivityAt: string | null;
+      pinned: boolean;
+      specializations: typeof specs;
+    }
   >();
   for (const s of specs) {
-    const entry = domains.get(s.domain.id) ?? { domain: s.domain, points: 0, specializations: [] };
+    const entry = domains.get(s.domain.id) ?? {
+      domain: s.domain,
+      points: 0,
+      maxPoints: 0,
+      lastActivityAt: null,
+      pinned: pinned.includes(s.domain.id),
+      specializations: [],
+    };
     entry.points += s.points;
+    entry.maxPoints += s.maxPoints;
+    const last = lastBySpec.get(s.id) ?? null;
+    if (last && (!entry.lastActivityAt || last > entry.lastActivityAt)) entry.lastActivityAt = last;
     entry.specializations.push(s);
     domains.set(s.domain.id, entry);
   }
-  return { ...levelProgress(totalPoints), domains: [...domains.values()] };
+
+  const progress = levelProgress(totalPoints);
+  const tier = levelTier(progress.level);
+  return {
+    ...progress,
+    tier: { ...tier, portrait: portrait(tier.index) },
+    /** Un portrait (ou null) par palier, dans l'ordre. */
+    portraits: LEVEL_TIERS.map((t) => portrait(t.index)),
+    pinned: pinned.filter((id) => domains.has(id)),
+    domains: [...domains.values()],
+  };
 }

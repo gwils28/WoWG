@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useSearchParams } from 'react-router';
 import { api, type JournalEntry, type JournalFilters } from '../lib/api';
+import { specPath } from '../lib/classes';
 import { formatDay, groupByDay, rankLabel } from '../lib/journal';
 import { BackupPanel } from '../components/BackupPanel';
 import { GameIcon } from '../components/GameIcon';
@@ -144,7 +145,14 @@ function Entry({ entry: e }: { entry: JournalEntry }) {
       </span>
       <div className="journal-entry__body">
         <div className="journal-entry__head">
-          <Link to={`/specialisation/${e.specializationId}`} className="journal-entry__name">
+          <Link
+            to={
+              e.domain
+                ? specPath(e.domain.id, e.specializationId)
+                : `/specialisation/${e.specializationId}`
+            }
+            className="journal-entry__name"
+          >
             {e.talentName}
           </Link>
           <span className="journal-entry__rank">

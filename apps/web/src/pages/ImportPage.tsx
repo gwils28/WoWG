@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import { api, ApiError, type ImportPreview } from '../lib/api';
+import { specPath } from '../lib/classes';
 import { DiffSummary, diffMarks, hasChanges } from '../components/DiffSummary';
 import { GameIcon } from '../components/GameIcon';
 import { TalentTree } from '../components/TalentTree';
@@ -36,7 +37,7 @@ export function ImportPage() {
     onSuccess: ({ specialization }) => {
       void qc.invalidateQueries();
       toast(`${specialization.specialization.name} importé`);
-      navigate(`/specialisation/${specialization.id}`);
+      navigate(specPath(specialization.domain.id, specialization.id));
     },
     onError: (e) => setErrors(e instanceof ApiError ? e.errors : [e.message]),
   });

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { NavLink, useParams } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import {
   canAddRank,
   canRemoveRank,
@@ -10,16 +10,17 @@ import {
   type TreeFile,
 } from '@wowg/shared';
 import { api, ApiError, type SpecDetail } from '../lib/api';
+import { specPath } from '../lib/classes';
 import { errorsByTalent, isCellFree, newTalentAt } from '../lib/editor';
 import { DiffSummary, diffMarks, hasChanges } from '../components/DiffSummary';
 import { GameIcon } from '../components/GameIcon';
+import { PinButton } from '../components/PinButton';
 import { RankDialog } from '../components/RankDialog';
 import { SpecEditor, TalentEditor } from '../components/TalentEditor';
 import { TalentTree } from '../components/TalentTree';
 import { useToast } from '../components/Toast';
 
-export function SpecializationPage() {
-  const { id = '' } = useParams();
+export function SpecializationPage({ id }: { id: string }) {
   const qc = useQueryClient();
   const toast = useToast();
   const [adding, setAdding] = useState<Talent | null>(null);
@@ -28,6 +29,7 @@ export function SpecializationPage() {
 
   const spec = useQuery({ queryKey: ['spec', id], queryFn: () => api.specialization(id) });
   const all = useQuery({ queryKey: ['specs'], queryFn: api.specializations });
+  const character = useQuery({ queryKey: ['character'], queryFn: api.character });
 
   // un brouillon n'appartient qu'à sa spécialisation (changement de route = brouillon ignoré)
   const draft = draftState?.specialization.id === id ? draftState : null;
@@ -103,6 +105,14 @@ export function SpecializationPage() {
       <header className="spec-page__header">
         <GameIcon icon={tree.domain.icon} size={28} className="domain__icon" />
         <h1>{tree.domain.name}</h1>
+        <PinButton
+          domainId={tree.domain.id}
+          name={tree.domain.name}
+          pinned={character.data?.pinned.includes(tree.domain.id) ?? false}
+        />
+        <Link to="/classes" className="spec-page__all">
+          Toutes les classes
+        </Link>
       </header>
 
       <div className="spec-layout">
@@ -234,7 +244,7 @@ export function SpecializationPage() {
           siblings.length > 1 && (
             <nav className="panel spec-tabs" aria-label="Spécialisations du domaine">
               {siblings.map((s) => (
-                <NavLink key={s.id} to={`/specialisation/${s.id}`} className="spec-tab">
+                <NavLink key={s.id} to={specPath(s.domain.id, s.id)} className="spec-tab">
                   <GameIcon icon={s.specialization.icon} size={24} />
                   <span>{s.specialization.name}</span>
                   <small>

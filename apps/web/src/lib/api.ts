@@ -1,4 +1,4 @@
-import type { LevelProgress, Ranks, TreeDiff, TreeFile } from '@wowg/shared';
+import type { LevelProgress, LevelTier, Ranks, TreeDiff, TreeFile } from '@wowg/shared';
 
 export interface SpecSummary {
   id: string;
@@ -16,8 +16,23 @@ export interface SpecDetail extends SpecSummary {
   sourcePath: string | null;
 }
 
+export interface DomainSummary {
+  domain: TreeFile['domain'];
+  points: number;
+  maxPoints: number;
+  /** Dernière saisie de rang dans le domaine (date d'enregistrement). */
+  lastActivityAt: string | null;
+  pinned: boolean;
+  specializations: SpecSummary[];
+}
+
 export interface Character extends LevelProgress {
-  domains: { domain: TreeFile['domain']; points: number; specializations: SpecSummary[] }[];
+  tier: LevelTier & { portrait: string | null };
+  /** Un portrait (ou null) par palier, dans l'ordre des paliers. */
+  portraits: (string | null)[];
+  /** Ids des domaines épinglés, dans l'ordre d'épinglage. */
+  pinned: string[];
+  domains: DomainSummary[];
 }
 
 export interface RankEventView {
@@ -79,6 +94,8 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 
 export const api = {
   character: () => request<Character>('GET', '/character'),
+  pinDomain: (domainId: string, pinned: boolean) =>
+    request<{ pinned: string[] }>('PUT', `/domains/${domainId}/pin`, { pinned }),
   specializations: () => request<SpecSummary[]>('GET', '/specializations'),
   specialization: (id: string) => request<SpecDetail>('GET', `/specializations/${id}`),
   addRank: (specId: string, talentId: string, body: { note?: string; occurredAt?: string }) =>

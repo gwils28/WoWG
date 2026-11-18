@@ -9,7 +9,8 @@ Plan : `docs/PLAN.md` (phases 0 à 7). Statut : phases 0 à 6 faites (socle, `pa
 - `npm test` (Vitest, tous les paquets), `npm run lint`, `npm run typecheck`
 - `npm run validate-tree -- <fichier.json>` : seule validation qui fait foi pour un arbre
 - `npm run dev` : API (3001) + Vite (http://127.0.0.1:5173, proxy `/api`). Mêmes variables d'environnement que `npm start`.
-- `npm start` : serveur sur http://127.0.0.1:3001 (base `data/wowg.sqlite`, arbres `trees/`). Variables `WOWG_DATA_DIR`, `WOWG_TREES_DIR`, `PORT` pour tester sans toucher aux vraies données.
+- `npm start` : serveur sur http://127.0.0.1:3001 (base `data/wowg.sqlite`, arbres `trees/`). Variables `WOWG_DATA_DIR`, `WOWG_TREES_DIR`, `WOWG_PORTRAITS_DIR` (défaut `portraits/`, hors git), `PORT` pour tester sans toucher aux vraies données.
+- Test manuel isolé : l'utilisateur a souvent `npm run dev` ouvert sur 3001/5173 avec la vraie base. Vérifier les ports, puis `PORT=3101 WOWG_API_PORT=3101 WOWG_DATA_DIR=<scratchpad> npx concurrently -k "npm run dev -w @wowg/server" "npm run dev -w @wowg/web -- --port 5174 --strictPort"`.
 - `npm run export-schema` : régénère `schemas/tree.schema.json` après toute modif de `schema.ts`
 
 ## Façon de travailler

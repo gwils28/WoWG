@@ -1,6 +1,8 @@
 node_modules/
 dist/
 data/
+# portraits du personnage (rendus du jeu, jamais versionnés)
+portraits/
 *.sqlite
 *.sqlite-journal
 .env
