@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "data-ai-engineer",
+    "name": "Data AI Engineer",
+    "icon": "game-icons:artificial-intelligence"
+  },
+  "specialization": {
+    "id": "influence-leadership",
+    "name": "Influence et leadership",
+    "description": "Écrire, parler, publier du code, transmettre et diriger, jusqu'à l'activité d'expert indépendant.",
+    "icon": "game-icons:public-speaker"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "blog",
+      "name": "Blog technique",
+      "description": "Des articles de fond, régulièrement.",
+      "icon": "game-icons:quill",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 4,
+      "ranks": [
+        "3 articles de fond publiés",
+        "6 articles",
+        "12 articles",
+        "24 articles"
+      ]
+    },
+    {
+      "id": "prise-de-parole",
+      "name": "Prise de parole",
+      "description": "Présenter ses travaux, d'abord en interne puis en meetup.",
+      "icon": "game-icons:speaker",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Présentation interne (équipe ou communauté d'entreprise)",
+        "Talk dans un meetup externe",
+        "3 talks en meetup"
+      ]
+    },
+    {
+      "id": "contributions-oss",
+      "name": "Contributions open source",
+      "description": "Contribuer aux outils qu'on utilise.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 contributions acceptées dans des projets tiers",
+        "10 contributions acceptées"
+      ]
+    },
+    {
+      "id": "mentorat",
+      "name": "Mentorat",
+      "description": "Accompagner d'autres data scientists.",
+      "icon": "game-icons:teacher",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "10 personnes accompagnées",
+        "25 personnes accompagnées",
+        "50 personnes accompagnées"
+      ]
+    },
+    {
+      "id": "offre-independant",
+      "name": "Offre d'indépendant",
+      "description": "Un positionnement clair et une structure prête.",
+      "icon": "game-icons:briefcase",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Offre écrite (positionnement, prestations, tarif) et page dédiée sur ton site",
+        "Structure juridique prête (statut, assurance responsabilité civile pro)"
+      ]
+    },
+    {
+      "id": "veille-publiee",
+      "name": "Veille publiée",
+      "description": "Partager ce qu'on lit : un résumé de papier par mois.",
+      "icon": "game-icons:radar-dish",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Un résumé de papier publié chaque mois pendant 3 mois",
+        "Pendant 6 mois",
+        "Pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "blog",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conference",
+      "name": "Conférence",
+      "description": "Passer des meetups aux conférences sélectives.",
+      "icon": "game-icons:acoustic-megaphone",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Proposition acceptée dans une conférence",
+        "Talk en anglais dans une conférence internationale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prise-de-parole",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "librairie",
+      "name": "Librairie open source",
+      "description": "Publier sa propre librairie et la faire utiliser.",
+      "icon": "game-icons:stack",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Librairie publiée (PyPI) avec documentation et tests",
+        "Utilisée par d'autres : 100 étoiles ou 1 000 téléchargements par mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contributions-oss",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "lead-technique",
+      "name": "Lead technique",
+      "description": "Porter les choix techniques d'une équipe.",
+      "icon": "game-icons:compass",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Conduite technique d'un projet à 3 personnes ou plus, choix documentés (ADR)",
+        "Lead d'une équipe pendant 6 mois",
+        "Standards (revue de code, conventions) adoptés par l'équipe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mentorat",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premieres-missions",
+      "name": "Missions d'indépendant",
+      "description": "Les premiers clients, puis ceux qui reviennent.",
+      "icon": "game-icons:convergence-target",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Première mission d'indépendant signée",
+        "3 missions",
+        "Un client qui revient"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "offre-independant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrire-anglais",
+      "name": "Écrire en anglais",
+      "description": "Toucher la communauté internationale.",
+      "icon": "game-icons:globe",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 articles publiés en anglais",
+        "Un article repris par une newsletter ou un agrégateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "veille-publiee",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "formation",
+      "name": "Former",
+      "description": "Transformer son expertise en formation.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Formation d'une journée conçue et donnée",
+        "Module de formation vendu à un client"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lead-technique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reseau-clients",
+      "name": "Réseau et recommandations",
+      "description": "Que les missions viennent à toi.",
+      "icon": "game-icons:conversation",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Profil orienté offre et 3 recommandations de clients",
+        "Une mission obtenue par recommandation ou par contact entrant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premieres-missions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "newsletter",
+      "name": "Newsletter",
+      "description": "Un rendez-vous régulier avec ses lecteurs.",
+      "icon": "game-icons:envelope",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Newsletter lancée, 100 abonnés",
+        "500 abonnés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrire-anglais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "activite-perenne",
+      "name": "Activité pérenne",
+      "description": "Une activité d'indépendant qui tient dans la durée.",
+      "icon": "game-icons:money-stack",
+      "tier": 4,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois d'activité avec au moins une mission en cours",
+        "Revenu d'indépendant équivalent à un mi-temps sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reseau-clients",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conference-majeure",
+      "name": "Conférence majeure",
+      "description": "Être sur la scène des grandes conférences du domaine.",
+      "icon": "game-icons:podium-winner",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 1,
+      "ranks": [
+        "Talk dans une conférence majeure du domaine (ex. PyData Global, workshop NeurIPS)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conference",
+          "rank": 1
+        },
+        {
+          "talentId": "ecrire-anglais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "referent",
+      "name": "Référent",
+      "description": "Être la personne vers qui on se tourne, en interne comme chez les clients.",
+      "icon": "game-icons:crown",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Référent officiel d'une discipline dans une organisation",
+        "Faire monter en compétence ou recruter une équipe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "formation",
+          "rank": 1
+        },
+        {
+          "talentId": "activite-perenne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "livre-cours",
+      "name": "Livre ou cours",
+      "description": "Une œuvre longue qui fait référence.",
+      "icon": "game-icons:book-cover",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cours en ligne ou série longue publiée",
+        "Livre ou guide complet publié"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "newsletter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "collectif",
+      "name": "Collectif d'indépendants",
+      "description": "Travailler à plusieurs sur des missions plus grandes.",
+      "icon": "game-icons:conversation",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Mission co-réalisée avec un autre indépendant",
+        "Collectif ou marque commune à plusieurs indépendants"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "activite-perenne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "expert-reconnu",
+      "name": "Expert reconnu",
+      "description": "Lead technique et expert indépendant à la fois.",
+      "icon": "game-icons:imperial-crown",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Invité, sans candidature, à intervenir comme expert (conférence, podcast, comité)",
+        "12 mois en menant de front un rôle de lead technique et une activité d'indépendant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conference-majeure",
+          "rank": 1
+        },
+        {
+          "talentId": "librairie",
+          "rank": 1
+        },
+        {
+          "talentId": "referent",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

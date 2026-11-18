@@ -12,7 +12,7 @@
     "icon": "game-icons:musical-score"
   },
   "grid": {
-    "tiers": 6,
+    "tiers": 7,
     "columns": 4
   },
   "talents": [
@@ -283,11 +283,68 @@
       ]
     },
     {
+      "id": "reharmoniser",
+      "name": "Réharmoniser",
+      "description": "Transformer la grille d'un standard avec ses propres choix.",
+      "icon": "game-icons:spiral-bloom",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un standard réharmonisé, grille écrite et jouée",
+        "3 standards réharmonisés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "substitutions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relever-solo",
+      "name": "Relever un solo",
+      "description": "Relever le chorus d'un soliste et le jouer avec le disque.",
+      "icon": "game-icons:quill-ink",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "8 mesures d'un chorus de soliste relevées et jouées",
+        "Un chorus complet relevé et joué"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "releve-grille",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "arranger",
+      "name": "Arranger",
+      "description": "Écrire intro, fin et mise en place pour un petit groupe.",
+      "icon": "game-icons:musical-score",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Arrangement pour trio d'un standard (intro, fin, mise en place) écrit",
+        "Arrangement joué avec d'autres musiciens"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrire-walking",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "composer",
       "name": "Compositeur",
       "description": "Écrire son propre morceau, thème et grille.",
       "icon": "game-icons:quill",
-      "tier": 6,
+      "tier": 7,
       "column": 2,
       "maxRank": 2,
       "ranks": [

@@ -12,7 +12,7 @@
     "icon": "game-icons:headphones"
   },
   "grid": {
-    "tiers": 6,
+    "tiers": 7,
     "columns": 5
   },
   "talents": [
@@ -311,11 +311,68 @@
       ]
     },
     {
+      "id": "chroniques",
+      "name": "Chroniques",
+      "description": "Écrire sur les disques écoutés, par exemple dans la section jazz de ton blog.",
+      "icon": "game-icons:quill",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 chroniques d'albums publiées",
+        "15 chroniques d'albums publiées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "discographie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-locale",
+      "name": "Pilier de la scène locale",
+      "description": "Être un habitué des clubs, puis faire vivre la scène.",
+      "icon": "game-icons:theater-curtains",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 soirées dans l'année dans le même club",
+        "Organiser un concert ou une jam"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reseau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "festivals",
+      "name": "Festivals",
+      "description": "Les grands rendez-vous, en France puis ailleurs.",
+      "icon": "game-icons:party-flags",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "2 festivals de jazz différents",
+        "Un festival de jazz à l'étranger"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nouveautes",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "melomane-accompli",
       "name": "Mélomane accompli",
       "description": "Une culture jazz assez large pour la raconter et la reconnaître.",
       "icon": "game-icons:laurels-trophy",
-      "tier": 6,
+      "tier": 7,
       "column": 2,
       "maxRank": 2,
       "ranks": [
