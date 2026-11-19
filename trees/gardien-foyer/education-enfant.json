@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien-foyer",
+    "name": "Gardien du foyer",
+    "icon": "game-icons:family-house"
+  },
+  "specialization": {
+    "id": "education-enfant",
+    "name": "Éducation de l'enfant",
+    "description": "Accompagner ton enfant de 2 ans jusqu'à l'école : éveil, lien, cadre bienveillant, santé et sécurité.",
+    "icon": "game-icons:baby-face"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "langage",
+      "name": "Langage",
+      "description": "Nourrir les mots et les premières phrases.",
+      "icon": "game-icons:talk",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Nouveaux mots de l'enfant notés pendant 1 mois (point de départ)",
+        "5 min par jour à reformuler et enrichir ses phrases, 5 jours sur 7 pendant 4 semaines",
+        "Premières phrases de 3 mots et plus notées au journal de l'enfant"
+      ]
+    },
+    {
+      "id": "histoire-du-soir",
+      "name": "Histoire du soir",
+      "description": "Un album lu à voix haute, chaque soir.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Histoire lue au coucher 5 soirs sur 7 pendant 4 semaines",
+        "Même rythme pendant 12 semaines",
+        "Médiathèque fréquentée avec l'enfant chaque mois pendant 6 mois"
+      ]
+    },
+    {
+      "id": "routines-enfant",
+      "name": "Routines",
+      "description": "Des journées prévisibles qui rassurent.",
+      "icon": "game-icons:alarm-clock",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Routine du coucher écrite (étapes, heure) et suivie 5 soirs sur 7 pendant 2 semaines",
+        "Routines du matin et du coucher tenues 8 semaines, identiques avec l'autre parent"
+      ]
+    },
+    {
+      "id": "suivi-sante",
+      "name": "Suivi de santé",
+      "description": "Rendez-vous, vaccins et informations médicales à jour.",
+      "icon": "game-icons:medical-thermometer",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet de santé vérifié : vaccins et examens obligatoires de l'âge à jour",
+        "Fiche santé de l'enfant (allergies, traitements, médecin, poids) prête pour la garde et les urgences"
+      ]
+    },
+    {
+      "id": "motricite",
+      "name": "Motricité",
+      "description": "Bouger, grimper, courir, en sécurité.",
+      "icon": "game-icons:soccer-ball",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Activité motrice dehors (parc, draisienne, ballon) 3 fois par semaine pendant 4 semaines",
+        "Activité d'éveil hebdomadaire (bébés nageurs, gym, éveil musical) tenue 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "langage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jeu-pere-enfant",
+      "name": "Jeu père-enfant",
+      "description": "Jouer par terre, sans téléphone, en suivant son idée.",
+      "icon": "game-icons:puzzle",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "20 min de jeu guidé par l'enfant, sans téléphone, 5 jours sur 7 pendant 4 semaines",
+        "Même rythme pendant 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "histoire-du-soir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "emotions-enfant",
+      "name": "Accueillir ses émotions",
+      "description": "Mettre des mots sur les colères et les peurs de l'enfant.",
+      "icon": "game-icons:sun-cloud",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 colères ou pleurs accompagnés en nommant l'émotion de l'enfant, notés",
+        "Coin calme ou outil des émotions (album, roue) mis en place et utilisé 10 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routines-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maison-securisee",
+      "name": "Maison sécurisée",
+      "description": "Prévenir les accidents domestiques.",
+      "icon": "game-icons:house-keys",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tour de la maison à hauteur d'enfant : 10 risques relevés (prises, produits, escaliers, fenêtres, médicaments)",
+        "Tous les risques relevés traités, nouveau tour à chaque étape (escalade, ouverture des portes)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "suivi-sante",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "autonomie",
+      "name": "Autonomie au quotidien",
+      "description": "Laisser faire seul, à son rythme.",
+      "icon": "game-icons:shirt",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "3 gestes que l'enfant fait seul (manger, se déchausser, ranger) encouragés et notés",
+        "Propreté de jour accompagnée sans pression, acquise",
+        "S'habille seul le matin, 5 jours sur 7"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "motricite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "moments-a-deux",
+      "name": "Moments à deux",
+      "description": "Des souvenirs entre père et enfant.",
+      "icon": "game-icons:tree-swing",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Une sortie père-enfant seuls (zoo, ferme, piscine) par mois pendant 3 mois",
+        "Même rythme pendant 12 mois",
+        "Un rituel père-enfant à vous (petit-déjeuner du samedi, balade) tenu 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeu-pere-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cadre-bienveillant",
+      "name": "Cadre bienveillant",
+      "description": "Des règles claires, tenues sans cris.",
+      "icon": "game-icons:checked-shield",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "5 règles de la maison écrites avec l'autre parent, formulées positivement",
+        "Règles appliquées de la même façon par les 2 parents pendant 3 mois, désaccords réglés hors de la présence de l'enfant",
+        "4 semaines sans cri ni punition humiliante, notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "emotions-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "urgences-enfant",
+      "name": "Urgences pédiatriques",
+      "description": "Savoir réagir quand l'enfant se blesse ou s'étouffe.",
+      "icon": "game-icons:first-aid-kit",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Conduite à tenir écrite : fièvre, chute sur la tête, étouffement, brûlure, intoxication (centre antipoison)",
+        "Formation aux premiers secours du nourrisson et de l'enfant suivie (attestation, distincte du PSC1)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "maison-securisee",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premiers-apprentissages",
+      "name": "Premiers apprentissages",
+      "description": "Couleurs, formes, nombres, et l'entrée à l'école.",
+      "icon": "game-icons:abacus",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Jeux de tri, couleurs, formes et comptage jusqu'à 10 chaque semaine pendant 3 mois",
+        "Rentrée en maternelle préparée (visite, albums sur l'école, rythme ajusté)",
+        "Échange avec l'enseignant à chaque trimestre de la 1re année, points notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "autonomie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrans-enfant",
+      "name": "Écrans de l'enfant",
+      "description": "Protéger son développement des écrans.",
+      "icon": "game-icons:sunglasses",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Aucun écran pour l'enfant avant 3 ans (hors appels vidéo), tenu 3 mois",
+        "Règles écran de l'enfant écrites pour après 3 ans (durée, contenus, jamais seul ni avant le coucher) et appliquées 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-bienveillant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "hygiene-de-vie",
+      "name": "Hygiène de vie",
+      "description": "Sommeil et dents, les bases de sa santé.",
+      "icon": "game-icons:toothbrush",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Sommeil de l'enfant suivi 2 semaines, coucher régulier à 30 min près",
+        "Dents brossées matin et soir pendant 3 mois et première visite chez le dentiste faite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "urgences-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "curiosite-enfant",
+      "name": "Éveil à la curiosité",
+      "description": "Chercher ensemble les réponses à ses « pourquoi ».",
+      "icon": "game-icons:seedling",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Réponse cherchée ensemble à 10 « pourquoi » de l'enfant (album, observation), notés",
+        "Une expérience simple à la maison (plantation, eau, aimants) par mois pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premiers-apprentissages",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "confiance-en-soi",
+      "name": "Confiance en soi",
+      "description": "Valoriser l'effort et confier des responsabilités.",
+      "icon": "game-icons:star-medal",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "20 situations où tu as félicité l'effort plutôt que le résultat, notées",
+        "Une responsabilité à sa mesure (mettre la table, ranger ses chaussures) tenue chaque jour pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrans-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scolarite",
+      "name": "Suivi de la scolarité",
+      "description": "Être présent dans sa vie d'écolier.",
+      "icon": "game-icons:notebook",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cahier de liaison ou application de l'école lu chaque semaine pendant une année scolaire",
+        "Réunion de classe et entretien individuel faits chaque année, 2 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "curiosite-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "valeurs",
+      "name": "Transmettre ses valeurs",
+      "description": "Ce que la famille veut transmettre, vécu au quotidien.",
+      "icon": "game-icons:heart-key",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 valeurs familiales écrites avec l'autre parent",
+        "Pour chacune, une habitude vécue avec l'enfant (partager, remercier, aider) notée sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "confiance-en-soi",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "enfant-epanoui",
+      "name": "Enfant épanoui et autonome",
+      "description": "Un enfant confiant, autonome et qui aime apprendre.",
+      "icon": "game-icons:sunrise",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Premier bilan de CP : autonomie, relations et plaisir d'apprendre jugés positifs par l'enseignant",
+        "L'enfant raconte spontanément ses journées et vient vers toi en cas de souci, constaté sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scolarite",
+          "rank": 1
+        },
+        {
+          "talentId": "valeurs",
+          "rank": 1
+        },
+        {
+          "talentId": "moments-a-deux",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

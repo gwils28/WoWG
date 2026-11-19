@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "entrepreneur",
-    "name": "Entrepreneur",
+    "name": "Mercenaire",
     "icon": "game-icons:briefcase"
   },
   "specialization": {

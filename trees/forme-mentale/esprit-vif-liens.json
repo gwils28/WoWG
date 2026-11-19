@@ -105,14 +105,14 @@
     {
       "id": "temps-qualite",
       "name": "Temps de qualité",
-      "description": "Être vraiment présent avec ses proches.",
+      "description": "Être vraiment présent avec ses amis et proches hors du foyer.",
       "icon": "game-icons:family-house",
       "tier": 2,
       "column": 3,
       "maxRank": 2,
       "ranks": [
-        "Un moment sans écran avec un proche chaque semaine pendant 4 semaines",
-        "Une journée ou un week-end organisé pour des proches"
+        "Un moment sans écran avec un ami ou un proche hors du foyer chaque semaine pendant 4 semaines",
+        "Une journée ou un week-end organisé pour des amis ou proches hors du foyer"
       ],
       "prerequisites": [
         {
@@ -187,7 +187,7 @@
       "column": 3,
       "maxRank": 1,
       "ranks": [
-        "Un rituel régulier avec des proches (repas, appel) tenu 3 mois"
+        "Un rituel régulier avec des proches hors du foyer (repas, appel) tenu 3 mois"
       ],
       "prerequisites": [
         {
