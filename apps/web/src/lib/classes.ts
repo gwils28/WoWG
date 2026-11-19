@@ -1,6 +1,9 @@
 import type { DomainSummary } from './api';
 
-/** Adresse d'une spécialisation dans sa classe. */
+/** Adresse d'une classe : ses spécialisations côte à côte. */
+export const classPath = (domainId: string) => `/classe/${domainId}`;
+
+/** Adresse d'une spécialisation dans sa classe (vue détaillée, édition). */
 export const specPath = (domainId: string, specId: string) => `/classe/${domainId}/${specId}`;
 
 export type ClassSort = 'activity' | 'points' | 'name';
