@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "joueur-echecs",
+    "name": "Joueur d'échecs",
+    "icon": "game-icons:chess-king"
+  },
+  "specialization": {
+    "id": "competiteur",
+    "name": "Compétiteur",
+    "description": "Classement en rapide et en blitz, analyse de ses parties, gestion du temps et du tilt, jusqu'à 1500.",
+    "icon": "game-icons:trophy-cup"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "rapide-debut",
+      "name": "Rapide : premiers paliers",
+      "description": "Jouer en rapide et monter de 500 à 700.",
+      "icon": "game-icons:chess-pawn",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "20 parties rapides (10+0 ou plus) jouées en entier",
+        "600 en rapide sur Chess.com",
+        "700 en rapide sur Chess.com"
+      ]
+    },
+    {
+      "id": "blitz-debut",
+      "name": "Blitz : premiers paliers",
+      "description": "Découvrir le blitz sans s'y perdre.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "20 parties blitz (3+2 ou 5+0) jouées en entier",
+        "500 en blitz sur Chess.com",
+        "600 en blitz sur Chess.com"
+      ]
+    },
+    {
+      "id": "analyser-parties",
+      "name": "Analyser ses parties",
+      "description": "Chaque défaite est une leçon gratuite.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Chaque partie rapide perdue analysée (réflexion seul, puis moteur) pendant 2 semaines",
+        "Même habitude pendant 4 semaines",
+        "Erreur principale notée dans un carnet pour 30 parties"
+      ]
+    },
+    {
+      "id": "routine-coup",
+      "name": "Routine de coup",
+      "description": "Échecs, prises, menaces avant chaque coup.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Routine échecs-prises-menaces appliquée sur 10 parties rapides (relecture)",
+        "20 parties rapides sans gaffe d'une pièce entière"
+      ]
+    },
+    {
+      "id": "rapide-800",
+      "name": "Rapide : 800 et 900",
+      "description": "Sortir des premiers paliers.",
+      "icon": "game-icons:chess-knight",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "800 en rapide sur Chess.com",
+        "900 en rapide sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rapide-debut"
+        }
+      ]
+    },
+    {
+      "id": "blitz-700",
+      "name": "Blitz : 700 et 800",
+      "description": "Le blitz suit le rapide.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "700 en blitz sur Chess.com",
+        "800 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "blitz-debut"
+        }
+      ]
+    },
+    {
+      "id": "erreurs-recurrentes",
+      "name": "Erreurs récurrentes",
+      "description": "Connaître ses défauts pour les corriger.",
+      "icon": "game-icons:notebook",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Liste de ses 3 erreurs les plus fréquentes, mise à jour chaque mois pendant 3 mois",
+        "Une erreur de la liste disparue sur 20 parties consécutives"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "analyser-parties",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "gestion-temps",
+      "name": "Gestion du temps",
+      "description": "Ne plus perdre à la pendule.",
+      "icon": "game-icons:alarm-clock",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Aucune défaite au temps sur 20 parties rapides",
+        "Au moins 2 min à la pendule au coup 30 en 10+0 sur 10 parties"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine-coup",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rapide-1000",
+      "name": "Rapide : 1000 et 1100",
+      "description": "Franchir la barre des 1000.",
+      "icon": "game-icons:chess-bishop",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "1000 en rapide sur Chess.com",
+        "1100 en rapide sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rapide-800"
+        }
+      ]
+    },
+    {
+      "id": "blitz-900",
+      "name": "Blitz : 900 et 1000",
+      "description": "Des réflexes qui suivent la compréhension.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "900 en blitz sur Chess.com",
+        "1000 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "blitz-700"
+        }
+      ]
+    },
+    {
+      "id": "parties-longues",
+      "name": "Parties longues",
+      "description": "Prendre le temps de réfléchir pour progresser.",
+      "icon": "game-icons:hourglass",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 parties en 30+0 ou 15+10, toutes analysées",
+        "25 parties longues analysées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "erreurs-recurrentes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "controle-tilt",
+      "name": "Contrôle du tilt",
+      "description": "S'arrêter avant que les défaites ne s'enchaînent.",
+      "icon": "game-icons:brain-freeze",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règle « stop après 2 défaites d'affilée » respectée 4 semaines",
+        "Même règle respectée 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gestion-temps",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rapide-1200",
+      "name": "Rapide : 1200",
+      "description": "Le cap du joueur de club.",
+      "icon": "game-icons:chess-rook",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "1200 en rapide sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rapide-1000"
+        }
+      ]
+    },
+    {
+      "id": "blitz-1100",
+      "name": "Blitz : 1100",
+      "description": "Tenir le rythme du blitz.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 1,
+      "ranks": [
+        "1100 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "blitz-900"
+        }
+      ]
+    },
+    {
+      "id": "tournois-arena",
+      "name": "Tournois en ligne",
+      "description": "Jouer en tournoi, avec classement et pression.",
+      "icon": "game-icons:podium",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 tournois Arena Lichess terminés",
+        "Première moitié du classement final sur 5 Arenas"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parties-longues",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "preparation-seance",
+      "name": "Préparation de séance",
+      "description": "S'échauffer avant de jouer.",
+      "icon": "game-icons:meditation",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 puzzles d'échauffement avant chaque séance de jeu pendant 4 semaines",
+        "Même habitude pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-tilt",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "blitz-1200",
+      "name": "Blitz : 1200 et 1300",
+      "description": "Le blitz rattrape le rapide.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "1200 en blitz sur Chess.com",
+        "1300 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "blitz-1100"
+        }
+      ]
+    },
+    {
+      "id": "stabilite",
+      "name": "Stabilité",
+      "description": "Un classement qui ne s'effondre plus.",
+      "icon": "game-icons:scales",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Aucune chute de plus de 100 points en rapide sur un mois",
+        "Même critère 3 mois d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preparation-seance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rapide-1300",
+      "name": "Rapide : 1300 et 1400",
+      "description": "Dernière ligne droite en rapide.",
+      "icon": "game-icons:chess-queen",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "1300 en rapide sur Chess.com",
+        "1400 en rapide sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rapide-1200"
+        }
+      ]
+    },
+    {
+      "id": "analyse-partenaire",
+      "name": "Analyse avec un plus fort",
+      "description": "Faire relire ses parties par un joueur plus fort.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 parties analysées avec un joueur plus fort (club, communauté, coach)",
+        "15 parties analysées avec un joueur plus fort"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tournois-arena",
+          "rank": 1
+        },
+        {
+          "talentId": "stabilite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cap-1500",
+      "name": "Cap des 1500",
+      "description": "1500 en rapide et en blitz, sur Lichess et Chess.com.",
+      "icon": "game-icons:laurel-crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 4,
+      "ranks": [
+        "1500 en rapide sur Lichess",
+        "1500 en blitz sur Lichess",
+        "1500 en rapide sur Chess.com",
+        "1500 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rapide-1300"
+        },
+        {
+          "talentId": "blitz-1200"
+        },
+        {
+          "talentId": "analyse-partenaire",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

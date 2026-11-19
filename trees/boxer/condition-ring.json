@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "boxer",
+    "name": "Boxer",
+    "icon": "game-icons:boxing-glove"
+  },
+  "specialization": {
+    "id": "condition-ring",
+    "name": "Condition de ring",
+    "description": "Cardio, volume de frappe, puissance et prévention (dos, nuque, épaules) pour tenir les rounds.",
+    "icon": "game-icons:jumping-rope"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "corde-a-sauter",
+      "name": "Corde à sauter",
+      "description": "L'outil de base du boxeur pour le cardio et l'appui.",
+      "icon": "game-icons:jumping-rope",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "3 rounds de 2 min de corde, 1 min de repos",
+        "3 rounds de 3 min",
+        "Pas de boxeur et doubles sauts sur 3 rounds de 3 min"
+      ]
+    },
+    {
+      "id": "rounds-sac",
+      "name": "Rounds au sac",
+      "description": "Tenir le sac sur la durée d'un round.",
+      "icon": "game-icons:punching-bag",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 rounds de 2 min au sac sans s'arrêter",
+        "4 rounds de 3 min au sac"
+      ]
+    },
+    {
+      "id": "gainage-boxeur",
+      "name": "Gainage de boxeur",
+      "description": "Un tronc solide qui transmet la force et protège le dos.",
+      "icon": "game-icons:muscle-up",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Planche 3 x 45 s et Pallof press 3 x 10 par côté, côté faible d'abord",
+        "Planche 3 x 60 s et Pallof press 3 x 12 par côté"
+      ]
+    },
+    {
+      "id": "echauffement-prevention",
+      "name": "Échauffement et bandes",
+      "description": "Préparer épaules, poignets, nuque et dos avant de frapper.",
+      "icon": "game-icons:bandage-roll",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Échauffement de 10 min (épaules, poignets, nuque, rotation thoracique) avant chaque séance, 4 semaines",
+        "Bander ses mains seul, aucune douleur aux poignets sur 6 séances"
+      ]
+    },
+    {
+      "id": "cardio-boxe",
+      "name": "Cardio de boxeur",
+      "description": "Un moteur aérobie pour enchaîner les rounds.",
+      "icon": "game-icons:heart-beats",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Fractionné 30/30 x 10 (course ou shadow), 2 fois par semaine pendant 4 semaines",
+        "Fractionné 30/30 x 16, 2 fois par semaine pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "corde-a-sauter",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "volume-frappe",
+      "name": "Volume de frappe",
+      "description": "Frapper beaucoup sans perdre la technique.",
+      "icon": "game-icons:punch",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "150 coups par round de 3 min au sac (comptage vidéo ou appli)",
+        "180 coups par round sur 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rounds-sac"
+        }
+      ]
+    },
+    {
+      "id": "explosivite",
+      "name": "Explosivité",
+      "description": "Produire de la vitesse depuis le sol et les hanches.",
+      "icon": "game-icons:power-lightning",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Lancers de médecine-ball en rotation contrôlée 3 x 8 par côté",
+        "Pompes explosives 3 x 6 et lancers 3 x 10 par côté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gainage-boxeur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "nuque-epaules",
+      "name": "Nuque et épaules",
+      "description": "Renforcer ce que la boxe sollicite le plus.",
+      "icon": "game-icons:shoulder-armor",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Isométrie de nuque 4 directions 3 x 20 s, 3 fois par semaine pendant 4 semaines",
+        "Rotateurs externes à l'élastique 3 x 15 et face pull, 6 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "echauffement-prevention"
+        }
+      ]
+    },
+    {
+      "id": "recuperation-rounds",
+      "name": "Récupération entre les rounds",
+      "description": "Faire redescendre le cœur en une minute.",
+      "icon": "game-icons:stopwatch",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pouls sous 120 bpm après 1 min de repos suivant un round intense",
+        "Pouls sous 110 bpm, même protocole"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cardio-boxe"
+        }
+      ]
+    },
+    {
+      "id": "rounds-longs",
+      "name": "Rounds de 3 minutes",
+      "description": "Accumuler les rounds complets.",
+      "icon": "game-icons:ringing-bell",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "6 rounds de 3 min au sac, 1 min de repos",
+        "8 rounds de 3 min au sac, 1 min de repos"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "volume-frappe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "puissance-jambes",
+      "name": "Puissance des jambes",
+      "description": "La force du coup commence dans les appuis.",
+      "icon": "game-icons:leg",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Squats sautés 3 x 8 et fentes sautées 3 x 6 par côté",
+        "Même circuit avec 4 séries, réception silencieuse"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "explosivite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "dos-boxeur",
+      "name": "Dos de boxeur",
+      "description": "Boxer avec une scoliose sans réveiller le dos.",
+      "icon": "game-icons:back-pain",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Rotation thoracique mesurée des deux côtés, écart gauche/droite réduit en 8 semaines",
+        "Aucune douleur dorsale après les séances pendant 2 mois (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nuque-epaules"
+        }
+      ]
+    },
+    {
+      "id": "intervalles-combat",
+      "name": "Intervalles de combat",
+      "description": "Reproduire l'intensité d'un assaut.",
+      "icon": "game-icons:fire-punch",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tabata en shadow (8 x 20 s / 10 s), 2 fois par semaine pendant 4 semaines",
+        "Circuit 3 x (1 min de sac à fond, 30 s de burpees, 30 s de repos)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recuperation-rounds",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vitesse-frappe",
+      "name": "Vitesse de frappe",
+      "description": "Des mains rapides jusqu'à la fin du round.",
+      "icon": "game-icons:lightning-arc",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Poire de vitesse ou ballon double élastique 3 rounds de 2 min sans perdre le rythme",
+        "Rafales de 15 s à fond au sac x 10"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rounds-longs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "puissance-coups",
+      "name": "Puissance des coups",
+      "description": "Des coups lourds, techniquement propres.",
+      "icon": "game-icons:punch-blast",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 rounds de frappe lourde au sac (un coup appuyé toutes les 3 s), technique propre en vidéo",
+        "5 rounds, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "puissance-jambes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "routine-recuperation",
+      "name": "Routine de récupération",
+      "description": "Récupérer pour pouvoir revenir à la séance suivante.",
+      "icon": "game-icons:night-sleep",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 min d'étirements après chaque séance pendant 6 semaines",
+        "7 h de sommeil en moyenne les nuits après séance pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "dos-boxeur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "resistance-combat",
+      "name": "Rounds enchaînés",
+      "description": "Enchaîner les ateliers comme dans un vrai entraînement de club.",
+      "icon": "game-icons:hourglass",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 rounds de 2 min (corde, sac, shadow) sans repos de plus d'1 min",
+        "8 rounds, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "intervalles-combat"
+        }
+      ]
+    },
+    {
+      "id": "saison-sans-blessure",
+      "name": "Saison sans blessure",
+      "description": "La régularité est la vraie condition physique.",
+      "icon": "game-icons:healing-shield",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 mois de pratique sans arrêt pour blessure ou douleur",
+        "6 mois sans arrêt"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine-recuperation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "moteur-boxeur",
+      "name": "Moteur de boxeur",
+      "description": "Une séance complète de club sans faiblir.",
+      "icon": "game-icons:heart-plus",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 rounds de 3 min (corde, sac, shadow, pattes) dans une séance",
+        "12 rounds de 3 min dans une séance"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "resistance-combat"
+        }
+      ]
+    },
+    {
+      "id": "frappe-lourde",
+      "name": "Frappe lourde durable",
+      "description": "Garder la puissance jusqu'au dernier round.",
+      "icon": "game-icons:mailed-fist",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Dernier round d'une séance de 6 aussi puissant que le premier (comptage des coups appuyés)",
+        "Même critère sur 8 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "puissance-coups"
+        },
+        {
+          "talentId": "saison-sans-blessure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "douze-rounds",
+      "name": "Douze rounds",
+      "description": "Une condition de ring complète, sans douleur.",
+      "icon": "game-icons:trophy-cup",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "12 rounds de 3 min à intensité d'assaut (sac, pattes, shadow), 1 min de repos",
+        "Même séance avec le pouls sous 130 bpm après chaque minute de repos"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "moteur-boxeur"
+        },
+        {
+          "talentId": "vitesse-frappe"
+        },
+        {
+          "talentId": "frappe-lourde",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
