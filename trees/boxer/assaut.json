@@ -189,7 +189,7 @@
     },
     {
       "id": "gestion-stress",
-      "name": "Gestion du stress",
+      "name": "Stress d'avant assaut",
       "description": "Transformer le trac en concentration.",
       "icon": "game-icons:meditation",
       "tier": 3,
