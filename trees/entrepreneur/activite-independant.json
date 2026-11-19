@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "entrepreneur",
+    "name": "Entrepreneur",
+    "icon": "game-icons:briefcase"
+  },
+  "specialization": {
+    "id": "activite-independant",
+    "name": "Activité d'indépendant",
+    "description": "Créer et faire durer une activité d'expert indépendant : offre, vente, gestion et clients.",
+    "icon": "game-icons:suitcase"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "offre-independant",
+      "name": "Offre et positionnement",
+      "description": "Savoir pour qui et pourquoi on vous paie.",
+      "icon": "game-icons:flag-objective",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Positionnement écrit (cible, problème résolu, preuves) validé auprès de 5 personnes du métier",
+        "Offre écrite (prestations, livrables, tarif) et page dédiée sur ton site"
+      ]
+    },
+    {
+      "id": "prospection",
+      "name": "Prospection",
+      "description": "Aller chercher les clients plutôt que les attendre.",
+      "icon": "game-icons:archery-target",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Liste de 50 entreprises cibles avec un contact identifié pour chacune",
+        "20 prises de contact personnalisées, réponses notées",
+        "5 rendez-vous de découverte obtenus"
+      ]
+    },
+    {
+      "id": "statut",
+      "name": "Statut et cadre",
+      "description": "Une structure adaptée, assurée et séparée du perso.",
+      "icon": "game-icons:contract",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Statuts comparés (micro-entreprise, société unipersonnelle, portage) selon le chiffre visé, choix écrit",
+        "Structure créée, assurance responsabilité civile pro et compte bancaire dédié ouverts"
+      ]
+    },
+    {
+      "id": "premieres-missions",
+      "name": "Missions",
+      "description": "Signer, livrer, recommencer.",
+      "icon": "game-icons:briefcase",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Première mission signée",
+        "3 missions réalisées",
+        "Un client qui revient pour une nouvelle mission"
+      ]
+    },
+    {
+      "id": "tarifs",
+      "name": "Tarifs",
+      "description": "Un prix calculé, puis assumé.",
+      "icon": "game-icons:price-tag",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tarif journalier calculé depuis le revenu visé, les charges et les jours facturables",
+        "Tarif relevé une fois après 6 mois, sans perte de client"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "offre-independant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decouverte-client",
+      "name": "Rendez-vous découverte",
+      "description": "Comprendre le besoin avant de proposer.",
+      "icon": "game-icons:discussion",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Trame de découverte (besoin, enjeu, budget, décideur) utilisée sur 5 rendez-vous",
+        "Taux de rendez-vous transformés en proposition mesuré sur 10 rendez-vous"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prospection",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "comptabilite",
+      "name": "Comptabilité et déclarations",
+      "description": "Facturer juste et déclarer à temps.",
+      "icon": "game-icons:abacus",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Outil de facturation en place, factures conformes (mentions, numérotation)",
+        "12 mois de déclarations sociales et de TVA faites à temps, sans pénalité"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "statut",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "contrats",
+      "name": "Contrats",
+      "description": "Se protéger avant de commencer.",
+      "icon": "game-icons:stamper",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle de contrat ou CGV relu par un juriste (propriété intellectuelle, responsabilité, paiement)",
+        "Périmètre et critères de recette signés avant chaque mission, 3 missions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premieres-missions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "proposition",
+      "name": "Proposition commerciale",
+      "description": "Un document qui fait signer.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Modèle de proposition prêt (contexte, approche, livrables, planning, prix)",
+        "5 propositions envoyées",
+        "La moitié des 10 dernières propositions signées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tarifs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reseau-clients",
+      "name": "Réseau et recommandations",
+      "description": "Que les clients viennent par le bouche-à-oreille.",
+      "icon": "game-icons:mesh-network",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "3 recommandations de clients publiées sur ton profil",
+        "Une mission obtenue par recommandation ou par contact entrant",
+        "2 partenaires qui t'adressent régulièrement des contacts"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decouverte-client",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tresorerie-pro",
+      "name": "Trésorerie de l'activité",
+      "description": "Être payé à l'heure et provisionner ce qui est dû.",
+      "icon": "game-icons:cash",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Délai moyen de paiement des clients mesuré, relances systématiques à l'échéance",
+        "Cotisations et impôts provisionnés à chaque encaissement pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "comptabilite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "qualite-service",
+      "name": "Qualité de service",
+      "description": "Des clients satisfaits qui le disent.",
+      "icon": "game-icons:star-medal",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Bilan de fin de mission écrit avec le client, 3 missions",
+        "Satisfaction client de 9/10 ou plus sur 5 missions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contrats",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "negociation",
+      "name": "Négociation",
+      "description": "Ne jamais baisser sans contrepartie.",
+      "icon": "game-icons:scales",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 négociations de prix menées sans baisse sans contrepartie (périmètre, durée, paiement)",
+        "Un contrat-cadre ou une mission longue négocié"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "proposition",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "se-remunerer",
+      "name": "Se rémunérer",
+      "description": "Un revenu régulier tiré de l'activité.",
+      "icon": "game-icons:pay-money",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Rémunération mensuelle fixe versée depuis l'activité pendant 6 mois",
+        "Mode de rémunération optimisé avec un expert-comptable, gain calculé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tresorerie-pro",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recurrence",
+      "name": "Revenus récurrents",
+      "description": "Lisser l'activité avec des contrats qui durent.",
+      "icon": "game-icons:cycle",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un contrat d'accompagnement, de maintenance ou d'abonnement signé",
+        "Revenus récurrents couvrant 25 % du chiffre d'affaires sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "qualite-service",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pipeline",
+      "name": "Pipeline commercial",
+      "description": "Toujours savoir d'où viendra la prochaine mission.",
+      "icon": "game-icons:funnel",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline (prospects, propositions, signatures) suivi chaque semaine pendant 3 mois",
+        "3 mois de missions signées d'avance en permanence pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "negociation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "activite-perenne",
+      "name": "Activité pérenne",
+      "description": "Une activité qui tient dans la durée.",
+      "icon": "game-icons:anchor",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois d'activité avec au moins une mission en cours",
+        "Revenu d'indépendant équivalent à un mi-temps sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "se-remunerer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "collectif",
+      "name": "Collectif d'indépendants",
+      "description": "Aller plus loin à plusieurs.",
+      "icon": "game-icons:team-upgrade",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Mission co-réalisée avec un autre indépendant",
+        "Collectif ou marque commune à plusieurs indépendants"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pipeline",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plein-temps",
+      "name": "Indépendant à plein temps",
+      "description": "L'activité fait vivre.",
+      "icon": "game-icons:office-chair",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Revenu d'indépendant équivalent à un plein temps sur 12 mois",
+        "Deux années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "activite-perenne"
+        }
+      ]
+    },
+    {
+      "id": "expert-independant",
+      "name": "Expert indépendant",
+      "description": "Choisir ses clients et son prix.",
+      "icon": "game-icons:crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet plein 6 mois et 2 missions refusées faute de place ou d'adéquation",
+        "Tarif dans le quart supérieur du marché de ta spécialité (baromètre publié) pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "collectif"
+        },
+        {
+          "talentId": "plein-temps"
+        },
+        {
+          "talentId": "reseau-clients"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
