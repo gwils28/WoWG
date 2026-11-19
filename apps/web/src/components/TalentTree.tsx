@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   arrowCells,
   findTalent,
@@ -10,7 +11,7 @@ import {
   type TalentState,
   type TreeFile,
 } from '@wowg/shared';
-import { arrowPath, CELL, ICON, PAD, talentCenter, treeSize } from '../lib/layout';
+import { arrowPath, CELL, ICON, PAD, placeTooltip, talentCenter, treeSize } from '../lib/layout';
 import { GameIcon } from './GameIcon';
 
 export type TalentMark = 'added' | 'modified';
@@ -35,7 +36,8 @@ interface Props {
 }
 
 export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props) {
-  const [hovered, setHovered] = useState<string | null>(null);
+  // talent survolé et son bouton, ancre de l'infobulle
+  const [hovered, setHovered] = useState<{ id: string; anchor: HTMLElement } | null>(null);
   const { width, height } = treeSize(tree);
   const interactive = Boolean(onAdd || edit);
 
@@ -47,7 +49,14 @@ export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props)
       return [{ key: `${parent.id}>${child.id}`, d: arrowPath(parent, child), met }];
     }),
   );
-  const hoveredTalent = hovered ? findTalent(tree, hovered) : undefined;
+  const hoveredTalent = hovered ? findTalent(tree, hovered.id) : undefined;
+  // l'infobulle est en position fixe : on la ferme si la page ou l'arbre défile
+  useEffect(() => {
+    if (!hovered) return;
+    const close = () => setHovered(null);
+    window.addEventListener('scroll', close, { capture: true, passive: true });
+    return () => window.removeEventListener('scroll', close, { capture: true });
+  }, [hovered]);
   const occupied = new Set(tree.talents.map((t) => `${t.tier}:${t.column}`));
   // une case sur le trajet d'une flèche ne peut pas accueillir de talent (validation)
   const onArrow = new Set(
@@ -137,15 +146,16 @@ export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props)
             rank={ranks[t.id] ?? 0}
             state={talentState(tree, ranks, t.id)}
             extraClass={classes.join(' ')}
-            onHover={setHovered}
+            onHover={(anchor) => setHovered(anchor ? { id: t.id, anchor } : null)}
             onClick={(quick) => (edit ? edit.onSelect(t.id) : onAdd?.(t, quick))}
             onRemove={edit ? undefined : onRemove && (() => onRemove(t))}
           />
         );
       })}
 
-      {hoveredTalent && (
+      {hovered && hoveredTalent && (
         <TalentTooltip
+          anchor={hovered.anchor}
           tree={tree}
           ranks={ranks}
           talent={hoveredTalent}
@@ -170,7 +180,7 @@ function TalentNode({
   rank: number;
   state: TalentState;
   extraClass: string;
-  onHover: (id: string | null) => void;
+  onHover: (anchor: HTMLElement | null) => void;
   onClick: (quick: boolean) => void;
   onRemove?: () => void;
 }) {
@@ -181,9 +191,9 @@ function TalentNode({
       className={`talent talent--${state}${talent.ultimate ? ' talent--ultimate' : ''} ${extraClass}`}
       style={{ left: c.x - ICON / 2, top: c.y - ICON / 2, width: ICON, height: ICON }}
       aria-label={`${talent.name}, rang ${rank} sur ${talent.maxRank}`}
-      onMouseEnter={() => onHover(talent.id)}
+      onMouseEnter={(e) => onHover(e.currentTarget)}
       onMouseLeave={() => onHover(null)}
-      onFocus={() => onHover(talent.id)}
+      onFocus={(e) => onHover(e.currentTarget)}
       onBlur={() => onHover(null)}
       onClick={(e) => onClick(e.shiftKey)}
       onContextMenu={(e) => {
@@ -205,13 +215,19 @@ function TalentNode({
   );
 }
 
+/**
+ * Infobulle rendue dans `body` en position fixe : elle n'est plus rognée par le conteneur
+ * défilant de l'arbre (#4). Mesurée après rendu puis placée dans la fenêtre.
+ */
 function TalentTooltip({
+  anchor,
   tree,
   ranks,
   talent,
   hint,
   playable,
 }: {
+  anchor: HTMLElement;
   tree: TreeFile;
   ranks: Ranks;
   talent: Talent;
@@ -219,12 +235,25 @@ function TalentTooltip({
   playable: boolean;
 }) {
   const rank = ranks[talent.id] ?? 0;
-  const c = talentCenter(talent);
   const missing = missingPrerequisites(tree, ranks, talent.id);
-  const toLeft = talent.column > tree.grid.columns / 2;
-  const style = toLeft
-    ? { right: treeSize(tree).width - (c.x - ICON / 2 - 12), top: c.y - ICON / 2 }
-    : { left: c.x + ICON / 2 + 12, top: c.y - ICON / 2 };
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const r = anchor.getBoundingClientRect();
+    setPos(
+      placeTooltip(
+        { left: r.left, top: r.top, width: r.width, height: r.height },
+        { width: el.offsetWidth, height: el.offsetHeight },
+        { width: document.documentElement.clientWidth, height: window.innerHeight },
+      ),
+    );
+  }, [anchor, talent, rank, missing.length]);
+  // première passe invisible, le temps de mesurer la taille réelle
+  const style = pos
+    ? { left: pos.x, top: pos.y }
+    : { left: 0, top: 0, visibility: 'hidden' as const };
   const next = talent.ranks[rank];
   const current = rank > 0 ? talent.ranks[rank - 1] : undefined;
   const playHint = [
@@ -234,8 +263,8 @@ function TalentTooltip({
     .filter(Boolean)
     .join(' ');
 
-  return (
-    <div className="tooltip" style={style} role="tooltip">
+  return createPortal(
+    <div ref={ref} className="tooltip" style={style} role="tooltip">
       <div className="tooltip__title">{talent.name}</div>
       <div className="tooltip__rank">
         Rang {rank}/{talent.maxRank}
@@ -259,6 +288,7 @@ function TalentTooltip({
         </p>
       ))}
       {(hint || (playable && playHint)) && <p className="tooltip__hint">{hint ?? playHint}</p>}
-    </div>
+    </div>,
+    document.body,
   );
 }
