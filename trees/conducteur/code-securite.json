@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conducteur",
+    "name": "Conducteur",
+    "icon": "game-icons:city-car"
+  },
+  "specialization": {
+    "id": "code-securite",
+    "name": "Code et sécurité",
+    "description": "Réviser le code pour une conduite sûre, responsable et juste : règles, anticipation, urgences et passagers.",
+    "icon": "game-icons:stop-sign"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "revision-code",
+      "name": "Révision du code",
+      "description": "Reprendre le code de la route en séries régulières.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "1 série d'entraînement de 40 questions par jour pendant 7 jours, scores notés",
+        "20 séries faites, moyenne notée",
+        "50 séries faites"
+      ]
+    },
+    {
+      "id": "panneaux",
+      "name": "Panneaux et marquages",
+      "description": "Lire la route sans hésiter.",
+      "icon": "game-icons:direction-sign",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Quiz de 30 panneaux (danger, interdiction, obligation, indication) à 28/30",
+        "Quiz marquages au sol (lignes, zébras, sas vélo) à 18/20, sans erreur sur les lignes continues"
+      ]
+    },
+    {
+      "id": "distances",
+      "name": "Distances de sécurité",
+      "description": "Garder de la marge devant soi.",
+      "icon": "game-icons:path-distance",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Règle des 2 secondes vérifiée sur un repère fixe, 5 trajets",
+        "Distances d'arrêt sur sol sec et mouillé à 50, 90 et 130 km/h calculées et notées sur une fiche"
+      ]
+    },
+    {
+      "id": "etat-conducteur",
+      "name": "État du conducteur",
+      "description": "Ne prendre le volant qu'en état de conduire.",
+      "icon": "game-icons:tired-eye",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règles personnelles écrites : zéro alcool, téléphone hors de portée, pause toutes les 2 h",
+        "Mode conduite du téléphone activé automatiquement, 30 trajets sans le toucher"
+      ]
+    },
+    {
+      "id": "priorites",
+      "name": "Priorités et intersections",
+      "description": "Savoir qui passe, partout.",
+      "icon": "game-icons:crossroad",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Série thématique intersections et priorités à 9/10, 3 fois",
+        "10 ronds-points passés avec la bonne voie et le clignotant de sortie (journal)",
+        "Trajet en ville dédié : 20 priorités à droite abordées correctement"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revision-code",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vitesses",
+      "name": "Limitations et vitesses",
+      "description": "Rouler à la bonne vitesse, pas seulement sous la limite.",
+      "icon": "game-icons:speedometer",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Limitations par défaut (agglomération, route, voie rapide, autoroute, pluie) récitées sans erreur",
+        "Limiteur ou régulateur utilisé, 10 trajets sans dépassement de limitation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "panneaux"
+        }
+      ]
+    },
+    {
+      "id": "anticipation",
+      "name": "Anticipation",
+      "description": "Voir les dangers avant qu'ils arrivent.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "15 min de trajet en commentant les dangers à voix haute, 3 séances",
+        "1 séance complète sans freinage brusque (journal)",
+        "10 vidéos de perception des risques sans erreur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "distances"
+        }
+      ]
+    },
+    {
+      "id": "usagers-vulnerables",
+      "name": "Usagers vulnérables",
+      "description": "Piétons, cyclistes, deux-roues : leur laisser la place.",
+      "icon": "game-icons:walk",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 dépassements de vélos à 1 m en ville et 1,5 m hors agglomération",
+        "1 semaine d'arrêt systématique dès qu'un piéton s'approche d'un passage (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "etat-conducteur"
+        }
+      ]
+    },
+    {
+      "id": "examen-blanc",
+      "name": "Examen blanc",
+      "description": "Le niveau du code mesuré comme à l'examen.",
+      "icon": "game-icons:checklist",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "35/40 à un examen blanc",
+        "37/40 trois fois de suite",
+        "39/40 à un examen blanc"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "priorites",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "sanctions",
+      "name": "Sanctions et permis à points",
+      "description": "Connaître ce que coûte une infraction.",
+      "icon": "game-icons:scales",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des retraits de points et amendes des infractions courantes",
+        "Solde de points consulté sur le service officiel"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vitesses"
+        }
+      ]
+    },
+    {
+      "id": "meteo",
+      "name": "Météo et visibilité",
+      "description": "Les règles quand la route devient difficile.",
+      "icon": "game-icons:heavy-rain",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Règles pluie, brouillard et neige (vitesses, feux, distances) révisées, quiz à 10/10",
+        "Fiche d'usage des feux (croisement, route, antibrouillard avant et arrière) faite et vérifiée sur le véhicule"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "anticipation",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "premiers-secours",
+      "name": "Premiers secours",
+      "description": "Protéger, alerter, secourir.",
+      "icon": "game-icons:first-aid-kit",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Numéros d'urgence (15, 17, 18, 112) mémorisés, gilets et triangle présents dans le véhicule",
+        "Trousse de secours dans le véhicule, contenu vérifié",
+        "Formation PSC1 suivie (attestation)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "usagers-vulnerables",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eco-conduite",
+      "name": "Éco-conduite",
+      "description": "Consommer moins en conduisant mieux.",
+      "icon": "game-icons:solid-leaf",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Consommation moyenne relevée sur un trajet de référence, 3 fois",
+        "Consommation réduite de 10 % sur ce même trajet (anticipation, régulateur, moins de freinages)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sanctions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "urgences",
+      "name": "Situations d'urgence",
+      "description": "Savoir quoi faire en cas de panne ou d'accident.",
+      "icon": "game-icons:hazard-sign",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Conduite à tenir en cas de panne sur autoroute écrite (gilet, sortie côté glissière, borne, triangle si possible)",
+        "Simulation à l'arrêt : warning, gilet, triangle placé en moins de 3 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meteo"
+        }
+      ]
+    },
+    {
+      "id": "constat-amiable",
+      "name": "Constat amiable",
+      "description": "Être prêt pour l'accrochage.",
+      "icon": "game-icons:contract",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Constat vierge, stylo et attestation d'assurance à jour dans la boîte à gants",
+        "Constat rempli sur un cas d'entraînement avec le guide de l'assureur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premiers-secours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "code-reflexe",
+      "name": "Code en réflexe",
+      "description": "Garder le niveau dans la durée.",
+      "icon": "game-icons:book-pile",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "1 série par semaine pendant 3 mois, jamais sous 36/40",
+        "Fiche des 10 règles les plus souvent confondues, expliquées à quelqu'un"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "examen-blanc",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "courtoisie",
+      "name": "Courtoisie",
+      "description": "Une conduite juste avec les autres usagers.",
+      "icon": "game-icons:person",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 situations notées où on facilite une insertion en fermeture éclair ou un dépassement",
+        "1 mois sans klaxon ni geste d'agacement (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eco-conduite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "securite-passagers",
+      "name": "Sécurité des passagers",
+      "description": "7 places, 7 ceintures, sièges enfants compris.",
+      "icon": "game-icons:car-door",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règles des sièges enfants et des places de 3e rangée vérifiées dans le carnet, fiche faite",
+        "Ceintures de tous les passagers vérifiées avant le départ, 20 trajets"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "constat-amiable"
+        }
+      ]
+    },
+    {
+      "id": "veille",
+      "name": "Veille réglementaire",
+      "description": "Suivre les nouveautés du code.",
+      "icon": "game-icons:newspaper",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Nouveautés de l'année de la sécurité routière lues et résumées sur une fiche"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "code-reflexe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sang-froid",
+      "name": "Sang-froid",
+      "description": "Rester calme quand une situation dérape.",
+      "icon": "game-icons:meditation",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 fiches d'analyse après une situation stressante (quoi, pourquoi, que faire la prochaine fois)",
+        "1 mois sans réaction agressive au volant (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "urgences"
+        }
+      ]
+    },
+    {
+      "id": "gardien-route",
+      "name": "Gardien de la route",
+      "description": "Connaître la règle et l'appliquer, toujours.",
+      "icon": "game-icons:checked-shield",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "39/40 à un examen blanc et PSC1 obtenu",
+        "1 an après la reprise : 39/40 sans révision préalable et solde de points intact"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "veille"
+        },
+        {
+          "talentId": "sang-froid"
+        },
+        {
+          "talentId": "courtoisie"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
