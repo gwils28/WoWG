@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-mentale",
+    "name": "Forme mentale",
+    "icon": "game-icons:heart-organ"
+  },
+  "specialization": {
+    "id": "esprit-vif-liens",
+    "name": "Esprit vif et liens",
+    "description": "Lire, apprendre, travailler en profondeur, et entretenir ses relations.",
+    "icon": "game-icons:book-pile"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "lecture",
+      "name": "Lecture",
+      "description": "Lire un peu chaque jour, puis beaucoup de livres.",
+      "icon": "game-icons:book-pile",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 4,
+      "ranks": [
+        "10 min de lecture par jour pendant 4 semaines",
+        "6 livres lus",
+        "12 livres lus",
+        "24 livres lus"
+      ]
+    },
+    {
+      "id": "curiosite",
+      "name": "Curiosité",
+      "description": "Explorer un sujet nouveau chaque mois.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un sujet nouveau exploré par mois pendant 3 mois, avec une note d'une page",
+        "Pendant 12 mois"
+      ]
+    },
+    {
+      "id": "prendre-nouvelles",
+      "name": "Prendre des nouvelles",
+      "description": "Garder le contact avec ses proches.",
+      "icon": "game-icons:rotary-phone",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Contacter un proche chaque semaine pendant 4 semaines",
+        "Pendant 12 semaines"
+      ]
+    },
+    {
+      "id": "activites-partagees",
+      "name": "Activités partagées",
+      "description": "Faire des choses avec d'autres.",
+      "icon": "game-icons:party-flags",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une activité avec d'autres (club, cours, association) par mois pendant 3 mois",
+        "Pendant 6 mois"
+      ]
+    },
+    {
+      "id": "memoriser",
+      "name": "Mémoriser",
+      "description": "Retenir ce qu'on apprend grâce à la répétition espacée.",
+      "icon": "game-icons:brain",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cartes de révision 5 min par jour pendant 4 semaines",
+        "500 cartes apprises"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lecture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "travail-profond",
+      "name": "Travail profond",
+      "description": "Des plages longues de concentration, sur ce qui compte.",
+      "icon": "game-icons:hourglass",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 blocs de 90 min sans interruption",
+        "3 h de travail profond par semaine pendant 8 semaines"
+      ]
+    },
+    {
+      "id": "temps-qualite",
+      "name": "Temps de qualité",
+      "description": "Être vraiment présent avec ses proches.",
+      "icon": "game-icons:family-house",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un moment sans écran avec un proche chaque semaine pendant 4 semaines",
+        "Une journée ou un week-end organisé pour des proches"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prendre-nouvelles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "donner",
+      "name": "Donner",
+      "description": "Aider, rendre service, s'engager.",
+      "icon": "game-icons:gift-of-knowledge",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 services rendus ou coups de main notés",
+        "Engagement bénévole régulier pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "activites-partagees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiches-notes",
+      "name": "Prise de notes",
+      "description": "Garder une trace de ce qu'on lit et apprend.",
+      "icon": "game-icons:notebook",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Fiches de lecture pour 5 livres",
+        "Système de notes reliées avec 100 notes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "memoriser",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "apprendre-neuf",
+      "name": "Apprendre du neuf",
+      "description": "Se lancer dans une compétence nouvelle, hors travail.",
+      "icon": "game-icons:seedling",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un cours en ligne terminé",
+        "Une nouvelle compétence pratiquée 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "travail-profond",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rituels-proches",
+      "name": "Rituels avec les proches",
+      "description": "Des rendez-vous réguliers qui tiennent.",
+      "icon": "game-icons:candle-light",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Un rituel régulier avec des proches (repas, appel) tenu 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "temps-qualite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "nouvelles-amities",
+      "name": "Nouvelles amitiés",
+      "description": "Rencontrer, puis entretenir.",
+      "icon": "game-icons:two-feathers",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 nouvelles personnes rencontrées et revues",
+        "Une nouvelle amitié entretenue 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "donner",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "expliquer",
+      "name": "Expliquer pour comprendre",
+      "description": "Réexpliquer simplement ce qu'on a appris.",
+      "icon": "game-icons:open-book",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 notions apprises expliquées par écrit, simplement",
+        "Une notion expliquée à quelqu'un qui l'a comprise"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fiches-notes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "communaute",
+      "name": "Communauté",
+      "description": "Appartenir à un groupe qui compte.",
+      "icon": "game-icons:campfire",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Membre actif d'un groupe depuis 6 mois (club, association, jam...)",
+        "Un rôle dans ce groupe (organiser, accueillir)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nouvelles-amities",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "projet-personnel",
+      "name": "Projet personnel",
+      "description": "Mener au bout un projet pour soi.",
+      "icon": "game-icons:flower-pot",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un projet personnel mené à son terme",
+        "3 projets menés à leur terme"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "apprendre-neuf",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "apprenant-a-vie",
+      "name": "Apprenant à vie",
+      "description": "Apprendre chaque année, durablement.",
+      "icon": "game-icons:gift-of-knowledge",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "12 livres et un nouveau domaine abordé dans l'année",
+        "Deux années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "expliquer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relations-nourrissantes",
+      "name": "Relations nourrissantes",
+      "description": "Un cercle proche entretenu dans la durée.",
+      "icon": "game-icons:family-tree",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 relations proches vues ou appelées chaque mois pendant 6 mois",
+        "Pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rituels-proches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "esprit-vif",
+      "name": "Esprit vif, cœur entouré",
+      "description": "Apprendre et être entouré, durablement.",
+      "icon": "game-icons:sprout-disc",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Lecture et contact avec tes proches chaque semaine pendant 6 mois",
+        "Pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "apprenant-a-vie",
+          "rank": 1
+        },
+        {
+          "talentId": "projet-personnel",
+          "rank": 1
+        },
+        {
+          "talentId": "relations-nourrissantes",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

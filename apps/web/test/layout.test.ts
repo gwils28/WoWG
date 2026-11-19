@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { arrowPath, CELL, ICON, PAD, talentCenter, treeSize } from '../src/lib/layout';
+import {
+  arrowPath,
+  CELL,
+  ICON,
+  PAD,
+  placeTooltip,
+  talentCenter,
+  treeSize,
+} from '../src/lib/layout';
 
 describe('layout', () => {
   it('place le centre des cases sur la grille', () => {
@@ -30,5 +38,35 @@ describe('layout', () => {
     const p3 = talentCenter({ tier: 1, column: 3 });
     expect(right.startsWith(`M ${p1.x + ICON / 2} ${p1.y} H `)).toBe(true);
     expect(left.startsWith(`M ${p3.x - ICON / 2} ${p3.y} H `)).toBe(true);
+  });
+});
+
+describe('placeTooltip', () => {
+  const viewport = { width: 1000, height: 800 };
+  const size = { width: 290, height: 200 };
+  const anchor = (left: number, top: number) => ({ left, top, width: 56, height: 56 });
+
+  it('se place à droite du talent quand la place suffit', () => {
+    expect(placeTooltip(anchor(100, 100), size, viewport)).toEqual({ x: 168, y: 100 });
+  });
+
+  it('bascule à gauche près du bord droit', () => {
+    expect(placeTooltip(anchor(900, 100), size, viewport)).toEqual({ x: 900 - 12 - 290, y: 100 });
+  });
+
+  it('reste dans la fenêtre si aucun côté ne tient (mobile)', () => {
+    const p = placeTooltip(anchor(150, 100), size, { width: 360, height: 640 });
+    expect(p.x).toBeGreaterThanOrEqual(8);
+    expect(p.x + size.width).toBeLessThanOrEqual(360 - 8);
+  });
+
+  it('remonte près du bas de la fenêtre', () => {
+    expect(placeTooltip(anchor(100, 750), size, viewport).y).toBe(800 - 8 - 200);
+  });
+
+  it("colle au bord gauche si l'infobulle est plus large que la fenêtre", () => {
+    expect(
+      placeTooltip(anchor(10, 10), { width: 500, height: 100 }, { width: 300, height: 600 }).x,
+    ).toBe(8);
   });
 });

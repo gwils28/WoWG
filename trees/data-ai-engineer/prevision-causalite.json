@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "data-ai-engineer",
+    "name": "Data AI Engineer",
+    "icon": "game-icons:artificial-intelligence"
+  },
+  "specialization": {
+    "id": "prevision-causalite",
+    "name": "Prévision et causalité",
+    "description": "Séries temporelles, prévision probabiliste, inférence causale et recherche appliquée.",
+    "icon": "game-icons:crystal-ball"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "benchmark-classique",
+      "name": "Benchmark de prévision",
+      "description": "Comparer méthodes statistiques et ML sur un protocole commun.",
+      "icon": "game-icons:histogram",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Benchmark ETS, ARIMA, Theta et LightGBM sur un jeu public, backtest glissant, publié",
+        "Même benchmark sur 3 jeux de domaines différents"
+      ]
+    },
+    {
+      "id": "backtesting",
+      "name": "Backtesting rigoureux",
+      "description": "Évaluer sans fuite d'information, sur des origines glissantes.",
+      "icon": "game-icons:stopwatch",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Protocole de backtest documenté (origines glissantes, fuites vérifiées) réutilisé sur 2 projets",
+        "Module de backtest réutilisable publié"
+      ]
+    },
+    {
+      "id": "contrefactuel",
+      "name": "Contrefactuel temporel",
+      "description": "Mesurer l'effet d'une intervention sur une série (BSTS, CausalImpact) avec placebos.",
+      "icon": "game-icons:crystal-eye",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un contrefactuel avec tests placebos publié",
+        "Couverture des intervalles mesurée sur des panels à vérité connue"
+      ]
+    },
+    {
+      "id": "lecture-papiers",
+      "name": "Lecture de papiers",
+      "description": "Lire et ficher les papiers : problème, méthode, limites.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "10 papiers lus et fichés",
+        "30 papiers lus et fichés",
+        "60 papiers lus et fichés"
+      ]
+    },
+    {
+      "id": "modeles-fondation",
+      "name": "Modèles de fondation",
+      "description": "Modèles de fondation pour séries temporelles : zero-shot, fine-tuning, routage.",
+      "icon": "game-icons:brain",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Zero-shot contre spécialiste comparés sur un benchmark publié",
+        "Fine-tuning d'un modèle de fondation qui bat son zero-shot sur un cas réel",
+        "Routeur ou ensemble zero-shot et spécialiste en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "benchmark-classique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "probabiliste",
+      "name": "Prévision probabiliste",
+      "description": "Intervalles calibrés et quantiles, jusqu'à la décision sous incertitude.",
+      "icon": "game-icons:dice-six-faces-five",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Intervalles conformes calibrés (couverture à 2 points de la cible) sur un cas réel",
+        "Prévision par quantiles évaluée au CRPS ou à la pinball loss sur 3 jeux",
+        "Décision métier optimisée à partir des quantiles, gain chiffré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "backtesting",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "double-ml",
+      "name": "Double ML et effets hétérogènes",
+      "description": "Effets causaux avec apprentissage automatique, diagnostics compris.",
+      "icon": "game-icons:scales",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Double ML appliqué avec diagnostics (recouvrement, sensibilité)",
+        "Effets hétérogènes (forêt causale ou méta-learners) estimés et validés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contrefactuel",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reimplementation",
+      "name": "Réimplémentation",
+      "description": "Réécrire une méthode depuis le papier et retrouver ses résultats.",
+      "icon": "game-icons:anvil",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "1 méthode réimplémentée et confrontée aux résultats publiés",
+        "3 méthodes réimplémentées",
+        "Une réimplémentation publiée en open source"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lecture-papiers",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "deep-ts",
+      "name": "Architectures profondes",
+      "description": "Modèles profonds pour séries temporelles (N-BEATS, TFT, PatchTST).",
+      "icon": "game-icons:circuitry",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un modèle profond entraîné et évalué face à LightGBM sur un benchmark",
+        "Un modèle profond retenu en production sur critères de backtest"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "modeles-fondation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "hierarchique",
+      "name": "Réconciliation hiérarchique",
+      "description": "Prévisions cohérentes à tous les niveaux d'une hiérarchie.",
+      "icon": "game-icons:tree-branch",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "MinT appliqué sur un cas réel avec gain mesuré à chaque niveau",
+        "Réconciliation probabiliste (échantillons) appliquée sur un cas réel"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "probabiliste",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "controle-synthetique",
+      "name": "Contrôle synthétique et DiD",
+      "description": "Comparer à un témoin construit, avec les estimateurs récents.",
+      "icon": "game-icons:mesh-network",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Contrôle synthétique avec inférence par permutation appliqué",
+        "Diff-in-diff échelonné (estimateurs récents) appliqué"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "double-ml",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "benchmark-reproductible",
+      "name": "Benchmark reproductible",
+      "description": "Un benchmark qu'un tiers peut relancer à l'identique.",
+      "icon": "game-icons:cog",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Benchmark publié avec code, données et seeds",
+        "Benchmark reproduit par une autre personne"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reimplementation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "competition",
+      "name": "Compétition de prévision",
+      "description": "Se confronter aux meilleurs sur un problème commun.",
+      "icon": "game-icons:podium",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Une soumission complète dans une compétition (Kaggle, M-competition...)",
+        "Classement dans le top 25 %",
+        "Classement dans le top 10 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "deep-ts",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bayesien",
+      "name": "Inférence bayésienne",
+      "description": "Modèles hiérarchiques bayésiens et incertitude complète.",
+      "icon": "game-icons:dice-target",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle hiérarchique bayésien (PyMC ou Stan) avec diagnostics, publié",
+        "Modèle bayésien structurel en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-synthetique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "grande-echelle",
+      "name": "Prévision à grande échelle",
+      "description": "Industrialiser la prévision de milliers de séries.",
+      "icon": "game-icons:factory",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Plus de 10 000 séries prévues en production, temps de calcul et coût mesurés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "competition",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "experimentation",
+      "name": "Expérimentation",
+      "description": "Concevoir et analyser des tests : puissance, séquentiel, bayésien.",
+      "icon": "game-icons:round-bottom-flask",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "A/B test conçu avec calcul de puissance et plan d'analyse fixé à l'avance",
+        "Analyse séquentielle ou bayésienne d'un test, arrêt anticipé contrôlé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bayesien",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevision-experte",
+      "name": "Prévisionniste expert",
+      "description": "Battre une prévision de référence établie, gain mesuré.",
+      "icon": "game-icons:on-target",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un projet où ta prévision remplace une référence établie, gain mesuré",
+        "3 projets de ce type"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grande-echelle",
+          "rank": 1
+        },
+        {
+          "talentId": "hierarchique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recherche-appliquee",
+      "name": "Recherche appliquée",
+      "description": "Publier ses résultats dans un format évalué par d'autres.",
+      "icon": "game-icons:quill-ink",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Preprint publié (arXiv ou HAL)",
+        "Papier accepté en workshop ou en conférence"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "experimentation",
+          "rank": 1
+        },
+        {
+          "talentId": "benchmark-reproductible",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reference-scientifique",
+      "name": "Référence du domaine",
+      "description": "Tes méthodes et travaux servent à d'autres.",
+      "icon": "game-icons:crystal-ball",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une méthode, librairie ou benchmark à toi repris par une autre équipe",
+        "Travaux cités par un papier ou une librairie tierce"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevision-experte",
+          "rank": 1
+        },
+        {
+          "talentId": "recherche-appliquee",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

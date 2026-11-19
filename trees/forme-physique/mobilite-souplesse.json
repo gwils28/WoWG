@@ -12,7 +12,7 @@
     "icon": "game-icons:lotus"
   },
   "grid": {
-    "tiers": 6,
+    "tiers": 7,
     "columns": 4
   },
   "talents": [
@@ -264,6 +264,19 @@
       ]
     },
     {
+      "id": "seance-kine-osteo",
+      "name": "Séance kiné/Ostéo",
+      "description": "1 Séance par trimestre Ostéo / Kiné pour suivi",
+      "icon": "game-icons:nurse-male",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 1,
+      "ranks": [
+        "Critère du rang 1"
+      ],
+      "prerequisites": []
+    },
+    {
       "id": "hanches-ouvertes",
       "name": "Hanches ouvertes",
       "description": "Amplitude des hanches en fente latérale et au sol.",
@@ -283,11 +296,68 @@
       ]
     },
     {
+      "id": "mobilite-active",
+      "name": "Mobilité active",
+      "description": "Contrôler ses amplitudes avec ses propres muscles, pas seulement les atteindre.",
+      "icon": "game-icons:acrobatic",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Jambe tendue levée à 90° devant soi et tenue 5 s, de chaque côté",
+        "Assis jambes écartées, buste incliné à 45° vers le sol, dos droit, 30 s"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "hanches-ouvertes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pratique-autonome",
+      "name": "Pratique autonome",
+      "description": "Construire et tenir sa propre séquence, sans support.",
+      "icon": "game-icons:meditation",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Séquence personnelle de 30 min écrite et pratiquée 20 fois",
+        "Pratiquée chaque semaine pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "yoga-pilates",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "suivi-dos",
+      "name": "Suivi dans la durée",
+      "description": "Le suivi du dos tenu sur plusieurs années.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "4 séances de suivi sur 12 mois (une par trimestre)",
+        "8 séances sur 24 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "seance-kine-osteo",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "corps-delie",
       "name": "Corps délié",
       "description": "Le test de mobilité complet, validé après plusieurs mois de pratique.",
       "icon": "game-icons:lotus",
-      "tier": 6,
+      "tier": 7,
       "column": 2,
       "maxRank": 2,
       "ranks": [
@@ -309,19 +379,6 @@
         }
       ],
       "ultimate": true
-    },
-    {
-      "id": "seance-kine-osteo",
-      "name": "Séance kiné/Ostéo",
-      "description": "1 Séance par trimestre Ostéo / Kiné pour suivi",
-      "icon": "game-icons:nurse-male",
-      "tier": 4,
-      "column": 4,
-      "maxRank": 1,
-      "ranks": [
-        "Critère du rang 1"
-      ],
-      "prerequisites": []
     }
   ]
 }

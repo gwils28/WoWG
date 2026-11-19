@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "data-ai-engineer",
+    "name": "Data AI Engineer",
+    "icon": "game-icons:artificial-intelligence"
+  },
+  "specialization": {
+    "id": "mlops",
+    "name": "MLOps",
+    "description": "Pipelines, déploiement, suivi en production, infrastructure et LLMOps.",
+    "icon": "game-icons:factory-arm"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "pipeline-reproductible",
+      "name": "Pipeline reproductible",
+      "description": "Un entraînement orchestré qu'on relance à l'identique.",
+      "icon": "game-icons:pipes",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline d'entraînement orchestré (Dagster ou Airflow) relançable de bout en bout",
+        "Données et modèles versionnés : tout résultat se reproduit depuis un commit"
+      ]
+    },
+    {
+      "id": "servir-modele",
+      "name": "Servir un modèle",
+      "description": "Une API de prédiction testée, conteneurisée et tenue sous charge.",
+      "icon": "game-icons:server-rack",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle servi par une API conteneurisée avec tests",
+        "Latence p95 mesurée et tenue sous charge"
+      ]
+    },
+    {
+      "id": "suivi-experiences",
+      "name": "Suivi d'expériences",
+      "description": "Expériences, artefacts et registre de modèles tracés.",
+      "icon": "game-icons:notebook",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Suivi d'expériences utilisé sur tous les projets d'un trimestre",
+        "Registre de modèles avec promotion de staging à production"
+      ]
+    },
+    {
+      "id": "ci-cd-ml",
+      "name": "CI/CD pour le ML",
+      "description": "Tests de code, de données et de modèle avant chaque déploiement.",
+      "icon": "game-icons:cycle",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "CI avec tests unitaires, de données et de modèle",
+        "Déploiement continu d'un modèle validé par la CI"
+      ]
+    },
+    {
+      "id": "prompts-versionnes",
+      "name": "Prompts et configs versionnés",
+      "description": "Prompts, modèles et paramètres livrés comme du code.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Prompts, modèles et paramètres versionnés, déployés par la CI",
+        "Retour arrière d'un prompt en production en moins de 5 min"
+      ]
+    },
+    {
+      "id": "qualite-donnees",
+      "name": "Qualité des données",
+      "description": "Contrôles automatiques et contrats avec les producteurs de données.",
+      "icon": "game-icons:funnel",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Contrôles de données (schéma, dérive) bloquants dans un pipeline",
+        "Contrat de données établi avec une équipe amont"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pipeline-reproductible",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "inference-batch-flux",
+      "name": "Inférence batch et flux",
+      "description": "Prédire en lot planifié et en temps réel.",
+      "icon": "game-icons:speedometer",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Inférence batch planifiée en production",
+        "Inférence en flux (Kafka ou Pub/Sub) en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "servir-modele",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "name": "Monitoring en production",
+      "description": "Dérive des données et des performances, réentraînement maîtrisé.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Dérive des données et des performances suivie avec alertes",
+        "Réentraînement déclenché par la dérive, avec garde-fou de non-régression"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "suivi-experiences",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "infra-as-code",
+      "name": "Infrastructure as code",
+      "description": "Une infra ML décrite, versionnée et reproductible.",
+      "icon": "game-icons:stack",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Infra d'un projet ML décrite en Terraform",
+        "Environnements dev et prod reproductibles par IaC"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ci-cd-ml",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "observabilite-llm",
+      "name": "Observabilité LLM",
+      "description": "Traces, coûts et dérive de qualité suivis en production.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Traces et coûts suivis sur un tableau de bord pour une application en production",
+        "Alerte de dérive de qualité déclenchée et traitée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prompts-versionnes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "feature-store",
+      "name": "Features partagées",
+      "description": "Mêmes features à l'entraînement et à l'inférence, sans écart.",
+      "icon": "game-icons:database",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Features partagées entre entraînement et inférence, écart vérifié",
+        "Feature store utilisé par plusieurs modèles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "qualite-donnees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "passage-echelle",
+      "name": "Passage à l'échelle",
+      "description": "Autoscaling et coût d'inférence maîtrisés.",
+      "icon": "game-icons:rocket",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Service ML avec autoscaling (Kubernetes ou Cloud Run)",
+        "Coût d'inférence réduit de 30 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "inference-batch-flux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tests-modeles",
+      "name": "Tests de modèles",
+      "description": "Tests comportementaux au-delà de la métrique globale.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Tests comportementaux (invariance, directionnels) sur un modèle en production",
+        "Évaluation par sous-population intégrée au pipeline"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "monitoring",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "certification-cloud",
+      "name": "Certifications cloud",
+      "description": "Valider officiellement l'expertise cloud ML.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Certification ML Engineer d'un cloud valide",
+        "Seconde certification (autre cloud ou autre spécialité)",
+        "Certifications renouvelées sans interruption"
+      ]
+    },
+    {
+      "id": "passerelle-llm",
+      "name": "Passerelle et routage",
+      "description": "Un point d'entrée unique vers les modèles : clés, quotas, repli, routage.",
+      "icon": "game-icons:crossroad",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Passerelle LLM (clés, quotas, repli entre fournisseurs) en production",
+        "Routage par requête : coût réduit à qualité égale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "observabilite-llm",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "deploiement-progressif",
+      "name": "Déploiement progressif",
+      "description": "Canari, shadow et A/B de modèles avant de basculer.",
+      "icon": "game-icons:convergence-target",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Déploiement canari ou shadow avec comparaison en ligne",
+        "A/B test de modèles en production avec décision statistique"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "passage-echelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "gouvernance",
+      "name": "Gouvernance des modèles",
+      "description": "Traçabilité, fiches modèle et conformité.",
+      "icon": "game-icons:scales",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche modèle et traçabilité (données, version, validation) pour chaque modèle en production",
+        "Audit de conformité réussi (risque modèle, AI Act)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tests-modeles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "modeles-ouverts-servis",
+      "name": "Modèles ouverts servis",
+      "description": "Servir soi-même un modèle ouvert, latence et débit maîtrisés.",
+      "icon": "game-icons:server-rack",
+      "tier": 4,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle ouvert servi (vLLM ou équivalent), latence et débit mesurés",
+        "Ce service utilisé en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "passerelle-llm",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pipelines-echelle",
+      "name": "Pipelines à l'échelle",
+      "description": "Traiter de gros volumes et des milliers de modèles, à coût maîtrisé.",
+      "icon": "game-icons:factory",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline sur plus de 100 Go ou 10 000 modèles, temps et coût mesurés",
+        "Pipelines déclenchés par l'arrivée des données"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "feature-store",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiabilite-sre",
+      "name": "Fiabilité en production",
+      "description": "Objectifs de service, incidents et retours d'expérience.",
+      "icon": "game-icons:shield-reflect",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Objectifs de service (latence, qualité) définis et post-mortem rédigé après incident",
+        "Runbook utilisé sur un incident réel, résolution dans l'objectif"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gouvernance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finops-llm",
+      "name": "Coûts LLM maîtrisés",
+      "description": "Budget par fonctionnalité, cache et batch.",
+      "icon": "game-icons:money-stack",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Coût par fonctionnalité suivi, alertes de dépassement",
+        "Cache ou traitement par lots : coût mensuel réduit de 40 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "modeles-ouverts-servis",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plateforme-interne",
+      "name": "Plateforme interne",
+      "description": "Outillage partagé que d'autres projets adoptent.",
+      "icon": "game-icons:factory",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Template ou librairie interne adoptée par 2 autres projets",
+        "Adoptée par une équipe entière"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pipelines-echelle",
+          "rank": 1
+        },
+        {
+          "talentId": "deploiement-progressif",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "industrialisation-llm",
+      "name": "Industrialisation LLM",
+      "description": "La chaîne LLMOps complète, en production.",
+      "icon": "game-icons:factory-arm",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Application LLM en production : versionnage, observabilité, passerelle et budget suivis",
+        "La même chaîne mise en place pour un client ou une autre équipe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finops-llm",
+          "rank": 1
+        },
+        {
+          "talentId": "certification-cloud",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "architecte-mlops",
+      "name": "Architecte MLOps",
+      "description": "Concevoir la chaîne complète, ML et LLM, et la faire adopter.",
+      "icon": "game-icons:factory-arm",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plateforme de bout en bout pour modèles ML et LLM (données, entraînement, déploiement, monitoring) conçue et en production",
+        "Démarche MLOps mise en place pour une autre équipe ou un client, délai de mise en production divisé par 2"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plateforme-interne",
+          "rank": 1
+        },
+        {
+          "talentId": "fiabilite-sre",
+          "rank": 1
+        },
+        {
+          "talentId": "industrialisation-llm",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

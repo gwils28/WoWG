@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "data-ai-engineer",
+    "name": "Data AI Engineer",
+    "icon": "game-icons:artificial-intelligence"
+  },
+  "specialization": {
+    "id": "ai-engineer",
+    "name": "AI Engineer",
+    "description": "Agents, évaluation, RAG et modèles : des systèmes LLM fiables en production.",
+    "icon": "game-icons:robot-antennas"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "agent-outille",
+      "name": "Agent outillé",
+      "description": "Un agent qui utilise des outils pour finir une vraie tâche.",
+      "icon": "game-icons:robot-grab",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un agent avec outils qui accomplit une tâche métier de bout en bout",
+        "3 agents différents en usage réel"
+      ]
+    },
+    {
+      "id": "jeu-evaluation",
+      "name": "Jeu d'évaluation",
+      "description": "Mesurer avant de changer : des cas annotés rejoués à chaque modification.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Jeu d'éval de 50 cas annotés, relancé à chaque changement",
+        "Éval intégrée en CI avec seuil bloquant"
+      ]
+    },
+    {
+      "id": "rag",
+      "name": "RAG",
+      "description": "Recherche documentaire augmentée, évaluée sur le retrieval et la fidélité.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "RAG évalué : précision du retrieval et fidélité des réponses mesurées",
+        "RAG hybride (lexical, vecteurs, reranking) qui améliore une métrique mesurée"
+      ]
+    },
+    {
+      "id": "ingenierie-contexte",
+      "name": "Ingénierie de contexte",
+      "description": "Prompts et contexte versionnés, testés et optimisés en coût.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Prompts et contexte versionnés et testés sur le jeu d'éval",
+        "Coût par requête réduit de 30 % à qualité égale"
+      ]
+    },
+    {
+      "id": "orchestration",
+      "name": "Orchestration d'agents",
+      "description": "Graphes d'agents avec état, reprise et validation humaine.",
+      "icon": "game-icons:mesh-network",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Graphe d'agents avec état, reprise et validation humaine",
+        "Système multi-agents évalué contre un agent unique"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agent-outille",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "llm-juge",
+      "name": "LLM-juge",
+      "description": "Automatiser l'évaluation sans perdre l'accord avec l'humain.",
+      "icon": "game-icons:scales",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "LLM-juge calibré sur 100 annotations humaines, accord mesuré",
+        "Évaluation en ligne sur le trafic réel"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeu-evaluation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mcp",
+      "name": "Outils et MCP",
+      "description": "Exposer outils et données aux agents par des protocoles standards.",
+      "icon": "game-icons:cog",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Serveur MCP écrit et utilisé par un agent",
+        "Serveur MCP publié ou utilisé par une autre équipe"
+      ]
+    },
+    {
+      "id": "fine-tuning",
+      "name": "Fine-tuning",
+      "description": "Adapter un modèle ouvert quand le prompting ne suffit plus.",
+      "icon": "game-icons:anvil",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fine-tuning (LoRA) d'un modèle ouvert qui bat le prompting sur le jeu d'éval",
+        "Distillation vers un petit modèle : coût divisé par 5 à qualité égale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ingenierie-contexte",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agents-longs",
+      "name": "Agents autonomes",
+      "description": "Des tâches longues menées sans intervention, avec un taux de succès mesuré.",
+      "icon": "game-icons:robot-golem",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Agent qui mène une tâche de plus d'1 h sans intervention, taux de succès mesuré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "orchestration",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "evaluation-agents",
+      "name": "Évaluation d'agents",
+      "description": "Juger la trajectoire d'un agent (outils, étapes), pas seulement sa réponse finale.",
+      "icon": "game-icons:target-arrows",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Éval d'agent sur trajectoires : outils appelés, étapes, erreurs récupérées",
+        "Benchmark d'agents public reproduit sur ta propre pile"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "llm-juge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "memoire",
+      "name": "Mémoire et connaissances",
+      "description": "Mémoire long terme et bases de connaissances pour agents.",
+      "icon": "game-icons:database",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Mémoire long terme d'un agent mise en place et évaluée",
+        "Base de connaissances maintenue automatiquement par des agents"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mcp",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "donnees-synthetiques",
+      "name": "Données synthétiques",
+      "description": "Générer des données d'entraînement ou d'évaluation et en contrôler la qualité.",
+      "icon": "game-icons:crystal-growth",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Jeu synthétique généré et validé, qualité mesurée sur un échantillon annoté",
+        "Modèle fine-tuné sur données synthétiques qui bat la version de base"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fine-tuning",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "garde-fous",
+      "name": "Garde-fous et sécurité",
+      "description": "Injection de prompt, permissions, données : un agent sûr.",
+      "icon": "game-icons:cog-lock",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Défenses contre l'injection de prompt testées par un jeu d'attaques",
+        "Revue de sécurité d'un agent en production (permissions, données)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evaluation-agents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agent-production",
+      "name": "Agent en production",
+      "description": "Un agent qui sert de vrais utilisateurs dans la durée.",
+      "icon": "game-icons:rocket",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Agent en production utilisé par au moins 20 personnes",
+        "En production depuis 6 mois avec un niveau de qualité suivi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agents-longs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "amelioration-continue",
+      "name": "Amélioration continue",
+      "description": "Boucler retours utilisateurs, jeu d'éval et corrections.",
+      "icon": "game-icons:cycle",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Retours utilisateurs versés au jeu d'éval, gain mesuré sur 3 itérations",
+        "Boucle tenue 6 mois sur une application en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-fous",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "assistant-connaissances",
+      "name": "Assistant de connaissances",
+      "description": "Un assistant qui répond juste sur les documents d'une organisation.",
+      "icon": "game-icons:brain",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Assistant documentaire en production, fidélité mesurée sur le jeu d'éval",
+        "Adopté par une équipe entière"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "memoire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "produit-ia",
+      "name": "Produit IA",
+      "description": "Une application IA complète qui trouve ses utilisateurs.",
+      "icon": "game-icons:rocket-flight",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Application IA à toi avec 50 utilisateurs actifs",
+        "Application IA utilisée depuis 12 mois ou générant un revenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agent-production",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "multimodal",
+      "name": "Documents et multimodal",
+      "description": "Extraire et raisonner sur PDF, images et tableaux.",
+      "icon": "game-icons:eye-target",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline documentaire (PDF, images, tableaux) extrait et évalué",
+        "Assistant multimodal en production, fidélité mesurée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assistant-connaissances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "architecte-ia",
+      "name": "Architecte IA",
+      "description": "Concevoir et livrer des systèmes d'agents fiables, de bout en bout.",
+      "icon": "game-icons:artificial-intelligence",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Système d'agents en production avec éval en CI, garde-fous et monitoring",
+        "Un tel système conçu et livré pour un client ou une autre organisation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "produit-ia",
+          "rank": 1
+        },
+        {
+          "talentId": "amelioration-continue",
+          "rank": 1
+        },
+        {
+          "talentId": "multimodal",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

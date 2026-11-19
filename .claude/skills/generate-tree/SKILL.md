@@ -18,7 +18,7 @@ Si l'arbre existe déjà, lis-le d'abord et ne demande que ce qui change.
 
 ## 2. Conception
 
-- Grille : 7 paliers x 4 colonnes par défaut. Entre 20 et 30 talents, environ 3 à 5 par palier.
+- Grille : **toujours 7 paliers** (règle de l'utilisateur), sans palier vide ; 4 colonnes par défaut, 5 ou 6 si les axes le demandent. Entre 15 et 30 talents.
 - Progression : palier 1 = fondamentaux accessibles tout de suite, dernier palier = un seul talent `"ultimate": true` (l'objectif long terme).
 - Branches : 2 ou 3 axes lisibles (une colonne ou deux par axe), qui se rejoignent vers l'ultime.
 - Rangs : 1 à 5. Chaque entrée de `ranks` est un critère **concret, vérifiable et daté par l'utilisateur** (une performance, un volume, une production, un examen). Jamais "être à l'aise avec", "maîtriser".

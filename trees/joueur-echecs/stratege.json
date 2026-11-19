@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "joueur-echecs",
+    "name": "Joueur d'échecs",
+    "icon": "game-icons:chess-king"
+  },
+  "specialization": {
+    "id": "stratege",
+    "name": "Stratège",
+    "description": "Ouvertures, plans de milieu de partie et finales : savoir quoi faire quand il n'y a pas de tactique.",
+    "icon": "game-icons:chess-rook"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "principes-ouverture",
+      "name": "Principes d'ouverture",
+      "description": "Centre, développement, roque.",
+      "icon": "game-icons:chess-pawn",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 parties où pièces légères développées et roque faits avant le coup 10 (analyse)",
+        "20 parties consécutives, même critère"
+      ]
+    },
+    {
+      "id": "mats-elementaires",
+      "name": "Mats élémentaires",
+      "description": "Finir la partie quand on a gagné du matériel.",
+      "icon": "game-icons:chess-king",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Mat roi et dame contre roi en moins de 2 min contre l'ordinateur",
+        "Mat roi et tour contre roi en moins de 3 min contre l'ordinateur"
+      ]
+    },
+    {
+      "id": "repertoire-blancs",
+      "name": "Répertoire avec les Blancs",
+      "description": "Une ouverture simple et solide avec les Blancs.",
+      "icon": "game-icons:white-book",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Choisir une ouverture et noter sa ligne principale sur 8 coups",
+        "Étude Lichess avec 3 variantes sur 10 coups",
+        "30 parties jouées avec, toutes revues dans l'étude"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "principes-ouverture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "repertoire-noirs",
+      "name": "Répertoire avec les Noirs",
+      "description": "Une défense contre 1.e4 et une contre 1.d4.",
+      "icon": "game-icons:black-book",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Défense contre 1.e4 choisie et notée sur 8 coups",
+        "Défense contre 1.d4 choisie et notée sur 8 coups",
+        "30 parties jouées avec les Noirs, toutes revues"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "principes-ouverture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "structures-pions",
+      "name": "Pions et cases",
+      "description": "Pions passés, isolés, doublés, cases faibles.",
+      "icon": "game-icons:empty-chessboard",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Étudier 5 parties commentées sur les structures de pions",
+        "Nommer la structure et son plan type dans 10 de ses parties"
+      ]
+    },
+    {
+      "id": "finales-pions",
+      "name": "Finales de pions",
+      "description": "Opposition et règle du carré.",
+      "icon": "game-icons:chess-pawn",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "30 exercices d'opposition et de règle du carré",
+        "Gagner roi et pion contre roi 10 fois sur 10 contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mats-elementaires",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pieges-ouverture",
+      "name": "Pièges d'ouverture",
+      "description": "Connaître les pièges de ses propres ouvertures.",
+      "icon": "game-icons:wolf-trap",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 pièges de son répertoire notés dans l'étude",
+        "3 pièges exploités en partie réelle"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repertoire-blancs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sorties-route",
+      "name": "Sorties de route",
+      "description": "Répondre aux coups inhabituels de l'adversaire.",
+      "icon": "game-icons:direction-signs",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Plan noté contre 3 coups inhabituels rencontrés en partie",
+        "Plan noté contre 6 coups inhabituels"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repertoire-noirs",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "plans-milieu",
+      "name": "Plans de milieu de partie",
+      "description": "Savoir quoi faire après l'ouverture.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan écrit en une phrase à la sortie de l'ouverture sur 20 parties",
+        "Plan suivi jusqu'au coup 25 sur 10 parties (analyse)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "structures-pions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finales-tours",
+      "name": "Finales de tours",
+      "description": "Les finales les plus fréquentes.",
+      "icon": "game-icons:chess-rook",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Position de Lucena gagnée 5 fois contre l'ordinateur",
+        "Position de Philidor tenue 5 fois contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-pions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rester-en-theorie",
+      "name": "Rester en théorie",
+      "description": "Sortir de l'ouverture sans désavantage.",
+      "icon": "game-icons:bookmark",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Ouverture revue avec l'explorateur après chaque partie pendant 1 mois",
+        "Plus de 80 % de parties sorties de l'ouverture sans désavantage sur 30 parties"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pieges-ouverture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parties-maitres",
+      "name": "Parties de maîtres",
+      "description": "Apprendre les plans en regardant les meilleurs.",
+      "icon": "game-icons:book-pile",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 parties commentées étudiées en notant le plan de chaque camp",
+        "20 parties commentées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plans-milieu",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finales-legeres",
+      "name": "Finales de pièces légères",
+      "description": "Fou et cavalier dans les finales.",
+      "icon": "game-icons:chess-bishop",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "30 exercices de finales de fous et de cavaliers",
+        "Bon fou contre mauvais fou gagné 3 fois contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-tours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "repertoire-complet",
+      "name": "Répertoire complet",
+      "description": "Un répertoire entretenu dans le temps.",
+      "icon": "game-icons:spell-book",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Répertoire Blancs et Noirs (contre e4, d4, c4 et Cf3) dans une étude",
+        "Étude révisée une fois par semaine pendant 2 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rester-en-theorie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conversion",
+      "name": "Conversion",
+      "description": "Transformer un avantage en victoire.",
+      "icon": "game-icons:upgrade",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Convertir 10 positions gagnantes (+3) contre l'ordinateur Lichess niveau 5",
+        "Gagner 10 parties rapides à partir d'un avantage de +3 sans le laisser filer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-legeres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jeu-positionnel",
+      "name": "Jeu positionnel",
+      "description": "Gagner par accumulation de petits avantages.",
+      "icon": "game-icons:chess-queen",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 parties gagnées sans tactique décisive, par avantage positionnel (analyse)",
+        "10 parties gagnées, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parties-maitres",
+          "rank": 1
+        },
+        {
+          "talentId": "conversion",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "partie-de-stratege",
+      "name": "Partie de stratège",
+      "description": "Une partie maîtrisée de l'ouverture à la finale.",
+      "icon": "game-icons:laurels",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 parties rapides gagnées contre mieux classé : répertoire suivi, plan clair, finale convertie",
+        "10 parties, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repertoire-complet",
+          "rank": 1
+        },
+        {
+          "talentId": "sorties-route",
+          "rank": 1
+        },
+        {
+          "talentId": "jeu-positionnel",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

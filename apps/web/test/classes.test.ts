@@ -3,7 +3,6 @@ import type { DomainSummary } from '../src/lib/api';
 import {
   matchesQuery,
   pinnedDomains,
-  recentDomains,
   relativeDay,
   sortDomains,
   specPath,
@@ -51,11 +50,9 @@ describe('classes', () => {
     expect(ids(sortDomains(all, 'name'))).toEqual(['anglais', 'cuisine', 'forme', 'jazz']);
   });
 
-  it('sépare épinglées et récentes', () => {
+  it('liste les épinglées dans l ordre d épinglage', () => {
     const all = [forme, jazz, anglais, cuisine];
     expect(pinnedDomains(all, ['forme', 'disparu']).map((d) => d.domain.id)).toEqual(['forme']);
-    expect(recentDomains(all, 5).map((d) => d.domain.id)).toEqual(['jazz', 'cuisine']);
-    expect(recentDomains(all, 1).map((d) => d.domain.id)).toEqual(['jazz']);
   });
 
   it('formate la dernière activité', () => {

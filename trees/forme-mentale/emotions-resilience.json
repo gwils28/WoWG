@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-mentale",
+    "name": "Forme mentale",
+    "icon": "game-icons:heart-organ"
+  },
+  "specialization": {
+    "id": "emotions-resilience",
+    "name": "Émotions et résilience",
+    "description": "Reconnaître et réguler ses émotions, écrire, recadrer ses pensées et savoir s'appuyer sur les autres. Ne remplace pas un accompagnement professionnel.",
+    "icon": "game-icons:glass-heart"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "nommer-emotions",
+      "name": "Nommer ses émotions",
+      "description": "Mettre un mot et une intensité sur ce qu'on ressent.",
+      "icon": "game-icons:psychic-waves",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Météo intérieure (émotion et intensité de 1 à 10) notée chaque soir pendant 2 semaines",
+        "Pendant 8 semaines"
+      ]
+    },
+    {
+      "id": "gratitude",
+      "name": "Gratitude",
+      "description": "Remarquer ce qui va bien.",
+      "icon": "game-icons:flower-emblem",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 gratitudes notées chaque soir pendant 2 semaines",
+        "Pendant 8 semaines"
+      ]
+    },
+    {
+      "id": "pause-reaction",
+      "name": "Pause avant de réagir",
+      "description": "Respirer avant de répondre dans une situation tendue.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 situations tendues où tu as marqué une pause avant de répondre, notées",
+        "20 situations"
+      ]
+    },
+    {
+      "id": "cercle-soutien",
+      "name": "Cercle de soutien",
+      "description": "Savoir vers qui se tourner, y compris un professionnel.",
+      "icon": "game-icons:family-house",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 personnes ou ressources de soutien notées, dont un professionnel de santé",
+        "Avoir parlé d'une difficulté à l'une d'elles"
+      ]
+    },
+    {
+      "id": "declencheurs",
+      "name": "Déclencheurs",
+      "description": "Repérer ce qui provoque les émotions fortes.",
+      "icon": "game-icons:target-arrows",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 déclencheurs identifiés dans la météo intérieure",
+        "Plan écrit pour les 3 principaux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nommer-emotions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "journal",
+      "name": "Journal",
+      "description": "Écrire librement pour y voir plus clair.",
+      "icon": "game-icons:quill-ink",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 min d'écriture libre, 3 fois par semaine pendant 4 semaines",
+        "Pendant 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gratitude",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recadrer-pensees",
+      "name": "Recadrer ses pensées",
+      "description": "Séparer les faits de l'interprétation et chercher une lecture plus juste.",
+      "icon": "game-icons:mirror-mirror",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice des 3 colonnes (situation, pensée, alternative) fait 10 fois",
+        "30 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pause-reaction",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bienveillance-soi",
+      "name": "Bienveillance envers soi",
+      "description": "Se parler comme à un ami après un échec.",
+      "icon": "game-icons:heart-organ",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Pause d'auto-compassion pratiquée 10 fois après un échec ou une critique",
+        "Lettre bienveillante à soi-même écrite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cercle-soutien",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reguler",
+      "name": "Réguler",
+      "description": "Avoir des stratégies qui marchent pour soi.",
+      "icon": "game-icons:anchor",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 stratégies de régulation testées, efficacité notée de 1 à 10",
+        "La meilleure appliquée 10 fois en situation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "declencheurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-hebdo",
+      "name": "Revue de la semaine",
+      "description": "Regarder la semaine passée : difficile, appris, réussi.",
+      "icon": "game-icons:calendar",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Revue hebdomadaire tenue 8 semaines d'affilée",
+        "26 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "journal",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "inquietudes",
+      "name": "Apprivoiser les inquiétudes",
+      "description": "Donner un cadre aux ruminations au lieu de les subir.",
+      "icon": "game-icons:cloud-ring",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Moment d'inquiétude programmé (15 min) utilisé 10 fois au lieu de ruminer",
+        "Ruminations notées en baisse sur 2 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recadrer-pensees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "limites",
+      "name": "Limites saines",
+      "description": "Dire non et protéger son énergie.",
+      "icon": "game-icons:checked-shield",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 demandes refusées sereinement, notées",
+        "Une limite importante posée et tenue (travail ou famille)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bienveillance-soi",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exprimer-besoins",
+      "name": "Exprimer ses besoins",
+      "description": "Dire ce qu'on ressent et demande, sans reproche.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une demande formulée avec observation, ressenti et besoin, 5 fois",
+        "Un désaccord important traité de cette façon"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reguler",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "soin-de-soi",
+      "name": "Soin de soi",
+      "description": "Planifier des moments qui ressourcent.",
+      "icon": "game-icons:sprout",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un moment plaisir planifié chaque semaine pendant 8 semaines",
+        "Pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "limites",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rebondir",
+      "name": "Rebondir",
+      "description": "Tirer parti des épreuves passées et préparer les suivantes.",
+      "icon": "game-icons:rainbow-star",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Retour d'expérience écrit sur une difficulté passée : ce qui a aidé",
+        "Plan de résilience personnel écrit (signaux d'alerte, ressources, actions)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-hebdo",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecoute-empathie",
+      "name": "Écoute et empathie",
+      "description": "Comprendre l'autre avant de répondre.",
+      "icon": "game-icons:conversation",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Reformuler avant de répondre dans 10 conversations notées",
+        "Quelqu'un t'a dit s'être senti compris"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exprimer-besoins",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "optimisme-realiste",
+      "name": "Optimisme réaliste",
+      "description": "Cultiver l'espoir sans nier les difficultés, et mesurer son bien-être.",
+      "icon": "game-icons:sun-cloud",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice du « meilleur moi possible » pratiqué 4 semaines",
+        "Score de bien-être (indice WHO-5) mesuré chaque mois pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "inquietudes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "equilibre-interieur",
+      "name": "Équilibre intérieur",
+      "description": "Des pratiques émotionnelles tenues dans la durée.",
+      "icon": "game-icons:glass-heart",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Journal ou météo intérieure tenu 6 mois",
+        "Tenu 12 mois, score WHO-5 stable ou en hausse"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecoute-empathie",
+          "rank": 1
+        },
+        {
+          "talentId": "rebondir",
+          "rank": 1
+        },
+        {
+          "talentId": "optimisme-realiste",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

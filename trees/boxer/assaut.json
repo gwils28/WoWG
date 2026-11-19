@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "boxer",
+    "name": "Boxer",
+    "icon": "game-icons:boxing-glove"
+  },
+  "specialization": {
+    "id": "assaut",
+    "name": "Assaut",
+    "description": "Boxe à la touche (boxe éducative) : travail à deux, tactique, règles, mental, jusqu'à la compétition.",
+    "icon": "game-icons:boxing-ring"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "exercices-partenaire",
+      "name": "Exercices à deux",
+      "description": "Apprendre à boxer face à quelqu'un, en confiance.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Exercices codifiés (attaque contre parade) avec 5 partenaires différents",
+        "Exercices semi-libres, 3 rounds"
+      ]
+    },
+    {
+      "id": "regles-assaut",
+      "name": "Règles de l'assaut",
+      "description": "Savoir ce qui marque et ce qui est interdit.",
+      "icon": "game-icons:rule-book",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Lire le règlement de boxe éducative FFBoxe et expliquer ce qui fait une touche",
+        "Assister en spectateur à un interclub ou une compétition"
+      ]
+    },
+    {
+      "id": "equipement",
+      "name": "Équipement",
+      "description": "Le matériel qui permet de faire des assauts en sécurité.",
+      "icon": "game-icons:boxing-glove",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 1,
+      "ranks": [
+        "Casque, protège-dents moulé, gants 14-16 oz et coquille achetés et ajustés"
+      ]
+    },
+    {
+      "id": "assaut-touche",
+      "name": "Assaut à la touche",
+      "description": "Le combat sans recherche de puissance.",
+      "icon": "game-icons:high-punch",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Premier round d'assaut à la touche en club",
+        "10 rounds d'assaut cumulés",
+        "30 rounds d'assaut cumulés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exercices-partenaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-round",
+      "name": "Plan de round",
+      "description": "Monter sur le ring avec une intention.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Noter un objectif tactique avant chaque assaut et le vérifier après, sur 5 assauts",
+        "Objectif atteint sur 3 assauts sur 5 (avis du coach)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exercices-partenaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "controle-touche",
+      "name": "Contrôle de la touche",
+      "description": "Toucher net sans appuyer : l'essence de la boxe éducative.",
+      "icon": "game-icons:feather",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 assauts où le coach valide que toutes les touches sont contrôlées",
+        "15 assauts sans avertissement pour coup appuyé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "regles-assaut",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relachement",
+      "name": "Respiration et relâchement",
+      "description": "Rester relâché pour durer et voir les coups.",
+      "icon": "game-icons:windy-stripes",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Expirer sur chaque coup pendant 3 rounds d'assaut (retour du coach)",
+        "Épaules relâchées sur un assaut complet (vidéo)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "equipement"
+        }
+      ]
+    },
+    {
+      "id": "partenaires-varies",
+      "name": "Varier les partenaires",
+      "description": "S'adapter aux styles différents.",
+      "icon": "game-icons:team-idea",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Assauts avec 5 partenaires différents",
+        "Assauts contre un gaucher, un boxeur rapide et un boxeur qui avance (3 profils)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assaut-touche",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "lecture-adversaire",
+      "name": "Lecture de l'adversaire",
+      "description": "Repérer les habitudes pour les exploiter.",
+      "icon": "game-icons:eye-target",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Identifier en 1 round la main préférée et une habitude de l'adversaire, confirmé par le coach, 5 fois",
+        "Adapter son plan au 2e round sur 5 assauts"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-round",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "juger-assaut",
+      "name": "Juger un assaut",
+      "description": "Voir le combat avec les yeux du juge.",
+      "icon": "game-icons:whistle",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Juger 3 assauts en club et comparer sa feuille avec celle du coach",
+        "Officier comme juge lors d'un interclub"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-touche",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "gestion-stress",
+      "name": "Gestion du stress",
+      "description": "Transformer le trac en concentration.",
+      "icon": "game-icons:meditation",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Noter son stress (0 à 10) avant et après 10 assauts",
+        "Stress d'avant assaut sous 5 sur 5 assauts consécutifs"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "relachement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sparring-technique",
+      "name": "Sparring technique",
+      "description": "Des rounds plus libres, toujours contrôlés.",
+      "icon": "game-icons:crossed-swords",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "6 rounds de sparring technique contrôlé dans une séance",
+        "4 séances de sparring à thème (défense seule, contre seul)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "partenaires-varies",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jouer-allonge",
+      "name": "Jouer de son allonge",
+      "description": "À 2,08 m, tenir l'adversaire au bout du jab.",
+      "icon": "game-icons:arrow-cluster",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Tenir l'adversaire au jab 2 rounds entiers en assaut (retour du coach)",
+        "Gagner un assaut à thème au jab et au direct uniquement"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lecture-adversaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "interclub",
+      "name": "Interclub",
+      "description": "Premiers assauts hors de son club.",
+      "icon": "game-icons:podium",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Participer à un premier interclub ou gala éducatif",
+        "3 interclubs"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "juger-assaut",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "analyse-video",
+      "name": "Analyse vidéo",
+      "description": "Se voir boxer pour corriger.",
+      "icon": "game-icons:film-strip",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Filmer et analyser 5 assauts avec 3 points à corriger chacun",
+        "Corriger un défaut repéré et le vérifier en vidéo 4 semaines plus tard"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gestion-stress",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sparring-regulier",
+      "name": "Sparring régulier",
+      "description": "Le sparring contrôlé comme habitude.",
+      "icon": "game-icons:boxing-glove-surprise",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Sparring contrôlé 2 fois par mois pendant 3 mois",
+        "Même rythme pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sparring-technique"
+        }
+      ]
+    },
+    {
+      "id": "gestion-round",
+      "name": "Gestion du round",
+      "description": "Savoir accélérer, finir fort et revenir.",
+      "icon": "game-icons:hourglass",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "30 dernières secondes de chaque round plus actives que la moyenne (vidéo) sur 5 assauts",
+        "Gagner un round après en avoir perdu un (décision du coach)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jouer-allonge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "licence-competition",
+      "name": "Licence compétition",
+      "description": "Les démarches pour monter sur le ring officiellement.",
+      "icon": "game-icons:id-card",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Certificat médical de non contre-indication à la boxe en compétition, avec avis sur la scoliose",
+        "Licence FFBoxe compétition (assaut ou boxe éducative selon ta ligue)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "interclub",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "assauts-enchaines",
+      "name": "Assauts enchaînés",
+      "description": "Tenir plusieurs assauts dans la même journée.",
+      "icon": "game-icons:linked-rings",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 assauts dans une séance avec 3 partenaires différents",
+        "Tournoi interne au club terminé (tous les assauts)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sparring-regulier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premiere-competition",
+      "name": "Première compétition",
+      "description": "Le premier assaut officiel.",
+      "icon": "game-icons:medal",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Première compétition officielle d'assaut terminée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "licence-competition"
+        }
+      ]
+    },
+    {
+      "id": "style-personnel",
+      "name": "Style personnel",
+      "description": "Connaître sa boxe et l'adapter à chaque adversaire.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plan de boxe écrit (forces, faiblesses, 3 stratégies) validé par le coach",
+        "Appliquer 2 stratégies différentes selon l'adversaire en compétition"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "analyse-video",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "competiteur-assaut",
+      "name": "Compétiteur d'assaut",
+      "description": "Une compétition d'assaut menée de bout en bout.",
+      "icon": "game-icons:laurel-crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Terminer une compétition officielle d'assaut (boxe éducative, boxe loisir ou format adulte proposé par ta ligue)",
+        "Remporter un assaut en compétition",
+        "Atteindre une finale de compétition départementale ou régionale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assauts-enchaines"
+        },
+        {
+          "talentId": "gestion-round",
+          "rank": 1
+        },
+        {
+          "talentId": "premiere-competition"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

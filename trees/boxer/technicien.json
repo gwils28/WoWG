@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "boxer",
+    "name": "Boxer",
+    "icon": "game-icons:boxing-glove"
+  },
+  "specialization": {
+    "id": "technicien",
+    "name": "Technicien",
+    "description": "Coups, défense et déplacements de la boxe anglaise, de la garde au shadow de démonstration.",
+    "icon": "game-icons:high-punch"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "jab-direct",
+      "name": "Jab et direct",
+      "description": "Les deux coups droits, base de toute la boxe.",
+      "icon": "game-icons:punch",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "3 rounds de 2 min de shadow jab-direct filmés, garde remontée après chaque coup",
+        "100 jabs et 100 directs au sac dans une séance, technique validée par le coach",
+        "Jab doublé et jab-direct sur pattes d'ours, 3 rounds sans baisser la garde"
+      ]
+    },
+    {
+      "id": "garde-blocages",
+      "name": "Garde et blocages",
+      "description": "Une garde haute qui protège sans se crisper.",
+      "icon": "game-icons:shield-reflect",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Garde tenue 3 rounds de shadow sans baisser la main arrière (vidéo)",
+        "Bloquer jab et direct d'un partenaire au ralenti, 2 rounds",
+        "Couvrir les crochets d'un partenaire à vitesse moyenne, 3 rounds"
+      ]
+    },
+    {
+      "id": "deplacements",
+      "name": "Déplacements",
+      "description": "Avancer, reculer, tourner sans jamais croiser les pieds.",
+      "icon": "game-icons:footprint",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Pas avant, arrière et latéraux 3 rounds de 2 min sans croiser les pieds (vidéo)",
+        "Pivots sur le pied avant des deux côtés, 3 rounds de shadow",
+        "Couper l'angle et sortir en pivot en exercice à deux, 2 rounds"
+      ]
+    },
+    {
+      "id": "crochets",
+      "name": "Crochets",
+      "description": "Le coup circulaire, porté par la rotation des hanches.",
+      "icon": "game-icons:fist",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Crochet avant au sac 3 rounds, rotation des hanches visible en vidéo",
+        "Crochet arrière au sac 3 rounds, même critère",
+        "Crochets tête et corps sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jab-direct",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "uppercuts",
+      "name": "Uppercuts",
+      "description": "Le coup remontant, pour la courte distance.",
+      "icon": "game-icons:fulguro-punch",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Uppercuts avant et arrière au sac 3 rounds, sans armer le coup",
+        "Uppercut enchaîné après un crochet sur pattes d'ours, 2 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jab-direct",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "esquives",
+      "name": "Esquives et rotations",
+      "description": "Sortir de la trajectoire plutôt que tout encaisser dans la garde.",
+      "icon": "game-icons:dodge",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Rotations sous une corde tendue, 3 rounds de shadow, amplitude adaptée au dos",
+        "Esquives et rotations sur jab et crochet d'un partenaire à vitesse moyenne, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-blocages",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "controle-distance",
+      "name": "Contrôle de la distance",
+      "description": "Être à portée pour toucher, hors de portée pour ne pas l'être.",
+      "icon": "game-icons:target-arrows",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Rester hors de portée 2 rounds face à un partenaire qui avance (exercice à la touche)",
+        "Entrer, frapper et sortir sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "deplacements",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "combinaisons",
+      "name": "Combinaisons de base",
+      "description": "Les enchaînements numérotés appelés par le coach.",
+      "icon": "game-icons:punch-blast",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Les 6 combinaisons numérotées enchaînées sur pattes d'ours, sur appel du coach",
+        "3 rounds de shadow avec 10 combinaisons différentes (vidéo)",
+        "Combinaisons de 4 coups et plus sur pattes d'ours, 3 rounds sans perte de garde"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "crochets",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "travail-au-corps",
+      "name": "Travail au corps",
+      "description": "Changer de niveau entre la tête et le corps.",
+      "icon": "game-icons:armor-punch",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Jab au corps et crochet au foie au sac, 3 rounds",
+        "Enchaînement tête, corps, tête sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "uppercuts",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parades-contres",
+      "name": "Parades et contres",
+      "description": "Transformer la défense en occasion de toucher.",
+      "icon": "game-icons:sword-clash",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Parade du jab suivie d'un direct en exercice à deux, 3 rounds",
+        "Contre-crochet après esquive rotative, 3 rounds",
+        "Contre en appui arrière sur le jab adverse, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "esquives",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "angles",
+      "name": "Angles et pivots",
+      "description": "Frapper puis sortir de la ligne d'attaque.",
+      "icon": "game-icons:clockwise-rotation",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Sortie d'angle après chaque combinaison, 3 rounds de shadow",
+        "Pivot suivi d'une combinaison sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-distance"
+        }
+      ]
+    },
+    {
+      "id": "feintes",
+      "name": "Feintes",
+      "description": "Faire réagir l'adversaire pour ouvrir sa garde.",
+      "icon": "game-icons:eye-target",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Feinte de jab puis direct sur pattes d'ours, 3 rounds",
+        "3 feintes différentes (épaule, pied, regard) placées en exercice à deux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "combinaisons",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "changements-rythme",
+      "name": "Rythme et cadence",
+      "description": "Casser le rythme pour surprendre.",
+      "icon": "game-icons:metronome",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 rounds de shadow alternant lent et explosif toutes les 20 s",
+        "Rafales de 3 à 5 coups puis sortie sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "travail-au-corps",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "defense-active",
+      "name": "Défense active",
+      "description": "Défendre en restant en position de riposter.",
+      "icon": "game-icons:checked-shield",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "1 round de défense pure à la touche, touché net à la tête 5 fois au plus",
+        "2 rounds, même critère",
+        "3 rounds, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parades-contres",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "sortir-cordes",
+      "name": "Sortir des cordes",
+      "description": "Ne jamais rester coincé dans le coin.",
+      "icon": "game-icons:boxing-ring",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Sortir du coin en pivot 10 fois sur 10 en exercice à deux",
+        "Sortie du coin avec contre, 2 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "angles"
+        }
+      ]
+    },
+    {
+      "id": "garde-inversee",
+      "name": "Changement de garde",
+      "description": "Boxer aussi du côté faible.",
+      "icon": "game-icons:anticlockwise-rotation",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "1 round de shadow propre en garde inversée (vidéo)",
+        "Jab, direct, crochet en garde inversée sur pattes d'ours, 2 rounds",
+        "Changement de garde en cours d'enchaînement, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "feintes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "travail-pattes",
+      "name": "Pattes d'ours avancées",
+      "description": "Des rounds de pattes où le coach riposte aussi.",
+      "icon": "game-icons:boxing-glove-surprise",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "6 rounds de pattes d'ours avec combinaisons et défenses intégrées",
+        "4 rounds de pattes d'ours avec ripostes du coach"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "changements-rythme",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "contreur",
+      "name": "Contreur",
+      "description": "Punir chaque attaque adverse.",
+      "icon": "game-icons:sword-brandish",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Placer un contre propre sur 5 attaques consécutives en exercice",
+        "3 rounds de travail de contreur en assaut léger"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "defense-active",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "combinaisons-avancees",
+      "name": "Combinaisons avancées",
+      "description": "Longs enchaînements mêlant attaque et défense.",
+      "icon": "game-icons:lightning-trio",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Combinaisons de 6 coups tête et corps sur pattes d'ours, 3 rounds",
+        "Combinaisons avec défense intégrée (coup, esquive, coup), 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-inversee",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "jeu-defensif",
+      "name": "Jeu défensif complet",
+      "description": "Une défense qui combine blocages, esquives, déplacements et contres.",
+      "icon": "game-icons:heart-shield",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 rounds de défense pure en assaut, touché net 3 fois au plus par round",
+        "Assaut complet sans être touché net plus de 5 fois (avis du coach)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contreur"
+        }
+      ]
+    },
+    {
+      "id": "technicien-complet",
+      "name": "Technicien complet",
+      "description": "Une boxe technique propre, des deux côtés, en attaque comme en défense.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Shadow de 3 rounds filmé (attaque, défense, déplacements, changement de garde) validé par le coach",
+        "Valider un grade technique (gant de couleur FFBoxe ou équivalent proposé par le club)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "combinaisons-avancees"
+        },
+        {
+          "talentId": "travail-pattes",
+          "rank": 1
+        },
+        {
+          "talentId": "jeu-defensif",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

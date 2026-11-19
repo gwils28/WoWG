@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "joueur-echecs",
+    "name": "Joueur d'échecs",
+    "icon": "game-icons:chess-king"
+  },
+  "specialization": {
+    "id": "tacticien",
+    "name": "Tacticien",
+    "description": "Motifs tactiques, mats et calcul : ne plus rien laisser en prise et punir chaque gaffe.",
+    "icon": "game-icons:chess-knight"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "mat-en-un",
+      "name": "Mats en 1",
+      "description": "Voir le mat quand il est là.",
+      "icon": "game-icons:chess-king",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles thème Mat en 1 résolus sur Lichess, 90 % de réussite",
+        "200 puzzles Mat en 1, 90 % de réussite"
+      ]
+    },
+    {
+      "id": "vigilance",
+      "name": "Pièces en prise",
+      "description": "Ne plus donner de matériel gratuitement.",
+      "icon": "game-icons:eye-shield",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Se demander « que menace-t-il ? » avant chaque coup sur 10 parties rapides",
+        "10 parties rapides consécutives sans pièce laissée en prise (analyse)",
+        "20 parties consécutives, même critère"
+      ]
+    },
+    {
+      "id": "puzzles-quotidiens",
+      "name": "Puzzles quotidiens",
+      "description": "La tactique s'entretient chaque jour.",
+      "icon": "game-icons:puzzle",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "15 puzzles par jour, 5 jours sur 7 pendant 4 semaines",
+        "Même rythme pendant 8 semaines",
+        "Même rythme pendant 12 semaines"
+      ]
+    },
+    {
+      "id": "mat-en-deux",
+      "name": "Mats en 2",
+      "description": "Calculer un coup forcé puis le mat.",
+      "icon": "game-icons:chess-queen",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles thème Mat en 2, 80 % de réussite",
+        "150 puzzles Mat en 2, 85 % de réussite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mat-en-un",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fourchettes",
+      "name": "Fourchette et attaque double",
+      "description": "Attaquer deux cibles d'un coup.",
+      "icon": "game-icons:chess-knight",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "100 puzzles thème Fourchette",
+        "80 % de réussite sur 50 puzzles Fourchette consécutifs"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vigilance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "clouages",
+      "name": "Clouage et enfilade",
+      "description": "Exploiter l'alignement des pièces adverses.",
+      "icon": "game-icons:chess-bishop",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "100 puzzles thèmes Clouage et Enfilade",
+        "80 % de réussite sur 50 puzzles consécutifs de ces thèmes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vigilance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "classement-puzzles",
+      "name": "Classement puzzles",
+      "description": "Mesurer le niveau tactique.",
+      "icon": "game-icons:chart",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "1500 au classement puzzles Lichess",
+        "1600 au classement puzzles Lichess",
+        "1700 au classement puzzles Lichess"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "puzzles-quotidiens",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mats-types",
+      "name": "Mats types",
+      "description": "Reconnaître les schémas de mat classiques.",
+      "icon": "game-icons:crowned-skull",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Mat du couloir, mat étouffé, mat de l'escalier : 30 puzzles chacun",
+        "10 mats types nommés et 20 puzzles chacun"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mat-en-deux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decouverte",
+      "name": "Découverte et échec double",
+      "description": "Démasquer une pièce pour frapper deux fois.",
+      "icon": "game-icons:lightning-branches",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "100 puzzles thèmes Attaque à la découverte et Échec double",
+        "80 % de réussite sur 50 puzzles consécutifs de ces thèmes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fourchettes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "deviation",
+      "name": "Déviation et élimination",
+      "description": "Détourner ou supprimer le défenseur.",
+      "icon": "game-icons:convergence-target",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "100 puzzles thèmes Déviation, Attraction et Élimination du défenseur",
+        "80 % de réussite sur 50 puzzles consécutifs de ces thèmes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "clouages",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "puzzle-storm",
+      "name": "Puzzle Storm",
+      "description": "La tactique à grande vitesse, comme en blitz.",
+      "icon": "game-icons:stopwatch",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Score de 15 au Puzzle Storm Lichess",
+        "Score de 25",
+        "Score de 35"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "classement-puzzles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "calcul-trois",
+      "name": "Calcul à 3 coups",
+      "description": "Visualiser une séquence sans bouger les pièces.",
+      "icon": "game-icons:brain",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles Mat en 3 résolus sans déplacer les pièces avant d'avoir tout calculé",
+        "100 puzzles, même règle, 80 % de réussite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mats-types",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "combinaisons",
+      "name": "Combinaisons",
+      "description": "Enchaîner plusieurs motifs dans une même séquence.",
+      "icon": "game-icons:chain-lightning",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles Lichess de difficulté « Plus difficile » réussis",
+        "Trouver 5 combinaisons en partie réelle (analyse)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decouverte",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "defense-tactique",
+      "name": "Défense tactique",
+      "description": "Voir la tactique de l'adversaire avant qu'elle ne tombe.",
+      "icon": "game-icons:bordered-shield",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles thème Coup défensif réussis",
+        "10 parties rapides sans perdre sur une tactique adverse de 2 coups (analyse)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "deviation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "visualisation",
+      "name": "Visualisation",
+      "description": "Jouer dans sa tête.",
+      "icon": "game-icons:third-eye",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "20 puzzles classés 1500 résolus à l'aveugle (position lue, sans échiquier)",
+        "Partie de 20 coups à l'aveugle contre l'ordinateur faible ou un ami"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "calcul-trois",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "classement-puzzles-expert",
+      "name": "Puzzles expert",
+      "description": "Un classement tactique au-dessus de son classement en partie.",
+      "icon": "game-icons:diamond-trophy",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "1800 au classement puzzles Lichess",
+        "1900 au classement puzzles Lichess",
+        "2000 au classement puzzles Lichess"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "puzzle-storm",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "woodpecker",
+      "name": "Méthode Woodpecker",
+      "description": "Répéter les mêmes puzzles jusqu'à l'automatisme.",
+      "icon": "game-icons:cycle",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cycle de 300 puzzles refait 3 fois en temps décroissant",
+        "Second cycle complet de 300 nouveaux puzzles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "visualisation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tactique-blitz",
+      "name": "Tactique en blitz",
+      "description": "Trouver le coup gagnant avec peu de temps.",
+      "icon": "game-icons:lightning-helix",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Gagner 10 parties blitz par une combinaison tactique (analyse)",
+        "Puzzle Storm à 40"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "defense-tactique"
+        },
+        {
+          "talentId": "classement-puzzles-expert",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "oeil-tacticien",
+      "name": "Œil du tacticien",
+      "description": "La tactique devient un réflexe, à toutes les cadences.",
+      "icon": "game-icons:all-seeing-eye",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "2000 au classement puzzles Lichess et score de 40 au Puzzle Storm",
+        "2200 au classement puzzles Lichess"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "woodpecker",
+          "rank": 1
+        },
+        {
+          "talentId": "combinaisons"
+        },
+        {
+          "talentId": "tactique-blitz",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

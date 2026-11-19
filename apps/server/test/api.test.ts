@@ -219,6 +219,18 @@ describe('personnage, journal et sauvegarde', () => {
     expect(body.tier).toEqual({ index: 1, name: 'Novice', from: 0, to: 20, portrait: null });
   });
 
+  it("date l'activité d'un domaine sans rang à son import", async () => {
+    const fresh = createApp({ db: openDb(':memory:'), treesDir });
+    const before = new Date().toISOString();
+    await fresh.request('/api/import/apply', {
+      method: 'POST',
+      body: JSON.stringify({ path: 'sport-sante/course-a-pied.json' }),
+    });
+    const char = (await (await fresh.request('/api/character')).json()) as any;
+    expect(char.domains[0].points).toBe(0);
+    expect(char.domains[0].lastActivityAt >= before).toBe(true);
+  });
+
   it('épingle et désépingle un domaine', async () => {
     expect((await call('PUT', '/domains/sport-sante/pin', { pinned: true })).body).toEqual({
       pinned: ['sport-sante'],

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "forme-mentale",
+    "name": "Forme mentale",
+    "icon": "game-icons:heart-organ"
+  },
+  "specialization": {
+    "id": "calme-meditation",
+    "name": "Calme et méditation",
+    "description": "Méditation, respiration, attention et sobriété numérique, par petites pratiques quotidiennes.",
+    "icon": "game-icons:meditation"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "meditation-guidee",
+      "name": "Méditation guidée",
+      "description": "Commencer petit, avec un guide audio.",
+      "icon": "game-icons:meditation",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "5 min de méditation guidée 5 jours sur 7 pendant 2 semaines",
+        "Même rythme pendant 4 semaines",
+        "Même rythme pendant 8 semaines"
+      ]
+    },
+    {
+      "id": "respiration-apaisante",
+      "name": "Respiration apaisante",
+      "description": "Cohérence cardiaque et respiration lente pour faire redescendre la pression.",
+      "icon": "game-icons:windy-stripes",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Cohérence cardiaque 5 min par jour pendant 2 semaines",
+        "Utilisée dans 5 moments de stress, notés"
+      ]
+    },
+    {
+      "id": "mono-tache",
+      "name": "Une chose à la fois",
+      "description": "Faire une seule chose, sans changer d'onglet ni regarder son téléphone.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 blocs de 25 min sans changer de tâche ni toucher au téléphone",
+        "30 blocs"
+      ]
+    },
+    {
+      "id": "notifications",
+      "name": "Notifications domptées",
+      "description": "Reprendre la main sur ce qui interrompt.",
+      "icon": "game-icons:ringing-bell",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Notifications non essentielles coupées sur téléphone et ordinateur",
+        "Téléphone hors de la chambre 5 nuits sur 7 pendant 4 semaines"
+      ]
+    },
+    {
+      "id": "meditation-autonome",
+      "name": "Méditation sans guide",
+      "description": "Méditer seul, un peu plus longtemps.",
+      "icon": "game-icons:lotus",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 min sans guide, 5 jours sur 7 pendant 4 semaines",
+        "15 min sans guide, 5 jours sur 7 pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-guidee",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "scan-corporel",
+      "name": "Scan corporel",
+      "description": "Relâcher le corps zone par zone, souvent le soir.",
+      "icon": "game-icons:body-balance",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Scan corporel de 10 min, 10 fois",
+        "Pratiqué le soir pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "respiration-apaisante",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "attention-soutenue",
+      "name": "Attention soutenue",
+      "description": "Entraîner l'attention à rester sur une seule chose.",
+      "icon": "game-icons:eye-target",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Compter 10 respirations sans perdre le fil, réussi 5 séances de suite",
+        "30 min de lecture sans interruption ni téléphone, 10 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mono-tache",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "temps-ecran",
+      "name": "Temps d'écran",
+      "description": "Mesurer puis réduire le temps d'écran de loisir.",
+      "icon": "game-icons:smartphone",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Temps d'écran de loisir mesuré pendant 2 semaines (point de départ)",
+        "Réduit de 30 % par rapport au départ pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "notifications",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pleine-conscience",
+      "name": "Pleine conscience au quotidien",
+      "description": "Faire une activité ordinaire en y étant pleinement présent.",
+      "icon": "game-icons:sun",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Une activité du quotidien en pleine conscience (repas, marche) 5 jours sur 7 pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-autonome",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decompression",
+      "name": "Décompression",
+      "description": "Un rituel pour couper entre le travail et le reste de la journée.",
+      "icon": "game-icons:candle-flame",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Rituel de fin de journée de 10 min, 20 jours ouvrés",
+        "Même rituel tenu 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scan-corporel",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "soirees-sans-ecran",
+      "name": "Soirées sans écran",
+      "description": "Laisser l'esprit ralentir avant de dormir.",
+      "icon": "game-icons:night-sleep",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une soirée sans écran par semaine pendant 4 semaines",
+        "Écrans coupés 1 h avant le coucher, 5 soirs sur 7 pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "temps-ecran",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "meditation-longue",
+      "name": "Méditation longue",
+      "description": "Des séances plus longues, de temps en temps.",
+      "icon": "game-icons:candles",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une séance de 30 min",
+        "Une demi-journée de pratique (3 h, guidée ou en groupe)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pleine-conscience",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "detox-numerique",
+      "name": "Détox numérique",
+      "description": "Des pauses franches loin des réseaux sociaux.",
+      "icon": "game-icons:falling-leaf",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un week-end sans réseaux sociaux",
+        "Une semaine sans réseaux sociaux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "soirees-sans-ecran",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "gestion-stress",
+      "name": "Gestion du stress",
+      "description": "Suivre son niveau de stress et le voir baisser.",
+      "icon": "game-icons:umbrella",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Niveau de stress noté (1 à 10) chaque semaine pendant 8 semaines",
+        "Moyenne en baisse sur 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decompression",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pratique-en-groupe",
+      "name": "Pratique en groupe",
+      "description": "Méditer avec d'autres, en séance ou en retraite.",
+      "icon": "game-icons:campfire",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances de méditation en groupe",
+        "Un week-end de retraite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-longue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "equilibre-numerique",
+      "name": "Équilibre numérique",
+      "description": "Un usage des écrans choisi, tenu dans la durée.",
+      "icon": "game-icons:anchor",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Temps d'écran de loisir sous ton objectif pendant 3 mois",
+        "Sous ton objectif pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "detox-numerique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "esprit-serein",
+      "name": "Esprit serein",
+      "description": "Une pratique de calme tenue dans la durée.",
+      "icon": "game-icons:lotus-flower",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Méditation (10 min ou plus) 5 jours sur 7 pendant 6 mois",
+        "Même pratique pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pratique-en-groupe",
+          "rank": 1
+        },
+        {
+          "talentId": "gestion-stress",
+          "rank": 1
+        },
+        {
+          "talentId": "equilibre-numerique",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
