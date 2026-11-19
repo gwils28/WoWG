@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conducteur",
+    "name": "Conducteur",
+    "icon": "game-icons:city-car"
+  },
+  "specialization": {
+    "id": "maitrise-manoeuvres",
+    "name": "Maîtrise et manœuvres",
+    "description": "Prendre en main le monospace 7 places : poste de conduite, gabarit, douceur, manœuvres et entretien courant.",
+    "icon": "game-icons:steering-wheel"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "poste-conduite",
+      "name": "Poste de conduite",
+      "description": "Une position et des commandes réglées avant de rouler.",
+      "icon": "game-icons:car-seat",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Siège, volant, 3 rétroviseurs et appuie-tête réglés avant chaque départ, sur 10 séances notées au journal",
+        "Commandes trouvées sans regarder à l'arrêt (feux, essuie-glaces, warning, désembuage, frein de parking) en moins de 30 s"
+      ]
+    },
+    {
+      "id": "prise-en-main",
+      "name": "Prise en main",
+      "description": "Accumuler les heures de volant depuis la reprise.",
+      "icon": "game-icons:steering-wheel",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "5 séances de conduite notées (date, durée, trajet)",
+        "15 séances et 10 h de conduite cumulées",
+        "30 séances et 25 h de conduite cumulées"
+      ]
+    },
+    {
+      "id": "marche-arriere",
+      "name": "Marche arrière",
+      "description": "Reculer droit et lentement, caméra puis rétroviseurs.",
+      "icon": "game-icons:return-arrow",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Recul en ligne droite de 30 m dans une allée de parking vide, sans en sortir",
+        "Recul en ligne droite de 30 m aux rétroviseurs seuls, 3 fois sans correction de trajectoire"
+      ]
+    },
+    {
+      "id": "controles-depart",
+      "name": "Contrôles avant départ",
+      "description": "Le tour du véhicule qui évite les mauvaises surprises.",
+      "icon": "game-icons:car-wheel",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tour du véhicule (pneus, feux, plaques, vitres) fait avant 10 départs",
+        "Pression des pneus vérifiée et ajustée en station selon l'étiquette de portière, 3 mois de suite"
+      ]
+    },
+    {
+      "id": "gabarit",
+      "name": "Gabarit",
+      "description": "Savoir où finit la voiture, devant, derrière et sur les côtés.",
+      "icon": "game-icons:measure-tape",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Longueur, largeur rétroviseurs dépliés et hauteur notées depuis la carte grise ou le carnet",
+        "Arrêt à moins de 30 cm d'un cône en marche avant, 5 essais sur 5 vérifiés en sortant",
+        "Passage entre deux cônes espacés de la largeur rétroviseurs + 40 cm, 5 fois sans toucher"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "poste-conduite"
+        }
+      ]
+    },
+    {
+      "id": "douceur",
+      "name": "Conduite douce",
+      "description": "Démarrer et freiner sans à-coup, avec la boîte automatique.",
+      "icon": "game-icons:speedometer",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "30 min de ville avec un gobelet d'eau à moitié plein dans le porte-gobelet, sans débordement",
+        "Arrêt pile sur la ligne de stop ou de feu, 10 fois sur une séance"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prise-en-main",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bataille",
+      "name": "Stationnement en bataille",
+      "description": "Rentrer droit dans une place, en marche arrière d'abord.",
+      "icon": "game-icons:home-garage",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "5 places en marche arrière sur parking vide, roues dans la place et véhicule droit (photo à l'arrêt)",
+        "5 places en marche arrière entre deux voitures, 2 corrections maximum",
+        "10 places d'affilée (avant ou arrière) sur parkings fréquentés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-arriere"
+        }
+      ]
+    },
+    {
+      "id": "voyants-niveaux",
+      "name": "Voyants et niveaux",
+      "description": "Comprendre ce que dit le tableau de bord et ce qu'il faut remplir.",
+      "icon": "game-icons:oil-can",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des voyants rouges et orange faite à partir du carnet du véhicule",
+        "Niveaux d'huile, de refroidissement et de lave-glace contrôlés, lave-glace rempli seul (noté au journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controles-depart"
+        }
+      ]
+    },
+    {
+      "id": "demi-tour",
+      "name": "Demi-tour",
+      "description": "Faire demi-tour proprement avec un grand gabarit.",
+      "icon": "game-icons:anticlockwise-rotation",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Demi-tour en 3 manœuvres sur rue calme, 5 réussites sans toucher le trottoir",
+        "Demi-tour en reculant dans une entrée, 5 réussites",
+        "Demi-tour en 3 manœuvres dans une rue étroite, 3 réussites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gabarit",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "cote",
+      "name": "Démarrage en côte",
+      "description": "Repartir en pente sans reculer.",
+      "icon": "game-icons:mountain-road",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Arrêt et redémarrage en côte sans reculer, 5 fois",
+        "Redémarrage en côte avec véhicule derrière (feu ou stop en pente), 5 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "douceur"
+        }
+      ]
+    },
+    {
+      "id": "creneau",
+      "name": "Créneau",
+      "description": "La manœuvre qui fait peur, découpée en repères.",
+      "icon": "game-icons:traffic-cone",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 4,
+      "ranks": [
+        "Créneau entre deux cônes espacés de la longueur du véhicule + 1,5 m sur parking vide, 5 réussites",
+        "Créneau entre deux voitures garées en rue calme, 3 corrections maximum, roues à moins de 30 cm du trottoir, 5 réussites",
+        "Créneau en rue passante avec circulation derrière, 5 réussites",
+        "Créneau dans une place de la longueur du véhicule + 1 m, 3 réussites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bataille",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "pneus-secours",
+      "name": "Pneus et crevaison",
+      "description": "Savoir quoi faire d'un pneu usé ou crevé.",
+      "icon": "game-icons:flat-tire",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Kit anti-crevaison ou roue de secours, cric, gilets et triangle repérés, procédure du carnet lue",
+        "Usure des pneus contrôlée aux témoins et pression ajustée en charge avant un long trajet"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voyants-niveaux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epi",
+      "name": "Stationnement en épi",
+      "description": "Les places en biais des parkings et des rues.",
+      "icon": "game-icons:direction-signs",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Épi en marche avant, 5 réussites",
+        "Épi en marche arrière, 5 réussites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "demi-tour",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "manoeuvres-retros",
+      "name": "Manœuvres aux rétroviseurs",
+      "description": "Ne plus dépendre de la caméra de recul.",
+      "icon": "game-icons:mirror-mirror",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Bataille arrière aux rétroviseurs seuls, sans regarder l'écran, 5 réussites",
+        "Créneau aux rétroviseurs seuls, 5 réussites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "creneau",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "carnet-entretien",
+      "name": "Carnet d'entretien",
+      "description": "Suivre révisions, contrôle technique et réparations.",
+      "icon": "game-icons:mechanic-garage",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Dates de prochaine révision et de contrôle technique notées avec un rappel programmé",
+        "Révision ou entretien réalisé, facture classée avec le carnet"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pneus-secours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parking-souterrain",
+      "name": "Parkings souterrains",
+      "description": "Rampes, piliers et places serrées.",
+      "icon": "game-icons:double-street-lights",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Entrer, se garer et ressortir de 3 parkings souterrains différents sans toucher",
+        "Parking souterrain chargé un samedi, place prise en marche arrière, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epi"
+        }
+      ]
+    },
+    {
+      "id": "creneau-express",
+      "name": "Créneau du premier coup",
+      "description": "Le créneau devient une manœuvre comme une autre.",
+      "icon": "game-icons:stopwatch",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Créneau en moins de 60 s, 5 réussites",
+        "Créneau sans repartir de zéro 5 fois sur 7 jours de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "manoeuvres-retros"
+        }
+      ]
+    },
+    {
+      "id": "rues-etroites",
+      "name": "Rues étroites",
+      "description": "Passer et croiser là où ça frotte.",
+      "icon": "game-icons:path-tile",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Croiser un véhicule dans une rue à stationnement des deux côtés en s'arrêtant au bon endroit, 5 fois",
+        "Traverser un centre ancien aux rues étroites (repéré à l'avance) sans toucher ni bloquer, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parking-souterrain",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "stationnement-ville",
+      "name": "Stationnement en ville",
+      "description": "Se garer à destination, quelle que soit la place.",
+      "icon": "game-icons:city-car",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Garé à destination en ville 10 sorties sur 10 (créneau ou bataille selon la place)",
+        "20 stationnements d'affilée en ville sans renoncer à une place assez grande"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "creneau-express"
+        }
+      ]
+    },
+    {
+      "id": "maitre-gabarit",
+      "name": "Maître du gabarit",
+      "description": "Le 7 places se manie comme une citadine.",
+      "icon": "game-icons:crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "1 mois où chaque stationnement est réussi du premier coup ou en une correction (journal tenu)",
+        "3 mois au même niveau, sans choc ni rayure sur le véhicule"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rues-etroites"
+        },
+        {
+          "talentId": "stationnement-ville"
+        },
+        {
+          "talentId": "cote"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

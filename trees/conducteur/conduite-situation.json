@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conducteur",
+    "name": "Conducteur",
+    "icon": "game-icons:city-car"
+  },
+  "specialization": {
+    "id": "conduite-situation",
+    "name": "Conduite en situation",
+    "description": "Sortir du trajet connu : ville, voie rapide, autoroute, nuit, pluie, voiture pleine et long trajet.",
+    "icon": "game-icons:horizon-road"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "trajets-connus",
+      "name": "Trajets connus",
+      "description": "Retrouver ses repères sur ses trajets du quotidien.",
+      "icon": "game-icons:house-keys",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Un trajet du quotidien aller-retour seul, 3 fois",
+        "5 trajets réguliers différents faits seul",
+        "10 trajets du quotidien sans GPS"
+      ]
+    },
+    {
+      "id": "routes-campagne",
+      "name": "Routes de campagne",
+      "description": "Rouler à 80 km/h, virages et croisements.",
+      "icon": "game-icons:road",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 trajets de 20 min sur route à 80 km/h",
+        "10 trajets sur route, vitesse réduite avant chaque virage serré"
+      ]
+    },
+    {
+      "id": "journal-bord",
+      "name": "Journal de bord",
+      "description": "Apprendre de chaque sortie.",
+      "icon": "game-icons:notebook",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Après 10 séances, 1 point fort et 1 point à travailler notés à chaque fois",
+        "Bilan mensuel des difficultés et des progrès, 3 mois"
+      ]
+    },
+    {
+      "id": "preparer-trajet",
+      "name": "Préparer son trajet",
+      "description": "Partir en sachant où l'on va et où se garer.",
+      "icon": "game-icons:gps",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Itinéraire et stationnement à l'arrivée repérés avant de partir, 5 trajets",
+        "GPS réglé avant le départ, guidage vocal, jamais manipulé en roulant, 10 trajets"
+      ]
+    },
+    {
+      "id": "ville",
+      "name": "Circulation en ville",
+      "description": "Feux, ronds-points, bus, vélos et piétons.",
+      "icon": "game-icons:modern-city",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "30 min en centre-ville aux heures creuses, 3 fois",
+        "30 min en centre-ville aux heures de pointe, 3 fois",
+        "Ville inconnue avec GPS, garé à destination, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "trajets-connus",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "voie-rapide",
+      "name": "Voie rapide",
+      "description": "S'insérer, changer de voie, sortir au bon moment.",
+      "icon": "game-icons:speedometer",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Insertion depuis la bretelle à la vitesse du flux, 5 fois",
+        "10 changements de voie avec rétroviseur et angle mort, sans faire freiner personne",
+        "Sortie anticipée sur la voie de droite au moins 1 km avant, 5 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routes-campagne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pluie",
+      "name": "Pluie",
+      "description": "Adapter vitesse et distances quand la route mouille.",
+      "icon": "game-icons:heavy-rain",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 trajets sous la pluie, vitesse réduite et distances doublées",
+        "1 trajet sur voie rapide sous forte pluie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "journal-bord",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plein",
+      "name": "Plein et lavage",
+      "description": "L'autonomie au quotidien.",
+      "icon": "game-icons:fuel-tank",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plein fait seul avec le bon carburant, 3 fois",
+        "2 mois sans descendre sous le quart du réservoir, 1 lavage par mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preparer-trajet",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bouchons",
+      "name": "Bouchons et rocade",
+      "description": "Garder son calme et ses distances dans le trafic dense.",
+      "icon": "game-icons:traffic-lights-red",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Rocade ou périphérique aux heures de pointe, 3 fois",
+        "3 bouchons traversés sans à-coup ni changement de file inutile"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ville",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "autoroute",
+      "name": "Autoroute",
+      "description": "Péage, régulateur, pauses et poids lourds.",
+      "icon": "game-icons:double-street-lights",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Premier trajet de 30 min sur autoroute, péage compris",
+        "100 km d'autoroute au régulateur avec une pause",
+        "10 dépassements de poids lourds en sécurité"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voie-rapide"
+        }
+      ]
+    },
+    {
+      "id": "nuit",
+      "name": "Conduite de nuit",
+      "description": "Voir, être vu, gérer les éblouissements.",
+      "icon": "game-icons:night-sky",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Trajet connu de nuit, 3 fois, feux de route et de croisement bien alternés",
+        "Route de campagne de nuit, 3 fois",
+        "1 h d'autoroute de nuit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pluie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "passagers",
+      "name": "Conduire chargé",
+      "description": "Passagers et bagages changent le freinage et la concentration.",
+      "icon": "game-icons:family-house",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "3 trajets avec 1 passager",
+        "3 trajets à 5 personnes ou plus",
+        "30 min avec les 7 places occupées ou le coffre plein, distances allongées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plein",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "depassements",
+      "name": "Dépassements",
+      "description": "Dépasser quand c'est sûr, renoncer sinon.",
+      "icon": "game-icons:fast-forward-button",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 dépassements d'un véhicule lent sur route à 80 km/h avec visibilité suffisante",
+        "3 dépassements douteux auxquels on a renoncé, notés au journal"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "autoroute",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "visibilite-reduite",
+      "name": "Visibilité réduite",
+      "description": "Brouillard, pluie de nuit, route glissante.",
+      "icon": "game-icons:fog",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "1 trajet de nuit sous forte pluie ou dans le brouillard, antibrouillards bien utilisés",
+        "1 trajet par vent fort ou route froide et glissante, vitesse adaptée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nuit",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "long-trajet",
+      "name": "Long trajet",
+      "description": "Tenir la distance en restant vigilant.",
+      "icon": "game-icons:path-distance",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "150 km avec une pause",
+        "300 km avec une pause toutes les 2 h",
+        "500 km dans la journée, voiture chargée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "passagers",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "conduite-defensive",
+      "name": "Conduite défensive",
+      "description": "Prévoir les erreurs des autres.",
+      "icon": "game-icons:attached-shield",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 situations notées où l'erreur d'un autre usager a été anticipée",
+        "1 mois de conduite quotidienne sans freinage d'urgence"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bouchons"
+        }
+      ]
+    },
+    {
+      "id": "toutes-conditions",
+      "name": "Toutes conditions",
+      "description": "Avoir déjà conduit dans chaque situation difficile.",
+      "icon": "game-icons:sun-cloud",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Au moins un trajet noté dans chaque condition : pluie, nuit, brouillard, forte chaleur, givre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "visibilite-reduite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conducteur-quotidien",
+      "name": "Conducteur du quotidien",
+      "description": "La voiture devient un outil, pas une épreuve.",
+      "icon": "game-icons:car-key",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Conduite au moins 5 jours sur 7 pendant 1 mois (journal)",
+        "Même rythme pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conduite-defensive",
+          "rank": 1
+        },
+        {
+          "talentId": "depassements",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "grand-depart",
+      "name": "Grand départ",
+      "description": "Le départ en vacances, voiture pleine.",
+      "icon": "game-icons:caravan",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Départ préparé seul : itinéraire, pauses, pneus en charge, niveaux, chargement",
+        "Trajet de plus de 400 km avec 5 passagers ou plus, sans incident"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "long-trajet",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "conducteur-exemplaire",
+      "name": "Conducteur exemplaire",
+      "description": "Sûr, responsable et juste, dans toutes les situations.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois de conduite régulière sans accrochage ni infraction, en ville, sur autoroute, de nuit et voiture pleine",
+        "1 an au même niveau"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conducteur-quotidien"
+        },
+        {
+          "talentId": "grand-depart"
+        },
+        {
+          "talentId": "toutes-conditions"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
