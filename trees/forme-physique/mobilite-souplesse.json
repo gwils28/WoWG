@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "forme-physique",
-    "name": "Forme physique",
+    "name": "Athlète",
     "icon": "game-icons:muscle-up"
   },
   "specialization": {

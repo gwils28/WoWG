@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "gestionnaire-patrimoine",
-    "name": "Gestionnaire budget et patrimoine",
+    "name": "Argentier",
     "icon": "game-icons:piggy-bank"
   },
   "specialization": {

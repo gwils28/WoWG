@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "forme-mentale",
-    "name": "Forme mentale",
+    "name": "Sage",
     "icon": "game-icons:heart-organ"
   },
   "specialization": {
