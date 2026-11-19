@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gestionnaire-patrimoine",
+    "name": "Gestionnaire budget et patrimoine",
+    "icon": "game-icons:piggy-bank"
+  },
+  "specialization": {
+    "id": "projets-protection",
+    "name": "Projets et protection",
+    "description": "Financer les projets du foyer, de la précaution à la maison, et protéger les siens.",
+    "icon": "game-icons:great-pyramid"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "precaution",
+      "name": "Épargne de précaution",
+      "description": "La base de la pyramide.",
+      "icon": "game-icons:umbrella",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Montant cible calculé en mois de charges fixes, objectif de précaution créé dans Kwak",
+        "50 % de la cible réunis",
+        "100 % réunis et maintenus 6 mois"
+      ]
+    },
+    {
+      "id": "objectifs",
+      "name": "Objectifs financiers",
+      "description": "Chaque projet a un montant et une date.",
+      "icon": "game-icons:great-pyramid",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Objectifs du foyer créés dans la pyramide Kwak, chacun avec montant et échéance",
+        "Chaque objectif financé par au moins une enveloppe"
+      ]
+    },
+    {
+      "id": "projet-maison",
+      "name": "Projet maison",
+      "description": "Le budget complet de la future maison.",
+      "icon": "game-icons:house-keys",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Budget cible écrit : prix, frais de notaire, travaux, équipement",
+        "Zone, critères et calendrier d'achat écrits avec le foyer"
+      ]
+    },
+    {
+      "id": "droits-retraite",
+      "name": "Droits à la retraite",
+      "description": "Savoir ce qui est déjà acquis.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Relevé de carrière consulté sur le service officiel, périodes manquantes corrigées",
+        "Estimation de pension à l'âge visé notée"
+      ]
+    },
+    {
+      "id": "assurances",
+      "name": "Assurances du foyer",
+      "description": "Les bonnes garanties, sans doublon.",
+      "icon": "game-icons:checked-shield",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Contrats listés (habitation, auto, santé, prévoyance) avec garanties et franchises",
+        "Doublons et trous de garantie identifiés et traités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "precaution",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "suivi-objectifs",
+      "name": "Suivi des objectifs",
+      "description": "Savoir chaque mois où en est chaque projet.",
+      "icon": "game-icons:on-target",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Statut des objectifs relu chaque mois, 6 mois",
+        "1 an sans objectif en retard 3 mois de suite",
+        "Un objectif en retard relancé (effort revu, échéance décalée ou abandon), décision notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "objectifs"
+        }
+      ]
+    },
+    {
+      "id": "apport",
+      "name": "Apport",
+      "description": "Réunir l'apport sans fragiliser le foyer.",
+      "icon": "game-icons:money-stack",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Objectif d'apport créé et financé dans Kwak",
+        "50 % de l'apport réunis",
+        "100 % réunis sans toucher à la précaution"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "projet-maison"
+        }
+      ]
+    },
+    {
+      "id": "besoin-retraite",
+      "name": "Besoin à la retraite",
+      "description": "L'écart entre la pension et le train de vie visé.",
+      "icon": "game-icons:calculator",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Revenu souhaité à la retraite estimé, écart avec la pension calculé",
+        "Âge de départ visé choisi, effet d'un an de plus ou de moins sur la pension chiffré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "droits-retraite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevoyance",
+      "name": "Prévoyance",
+      "description": "Protéger le foyer en cas de coup dur.",
+      "icon": "game-icons:shield-reflect",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Couverture décès et invalidité du foyer chiffrée (employeur et contrats)",
+        "Écart avec le besoin du foyer comblé ou accepté par écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assurances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "objectifs-plaisir",
+      "name": "Objectifs plaisir",
+      "description": "Le sommet de la pyramide, mérité.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un objectif plaisir financé et réalisé sans retarder les autres",
+        "3 objectifs plaisir réalisés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "suivi-objectifs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "credit-immobilier",
+      "name": "Crédit immobilier",
+      "description": "Emprunter au meilleur coût total.",
+      "icon": "game-icons:contract",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Capacité d'emprunt simulée (endettement, durée, taux, reste à vivre)",
+        "3 banques ou un courtier consultés, offres comparées (TAEG, assurance emprunteur, frais)",
+        "Délégation d'assurance emprunteur chiffrée, économie notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "apport",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epargne-retraite",
+      "name": "Épargne retraite",
+      "description": "Préparer la retraite avec les bonnes enveloppes.",
+      "icon": "game-icons:sundial",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Enveloppes de long terme comparées pour la retraite selon la fiscalité du foyer, note faite",
+        "Avantage fiscal des versements retraite calculé puis vérifié sur l'avis d'imposition"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "besoin-retraite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "papiers-acces",
+      "name": "Papiers et accès",
+      "description": "Que le foyer puisse tout retrouver.",
+      "icon": "game-icons:full-folder",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Documents du foyer classés et numérisés, durées de conservation respectées",
+        "Dossier d'urgence pour le foyer : comptes, contrats, contacts, accès"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevoyance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "achat-maison",
+      "name": "Achat de la maison",
+      "description": "Signer, emménager et rester serein.",
+      "icon": "game-icons:family-house",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Compromis signé, conditions suspensives vérifiées",
+        "Acte signé, budget final (frais, travaux) tenu à 10 % près",
+        "12 mois après l'achat : précaution reconstituée et budget tenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "credit-immobilier",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "transmission",
+      "name": "Transmission",
+      "description": "Protéger le conjoint et organiser l'après.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Protection du conjoint vérifiée avec un notaire (régime matrimonial ou PACS, testament)",
+        "Clauses bénéficiaires des contrats d'assurance-vie relues et à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epargne-retraite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-risques",
+      "name": "Revue des risques",
+      "description": "Chaque année, vérifier que la protection suit la vie.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Revue annuelle des assurances et de la prévoyance faite",
+        "2 années de revue, contrats ajustés aux changements du foyer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "papiers-acces",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "travaux-finances",
+      "name": "Travaux financés",
+      "description": "Les travaux de la maison payés sans crédit à la consommation.",
+      "icon": "game-icons:toolbox",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Objectif travaux créé dans Kwak à partir du chiffrage, financé par une enveloppe dédiée",
+        "Travaux de la première année payés sans crédit à la consommation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "achat-maison",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-autonome",
+      "name": "Foyer formé",
+      "description": "La gestion ne repose pas sur une seule personne.",
+      "icon": "game-icons:person",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un autre membre du foyer fait seul une revue mensuelle dans Kwak",
+        "Le foyer connaît le dossier d'urgence et sait le retrouver"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-risques",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "objectifs-long-terme",
+      "name": "Objectifs long terme",
+      "description": "Les projets à plus de 5 ans, tous sur les rails.",
+      "icon": "game-icons:path-distance",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Objectifs à plus de 5 ans tous financés et dans les temps pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "travaux-finances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-serein",
+      "name": "Foyer serein",
+      "description": "Projets financés, foyer protégé.",
+      "icon": "game-icons:crowned-heart",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "12 mois sans aucun point d'attention de niveau avertissement dans Kwak",
+        "24 mois sans aucun point d'attention de niveau avertissement"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "foyer-autonome"
+        },
+        {
+          "talentId": "objectifs-long-terme"
+        },
+        {
+          "talentId": "objectifs-plaisir"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

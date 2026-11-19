@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gestionnaire-patrimoine",
+    "name": "Gestionnaire budget et patrimoine",
+    "icon": "game-icons:piggy-bank"
+  },
+  "specialization": {
+    "id": "patrimoine-placements",
+    "name": "Patrimoine et placements",
+    "description": "Suivre, comprendre et faire croître le patrimoine du foyer jusqu'à l'indépendance financière.",
+    "icon": "game-icons:gold-stack"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "matrice-patrimoine",
+      "name": "Matrice de patrimoine",
+      "description": "Chaque ligne valorisée chaque mois.",
+      "icon": "game-icons:abacus",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Toutes les lignes du foyer saisies dans Kwak, actifs et dettes",
+        "Valeurs saisies chaque mois, 6 mois sans trou",
+        "24 mois sans trou"
+      ]
+    },
+    {
+      "id": "enveloppes",
+      "name": "Enveloppes",
+      "description": "Livrets, assurance-vie, PEA, CTO, PER : à quoi sert chacune.",
+      "icon": "game-icons:open-folder",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des enveloppes : plafonds, fiscalité, disponibilité",
+        "Chaque ligne du foyer associée à son enveloppe et à sa raison d'être"
+      ]
+    },
+    {
+      "id": "bases-investissement",
+      "name": "Bases de l'investissement",
+      "description": "Rendement, risque, diversification, temps.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Fiche faite : rendement, volatilité, diversification, intérêts composés",
+        "Grandes classes d'actifs comparées sur 30 ans d'historique (rendement, pire année, durée de récupération), fiche faite",
+        "Coût des frais d'une ligne calculé en euros sur 20 ans"
+      ]
+    },
+    {
+      "id": "patrimoine-net",
+      "name": "Patrimoine net",
+      "description": "Le chiffre qui résume tout, et ce qui le fait bouger.",
+      "icon": "game-icons:bank",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Patrimoine net et sa variation sur 12 mois connus",
+        "Variation annuelle décomposée : part épargne versée et part performance"
+      ]
+    },
+    {
+      "id": "liquidite",
+      "name": "Liquidité",
+      "description": "Ce qui est disponible vite, et ce qui ne l'est pas.",
+      "icon": "game-icons:cash",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Patrimoine classé liquide et illiquide, délai de disponibilité de chaque ligne noté",
+        "Argent dormant sur les comptes courants ramené sous le seuil fixé dans le plan"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "matrice-patrimoine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "frais",
+      "name": "Chasse aux frais",
+      "description": "Chaque point de frais coûte des années.",
+      "icon": "game-icons:pay-money",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Frais de chaque enveloppe relevés (gestion, courtage, unités de compte)",
+        "Frais annuels totaux réduits, économie notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "enveloppes"
+        }
+      ]
+    },
+    {
+      "id": "allocation-cible",
+      "name": "Allocation cible",
+      "description": "Une répartition décidée à froid.",
+      "icon": "game-icons:radial-balance",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Allocation cible écrite par catégorie, avec horizon et tolérance au risque",
+        "Écart à la cible suivi chaque trimestre dans Kwak, 4 trimestres",
+        "Règle de rééquilibrage écrite et appliquée au moins une fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bases-investissement",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "hypotheses",
+      "name": "Hypothèses",
+      "description": "Des rendements et volatilités assumés et sourcés.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Rendement et volatilité de chaque catégorie renseignés dans Kwak, source notée",
+        "Hypothèses confrontées aux rendements réels du foyer sur 3 ans, écarts expliqués"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "patrimoine-net"
+        }
+      ]
+    },
+    {
+      "id": "dettes",
+      "name": "Dettes",
+      "description": "Connaître le coût réel de chaque crédit.",
+      "icon": "game-icons:chained-heart",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Chaque dette notée avec taux, mensualité, capital restant et coût total",
+        "Dette la plus chère identifiée, remboursement anticipé étudié (pénalités, gain)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "liquidite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "investissement-programme",
+      "name": "Investissement programmé",
+      "description": "Investir chaque mois, quoi qu'il arrive.",
+      "icon": "game-icons:sprout",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Versement mensuel programmé sur une enveloppe de long terme",
+        "12 mois sans interruption",
+        "36 mois sans interruption, y compris pendant une baisse de marché"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "frais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "diversification",
+      "name": "Diversification",
+      "description": "Ne pas tout miser sur une seule ligne.",
+      "icon": "game-icons:jigsaw-piece",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Concentration mesurée : aucune ligne, hors résidence, au-dessus de la limite fixée dans le plan",
+        "Exposition géographique et sectorielle des placements en actions relevée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "allocation-cible",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "projection",
+      "name": "Projection",
+      "description": "Où peut aller le patrimoine, en fourchette.",
+      "icon": "game-icons:crystal-ball",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Projection à 20 ans lancée dans Kwak, médiane et fourchette 10-90 % notées",
+        "2 scénarios comparés (effort d'épargne, rendement)",
+        "Projection testée avec un krach en début de période, effet sur la date d'indépendance noté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "hypotheses",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "immobilier",
+      "name": "Immobilier",
+      "description": "Valoriser la pierre et calculer son vrai rendement.",
+      "icon": "game-icons:house",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Valeur des biens estimée (ventes comparables, annonces) et mise à jour chaque année",
+        "Rendement net d'un investissement immobilier ou d'une SCPI calculé (frais, fiscalité, vacance)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "dettes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "discipline",
+      "name": "Discipline d'investisseur",
+      "description": "Garder le cap quand les marchés tanguent.",
+      "icon": "game-icons:meditation",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Journal des décisions d'investissement tenu (date, raison, résultat), 12 mois",
+        "Une baisse de 15 % traversée sans vente impulsive, notée au journal"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "diversification",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiscalite-placements",
+      "name": "Fiscalité des placements",
+      "description": "Ce que l'impôt prend, et quand.",
+      "icon": "game-icons:receive-money",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche faite : prélèvement forfaitaire, assurance-vie après 8 ans, PEA après 5 ans, plus-values immobilières",
+        "Ordre de retrait fiscalement optimisé écrit pour la phase d'indépendance"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "projection",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revenus-patrimoine",
+      "name": "Revenus du patrimoine",
+      "description": "L'argent qui travaille.",
+      "icon": "game-icons:coins",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Revenus annuels du patrimoine mesurés (intérêts, dividendes, loyers nets)",
+        "En hausse 2 années de suite",
+        "Couvrent 10 % des dépenses annuelles du foyer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "immobilier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-independance",
+      "name": "Plan d'indépendance",
+      "description": "Un chiffre, une date, un chemin.",
+      "icon": "game-icons:flag-objective",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Chiffre cible écrit : dépenses annuelles visées, taux de retrait retenu, montant cible calculé",
+        "Date estimée par la projection Kwak et plan B écrit si elle recule de plus de 2 ans"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "discipline",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "boule-de-neige",
+      "name": "Boule de neige",
+      "description": "Le patrimoine gagne plus que ce qu'on y verse.",
+      "icon": "game-icons:snowflake-2",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Une année où les gains du patrimoine dépassent l'épargne versée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revenus-patrimoine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-patrimoniale",
+      "name": "Revue patrimoniale",
+      "description": "Le bilan complet, fait seul.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Revue annuelle complète faite seul : allocation, frais, fiscalité, dettes, projection",
+        "2 années de revue, décisions suivies"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-independance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "independance-financiere",
+      "name": "Indépendance financière",
+      "description": "Le patrimoine couvre les dépenses du foyer.",
+      "icon": "game-icons:gold-bar",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Revenu soutenable du patrimoine (taux de retrait du plan) couvrant 25 % des dépenses du foyer",
+        "Couvrant 50 % des dépenses",
+        "Couvrant 100 % des dépenses"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "boule-de-neige"
+        },
+        {
+          "talentId": "revue-patrimoniale"
+        },
+        {
+          "talentId": "investissement-programme"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
