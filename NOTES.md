@@ -23,6 +23,15 @@
 
 ## Écarts au plan
 
+- Phase 9 : une occurrence est acceptée dès le début de la période d'acceptation (sortie du lundi pour une quête acceptée le jeudi), cohérent avec le calcul du rythme. Avant cette période : 400.
+- Phase 9 : annuler un rendu remet le suivi « en cours » (étapes et occurrences conservées, donc prêt à rendre de nouveau). Refusé si la même quête a été reprise entre-temps (un seul suivi actif par quête, aussi garanti par un index unique partiel).
+- Phase 9 : les rangs accordés au rendu sont gardés dans le suivi (`grants`) pour l'annulation ; les événements de rang et d'or portent l'id du suivi.
+- Phase 9 : supprimer une quête personnelle la supprime vraiment ; ses suivis gardent leur copie de la définition.
+- Phase 9 : le journal (`GET /journal`) reste celui des rangs, enrichi de `questRunId` et `questName`. Les événements d'or sont sur `GET /gold` ; la fusion dans la page Journal se fera au front (phase 10).
+- Phase 9 : l'état des quêtes d'un arbre (`questStates` : available, unavailable, active, ready) n'est renvoyé que par `GET /specializations/:id`.
+- Phase 9 : horloge injectable (`now` dans `createApp`) utilisée par les quêtes uniquement ; les rangs saisis à la main gardent l'heure réelle.
+- Phase 9 : `app.ts` découpé : routes des quêtes dans `quests.ts`, accès base dans `quest-repository.ts`, utilitaires HTTP dans `http.ts`.
+
 - Phase 8 : talent récompensé verrouillé au moment du rendu (cas possible après un retrait de rang manuel, ou pour une quête personnelle) : rendu refusé avec le motif, comme un clic sur le talent. Seuls un talent au rang max, supprimé ou d'un arbre disparu sont ignorés.
 - Phase 8 : au rendu, les talents sont traités par palier croissant (un parent récompensé passe avant son enfant) ; à l'annulation, par palier décroissant.
 - Phase 8 : annuler un rendu est refusé si le rang a déjà été retiré à la main (pas de -1 sans effet dans l'historique).

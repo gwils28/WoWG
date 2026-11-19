@@ -306,7 +306,12 @@ describe('personnage, journal et sauvegarde', () => {
       method: 'POST',
       body: JSON.stringify(backup),
     });
-    expect((await res.json()) as any).toEqual({ specializations: 1, events: 3 });
+    expect((await res.json()) as any).toEqual({
+      specializations: 1,
+      events: 3,
+      questRuns: 0,
+      goldEvents: 0,
+    });
     const char = (await (await fresh.request('/api/character')).json()) as any;
     expect(char.points).toBe(3);
     expect(char.pinned).toEqual(['sport-sante']);

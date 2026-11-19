@@ -1,20 +1,25 @@
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { Hono, type Context } from 'hono';
+import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { z } from 'zod';
 import {
   canAddRank,
   canRemoveRank,
+  CustomQuestSchema,
   diffTrees,
+  QuestDefinitionSchema,
+  QuestTalentRefSchema,
   formatIssues,
   parseTree,
   TreeFileStructureSchema,
   type TreeFile,
 } from '@wowg/shared';
 import type { Db } from './db';
+import { badRequest, DateInput, readBody, toIso } from './http';
 import { createRepository } from './repository';
+import { registerQuestRoutes } from './quests';
 import {
   canonicalTreePath,
   listTreeFiles,
@@ -29,6 +34,8 @@ export interface AppOptions {
   treesDir: string;
   /** Dossier des portraits palier-1.png ... palier-5.png (hors git). Absent : pas de portrait. */
   portraitsDir?: string;
+  /** Horloge (injectée dans les tests des rythmes de quête). */
+  now?: () => Date;
 }
 
 const PORTRAIT_TYPES: Record<string, string> = {
@@ -40,7 +47,7 @@ const PORTRAIT_TYPES: Record<string, string> = {
 
 const RankBody = z.object({
   note: z.string().trim().max(2000).optional(),
-  occurredAt: z.union([z.iso.date(), z.iso.datetime({ offset: true })]).optional(),
+  occurredAt: DateInput.optional(),
 });
 
 const ImportBody = z
@@ -80,40 +87,70 @@ const BackupSchema = z.object({
       occurredAt: z.string(),
       note: z.string().nullable().optional(),
       createdAt: z.string(),
+      questRunId: z.number().int().nullable().optional(),
     }),
   ),
+  // absents des sauvegardes antérieures aux quêtes
+  customQuests: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        quest: CustomQuestSchema,
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    )
+    .optional(),
+  questRuns: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        source: z.enum(['tree', 'custom']),
+        specializationId: z.string().nullable(),
+        questId: z.string().nullable(),
+        customQuestId: z.number().int().nullable(),
+        definition: QuestDefinitionSchema,
+        gold: z.number().int(),
+        acceptedAt: z.string(),
+        deadline: z.string().nullable(),
+        stepsDone: z.array(z.number().int()),
+        status: z.enum(['active', 'completed', 'abandoned']),
+        completedAt: z.string().nullable(),
+        grants: z.array(QuestTalentRefSchema).nullable(),
+        note: z.string().nullable(),
+        createdAt: z.string(),
+      }),
+    )
+    .optional(),
+  questTicks: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        runId: z.number().int(),
+        occurredAt: z.string(),
+        createdAt: z.string(),
+      }),
+    )
+    .optional(),
+  goldEvents: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        amount: z.number().int(),
+        reason: z.enum(['quest', 'quest-undo']),
+        runId: z.number().int().nullable(),
+        occurredAt: z.string(),
+        createdAt: z.string(),
+      }),
+    )
+    .optional(),
 });
 
-function badRequest(errors: string[]): never {
-  throw new HTTPException(400, { res: Response.json({ errors }, { status: 400 }) });
-}
-
-async function readBody<T extends z.ZodType>(
-  c: Context,
-  schema: T,
-  optional = false,
-): Promise<z.infer<T>> {
-  let raw: unknown = {};
-  const text = await c.req.text();
-  if (text.trim()) {
-    try {
-      raw = JSON.parse(text);
-    } catch {
-      badRequest(['corps JSON invalide']);
-    }
-  } else if (!optional) {
-    badRequest(['corps JSON attendu']);
-  }
-  const res = schema.safeParse(raw);
-  if (!res.success) badRequest(formatIssues(res.error));
-  return res.data;
-}
-
-const toIso = (d?: string) => (d ? new Date(d).toISOString() : undefined);
-
-export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
+export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }: AppOptions) {
   const repo = createRepository(db);
   const app = new Hono().basePath('/api');
+  const nowIso = () => now().toISOString();
+  const { questRepo, views: questViews } = registerQuestRoutes(app, { db, repo, now: nowIso });
 
   app.onError((err, c) => {
     if (err instanceof HTTPException) return err.getResponse();
@@ -153,7 +190,10 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
   }
 
   app.get('/character', (c) =>
-    c.json(character(repo, (tier) => (portraitFile(tier) ? `/api/portraits/${tier}` : null))),
+    c.json({
+      ...character(repo, (tier) => (portraitFile(tier) ? `/api/portraits/${tier}` : null)),
+      gold: questRepo.goldBalance(),
+    }),
   );
 
   app.get('/portraits/:tier{[1-5]}', async (c) => {
@@ -183,7 +223,10 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
 
   app.get('/specializations/:id', (c) => {
     const spec = requireSpec(c.req.param('id'));
-    return c.json(specDetail(spec, repo.ranks(spec.id)));
+    return c.json({
+      ...specDetail(spec, repo.ranks(spec.id)),
+      questStates: questViews.treeQuestStates(spec, nowIso()),
+    });
   });
 
   app.put('/specializations/:id', async (c) => {
@@ -253,6 +296,7 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
     if (!q.success) badRequest(formatIssues(q.error));
     const { domain, spec, from, to } = q.data;
     const specs = new Map(repo.listSpecializations().map((s) => [s.id, s]));
+    const questNames = new Map(questRepo.listRuns().map((r) => [r.id, r.definition.name]));
     const running = new Map<string, number>();
     const entries = repo.listEvents().map((e) => {
       const key = `${e.specializationId}/${e.talentId}`;
@@ -267,6 +311,7 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
         talentName: talent?.name ?? e.talentId,
         talentIcon: talent?.icon ?? null,
         orphan: !talent,
+        questName: e.questRunId === null ? null : (questNames.get(e.questRunId) ?? null),
         domain: s?.tree.domain ?? null,
         specialization: s?.tree.specialization ?? null,
       };
@@ -295,6 +340,7 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
         })),
       events: repo.listEvents(),
       preferences: repo.preferences(),
+      ...questRepo.exportAll(),
     };
     const date = backup.exportedAt.slice(0, 10);
     c.header('Content-Disposition', `attachment; filename="wowg-backup-${date}.json"`);
@@ -310,12 +356,34 @@ export function createApp({ db, treesDir, portraitsDir }: AppOptions) {
         `${unknown.length} événement(s) référencent une spécialisation absente de la sauvegarde`,
       ]);
     }
+    const runIds = new Set((backup.questRuns ?? []).map((r) => r.id));
+    const dangling = [
+      ...backup.events.map((e) => e.questRunId),
+      ...(backup.questTicks ?? []).map((t) => t.runId),
+      ...(backup.goldEvents ?? []).map((g) => g.runId),
+    ].filter((id) => id !== null && id !== undefined && !runIds.has(id));
+    if (dangling.length) {
+      badRequest([
+        `${dangling.length} élément(s) référencent un suivi de quête absent de la sauvegarde`,
+      ]);
+    }
     repo.replaceAll(
       backup.specializations.map((s) => ({ ...s, id: s.tree.specialization.id })),
       backup.events,
       backup.preferences,
+      {
+        customQuests: backup.customQuests ?? [],
+        questRuns: backup.questRuns ?? [],
+        questTicks: backup.questTicks ?? [],
+        goldEvents: backup.goldEvents ?? [],
+      },
     );
-    return c.json({ specializations: backup.specializations.length, events: backup.events.length });
+    return c.json({
+      specializations: backup.specializations.length,
+      events: backup.events.length,
+      questRuns: backup.questRuns?.length ?? 0,
+      goldEvents: backup.goldEvents?.length ?? 0,
+    });
   });
 
   return app;

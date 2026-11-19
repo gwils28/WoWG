@@ -1,5 +1,6 @@
 import type {
   CustomQuest,
+  QuestDefinition,
   QuestPeriod,
   QuestRecurrence,
   QuestSize,
@@ -16,19 +17,6 @@ import {
   type Check,
   type Ranks,
 } from './ranks';
-
-/**
- * Définition d'une quête telle qu'elle est figée dans un suivi à l'acceptation : modifier ou
- * supprimer la quête ensuite ne change pas un suivi en cours.
- */
-export interface QuestDefinition {
-  name: string;
-  description: string;
-  talents: QuestTalentRef[];
-  steps: string[];
-  recurrence?: QuestRecurrence;
-  size?: QuestSize;
-}
 
 export function treeQuestDefinition(specializationId: string, quest: TreeQuest): QuestDefinition {
   return {

@@ -2,7 +2,7 @@
 
 Web app locale (TS full-stack) de suivi de progression sous forme d'arbres de talents inspirés de WoW. Besoin complet : `SPEC.md`.
 
-Plan : `docs/PLAN.md` (MVP phases 0 à 7, v2 phases 8 à 12). Statut : phases 0 à 6 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`, front `apps/web` : accueil, arbre, import, édition, journal, sauvegarde). Phase 7 en partie : 12 classes / 36 arbres dans `trees/`, README restant. Phase 8 faite (quêtes et or, logique pure : `packages/shared/src/logic/quests.ts`). Suivante : phase 9, serveur (migration 3, routes quêtes et or, `SPEC.md` section 10).
+Plan : `docs/PLAN.md` (MVP phases 0 à 7, v2 phases 8 à 12). Statut : phases 0 à 6 faites (socle, `packages/shared`, skill `generate-tree`, serveur `apps/server`, front `apps/web` : accueil, arbre, import, édition, journal, sauvegarde). Phase 7 en partie : 12 classes / 36 arbres dans `trees/`, README restant. Phases 8 et 9 faites (quêtes et or : logique `packages/shared/src/logic/quests.ts`, serveur `apps/server/src/quests.ts`, migration 3). Suivante : phase 10, front des quêtes (`SPEC.md` section 10.7).
 
 ## Commandes
 

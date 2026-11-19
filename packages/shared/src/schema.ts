@@ -56,6 +56,19 @@ export const QuestSizeSchema = z.enum(['small', 'medium', 'large']);
 
 export const QuestTalentRefSchema = z.object({ specializationId: slug, talentId: slug });
 
+/**
+ * Définition figée dans un suivi à l'acceptation (quête proposée ou personnelle) : modifier ou
+ * supprimer la quête ensuite ne change pas un suivi en cours.
+ */
+export const QuestDefinitionSchema = z.object({
+  name: z.string().min(1),
+  description: z.string(),
+  talents: z.array(QuestTalentRefSchema),
+  steps: z.array(z.string()),
+  recurrence: QuestRecurrenceSchema.optional(),
+  size: QuestSizeSchema.optional(),
+});
+
 /** Quête personnelle, écrite dans l'app. Sans talent, elle ne rapporte que de l'or (selon `size`). */
 export const CustomQuestSchema = z
   .object({
@@ -275,6 +288,7 @@ export type QuestSize = z.infer<typeof QuestSizeSchema>;
 export type QuestTalentRef = z.infer<typeof QuestTalentRefSchema>;
 export type CustomQuest = z.infer<typeof CustomQuestSchema>;
 export type CustomQuestInput = z.input<typeof CustomQuestSchema>;
+export type QuestDefinition = z.infer<typeof QuestDefinitionSchema>;
 
 /** Rend les erreurs de validation lisibles : "talents[3].ranks : message". */
 export function formatIssues(error: z.ZodError): string[] {
