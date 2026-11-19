@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "bricoleur",
+    "name": "Bricoleur",
+    "icon": "game-icons:toolbox"
+  },
+  "specialization": {
+    "id": "second-oeuvre",
+    "name": "Second œuvre maison",
+    "description": "Entretenir et rénover l'intérieur : fixation, finitions, menuiserie, plomberie et électricité en sécurité.",
+    "icon": "game-icons:claw-hammer"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "caisse-outils",
+      "name": "Caisse à outils",
+      "description": "Un outillage de base constitué pas à pas, le reste se loue.",
+      "icon": "game-icons:toolbox",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Caisse de base réunie (marteau, tournevis, mètre, niveau, cutter, pince, perceuse-visseuse), inventaire noté",
+        "Liste acheter, louer ou emprunter établie avec les prix, 3 outils ajoutés à la caisse selon cette liste"
+      ]
+    },
+    {
+      "id": "peinture",
+      "name": "Peinture",
+      "description": "Préparer, protéger, peindre sans traces.",
+      "icon": "game-icons:paint-roller",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Un pan de mur repeint (protection, lessivage, 2 couches), photos avant et après",
+        "Une pièce complète repeinte, plafond compris, découpes nettes",
+        "Une porte ou une boiserie poncée, sous-couchée et laquée sans coulure"
+      ]
+    },
+    {
+      "id": "plomberie-base",
+      "name": "Plomberie de base",
+      "description": "Savoir couper l'eau et entretenir ce qui se bouche.",
+      "icon": "game-icons:water-drop",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Vannes d'arrivée d'eau repérées et manœuvrées, siphon démonté et nettoyé",
+        "Joint de robinet ou cartouche de mitigeur changé, sans fuite après 48 h"
+      ]
+    },
+    {
+      "id": "securite-electrique",
+      "name": "Sécurité électrique",
+      "description": "Comprendre le tableau et ne jamais travailler sous tension.",
+      "icon": "game-icons:electrical-socket",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tableau électrique lu : disjoncteurs étiquetés par pièce, rôle du différentiel 30 mA noté",
+        "Consignation appliquée sur 3 interventions simples (couper, vérifier l'absence de tension au testeur VAT)"
+      ]
+    },
+    {
+      "id": "percage-fixation",
+      "name": "Perçage et fixation",
+      "description": "La bonne cheville dans le bon mur.",
+      "icon": "game-icons:drill",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Étagère fixée de niveau dans un mur plein (béton ou brique) avec les bonnes chevilles, charge testée",
+        "Meuble haut ou support TV fixé sur plaque de plâtre (chevilles à expansion), 2 réalisations",
+        "5 fixations (tringle, miroir lourd, support mural) posées sans reprise"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "caisse-outils"
+        }
+      ]
+    },
+    {
+      "id": "enduits",
+      "name": "Rebouchage et enduits",
+      "description": "Des murs lisses avant de peindre.",
+      "icon": "game-icons:trowel",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Trous et fissures d'un mur rebouchés, poncés et invisibles après peinture",
+        "Enduit de lissage passé sur un mur abîmé, prêt à peindre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "peinture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sanitaires",
+      "name": "Sanitaires",
+      "description": "Joints, chasse d'eau, robinetterie.",
+      "icon": "game-icons:sink",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Joint silicone de baignoire ou de douche refait proprement",
+        "Mécanisme de chasse d'eau réglé ou remplacé",
+        "Robinet ou mitigeur complet remplacé, sans fuite après 1 semaine"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plomberie-base"
+        }
+      ]
+    },
+    {
+      "id": "electricite-base",
+      "name": "Électricité de base",
+      "description": "Remplacer à l'identique, hors tension, avec les bonnes couleurs.",
+      "icon": "game-icons:light-bulb",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Luminaire remplacé après consignation (bornes de connexion, phase, neutre et terre respectés)",
+        "Prise ou interrupteur remplacé à l'identique et testé, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "securite-electrique"
+        }
+      ]
+    },
+    {
+      "id": "menuiserie",
+      "name": "Menuiserie intérieure",
+      "description": "Couper juste, régler, assembler.",
+      "icon": "game-icons:hand-saw",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "5 coupes d'équerre à la scie et à la scie sauteuse (atelier partagé ou chantier d'un proche)",
+        "Porte réglée (charnières, gâche) qui ne frotte plus",
+        "Meuble simple fabriqué de A à Z (étagère, banc) en panneau ou tasseaux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "percage-fixation",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "sols",
+      "name": "Revêtements de sol",
+      "description": "Plinthes, parquet, carrelage.",
+      "icon": "game-icons:packed-planks",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Plinthes posées ou remplacées dans une pièce",
+        "Parquet flottant ou sol vinyle posé dans une petite pièce (chez un proche ou en atelier)",
+        "2 m² de carrelage posés (coupes, colle, joints) en formation ou sur un chantier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "enduits"
+        }
+      ]
+    },
+    {
+      "id": "evacuations",
+      "name": "Évacuations et raccords",
+      "description": "Déboucher, raccorder, étancher.",
+      "icon": "game-icons:tee-pipe",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Évacuation bouchée débouchée sans produit agressif (ventouse, furet)",
+        "Raccord PVC collé ou multicouche serti sur un chantier encadré ou en formation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sanitaires",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "circuits-normes",
+      "name": "Circuits et normes",
+      "description": "Les règles d'une installation conforme.",
+      "icon": "game-icons:electric",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règles principales de la NF C 15-100 résumées (sections, calibres, points par circuit)",
+        "Prise ajoutée sur un circuit existant avec un électricien ou en formation, contrôlée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "electricite-base"
+        }
+      ]
+    },
+    {
+      "id": "portes-fenetres",
+      "name": "Portes et fenêtres",
+      "description": "Étanchéité à l'air et serrurerie simple.",
+      "icon": "game-icons:door",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Joints de fenêtre ou bas de porte remplacés contre les courants d'air",
+        "Cylindre de serrure ou poignée remplacé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "menuiserie",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "eau-chaude-chauffage",
+      "name": "Eau chaude et chauffage",
+      "description": "Entretenir sans toucher au gaz, réservé aux pros.",
+      "icon": "game-icons:fire",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fonctionnement du chauffe-eau et du chauffage compris, groupe de sécurité manœuvré",
+        "Radiateurs purgés et pression du circuit remise à la bonne valeur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evacuations",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "depannage-electrique",
+      "name": "Dépannage électrique",
+      "description": "Trouver pourquoi ça disjoncte, et savoir quand appeler.",
+      "icon": "game-icons:power-button",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Disjonction localisée par élimination des appareils, cause notée",
+        "Bouton test des différentiels actionné chaque mois pendant 6 mois, prises vérifiées au testeur de prise"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "circuits-normes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agencement",
+      "name": "Agencement sur mesure",
+      "description": "Rangements et plans de travail adaptés à la maison.",
+      "icon": "game-icons:wood-frame",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Placard ou dressing conçu sur plan coté et monté",
+        "Plan de travail découpé et posé (cuisine ou buanderie)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "portes-fenetres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "salle-eau",
+      "name": "Salle d'eau",
+      "description": "Penser étanchéité, évacuation et ventilation ensemble.",
+      "icon": "game-icons:shower",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Étanchéité sous carrelage et pente de douche réalisées sur un chantier encadré ou en formation",
+        "Meuble vasque posé et raccordé complètement, sans fuite après 1 semaine"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-chaude-chauffage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "renovation-piece",
+      "name": "Rénovation de pièce",
+      "description": "Une pièce reprise de bout en bout.",
+      "icon": "game-icons:paint-bucket",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une pièce rénovée (rebouchage, peinture, sol, plinthes, appareillage), photos avant et après",
+        "Une deuxième pièce rénovée plus vite, budget prévu tenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agencement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "carnet-maison",
+      "name": "Carnet de la maison",
+      "description": "La mémoire technique du logement.",
+      "icon": "game-icons:notebook",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet tenu : plans, vannes, tableau électrique, entretiens et dates",
+        "Calendrier d'entretien annuel de la maison établi et suivi pendant 1 an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "salle-eau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maison-autonome",
+      "name": "Maison autonome",
+      "description": "Prendre en charge l'essentiel de l'entretien et des réparations.",
+      "icon": "game-icons:house",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois dans la maison : la majorité des réparations faites soi-même (journal), pros réservés au gaz, à la structure et au tableau",
+        "1 an : 80 % de l'entretien et des réparations faits soi-même"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "renovation-piece"
+        },
+        {
+          "talentId": "carnet-maison"
+        },
+        {
+          "talentId": "sols"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

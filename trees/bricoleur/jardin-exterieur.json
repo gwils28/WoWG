@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "bricoleur",
+    "name": "Bricoleur",
+    "icon": "game-icons:toolbox"
+  },
+  "specialization": {
+    "id": "jardin-exterieur",
+    "name": "Jardin et extérieur",
+    "description": "Entretenir et aménager le terrain : outils, potager, taille, eau, allées, clôture et terrasse.",
+    "icon": "game-icons:sprout"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "outils-jardin",
+      "name": "Outils de jardin",
+      "description": "Les outils manuels, réunis et entretenus.",
+      "icon": "game-icons:rake",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Outils de base réunis progressivement (bêche, râteau, sécateur, binette, brouette)",
+        "Sécateur et lames affûtés, fiche d'entretien des outils faite"
+      ]
+    },
+    {
+      "id": "premieres-cultures",
+      "name": "Premières cultures",
+      "description": "Commencer au balcon.",
+      "icon": "game-icons:seedling",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 aromatiques en pot cultivées 3 mois sur le balcon ou la fenêtre",
+        "Semis de 3 légumes en godets menés jusqu'au repiquage"
+      ]
+    },
+    {
+      "id": "lire-terrain",
+      "name": "Lire un terrain",
+      "description": "Exposition, pente, sol : comprendre avant d'aménager.",
+      "icon": "game-icons:compass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Exposition, pente, vents et zones humides relevés sur un terrain visité, croquis fait",
+        "Sol testé sur 2 terrains (texture au boudin, pH au kit), résultats notés"
+      ]
+    },
+    {
+      "id": "eau-jardin",
+      "name": "Eau au jardin",
+      "description": "Arroser juste et récupérer l'eau de pluie.",
+      "icon": "game-icons:plant-watering",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche arrosage économe : paillage, heure, besoins par type de plante",
+        "Paillage appliqué sur toutes les cultures d'une saison, arrosages notés"
+      ]
+    },
+    {
+      "id": "entretien-terrain",
+      "name": "Entretien du terrain",
+      "description": "Tonte, bordures, désherbage, sans pesticides.",
+      "icon": "game-icons:wheelbarrow",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Une journée d'entretien d'un jardin (proche ou jardin partagé) : tonte, bordures, désherbage",
+        "10 m² de gazon semés ou regarnis, levée réussie",
+        "Une saison de désherbage sans pesticides (binage, couvre-sol, désherbage thermique), fiche faite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "outils-jardin"
+        }
+      ]
+    },
+    {
+      "id": "potager",
+      "name": "Potager",
+      "description": "Planifier, cultiver et récolter.",
+      "icon": "game-icons:sprout",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Une saison cultivée sur une parcelle de jardin partagé ou chez un proche",
+        "Plan de rotation et d'associations sur 4 planches",
+        "10 légumes différents récoltés sur une saison, journal tenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premieres-cultures",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-amenagement",
+      "name": "Plan d'aménagement",
+      "description": "Dessiner le terrain avant de creuser.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan coté d'un terrain à l'échelle (existant et projet)",
+        "Aménagement extérieur chiffré et phasé (terrasse, clôture, potager)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lire-terrain"
+        }
+      ]
+    },
+    {
+      "id": "arrosage",
+      "name": "Arrosage et récupération",
+      "description": "Automatiser et économiser l'eau.",
+      "icon": "game-icons:water-drop",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Goutte-à-goutte avec programmateur installé (balcon ou parcelle)",
+        "Programmateur réglé selon la saison et la pluie, eau d'arrosage relevée sur une saison"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-jardin"
+        }
+      ]
+    },
+    {
+      "id": "machines-jardin",
+      "name": "Machines de jardin",
+      "description": "Tondeuse, taille-haie, débroussailleuse, avec EPI.",
+      "icon": "game-icons:chainsaw",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tondeuse, taille-haie et débroussailleuse utilisés avec EPI (location ou prêt)",
+        "Entretien de saison d'une tondeuse (lame affûtée, filtre, vidange ou batterie)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "entretien-terrain",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "taille-arbres",
+      "name": "Taille et arbres",
+      "description": "Planter, tailler, faire durer.",
+      "icon": "game-icons:fruit-tree",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Une haie taillée à la bonne période",
+        "Un arbuste ou fruitier planté (trou, tuteur, arrosage), repris après 1 an",
+        "Taille de formation ou de fructification d'un fruitier (formation ou chez un proche)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "potager",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "allees-bordures",
+      "name": "Allées et bordures",
+      "description": "Structurer le terrain au sol.",
+      "icon": "game-icons:stone-path",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 m de bordure posés (tranchée, lit de pose, niveau)",
+        "Allée gravillonnée ou en pas japonais réalisée (géotextile, compactage)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-amenagement"
+        }
+      ]
+    },
+    {
+      "id": "drainage",
+      "name": "Drainage et pentes",
+      "description": "Que l'eau parte au bon endroit.",
+      "icon": "game-icons:droplets",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Causes d'eau stagnante identifiées sur un terrain, solution notée (pente, drain, puits perdu)",
+        "Tranchée drainante ou regard réalisé sur un chantier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "arrosage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bois-buches",
+      "name": "Bois et bûches",
+      "description": "Fendre et stocker, les abattages restant aux pros.",
+      "icon": "game-icons:axe-in-log",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "1 stère fendu au merlin et rangé, EPI portés",
+        "Formation tronçonneuse suivie avant toute coupe (gros arbres confiés à un élagueur)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "machines-jardin",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cloture",
+      "name": "Clôture et portail",
+      "description": "Délimiter le terrain proprement.",
+      "icon": "game-icons:wooden-fence",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "5 poteaux de clôture scellés et alignés",
+        "10 m de grillage ou de panneaux posés",
+        "Portillon posé et réglé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "allees-bordures",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-de-pluie",
+      "name": "Eau de pluie",
+      "description": "Récupérer l'eau du toit pour arroser.",
+      "icon": "game-icons:raining",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Récupérateur dimensionné pour une maison visée (surface de toit et pluviométrie)",
+        "Récupérateur raccordé à une descente de gouttière (chez un proche ou à la maison)",
+        "Un été d'arrosage couvert à plus de moitié par l'eau de pluie récupérée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "drainage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "calendrier-jardin",
+      "name": "Calendrier du jardin",
+      "description": "Chaque mois, son travail.",
+      "icon": "game-icons:sundial",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Calendrier annuel d'entretien du terrain écrit mois par mois",
+        "1 an de calendrier suivi (jardin partagé, proche ou maison)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bois-buches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "terrasse",
+      "name": "Terrasse bois",
+      "description": "Lambourdes, plots et lames.",
+      "icon": "game-icons:planks",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Plan et calepinage d'une terrasse de 10 m² (plots, lambourdes, pente)",
+        "5 m² de terrasse sur plots posés (chantier d'un proche ou formation)",
+        "Terrasse de 15 m² ou plus réalisée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cloture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jardin-vivant",
+      "name": "Jardin vivant",
+      "description": "Compost, haie champêtre et biodiversité.",
+      "icon": "game-icons:bird-house",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Composteur installé et compost mûr utilisé",
+        "Haie champêtre ou coin de prairie fleurie créé, nichoir posé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "calendrier-jardin",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "carres-serre",
+      "name": "Carrés et serre",
+      "description": "Des structures pour cultiver plus longtemps.",
+      "icon": "game-icons:greenhouse",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 carrés potagers en bois construits et remplis",
+        "Serre ou tunnel monté et utilisé une saison"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "terrasse",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "terrain-maitrise",
+      "name": "Terrain maîtrisé",
+      "description": "Le terrain de la maison entretenu et aménagé par soi-même.",
+      "icon": "game-icons:sunflower",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "1 an d'entretien complet du terrain sans paysagiste (journal)",
+        "Aménagement planifié réalisé (terrasse, clôture, potager) et potager qui nourrit une partie de l'été"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jardin-vivant"
+        },
+        {
+          "talentId": "carres-serre"
+        },
+        {
+          "talentId": "taille-arbres"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

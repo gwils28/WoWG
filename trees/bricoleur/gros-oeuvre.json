@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "bricoleur",
+    "name": "Bricoleur",
+    "icon": "game-icons:toolbox"
+  },
+  "specialization": {
+    "id": "gros-oeuvre",
+    "name": "Gros œuvre et bâtiment",
+    "description": "Comprendre et construire le bâti : matériaux, maçonnerie, bois, enveloppe, réglementation et chantier.",
+    "icon": "game-icons:brick-wall"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "lire-batiment",
+      "name": "Lire un bâtiment",
+      "description": "Le vocabulaire et le regard pour comprendre une maison.",
+      "icon": "game-icons:family-house",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche illustrée du bâti : fondations, murs porteurs, dalle, charpente, couverture",
+        "Plan d'une maison lu : pièces, cotes, orientation, niveaux et réseaux repérés"
+      ]
+    },
+    {
+      "id": "materiaux",
+      "name": "Matériaux",
+      "description": "Ce qu'on construit avec quoi.",
+      "icon": "game-icons:brick-pile",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des matériaux courants (parpaing, brique, béton cellulaire, bois, plâtre) et de leurs usages",
+        "Dosages de béton, mortier et chape notés depuis une fiche technique"
+      ]
+    },
+    {
+      "id": "bois-construction",
+      "name": "Bois de construction",
+      "description": "Essences, sections et assemblages.",
+      "icon": "game-icons:planks",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Essences, sections courantes et classes d'emploi du bois résumées",
+        "Assemblages vissés, cloués et à équerres réalisés sur chutes en atelier"
+      ]
+    },
+    {
+      "id": "securite-chantier",
+      "name": "Sécurité de chantier",
+      "description": "Équipé et prudent avant de commencer.",
+      "icon": "game-icons:mining-helmet",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "EPI réunis : gants, lunettes, protections auditives, masque FFP2, chaussures de sécurité",
+        "Règles d'usage de l'échelle et de l'échafaudage roulant appliquées sur un chantier"
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "name": "Diagnostics immobiliers",
+      "description": "Lire ce que disent les rapports avant d'acheter.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Rôle de chaque diagnostic résumé (DPE, amiante, plomb, termites, électricité, gaz)",
+        "Dossier de diagnostics d'une annonce réelle lu, travaux à prévoir listés et estimés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lire-batiment"
+        }
+      ]
+    },
+    {
+      "id": "mortier-beton",
+      "name": "Mortier et béton",
+      "description": "Gâcher, couler, talocher.",
+      "icon": "game-icons:concrete-bag",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Mortier gâché au bon dosage, 1 sac utilisé (scellement, rebouchage)",
+        "Petit massif béton coffré (socle d'abri, seuil), de niveau",
+        "Dalle de 2 m² ou plus coulée, armée et talochée (chantier d'un proche ou formation)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "materiaux"
+        }
+      ]
+    },
+    {
+      "id": "ossature-bois",
+      "name": "Ossature bois",
+      "description": "Construire droit et d'équerre en bois.",
+      "icon": "game-icons:wood-beam",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Cadre en bois de 2 m construit d'équerre (diagonales égales à 5 mm près)",
+        "2 jours de participation à un chantier d'ossature bois (abri, extension)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bois-construction"
+        }
+      ]
+    },
+    {
+      "id": "outillage-chantier",
+      "name": "Outillage de chantier",
+      "description": "Les machines du gros œuvre, en location.",
+      "icon": "game-icons:circular-saw",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 coupes droites à la scie circulaire en sécurité (guide, serre-joints) en atelier",
+        "Perforateur, disqueuse et bétonnière loués et utilisés sur un chantier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "securite-chantier"
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "name": "Structure et fissures",
+      "description": "Reconnaître un porteur et une fissure inquiétante.",
+      "icon": "game-icons:stone-wall",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Porteurs et cloisons distingués sur 3 plans ou visites, vérifié avec un professionnel",
+        "Fissures d'une visite classées (superficielle ou structurelle), comparées à l'avis d'un pro"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "diagnostics"
+        }
+      ]
+    },
+    {
+      "id": "maconnerie",
+      "name": "Maçonnerie de blocs",
+      "description": "Monter un mur droit et de niveau.",
+      "icon": "game-icons:brick-wall",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Un rang de parpaings monté droit et de niveau (formation ou chantier)",
+        "Muret de 3 rangs avec angle harpé",
+        "Muret de 5 rangs sur semelle de fondation réalisé de A à Z"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mortier-beton",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "cloisons",
+      "name": "Cloisons et plaques",
+      "description": "Ossature métallique, plaques de plâtre et bandes.",
+      "icon": "game-icons:stone-block",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Rails et montants posés pour une cloison de 2 m",
+        "Plaques vissées, bandes et enduit de joints réalisés",
+        "Cloison avec porte et isolant phonique terminée, prête à peindre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ossature-bois",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "isolation",
+      "name": "Isolation",
+      "description": "Garder la chaleur dedans, l'humidité dehors.",
+      "icon": "game-icons:thermometer-cold",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Principes résumés : isolants, pare-vapeur, ponts thermiques, étanchéité à l'air",
+        "Isolation de combles perdus ou d'un mur réalisée sur un chantier encadré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "outillage-chantier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "humidite",
+      "name": "Humidité et ventilation",
+      "description": "Trouver d'où vient l'eau et faire respirer la maison.",
+      "icon": "game-icons:droplets",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Causes d'humidité (remontées capillaires, infiltration, condensation) identifiées sur une visite",
+        "VMC contrôlée : bouches nettoyées, tirage vérifié à la feuille de papier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "structure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "charpente",
+      "name": "Charpente",
+      "description": "Comprendre et construire une petite structure de toit.",
+      "icon": "game-icons:wood-frame",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Types de charpente (fermettes, traditionnelle) identifiés sur 2 maisons",
+        "Pergola ou auvent en bois construit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cloisons",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "toiture",
+      "name": "Toiture et gouttières",
+      "description": "Surveiller et entretenir la couverture, jamais seul.",
+      "icon": "game-icons:ladder",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Gouttières nettoyées et descentes vérifiées, échelle sécurisée et personne au pied",
+        "Tuiles remplacées ou faîtage contrôlé avec un couvreur ou en formation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "isolation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "urbanisme",
+      "name": "Urbanisme et permis",
+      "description": "Construire dans les règles.",
+      "icon": "game-icons:contract",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Seuils déclaration préalable et permis de construire résumés, PLU d'une commune visée lu",
+        "Dossier de déclaration préalable préparé pour un abri ou une extension"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "humidite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "abri",
+      "name": "Abri de jardin",
+      "description": "Un premier ouvrage complet, de la base au toit.",
+      "icon": "game-icons:wood-cabin",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan coté et liste de matériaux d'un abri établis",
+        "Abri monté sur dalle ou plots, d'équerre et étanche"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charpente"
+        }
+      ]
+    },
+    {
+      "id": "chiffrer-planifier",
+      "name": "Chiffrer et planifier",
+      "description": "Budget, devis et planning d'un chantier.",
+      "icon": "game-icons:pencil-ruler",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Devis d'artisans comparés poste par poste pour un projet",
+        "Budget et planning d'un chantier tenus à 15 % près"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "urbanisme",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chantiers",
+      "name": "Chantiers en équipe",
+      "description": "Apprendre en construisant avec d'autres, puis organiser.",
+      "icon": "game-icons:hammer-nails",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 chantiers participatifs ou de proches, rôle tenu noté",
+        "Une journée de chantier organisée avec des amis (préparation, matériel, sécurité)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "abri",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "batisseur",
+      "name": "Bâtisseur",
+      "description": "Construire un ouvrage et piloter les travaux de la maison.",
+      "icon": "game-icons:block-house",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Ouvrage construit de la fondation au toit (abri, carport, appentis), conforme à la déclaration",
+        "Travaux de la maison menés en maître d'ouvrage : lots confiés et lots faits soi-même, budget tenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chiffrer-planifier"
+        },
+        {
+          "talentId": "chantiers"
+        },
+        {
+          "talentId": "maconnerie"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
