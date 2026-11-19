@@ -3,7 +3,6 @@ import { Link, useSearchParams } from 'react-router';
 import { api, type JournalEntry, type JournalFilters } from '../lib/api';
 import { specPath } from '../lib/classes';
 import { formatDay, groupByDay, rankLabel } from '../lib/journal';
-import { BackupPanel } from '../components/BackupPanel';
 import { GameIcon } from '../components/GameIcon';
 
 const KEYS = ['domain', 'spec', 'from', 'to'] as const;
@@ -103,7 +102,6 @@ export function JournalPage() {
             </button>
           )}
         </section>
-        <BackupPanel />
       </aside>
 
       <section className="panel journal__timeline">

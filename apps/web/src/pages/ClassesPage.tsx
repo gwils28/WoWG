@@ -77,7 +77,7 @@ export function ClassesPage() {
           <p>Aucune classe pour l'instant.</p>
           <p className="muted">
             Génère un arbre avec la skill <code>/generate-tree</code>, puis importe-le depuis la
-            page <Link to="/import">Import</Link>.
+            page <Link to="/outils">Outils</Link>.
           </p>
         </section>
       )}

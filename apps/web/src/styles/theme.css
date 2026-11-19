@@ -122,6 +122,32 @@ code {
   color: var(--gold);
 }
 
+.subnav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--gold-lo);
+}
+
+.subnav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  opacity: 0.75;
+}
+
+.subnav a:hover,
+.subnav a.active {
+  color: var(--gold-hi);
+  opacity: 1;
+}
+
 .content {
   flex: 1;
   width: 100%;
@@ -948,6 +974,11 @@ ul.diff__line {
 
 /* ---------- Import ---------- */
 
+.tools {
+  display: grid;
+  gap: 1.5rem;
+}
+
 .import {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -1619,6 +1650,10 @@ ul.diff__line {
 
   .topbar__level {
     margin-left: auto;
+  }
+
+  .subnav {
+    padding-left: 0.5rem;
   }
 
   .content {
