@@ -48,8 +48,9 @@ export function character(repo: Repository, portrait: (tier: number) => string |
   const specs = repo.listSpecializations().map((s) => specSummary(s, repo.ranks(s.id)));
   const totalPoints = specs.reduce((sum, s) => sum + s.points, 0);
 
-  // dernière saisie (date d'enregistrement, pas la date déclarée) par spécialisation
-  const lastBySpec = new Map<string, string>();
+  // dernière activité par spécialisation : import ou mise à jour de l'arbre, puis saisies de
+  // rang (date d'enregistrement, pas la date déclarée)
+  const lastBySpec = new Map<string, string>(specs.map((s) => [s.id, s.updatedAt]));
   for (const e of repo.listEvents()) {
     const prev = lastBySpec.get(e.specializationId);
     if (!prev || e.createdAt > prev) lastBySpec.set(e.specializationId, e.createdAt);

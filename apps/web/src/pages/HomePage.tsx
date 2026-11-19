@@ -1,12 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import { LEVEL_TIERS, MAX_LEVEL } from '@wowg/shared';
-import { api, type Character, type DomainSummary } from '../lib/api';
-import { pinnedDomains, recentDomains, sortDomains, specPath } from '../lib/classes';
+import { api, type Character } from '../lib/api';
 import { GameIcon } from '../components/GameIcon';
-import { PinButton } from '../components/PinButton';
-
-const HOME_CLASSES = 4;
 
 export function HomePage() {
   const { data, isLoading, error } = useQuery({ queryKey: ['character'], queryFn: api.character });
@@ -18,7 +14,7 @@ export function HomePage() {
     <div className="home">
       <CharacterHero c={data} />
       <TierTrack c={data} />
-      <HomeClasses c={data} />
+      <ImportHint c={data} />
     </div>
   );
 }
@@ -129,71 +125,16 @@ function TierTrack({ c }: { c: Character }) {
   );
 }
 
-function HomeClasses({ c }: { c: Character }) {
-  if (c.domains.length === 0) {
-    return (
-      <section className="panel empty">
-        <p>Aucun arbre importé pour l'instant.</p>
-        <p className="muted">
-          Génère un arbre avec la skill <code>/generate-tree</code>, puis importe-le depuis la page{' '}
-          <Link to="/import">Import</Link>.
-        </p>
-      </section>
-    );
-  }
-  const pinned = pinnedDomains(c.domains, c.pinned);
-  const recent = recentDomains(c.domains, Math.max(0, HOME_CLASSES - pinned.length));
-  // sans épingle ni activité : les premières par activité puis par nom
-  const shown =
-    pinned.length + recent.length > 0
-      ? [...pinned, ...recent]
-      : sortDomains(c.domains, 'activity').slice(0, HOME_CLASSES);
-
+/** Seulement tant qu'aucun arbre n'est importé : les classes vivent sur la page Classes. */
+function ImportHint({ c }: { c: Character }) {
+  if (c.domains.length > 0) return null;
   return (
-    <section className="home-classes">
-      <header className="home-classes__header">
-        <h2>{pinned.length ? 'Classes épinglées et récentes' : 'Classes récentes'}</h2>
-        <Link to="/classes">Toutes les classes ({c.domains.length}) →</Link>
-      </header>
-      <div className="domains">
-        {shown.map((d) => (
-          <DomainPanel key={d.domain.id} d={d} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function DomainPanel({ d }: { d: DomainSummary }) {
-  return (
-    <section className="panel domain">
-      <header className="domain__header">
-        <GameIcon icon={d.domain.icon} size={32} className="domain__icon" />
-        <h2>{d.domain.name}</h2>
-        <span className="domain__points">{d.points} pts</span>
-        <PinButton domainId={d.domain.id} name={d.domain.name} pinned={d.pinned} />
-      </header>
-      <ul className="specs">
-        {d.specializations.map((s) => (
-          <li key={s.id}>
-            <Link to={specPath(d.domain.id, s.id)} className="spec-row">
-              <span className="spec-row__icon">
-                <GameIcon icon={s.specialization.icon} size={28} />
-              </span>
-              <span className="spec-row__name">{s.specialization.name}</span>
-              <span className="bar">
-                <span
-                  className="bar__fill"
-                  style={{ width: `${(s.points / s.maxPoints) * 100}%` }}
-                />
-              </span>
-              <span className="spec-row__points">
-                {s.points}/{s.maxPoints}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <section className="panel empty">
+      <p>Aucun arbre importé pour l'instant.</p>
+      <p className="muted">
+        Génère un arbre avec la skill <code>/generate-tree</code>, puis importe-le depuis la page{' '}
+        <Link to="/import">Import</Link>.
+      </p>
     </section>
   );
 }

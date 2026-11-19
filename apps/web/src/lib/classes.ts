@@ -39,14 +39,6 @@ export function pinnedDomains(domains: DomainSummary[], pinned: string[]): Domai
   return pinned.flatMap((id) => domains.find((d) => d.domain.id === id) ?? []);
 }
 
-/** Domaines non épinglés avec une activité, du plus récent au plus ancien. */
-export function recentDomains(domains: DomainSummary[], limit: number): DomainSummary[] {
-  return sortDomains(
-    domains.filter((d) => !d.pinned && d.lastActivityAt),
-    'activity',
-  ).slice(0, limit);
-}
-
 /** "aujourd'hui", "hier", "il y a 5 jours", puis la date. */
 export function relativeDay(iso: string | null, now = new Date()): string {
   if (!iso) return 'aucune activité';
