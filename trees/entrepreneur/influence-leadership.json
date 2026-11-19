@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "domain": {
-    "id": "data-ai-engineer",
-    "name": "Data AI Engineer",
-    "icon": "game-icons:artificial-intelligence"
+    "id": "entrepreneur",
+    "name": "Entrepreneur",
+    "icon": "game-icons:briefcase"
   },
   "specialization": {
     "id": "influence-leadership",
     "name": "Influence et leadership",
-    "description": "Écrire, parler, publier du code, transmettre et diriger, jusqu'à l'activité d'expert indépendant.",
+    "description": "Écrire, parler, publier du code, transmettre et diriger, jusqu'à être reconnu comme expert.",
     "icon": "game-icons:public-speaker"
   },
   "grid": {
     "tiers": 7,
-    "columns": 5
+    "columns": 4
   },
   "talents": [
     {
@@ -70,19 +70,6 @@
         "10 personnes accompagnées",
         "25 personnes accompagnées",
         "50 personnes accompagnées"
-      ]
-    },
-    {
-      "id": "offre-independant",
-      "name": "Offre d'indépendant",
-      "description": "Un positionnement clair et une structure prête.",
-      "icon": "game-icons:briefcase",
-      "tier": 1,
-      "column": 5,
-      "maxRank": 2,
-      "ranks": [
-        "Offre écrite (positionnement, prestations, tarif) et page dédiée sur ton site",
-        "Structure juridique prête (statut, assurance responsabilité civile pro)"
       ]
     },
     {
@@ -164,26 +151,6 @@
       ]
     },
     {
-      "id": "premieres-missions",
-      "name": "Missions d'indépendant",
-      "description": "Les premiers clients, puis ceux qui reviennent.",
-      "icon": "game-icons:convergence-target",
-      "tier": 2,
-      "column": 5,
-      "maxRank": 3,
-      "ranks": [
-        "Première mission d'indépendant signée",
-        "3 missions",
-        "Un client qui revient"
-      ],
-      "prerequisites": [
-        {
-          "talentId": "offre-independant",
-          "rank": 1
-        }
-      ]
-    },
-    {
       "id": "ecrire-anglais",
       "name": "Écrire en anglais",
       "description": "Toucher la communauté internationale.",
@@ -222,25 +189,6 @@
       ]
     },
     {
-      "id": "reseau-clients",
-      "name": "Réseau et recommandations",
-      "description": "Que les missions viennent à toi.",
-      "icon": "game-icons:conversation",
-      "tier": 3,
-      "column": 5,
-      "maxRank": 2,
-      "ranks": [
-        "Profil orienté offre et 3 recommandations de clients",
-        "Une mission obtenue par recommandation ou par contact entrant"
-      ],
-      "prerequisites": [
-        {
-          "talentId": "premieres-missions",
-          "rank": 1
-        }
-      ]
-    },
-    {
       "id": "newsletter",
       "name": "Newsletter",
       "description": "Un rendez-vous régulier avec ses lecteurs.",
@@ -255,25 +203,6 @@
       "prerequisites": [
         {
           "talentId": "ecrire-anglais",
-          "rank": 1
-        }
-      ]
-    },
-    {
-      "id": "activite-perenne",
-      "name": "Activité pérenne",
-      "description": "Une activité d'indépendant qui tient dans la durée.",
-      "icon": "game-icons:money-stack",
-      "tier": 4,
-      "column": 5,
-      "maxRank": 2,
-      "ranks": [
-        "6 mois d'activité avec au moins une mission en cours",
-        "Revenu d'indépendant équivalent à un mi-temps sur 12 mois"
-      ],
-      "prerequisites": [
-        {
-          "talentId": "reseau-clients",
           "rank": 1
         }
       ]
@@ -316,10 +245,6 @@
         {
           "talentId": "formation",
           "rank": 1
-        },
-        {
-          "talentId": "activite-perenne",
-          "rank": 1
         }
       ]
     },
@@ -343,25 +268,6 @@
       ]
     },
     {
-      "id": "collectif",
-      "name": "Collectif d'indépendants",
-      "description": "Travailler à plusieurs sur des missions plus grandes.",
-      "icon": "game-icons:conversation",
-      "tier": 6,
-      "column": 5,
-      "maxRank": 2,
-      "ranks": [
-        "Mission co-réalisée avec un autre indépendant",
-        "Collectif ou marque commune à plusieurs indépendants"
-      ],
-      "prerequisites": [
-        {
-          "talentId": "activite-perenne",
-          "rank": 1
-        }
-      ]
-    },
-    {
       "id": "expert-reconnu",
       "name": "Expert reconnu",
       "description": "Lead technique et expert indépendant à la fois.",
@@ -371,7 +277,7 @@
       "maxRank": 2,
       "ranks": [
         "Invité, sans candidature, à intervenir comme expert (conférence, podcast, comité)",
-        "12 mois en menant de front un rôle de lead technique et une activité d'indépendant"
+        "Sollicité 3 fois dans l'année comme expert, sans candidature (conférence, podcast, comité)"
       ],
       "prerequisites": [
         {

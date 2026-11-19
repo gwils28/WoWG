@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "entrepreneur",
+    "name": "Entrepreneur",
+    "icon": "game-icons:briefcase"
+  },
+  "specialization": {
+    "id": "maitrise-anglais",
+    "name": "Maîtrise de l'anglais",
+    "description": "Passer du B1 au C1 certifié : comprendre, parler et écrire l'anglais professionnel sans frein.",
+    "icon": "game-icons:conversation"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "ecoute-quotidienne",
+      "name": "Écoute quotidienne",
+      "description": "L'oreille se forme par le volume.",
+      "icon": "game-icons:headphones",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "20 min d'écoute en anglais (podcast, série en VO) 5 jours sur 7 pendant 4 semaines",
+        "Même rythme pendant 12 semaines",
+        "Même rythme pendant 26 semaines"
+      ]
+    },
+    {
+      "id": "conversation",
+      "name": "Conversation",
+      "description": "Parler chaque semaine, même imparfaitement.",
+      "icon": "game-icons:talk",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "30 min de conversation (tandem ou tuteur en ligne) chaque semaine pendant 4 semaines",
+        "Pendant 12 semaines",
+        "Pendant 26 semaines"
+      ]
+    },
+    {
+      "id": "grammaire",
+      "name": "Grammaire",
+      "description": "Corriger ses erreurs récurrentes.",
+      "icon": "game-icons:rule-book",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Test de niveau CECRL en ligne passé, point de départ noté",
+        "Tes 10 erreurs récurrentes listées avec un tuteur, absentes de 3 textes corrigés ensuite"
+      ]
+    },
+    {
+      "id": "vocabulaire",
+      "name": "Vocabulaire",
+      "description": "Des mots actifs, pas seulement reconnus.",
+      "icon": "game-icons:card-random",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Cartes à répétition espacée 10 min par jour pendant 30 jours, 300 mots",
+        "1 000 mots ou expressions en révision active",
+        "2 000 mots ou expressions en révision active"
+      ]
+    },
+    {
+      "id": "vo",
+      "name": "Séries et films en VO",
+      "description": "Comprendre sans le filet du français.",
+      "icon": "game-icons:film-projector",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Un épisode avec sous-titres anglais compris à 80 %, résumé oral enregistré",
+        "Une saison entière sans sous-titres français",
+        "Un film sans aucun sous-titre, intrigue résumée sans erreur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecoute-quotidienne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prononciation",
+      "name": "Prononciation",
+      "description": "Être compris du premier coup.",
+      "icon": "game-icons:microphone",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "10 sons difficiles travaillés (th, voyelles longues et courtes), enregistrements avant et après",
+        "Shadowing 5 min par jour pendant 4 semaines",
+        "Accent jugé clair par 3 interlocuteurs natifs différents"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conversation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrit-pro",
+      "name": "Écrit professionnel",
+      "description": "E-mails et documents de travail sans traducteur.",
+      "icon": "game-icons:envelope",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 e-mails professionnels écrits sans traducteur, corrigés par un tuteur",
+        "Document technique de 2 pages (spécification, rapport) rédigé avec moins de 5 corrections"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grammaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "anglais-metier",
+      "name": "Anglais métier",
+      "description": "Le vocabulaire de la tech et des affaires.",
+      "icon": "game-icons:open-folder",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Lexique de 200 termes de ton métier et des affaires constitué",
+        "5 réunions de travail sans chercher ses mots sur le vocabulaire métier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vocabulaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "accents",
+      "name": "Accents variés",
+      "description": "Comprendre tout le monde, pas seulement l'accent des manuels.",
+      "icon": "game-icons:world",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 accents (américain, britannique, indien, australien, européens) écoutés, un podcast par semaine pendant 5 semaines",
+        "Réunion avec des non-natifs de 3 pays suivie sans faire répéter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vo",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "reunions",
+      "name": "Réunions en anglais",
+      "description": "Prendre sa place dans une réunion.",
+      "icon": "game-icons:discussion",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Prise de parole dans 5 réunions en anglais",
+        "Une réunion de 30 min animée en anglais",
+        "Une réunion difficile (désaccord, arbitrage) menée en anglais"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prononciation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "lecture-presse",
+      "name": "Presse anglophone",
+      "description": "Lire vite et bien des textes exigeants.",
+      "icon": "game-icons:newspaper",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un article de presse anglophone lu et résumé par semaine pendant 8 semaines",
+        "Article de 1 500 mots lu en moins de 8 min, résumé correct"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrit-pro",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "test-blanc-b2",
+      "name": "Test blanc B2",
+      "description": "Mesurer le niveau comme à l'examen.",
+      "icon": "game-icons:checklist",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Test blanc (IELTS ou TOEIC) au niveau B2",
+        "Niveau B2 confirmé à 2 tests blancs de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "anglais-metier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "immersion",
+      "name": "Immersion",
+      "description": "Vivre en anglais quelques jours.",
+      "icon": "game-icons:airplane",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une semaine entièrement en anglais (séjour, voyage)",
+        "Deux semaines entièrement en anglais"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "accents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "redaction",
+      "name": "Rédaction argumentée",
+      "description": "Défendre une idée par écrit.",
+      "icon": "game-icons:quill-ink",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Essai argumenté type IELTS noté 6,5 par un correcteur",
+        "Essai argumenté noté 7"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lecture-presse",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "certification-b2",
+      "name": "Certification B2",
+      "description": "Le niveau B2 officiellement reconnu.",
+      "icon": "game-icons:diploma",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 1,
+      "ranks": [
+        "Certification officielle B2 obtenue (TOEIC 785 ou plus, IELTS 6 ou plus)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "test-blanc-b2",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "improvisation",
+      "name": "Improvisation",
+      "description": "Parler sans préparation.",
+      "icon": "game-icons:drama-masks",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 min de discussion improvisée sur un sujet tiré au sort, 5 fois",
+        "Entretien d'embauche simulé de 30 min avec un natif"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "immersion",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "registres",
+      "name": "Nuances et registres",
+      "description": "Choisir le bon ton.",
+      "icon": "game-icons:palette",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "50 expressions idiomatiques et verbes à particule employés à l'écrit, corrigés",
+        "Un même texte réécrit en 3 registres (formel, neutre, familier), validé par un tuteur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "redaction",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "aisance",
+      "name": "Aisance continue",
+      "description": "Tenir une longue conversation sans repasser au français.",
+      "icon": "game-icons:conversation",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "60 min de conversation avec un natif sans repasser au français, 5 fois",
+        "Un mois de séances sans hésitation relevée par le tuteur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "improvisation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "test-blanc-c1",
+      "name": "Test blanc C1",
+      "description": "Viser le C1 avant de le passer.",
+      "icon": "game-icons:on-target",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Test blanc au niveau C1 (IELTS 7)",
+        "Niveau C1 à 2 tests blancs de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "registres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "anglais-c1",
+      "name": "Anglais C1",
+      "description": "L'anglais n'est plus un frein professionnel.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Certification officielle C1 obtenue (IELTS 7, TOEIC 945 ou Cambridge C1)",
+        "Un an sans réunion, appel ni écrit évité pour une raison de langue (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "aisance"
+        },
+        {
+          "talentId": "test-blanc-c1"
+        },
+        {
+          "talentId": "reunions"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
