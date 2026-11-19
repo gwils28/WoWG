@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "conducteur",
-    "name": "Conducteur",
+    "name": "Cocher",
     "icon": "game-icons:city-car"
   },
   "specialization": {
