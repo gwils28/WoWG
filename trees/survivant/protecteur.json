@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "survivant",
+    "name": "Survivant",
+    "icon": "game-icons:campfire"
+  },
+  "specialization": {
+    "id": "protecteur",
+    "name": "Protecteur",
+    "description": "Éviter, dissuader, se mettre à l'abri, prévenir le feu, et ne se défendre que dans le cadre de la loi.",
+    "icon": "game-icons:checked-shield"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "fuir-alerter",
+      "name": "Fuir et alerter",
+      "description": "Aucun bien ne vaut un risque.",
+      "icon": "game-icons:running-shoe",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Règle du foyer écrite : face à une agression, on fuit et on alerte (17 ou 112, SMS au 114)",
+        "10 situations où tu as repéré des signaux et gardé la distance, notées"
+      ]
+    },
+    {
+      "id": "discretion",
+      "name": "Discrétion",
+      "description": "Ne pas signaler ses réserves ni ses absences.",
+      "icon": "game-icons:hood",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Règle de discrétion du foyer écrite (réserves, absences, réseaux sociaux)",
+        "6 mois sans publication de localisation en direct ni d'absence annoncée"
+      ]
+    },
+    {
+      "id": "legitime-defense",
+      "name": "Cadre légal",
+      "description": "Savoir ce que la loi permet, et ce qu'elle interdit.",
+      "icon": "game-icons:scales",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Conditions de la légitime défense résumées (attaque injuste et actuelle, riposte nécessaire, immédiate, proportionnée)",
+        "Conduite après une agression résumée (sûreté, 17, témoins, certificat médical, plainte, France Victimes)"
+      ]
+    },
+    {
+      "id": "detecteurs",
+      "name": "Détecteurs",
+      "description": "Être réveillé à temps.",
+      "icon": "game-icons:ringing-alarm",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Détecteurs de fumée installés et testés chaque mois pendant 3 mois",
+        "Détecteur de CO installé près de chaque appareil à combustion, testé"
+      ]
+    },
+    {
+      "id": "evitement",
+      "name": "Évitement",
+      "description": "Ne pas être là où ça arrive.",
+      "icon": "game-icons:eye-target",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Trajets habituels revus : zones à éviter et lieux refuges (commerces ouverts, commissariat) notés",
+        "Voix posée pour dissuader travaillée en stage ou en club, 3 mises en situation"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fuir-alerter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "consignes-enfant",
+      "name": "Consignes de l'enfant",
+      "description": "Des réflexes de sécurité à sa mesure.",
+      "icon": "game-icons:whistle",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Consignes adaptées à son âge apprises par l'enfant (adulte de confiance, crier et fuir, ton prénom et ton numéro)",
+        "Consignes revues tous les 6 mois, 2 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "discretion",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "logement-securise",
+      "name": "Logement sécurisé",
+      "description": "Dissuader sans gros travaux.",
+      "icon": "game-icons:locked-door",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Audit de sécurité du logement fait (accès, éclairage, points faibles)",
+        "Points faibles traités sans gros travaux (entrebâilleur, éclairage extérieur, détecteur de présence)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "legitime-defense",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "extincteur",
+      "name": "Extincteur",
+      "description": "Éteindre un départ de feu.",
+      "icon": "game-icons:fire-extinguisher",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Extincteur et couverture anti-feu en place dans la cuisine",
+        "Extincteur manié lors d'une formation (pompiers, employeur)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "detecteurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "self-defense",
+      "name": "Self-défense",
+      "description": "Se dégager, chuter, se protéger.",
+      "icon": "game-icons:fist",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Initiation à la self-défense encadrée suivie (dégagements, chutes, protection)",
+        "Gestes entretenus 2 fois par an pendant 2 ans (stage ou séances en club)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evitement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-intrusion",
+      "name": "Plan intrusion",
+      "description": "Savoir où aller, qui appelle, qui allume.",
+      "icon": "game-icons:closed-doors",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Plan intrusion écrit (pièce refuge qui ferme, téléphone chargé, ne pas aller au contact)",
+        "Exercice d'intrusion répété en famille, en jeu de rôle de jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "consignes-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "doubles-cles",
+      "name": "Doubles et cache",
+      "description": "L'essentiel à l'abri, des clés de secours.",
+      "icon": "game-icons:house-keys",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Doubles des clés confiés à un proche de confiance",
+        "Cache sûre au domicile pour les objets essentiels"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "logement-securise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sortir-fumee",
+      "name": "Sortir de la fumée",
+      "description": "Évacuer un incendie, même de nuit.",
+      "icon": "game-icons:smoke-bomb",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plan d'évacuation incendie du logement dessiné, 2 sorties repérées par pièce de vie",
+        "Exercice incendie de nuit fait (ramper, toucher les portes, point de rassemblement)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "extincteur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mise-en-situation",
+      "name": "Mise en situation",
+      "description": "Éprouver ses réflexes, dans un cadre sûr.",
+      "icon": "game-icons:police-badge",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Mise en situation encadrée et consentie, avec débriefing sur ce que la loi aurait permis"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "self-defense",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "veille-voisins",
+      "name": "Veille entre voisins",
+      "description": "Des voisins qui veillent les uns sur les autres.",
+      "icon": "game-icons:door",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Signal d'alerte convenu avec les voisins (SMS groupé, sifflet)",
+        "Absences longues signalées à un voisin qui veille, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "doubles-cles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "intemperies",
+      "name": "Intempéries",
+      "description": "Inondation, tempête, confinement.",
+      "icon": "game-icons:flood",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règle « ne jamais traverser une zone inondée » connue de tous les adultes",
+        "Kit de confinement prêt (bâches, ruban adhésif, film plastique)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sortir-fumee",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "transmettre-securite",
+      "name": "Transmettre les bases",
+      "description": "Le foyer entier connaît les réflexes.",
+      "icon": "game-icons:acoustic-megaphone",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Bases transmises au reste du foyer (évitement, dégagements, règles de la légitime défense)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mise-en-situation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recours-violences",
+      "name": "Recours et numéros",
+      "description": "Savoir qui appeler dans chaque situation.",
+      "icon": "game-icons:candlestick-phone",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Numéros et recours contre les violences connus des adultes (17, 112, 114, 3919, 119, Masque 19)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "veille-voisins",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sang-froid-reel",
+      "name": "Situation désamorcée",
+      "description": "Les réflexes, quand c'est pour de vrai.",
+      "icon": "game-icons:hand-ok",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Une situation tendue réelle désamorcée par l'évitement ou la parole, retour écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "transmettre-securite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exercice-nuit",
+      "name": "Exercice de nuit",
+      "description": "Bruit suspect à 3 h du matin : chacun sait quoi faire.",
+      "icon": "game-icons:night-sleep",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice de nuit simulé : chacun sait où aller, qui appelle, qui allume",
+        "Refait un an plus tard"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recours-violences",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bouclier-foyer",
+      "name": "Bouclier du foyer",
+      "description": "Un foyer qui évite, dissuade et sait réagir.",
+      "icon": "game-icons:checked-shield",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Exercices intrusion, incendie et nuit tous refaits dans la même année",
+        "2 années de suite, bilan de sécurité annuel sans point ouvert"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sang-froid-reel",
+          "rank": 1
+        },
+        {
+          "talentId": "exercice-nuit",
+          "rank": 1
+        },
+        {
+          "talentId": "plan-intrusion",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

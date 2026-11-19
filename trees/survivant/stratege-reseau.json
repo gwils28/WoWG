@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "survivant",
+    "name": "Survivant",
+    "icon": "game-icons:campfire"
+  },
+  "specialization": {
+    "id": "stratege-reseau",
+    "name": "Stratège et réseau",
+    "description": "Connaître ses risques, planifier, communiquer quand tout tombe et s'appuyer sur un réseau d'entraide.",
+    "icon": "game-icons:radio-tower"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "risques-locaux",
+      "name": "Connaître ses risques",
+      "description": "Savoir ce qui peut arriver ici.",
+      "icon": "game-icons:radioactive",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Risques de la commune lus (DICRIM, Géorisques), fiche faite",
+        "Fiche réflexe écrite pour les 3 risques principaux"
+      ]
+    },
+    {
+      "id": "plan-familial",
+      "name": "Plan familial d'urgence",
+      "description": "Qui fait quoi, et où se retrouver.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Plan familial d'urgence écrit (rôles, points de rendez-vous, contacts)",
+        "Plan connu de chaque adulte, vérifié par un quiz de 10 questions"
+      ]
+    },
+    {
+      "id": "radio-urgence",
+      "name": "Radio d'urgence",
+      "description": "S'informer quand Internet tombe.",
+      "icon": "game-icons:pocket-radio",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Radio FM à piles ou à dynamo testée, fréquence locale de la radio publique notée sur papier",
+        "Radio écoutée 1 h en mode crise (sans réseau), une fois par trimestre pendant un an"
+      ]
+    },
+    {
+      "id": "voisinage",
+      "name": "Voisinage",
+      "description": "Connaître ceux qui seront là.",
+      "icon": "game-icons:door-watcher",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Au moins deux voisins connus par leur nom",
+        "Personnes fragiles autour de toi repérées"
+      ]
+    },
+    {
+      "id": "alertes",
+      "name": "Alertes et information",
+      "description": "Être prévenu tôt, et ne pas croire n'importe quoi.",
+      "icon": "game-icons:siren",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "FR-Alert, Vigilance Météo-France et Vigicrues activés",
+        "Liste de sources fiables écrite, réflexe de vérification appliqué à 5 rumeurs"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "risques-locaux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "partir-ou-rester",
+      "name": "Partir ou rester",
+      "description": "Décider à froid ce qu'on fera à chaud.",
+      "icon": "game-icons:crossroad",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Critères écrits pour partir ou rester selon 3 scénarios (coupure longue, inondation, accident industriel)",
+        "Lieu de repli convenu avec un proche à plus de 50 km"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-familial",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "talkies",
+      "name": "Talkies-walkies",
+      "description": "Se parler sans réseau mobile.",
+      "icon": "game-icons:walkie-talkie",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Talkies PMR446 du foyer testés à 1 km",
+        "Protocole d'appel convenu (canal, horaires, mots de code) et testé 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "radio-urgence",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-binome",
+      "name": "Foyer binôme",
+      "description": "Un autre foyer sur qui compter, et qui compte sur toi.",
+      "icon": "game-icons:meeple-group",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Accord d'entraide réciproque avec un autre foyer",
+        "Un proche à moins de 30 min prévenu qu'il est ton contact d'urgence"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voisinage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiches-reflexes",
+      "name": "Fiches papier",
+      "description": "Le savoir utile, lisible sans écran.",
+      "icon": "game-icons:tied-scroll",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Guide de préparation de référence lu, fiches d'action rédigées",
+        "Classeur papier (coupures, eau, secours, évacuation) imprimé et rangé avec le sac"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "alertes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "contact-hors-region",
+      "name": "Contact hors région",
+      "description": "Un relais loin de la crise.",
+      "icon": "game-icons:candlestick-phone",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Contact référent hors de la région convenu et connu de tous les adultes",
+        "Message passé par ce contact pendant un exercice"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "partir-ou-rester",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-communication",
+      "name": "Plan de communication",
+      "description": "Se retrouver même sans téléphone.",
+      "icon": "game-icons:sound-waves",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan de communication local écrit avec 2 proches (canaux, fréquences, horaires)",
+        "Plan testé 2 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "talkies",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reseau-ressources",
+      "name": "Annuaire du réseau",
+      "description": "Qui sait faire quoi, qui a quoi.",
+      "icon": "game-icons:team-idea",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Annuaire des compétences et ressources de ton réseau",
+        "Ressources mutualisées avec 2 foyers (outils, stocks)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "foyer-binome",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scenarios",
+      "name": "Scénarios de crise",
+      "description": "Jouer la crise sur table avant de la vivre.",
+      "icon": "game-icons:dice-shield",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 scénarios déroulés sur papier (coupure longue, inondation, pandémie) : qui fait quoi",
+        "Un scénario tiré au sort joué sur table en famille, débriefing écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fiches-reflexes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "licence-radio",
+      "name": "Licence radioamateur",
+      "description": "Émettre loin, légalement.",
+      "icon": "game-icons:radio-tower",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 examens blancs de la licence radioamateur réussis",
+        "Licence radioamateur obtenue"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-communication",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "groupe-entraide",
+      "name": "Groupe d'entraide",
+      "description": "Plusieurs foyers, un plan commun.",
+      "icon": "game-icons:team-upgrade",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Groupe d'au moins 3 foyers avec un plan commun écrit",
+        "Plan du groupe mis à jour en réunion annuelle, 2 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reseau-ressources",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "retours-experience",
+      "name": "Retours d'expérience",
+      "description": "Apprendre des crises des autres.",
+      "icon": "game-icons:notebook",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Retours d'expérience de 3 crises réelles étudiés, leçons notées pour le foyer",
+        "Plan familial mis à jour après chaque leçon retenue, 2 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scenarios",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "poste-radio",
+      "name": "Poste radio",
+      "description": "Un poste qui porte et un réseau qui répond.",
+      "icon": "game-icons:long-antennae-bug",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Poste radioamateur ou CB opérationnel, 5 contacts établis",
+        "Réseau radio de secours avec le groupe testé tous les 6 mois, 2 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "licence-radio",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "transmettre-preparation",
+      "name": "Transmettre",
+      "description": "Aider d'autres foyers à se préparer.",
+      "icon": "game-icons:acoustic-megaphone",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Atelier de préparation animé pour des proches ou des voisins",
+        "Un foyer parrainé jusqu'au niveau Paré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "retours-experience",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relais-quartier",
+      "name": "Relais du quartier",
+      "description": "Le foyer qui relaie l'information.",
+      "icon": "game-icons:megaphone",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Information relayée au quartier pendant un exercice ou une alerte réelle, par radio ou affichage"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "poste-radio",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "resilience-locale",
+      "name": "Résilience locale",
+      "description": "Un quartier qui tient ensemble.",
+      "icon": "game-icons:castle",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice de crise inopiné mené avec le groupe d'entraide (scénario tiré au sort), débriefé",
+        "Niveau Résilient atteint dans Shelterkwak"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "transmettre-preparation",
+          "rank": 1
+        },
+        {
+          "talentId": "relais-quartier",
+          "rank": 1
+        },
+        {
+          "talentId": "contact-hors-region",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
