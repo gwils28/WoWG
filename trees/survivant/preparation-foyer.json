@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "survivant",
+    "name": "Survivant",
+    "icon": "game-icons:campfire"
+  },
+  "specialization": {
+    "id": "preparation-foyer",
+    "name": "Préparation du foyer",
+    "description": "Eau, nourriture, énergie et évacuation : tenir de quelques heures à plusieurs mois sans les réseaux.",
+    "icon": "game-icons:backpack"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "eau-3-jours",
+      "name": "Eau pour 3 jours",
+      "description": "La première réserve, celle qui compte le plus.",
+      "icon": "game-icons:water-gallon",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Stock d'eau potable pour 3 jours pour tout le foyer, saisi dans l'inventaire Shelterkwak",
+        "Stock renouvelé à 6 mois (bidons remplis ou bouteilles dans leur date)"
+      ]
+    },
+    {
+      "id": "reserve-3-jours",
+      "name": "Placards de crise",
+      "description": "Savoir ce qu'on a et tenir 3 jours.",
+      "icon": "game-icons:mason-jar",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Inventaire de ce que contiennent déjà les placards fait",
+        "Nourriture pour 3 jours, dont des aliments mangeables sans cuisson, et un ouvre-boîte manuel"
+      ]
+    },
+    {
+      "id": "lumiere",
+      "name": "Lumière",
+      "description": "Ne jamais être pris dans le noir.",
+      "icon": "game-icons:flashlight",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une lampe frontale ou torche par personne, avec piles de rechange",
+        "Une lampe rangée à un endroit connu de tous, retrouvée dans le noir complet par chaque adulte"
+      ]
+    },
+    {
+      "id": "sac-evacuation",
+      "name": "Sac d'évacuation",
+      "description": "Pouvoir partir en 5 minutes avec l'essentiel.",
+      "icon": "game-icons:light-backpack",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un sac d'évacuation prêt pour le foyer (eau, en-cas, lampe, vêtements, trousse, affaires de l'enfant)",
+        "Contenu vérifié et ajusté tous les 6 mois, 2 fois (tailles de l'enfant, dates)"
+      ]
+    },
+    {
+      "id": "eau-potable",
+      "name": "Rendre l'eau potable",
+      "description": "Transformer une eau douteuse en eau buvable.",
+      "icon": "game-icons:water-drop",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pastilles de purification ou Javel non parfumée en stock, dosage noté sur une fiche",
+        "Eau brute rendue potable une fois par filtration puis ébullition ou chloration, en pleine nature"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-3-jours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisson-hors-reseau",
+      "name": "Cuisson hors réseau",
+      "description": "Manger chaud sans électricité ni gaz de ville.",
+      "icon": "game-icons:camp-cooking-pot",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Réchaud et combustible pour 3 jours, stockés en sécurité",
+        "Un repas complet du foyer cuit dehors sur le réchaud, en conditions réelles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reserve-3-jours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recharger",
+      "name": "Recharger",
+      "description": "Garder téléphones et radio en vie.",
+      "icon": "game-icons:battery-pack",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Batteries externes chargées en permanence, vérifiées chaque mois pendant 3 mois",
+        "Panneau solaire portable testé : un téléphone rechargé à 100 % sur une journée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lumiere",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "itineraires",
+      "name": "Itinéraires de repli",
+      "description": "Savoir par où partir et où se retrouver.",
+      "icon": "game-icons:treasure-map",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "2 itinéraires d'évacuation et 2 points de rendez-vous (dont un hors du quartier) repérés",
+        "Cartes papier de la région dans le sac, itinéraires surlignés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sac-evacuation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-14-jours",
+      "name": "Eau pour 14 jours",
+      "description": "Tenir deux semaines de coupure d'eau.",
+      "icon": "game-icons:water-bottle",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Stock d'eau potable pour 14 jours",
+        "Filtre portable (paille ou gravitaire) avec cartouche valide"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-potable",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reserve-14-jours",
+      "name": "Réserve de 14 jours",
+      "description": "Deux semaines de nourriture qui tourne.",
+      "icon": "game-icons:canned-fish",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Nourriture pour 14 jours",
+        "Rotation en place (premier entré, premier sorti), aucune date dépassée sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisson-hors-reseau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "station-electrique",
+      "name": "Station électrique",
+      "description": "Une réserve d'énergie pour les besoins vitaux.",
+      "icon": "game-icons:car-battery",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Besoins électriques prioritaires chiffrés en Wh par jour",
+        "Station portable de 500 Wh ou plus, rechargée au solaire et testée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recharger",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "orientation",
+      "name": "Carte et boussole",
+      "description": "Garder le cap sans GPS.",
+      "icon": "game-icons:compass",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Azimut pris et suivi à la boussole sur 1 km, arrivée au point visé",
+        "Parcours de 5 km fait à la carte et à la boussole, téléphone éteint"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "itineraires",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-hors-reseau",
+      "name": "Eau hors réseau",
+      "description": "Une source d'eau quand le robinet est sec.",
+      "icon": "game-icons:water-fountain",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Point d'eau accessible à pied repéré et testé (fontaine, source, distribution communale)",
+        "Trajet vers ce point chronométré, contenants et moyen de traitement prêts"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-14-jours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chaud-froid",
+      "name": "Chaud et froid",
+      "description": "Garder le foyer à bonne température sans réseau.",
+      "icon": "game-icons:thermometer-cold",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Couchage chaud hors réseau pour chacun (sacs de couchage, couvertures de survie)",
+        "Plan canicule écrit et pièce la plus fraîche identifiée, thermomètre intérieur en place"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "station-electrique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exercice-evacuation",
+      "name": "Exercice d'évacuation",
+      "description": "Partir vite, pour de vrai.",
+      "icon": "game-icons:exit-door",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice chronométré : tout le foyer dehors en moins de 15 min, sac pris",
+        "Moins de 5 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "orientation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-30-jours",
+      "name": "Eau pour 30 jours",
+      "description": "Un mois d'eau stockée et renouvelée.",
+      "icon": "game-icons:water-flask",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Stock d'eau potable pour 30 jours, renouvelé à 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-hors-reseau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "coupure-electrique",
+      "name": "Épreuve de coupure",
+      "description": "Couper le disjoncteur et tenir.",
+      "icon": "game-icons:battery-0",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "24 h disjoncteur général coupé, sans dommage",
+        "72 h disjoncteur coupé, sans dommage ni improvisation (épreuve Shelterkwak)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chaud-froid",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epreuve-eau",
+      "name": "Épreuve de l'eau",
+      "description": "Vivre sur ses seules réserves d'eau.",
+      "icon": "game-icons:manual-water-pump",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "48 h sans eau du réseau, sur ses réserves",
+        "7 jours sans eau du réseau (épreuve annuelle Shelterkwak)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-30-jours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "energie-appoint",
+      "name": "Énergie d'appoint",
+      "description": "Une semaine de besoins prioritaires au soleil.",
+      "icon": "game-icons:solar-power",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Station d'au moins 1 kWh rechargée au solaire, couvrant une semaine de besoins prioritaires",
+        "Semaine testée : éclairage, radio et téléphones tenus sur le solaire seul"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "coupure-electrique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-prevoyant",
+      "name": "Foyer prévoyant",
+      "description": "Les paliers d'autonomie du foyer, franchis un à un.",
+      "icon": "game-icons:campfire",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Niveau Paré atteint dans Shelterkwak (3 jours sans réseaux)",
+        "Niveau Prévoyant atteint (14 jours)",
+        "Niveau Endurant atteint (90 jours)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epreuve-eau",
+          "rank": 1
+        },
+        {
+          "talentId": "energie-appoint",
+          "rank": 1
+        },
+        {
+          "talentId": "reserve-14-jours",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
