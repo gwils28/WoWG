@@ -23,6 +23,14 @@
 
 ## Écarts au plan
 
+- Phase 8 : talent récompensé verrouillé au moment du rendu (cas possible après un retrait de rang manuel, ou pour une quête personnelle) : rendu refusé avec le motif, comme un clic sur le talent. Seuls un talent au rang max, supprimé ou d'un arbre disparu sont ignorés.
+- Phase 8 : au rendu, les talents sont traités par palier croissant (un parent récompensé passe avant son enfant) ; à l'annulation, par palier décroissant.
+- Phase 8 : annuler un rendu est refusé si le rang a déjà été retiré à la main (pas de -1 sans effet dans l'historique).
+- Phase 8 : une quête rapporte au moins 1 or, même si ses talents sont introuvables.
+- Phase 8 : périodes du rythme et échéance calculées sur la partie date UTC, comme le journal (même décalage possible entre minuit et 1 h heure de Paris).
+- Phase 8 : `quests` reste absent (pas `[]`) dans un arbre qui n'en a pas, pour que l'édition dans l'app ne réécrive pas les 36 arbres existants. L'éditeur met à jour les quêtes quand un talent est renommé, et retire un talent supprimé des quêtes (une quête sans talent restant est supprimée).
+- Phase 8 : le diff d'import signale aussi les quêtes ajoutées, modifiées, supprimées (affiché dans la page Import, compté dans « aucune différence »).
+
 - Hors plan (entre phases 6 et 7) : classes. La barre du haut ne liste plus les domaines (intenable à plusieurs dizaines) : onglet « Classes » qui ouvre directement la page `/classes` (recherche, tri, épingles). La fiche personnage n'affiche plus de classes. Une classe s'ouvre sur `/classe/:domaine/:spé` ; `/specialisation/:id` redirige. Les épingles sont dans la table `preferences` (migration 2) et dans la sauvegarde (champ `preferences` facultatif : une sauvegarde plus ancienne se restaure sans épingle). Activité d'une classe (tri « récentes ») = dernier import ou dernière saisie de rang (date d'enregistrement, pas la date déclarée).
 - Hors plan : niveau plafonné à 100 (courbe inchangée, 4 950 points), 5 paliers de 20 niveaux (Novice, Initié, Aguerri, Vétéran, Légende) avec un portrait par palier sur la fiche personnage.
 - Portraits : rendus du jeu, donc jamais versionnés (règle « aucun asset Blizzard » pour le dépôt). Dossier `portraits/` ignoré par git (`WOWG_PORTRAITS_DIR`), fichiers `palier-1.png` à `palier-5.png` (png, jpg ou webp), servis par `GET /api/portraits/:palier`. Sans fichier, un emblème générique s'affiche. Les rendus d'origine (fond à motif d'un site de rendu) ont été détourés en PNG transparents ; le fond de scène est généré en CSS.

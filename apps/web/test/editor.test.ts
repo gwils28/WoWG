@@ -52,7 +52,19 @@ describe('éditeur', () => {
     expect(next.talents.find((t) => t.id === 'semi-marathon')?.prerequisites).toEqual([
       { talentId: 'cadence', rank: 1 },
     ]);
+    // la quête qui ne récompensait que ce talent disparaît
+    expect(next.quests?.map((q) => q.id)).toEqual(['sorties-regulieres', 'preparer-le-semi']);
     expect(parseTree(next).ok).toBe(true);
+  });
+
+  it('retire un talent supprimé des quêtes qui en récompensent plusieurs', () => {
+    const next = removeTalent(load(), 'recuperation');
+    expect(next.quests?.find((q) => q.id === 'preparer-le-semi')?.talents).toEqual([
+      'semi-marathon',
+    ]);
+    const without = load();
+    delete without.quests;
+    expect('quests' in removeTalent(without, 'recuperation')).toBe(false);
   });
 
   it('renomme un talent et ses références', () => {
@@ -61,6 +73,7 @@ describe('éditeur', () => {
     expect(next.talents.find((t) => t.id === 'semi-marathon')?.prerequisites[0]).toEqual({
       talentId: 'intervalles',
     });
+    expect(next.quests?.find((q) => q.id === 'seance-piste')?.talents).toEqual(['intervalles']);
     expect(parseTree(next).ok).toBe(true);
   });
 

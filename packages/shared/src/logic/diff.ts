@@ -1,10 +1,22 @@
-import type { Talent, TreeFile } from '../schema';
+import type { Talent, TreeFile, TreeQuest } from '../schema';
 import type { Ranks } from './ranks';
 
 export interface TalentChange {
   id: string;
   name: string;
   fields: (keyof Talent)[];
+}
+
+export interface QuestChange {
+  id: string;
+  name: string;
+  fields: (keyof TreeQuest)[];
+}
+
+export interface QuestsDiff {
+  added: { id: string; name: string }[];
+  removed: { id: string; name: string }[];
+  modified: QuestChange[];
 }
 
 export interface TreeDiff {
@@ -17,6 +29,7 @@ export interface TreeDiff {
   orphans: { id: string; name: string; rank: number }[];
   /** Talents dont le rang courant dépasse le nouveau rang max. */
   overflows: { id: string; name: string; rank: number; maxRank: number }[];
+  quests: QuestsDiff;
 }
 
 const TALENT_FIELDS: (keyof Talent)[] = [
@@ -33,6 +46,25 @@ const TALENT_FIELDS: (keyof Talent)[] = [
 
 const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
+const QUEST_FIELDS: (keyof TreeQuest)[] = ['name', 'description', 'talents', 'steps', 'recurrence'];
+
+const brief = (q: TreeQuest) => ({ id: q.id, name: q.name });
+
+export function diffQuests(previous: TreeQuest[] = [], next: TreeQuest[] = []): QuestsDiff {
+  const prevById = new Map(previous.map((q) => [q.id, q]));
+  const nextIds = new Set(next.map((q) => q.id));
+  return {
+    added: next.filter((q) => !prevById.has(q.id)).map(brief),
+    removed: previous.filter((q) => !nextIds.has(q.id)).map(brief),
+    modified: next.flatMap((q) => {
+      const old = prevById.get(q.id);
+      if (!old) return [];
+      const fields = QUEST_FIELDS.filter((f) => !same(old[f], q[f]));
+      return fields.length ? [{ id: q.id, name: q.name, fields }] : [];
+    }),
+  };
+}
+
 export function diffTrees(previous: TreeFile | null, next: TreeFile, ranks: Ranks = {}): TreeDiff {
   if (!previous) {
     return {
@@ -43,6 +75,7 @@ export function diffTrees(previous: TreeFile | null, next: TreeFile, ranks: Rank
       modified: [],
       orphans: [],
       overflows: [],
+      quests: diffQuests([], next.quests),
     };
   }
   const prevById = new Map(previous.talents.map((t) => [t.id, t]));
@@ -68,5 +101,14 @@ export function diffTrees(previous: TreeFile | null, next: TreeFile, ranks: Rank
     .filter((t) => (ranks[t.id] ?? 0) > t.maxRank)
     .map((t) => ({ id: t.id, name: t.name, rank: ranks[t.id] ?? 0, maxRank: t.maxRank }));
 
-  return { isNew: false, metadataChanged, added, removed, modified, orphans, overflows };
+  return {
+    isNew: false,
+    metadataChanged,
+    added,
+    removed,
+    modified,
+    orphans,
+    overflows,
+    quests: diffQuests(previous.quests, next.quests),
+  };
 }

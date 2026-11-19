@@ -156,6 +156,76 @@
           "ranks"
         ]
       }
+    },
+    "quests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "talents": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+            }
+          },
+          "steps": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "recurrence": {
+            "type": "object",
+            "properties": {
+              "times": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "per": {
+                "type": "string",
+                "enum": [
+                  "day",
+                  "week",
+                  "month"
+                ]
+              },
+              "periods": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 52
+              }
+            },
+            "required": [
+              "times",
+              "per",
+              "periods"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "talents"
+        ]
+      }
     }
   },
   "required": [

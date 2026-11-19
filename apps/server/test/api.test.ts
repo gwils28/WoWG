@@ -104,6 +104,7 @@ describe('import', () => {
     await addRank('recuperation');
     const tree = sample();
     tree.talents = tree.talents.filter((t: { id: string }) => t.id !== 'recuperation');
+    delete tree.quests; // une quête récompense "recuperation"
     const preview = await call('POST', '/import/preview', { content: tree });
     expect(preview.body.diff.orphans).toEqual([
       { id: 'recuperation', name: 'Récupération', rank: 1 },
