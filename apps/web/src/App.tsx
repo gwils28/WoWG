@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { NavLink, Outlet, Route, Routes, useLocation } from 'react-router';
+import { Navigate, NavLink, Outlet, Route, Routes, useLocation } from 'react-router';
 import { api } from './lib/api';
 import { HomePage } from './pages/HomePage';
-import { ImportPage } from './pages/ImportPage';
+import { GameIcon } from './components/GameIcon';
 import { JournalPage } from './pages/JournalPage';
 import { ClassPage, LegacySpecRedirect } from './pages/ClassPage';
 import { ClassesPage } from './pages/ClassesPage';
+import { ToolsPage } from './pages/ToolsPage';
 
 function Layout() {
   const { data } = useQuery({ queryKey: ['character'], queryFn: api.character });
@@ -24,10 +25,18 @@ function Layout() {
           <NavLink to="/classes" className={inClasses ? 'active' : undefined}>
             Classes
           </NavLink>
-          <NavLink to="/journal">Journal</NavLink>
-          <NavLink to="/import">Import</NavLink>
         </nav>
         {data && <span className="topbar__level">Niv. {data.level}</span>}
+        {/* navigation secondaire : historique et maintenance, volontairement discrète */}
+        <nav className="subnav" aria-label="Secondaire">
+          <NavLink to="/journal" title="Journal de progression">
+            <GameIcon icon="game-icons:scroll-unfurled" size={16} />
+            <span>Journal</span>
+          </NavLink>
+          <NavLink to="/outils" title="Outils : import et sauvegarde" aria-label="Outils">
+            <GameIcon icon="game-icons:cog" size={16} />
+          </NavLink>
+        </nav>
       </header>
       <main className="content">
         <Outlet />
@@ -59,7 +68,8 @@ export function App() {
         <Route path="classe/:domainId/:specId?" element={<ClassPage />} />
         <Route path="specialisation/:id" element={<LegacySpecRedirect />} />
         <Route path="journal" element={<JournalPage />} />
-        <Route path="import" element={<ImportPage />} />
+        <Route path="outils" element={<ToolsPage />} />
+        <Route path="import" element={<Navigate to="/outils" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
