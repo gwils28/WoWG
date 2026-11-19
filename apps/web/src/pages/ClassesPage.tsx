@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import { api } from '../lib/api';
-import { matchesQuery, relativeDay, sortDomains, specPath, type ClassSort } from '../lib/classes';
+import { matchesQuery, classPath, relativeDay, sortDomains, type ClassSort } from '../lib/classes';
 import { GameIcon } from '../components/GameIcon';
 import { PinButton } from '../components/PinButton';
 
@@ -91,7 +91,7 @@ export function ClassesPage() {
             key={d.domain.id}
             className={`class-card panel${d.pinned ? ' class-card--pinned' : ''}`}
           >
-            <Link to={specPath(d.domain.id, d.specializations[0]!.id)} className="class-card__link">
+            <Link to={classPath(d.domain.id)} className="class-card__link">
               <span className="class-card__icon">
                 <GameIcon icon={d.domain.icon} size={34} />
               </span>
