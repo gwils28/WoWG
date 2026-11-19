@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gestionnaire-patrimoine",
+    "name": "Gestionnaire budget et patrimoine",
+    "icon": "game-icons:piggy-bank"
+  },
+  "specialization": {
+    "id": "budget-flux",
+    "name": "Budget et flux",
+    "description": "Suivre et piloter les flux du foyer : saisie, catégories, objectifs, épargne, charges et revenus.",
+    "icon": "game-icons:wallet"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "saisie-reguliere",
+      "name": "Saisie régulière",
+      "description": "Chaque dépense et chaque revenu saisis dans Kwak.",
+      "icon": "game-icons:notebook",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Dépenses et revenus saisis dans Kwak chaque semaine pendant 1 mois",
+        "3 mois sans semaine manquée",
+        "12 mois sans semaine manquée"
+      ]
+    },
+    {
+      "id": "categories",
+      "name": "Catégories",
+      "description": "Des catégories qui disent où va l'argent.",
+      "icon": "game-icons:files",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Toutes les dépenses du mois classées, moins de 5 % dans une catégorie fourre-tout",
+        "Catégories ponctuelles distinguées des récurrentes, 3 mois de suite"
+      ]
+    },
+    {
+      "id": "epargne-mensuelle",
+      "name": "Épargne mensuelle",
+      "description": "Un objectif d'épargne chaque mois.",
+      "icon": "game-icons:piggy-bank",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Objectif d'épargne mensuel défini dans Kwak",
+        "Objectif atteint 6 mois sur les 12 derniers",
+        "Objectif atteint 10 mois sur les 12 derniers"
+      ]
+    },
+    {
+      "id": "charges-fixes",
+      "name": "Charges fixes",
+      "description": "Connaître ce qui part chaque mois sans y penser.",
+      "icon": "game-icons:calendar",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Toutes les charges fixes saisies avec leur périodicité, total mensuel équivalent connu",
+        "Charges fixes passées en revue une fois par an, total comparé à l'année précédente"
+      ]
+    },
+    {
+      "id": "revue-mensuelle",
+      "name": "Revue du mois",
+      "description": "Un rendez-vous mensuel avec ses chiffres.",
+      "icon": "game-icons:checklist",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Revue mensuelle faite (écarts aux objectifs, 1 décision notée), 3 mois",
+        "6 mois de revues",
+        "12 mois de revues sans en manquer une"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "saisie-reguliere",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "objectifs-categories",
+      "name": "Objectifs par catégorie",
+      "description": "Une cible pour chaque poste de dépense.",
+      "icon": "game-icons:archery-target",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Objectif mensuel fixé pour chaque catégorie de dépense",
+        "80 % des catégories sous l'objectif ou dans la bande de tolérance, 3 mois",
+        "Même résultat 6 mois de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "categories"
+        }
+      ]
+    },
+    {
+      "id": "taux-epargne",
+      "name": "Taux d'épargne",
+      "description": "La part des revenus mise de côté, mesurée et améliorée.",
+      "icon": "game-icons:pie-chart",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Taux d'épargne moyen des 6 derniers mois calculé et noté comme point de départ",
+        "Taux d'épargne relevé de 5 points par rapport au point de départ",
+        "Taux d'épargne cible du plan tenu en moyenne sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epargne-mensuelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "renegociation",
+      "name": "Renégociation",
+      "description": "Payer le juste prix pour ses contrats.",
+      "icon": "game-icons:scales",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Assurances habitation et auto mises en concurrence, économie annuelle notée",
+        "Énergie, box et mobiles comparés, 300 € par an économisés au total"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charges-fixes"
+        }
+      ]
+    },
+    {
+      "id": "revue-annuelle",
+      "name": "Revue de l'année",
+      "description": "Prendre du recul sur douze mois.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Bilan annuel écrit : dépenses par catégorie face aux objectifs de l'année, 3 enseignements",
+        "Objectifs de l'année suivante fixés à partir du bilan"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-mensuelle",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "depenses-irregulieres",
+      "name": "Dépenses irrégulières",
+      "description": "Lisser ce qui tombe une fois par an.",
+      "icon": "game-icons:hourglass",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dépenses annuelles (impôts, assurances, vacances, cadeaux) converties en provisions mensuelles",
+        "Provisions annuelles ajustées après le bilan, écart entre prévu et réel sous 10 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "objectifs-categories",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epargne-automatique",
+      "name": "Épargne automatique",
+      "description": "Se payer en premier.",
+      "icon": "game-icons:receive-money",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Virements d'épargne programmés le jour de la paie",
+        "À chaque hausse de revenu, au moins la moitié de la hausse ajoutée aux virements"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "taux-epargne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revenus",
+      "name": "Revenus du foyer",
+      "description": "Le levier le plus puissant : gagner plus.",
+      "icon": "game-icons:money-stack",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Revenus du foyer et leur évolution sur 3 ans notés",
+        "Négociation salariale ou revenu complémentaire préparé avec des chiffres",
+        "Hausse de revenu obtenue"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "renegociation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevision-tresorerie",
+      "name": "Prévision de trésorerie",
+      "description": "Voir venir les mois qui arrivent.",
+      "icon": "game-icons:chart",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Prévision des 3 prochains mois faite et comparée au réel",
+        "Prévision à 12 mois tenue à 10 % près"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-annuelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "affectation-epargne",
+      "name": "Affectation de l'épargne",
+      "description": "Chaque euro épargné a une destination.",
+      "icon": "game-icons:two-coins",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Règle d'affectation écrite (précaution, objectifs, investissement)",
+        "Règle appliquée 6 mois de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epargne-automatique"
+        }
+      ]
+    },
+    {
+      "id": "impots",
+      "name": "Impôt sur le revenu",
+      "description": "Déclarer juste et connaître ses leviers.",
+      "icon": "game-icons:calculator",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Déclaration faite en vérifiant chaque case préremplie, avis d'imposition lu et compris",
+        "Taux marginal connu et leviers du foyer étudiés (frais réels, dons, emploi à domicile), note faite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revenus",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "gouvernance",
+      "name": "Budget du foyer",
+      "description": "Décider à plusieurs, avec des règles claires.",
+      "icon": "game-icons:family-house",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Réunion budgétaire trimestrielle du foyer pour les décisions communes (gros achats, objectifs), 4 trimestres",
+        "Règles du foyer écrites (dépenses communes, dépenses personnelles, seuil de décision commune)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevision-tresorerie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "budget-crise",
+      "name": "Budget de crise",
+      "description": "Savoir combien de temps on tient.",
+      "icon": "game-icons:umbrella",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Budget de crise écrit : dépenses coupées en premier et montant mensuel minimal du foyer",
+        "Plan écrit pour une baisse de revenu de 30 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "affectation-epargne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "depenses-alignees",
+      "name": "Dépenses alignées",
+      "description": "Dépenser pour ce qui compte vraiment.",
+      "icon": "game-icons:shopping-cart",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Dépenses classées essentiel, confort, plaisir ; 3 coupes faites sans regret",
+        "Budget plaisir assumé et tenu 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gouvernance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "train-de-vie",
+      "name": "Train de vie maîtrisé",
+      "description": "Les dépenses ne suivent pas mécaniquement les revenus.",
+      "icon": "game-icons:anchor",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Sur 2 ans, hausse des dépenses inférieure à la hausse des revenus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "budget-crise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maitre-flux",
+      "name": "Maître des flux",
+      "description": "Un budget qui tourne seul et finance les projets.",
+      "icon": "game-icons:coins-pile",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une année où toutes les dépenses imprévues sont absorbées sans toucher à la précaution ni aux objectifs",
+        "Deux années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "depenses-alignees"
+        },
+        {
+          "talentId": "train-de-vie"
+        },
+        {
+          "talentId": "depenses-irregulieres"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

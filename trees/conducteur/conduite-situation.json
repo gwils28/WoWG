@@ -351,7 +351,7 @@
       "column": 4,
       "maxRank": 2,
       "ranks": [
-        "Départ préparé seul : itinéraire, pauses, pneus en charge, niveaux, chargement",
+        "Départ préparé seul : itinéraire, pauses, chargement réparti et arrimé, pression des pneus réglée en mode charge",
         "Trajet de plus de 400 km avec 5 passagers ou plus, sans incident"
       ],
       "prerequisites": [

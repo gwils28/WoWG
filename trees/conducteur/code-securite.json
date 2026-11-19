@@ -117,7 +117,7 @@
       "maxRank": 3,
       "ranks": [
         "15 min de trajet en commentant les dangers à voix haute, 3 séances",
-        "1 séance complète sans freinage brusque (journal)",
+        "Carte des 5 points dangereux du trajet quotidien faite (intersection masquée, sortie d'école...), conduite adaptée notée",
         "10 vidéos de perception des risques sans erreur"
       ],
       "prerequisites": [
@@ -210,7 +210,7 @@
       "column": 4,
       "maxRank": 3,
       "ranks": [
-        "Numéros d'urgence (15, 17, 18, 112) mémorisés, gilets et triangle présents dans le véhicule",
+        "Numéros d'urgence (15, 17, 18, 112) mémorisés et conduite à tenir face à un accident (protéger, alerter, secourir) résumée",
         "Trousse de secours dans le véhicule, contenu vérifié",
         "Formation PSC1 suivie (attestation)"
       ],
@@ -361,7 +361,7 @@
       "maxRank": 2,
       "ranks": [
         "3 fiches d'analyse après une situation stressante (quoi, pourquoi, que faire la prochaine fois)",
-        "1 mois sans réaction agressive au volant (journal)"
+        "Règle écrite « secoué, je m'arrête en lieu sûr avant de repartir » appliquée pendant 6 mois (journal)"
       ],
       "prerequisites": [
         {
@@ -379,7 +379,7 @@
       "maxRank": 2,
       "ranks": [
         "39/40 à un examen blanc et PSC1 obtenu",
-        "1 an après la reprise : 39/40 sans révision préalable et solde de points intact"
+        "1 an après la reprise : 39/40 à un examen blanc sans révision préalable"
       ],
       "prerequisites": [
         {
