@@ -83,6 +83,14 @@ function CharacterHero({ c }: { c: Character }) {
             <dt>Spécialisations</dt>
             <dd>{specs}</dd>
           </div>
+          <div>
+            <dt>Or</dt>
+            <dd>
+              <Link to="/quetes" className="hero__gold">
+                {c.gold}
+              </Link>
+            </dd>
+          </div>
         </dl>
       </div>
     </section>

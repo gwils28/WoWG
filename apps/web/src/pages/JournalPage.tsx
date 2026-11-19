@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useSearchParams } from 'react-router';
-import { api, type JournalEntry, type JournalFilters } from '../lib/api';
+import { api, type GoldEventView, type JournalEntry, type JournalFilters } from '../lib/api';
 import { specPath } from '../lib/classes';
-import { formatDay, groupByDay, rankLabel } from '../lib/journal';
+import { formatDay, groupByDay, mergeTimeline, rankLabel } from '../lib/journal';
+import { GoldAmount } from '../components/quests/QuestParts';
 import { GameIcon } from '../components/GameIcon';
 
 const KEYS = ['domain', 'spec', 'from', 'to'] as const;
@@ -17,6 +18,7 @@ export function JournalPage() {
     queryKey: ['journal', filters],
     queryFn: () => api.journal(filters),
   });
+  const gold = useQuery({ queryKey: ['gold'], queryFn: api.gold });
 
   const domains = character.data?.domains ?? [];
   const specs = domains
@@ -37,7 +39,10 @@ export function JournalPage() {
   }
 
   const active = KEYS.some((k) => filters[k]);
-  const days = groupByDay(journal.data ?? []);
+  const timeline = journal.data
+    ? mergeTimeline(journal.data, gold.data?.events ?? [], filters)
+    : [];
+  const days = groupByDay(timeline);
 
   return (
     <div className="journal">
@@ -107,25 +112,29 @@ export function JournalPage() {
       <section className="panel journal__timeline">
         {journal.isPending && <p className="muted">Chargement...</p>}
         {journal.isError && <p className="error">{journal.error.message}</p>}
-        {journal.data?.length === 0 && (
+        {journal.data && timeline.length === 0 && (
           <p className="muted">
             {active
               ? 'Aucun événement pour ces filtres.'
               : 'Aucun rang gagné pour l’instant. Ouvre une spécialisation et monte ton premier talent.'}
           </p>
         )}
-        {journal.data && journal.data.length > 0 && (
+        {timeline.length > 0 && (
           <p className="journal__count muted">
-            {journal.data.length} événement{journal.data.length > 1 ? 's' : ''}
+            {timeline.length} événement{timeline.length > 1 ? 's' : ''}
           </p>
         )}
         {days.map((d) => (
           <div key={d.day} className="journal__day">
             <h2 className="journal__day-title">{formatDay(d.day)}</h2>
             <ul className="journal__entries">
-              {d.entries.map((e) => (
-                <Entry key={e.id} entry={e} />
-              ))}
+              {d.entries.map((e) =>
+                e.kind === 'gold' ? (
+                  <GoldEntry key={`gold-${e.id}`} entry={e} />
+                ) : (
+                  <Entry key={`rank-${e.id}`} entry={e} />
+                ),
+              )}
             </ul>
           </div>
         ))}
@@ -161,8 +170,39 @@ function Entry({ entry: e }: { entry: JournalEntry }) {
         <div className="journal-entry__spec muted">
           {e.domain?.name ?? '?'} / {e.specialization?.name ?? e.specializationId}
           {e.orphan && <span className="journal-entry__orphan"> · talent retiré de l'arbre</span>}
+          {e.questName && (
+            <Link to="/quetes" className="journal-entry__quest">
+              {' '}
+              · via la quête {e.questName}
+            </Link>
+          )}
         </div>
         {e.note && <p className="journal-entry__note">{e.note}</p>}
+      </div>
+    </li>
+  );
+}
+
+function GoldEntry({ entry: e }: { entry: GoldEventView }) {
+  const undo = e.reason === 'quest-undo';
+  return (
+    <li className={`journal-entry journal-entry--gold${undo ? ' journal-entry--loss' : ''}`}>
+      <span className="journal-entry__icon">
+        <GameIcon
+          icon={undo ? 'game-icons:back-forth' : 'game-icons:open-treasure-chest'}
+          size={30}
+        />
+      </span>
+      <div className="journal-entry__body">
+        <div className="journal-entry__head">
+          <Link to="/quetes" className="journal-entry__name">
+            {undo ? 'Rendu annulé' : 'Quête rendue'}
+            {e.questName ? ` : ${e.questName}` : ''}
+          </Link>
+          <span className="journal-entry__rank">
+            <GoldAmount amount={e.amount} sign />
+          </span>
+        </div>
       </div>
     </li>
   );

@@ -31,6 +31,83 @@ export const TalentSchema = z.object({
   ultimate: z.boolean().optional(),
 });
 
+export const QUEST_MAX_STEPS = 10;
+
+/** Rythme d'une quête répétable : `times` fois par `per`, pendant `periods` périodes réussies. */
+export const QuestRecurrenceSchema = z.object({
+  times: z.number().int().min(1).max(20),
+  per: z.enum(['day', 'week', 'month']),
+  periods: z.number().int().min(1).max(52),
+});
+
+const questSteps = z.array(z.string().min(1)).max(QUEST_MAX_STEPS);
+
+/** Quête proposée, définie dans un fichier d'arbre. Chaque talent récompensé gagne +1 rang. */
+export const TreeQuestSchema = z.object({
+  id: slug,
+  name: z.string().min(1),
+  description: z.string().min(1),
+  talents: z.array(slug).min(1),
+  steps: questSteps.optional(),
+  recurrence: QuestRecurrenceSchema.optional(),
+});
+
+export const QuestSizeSchema = z.enum(['small', 'medium', 'large']);
+
+export const QuestTalentRefSchema = z.object({ specializationId: slug, talentId: slug });
+
+/**
+ * Définition figée dans un suivi à l'acceptation (quête proposée ou personnelle) : modifier ou
+ * supprimer la quête ensuite ne change pas un suivi en cours.
+ */
+export const QuestDefinitionSchema = z.object({
+  name: z.string().min(1),
+  description: z.string(),
+  talents: z.array(QuestTalentRefSchema),
+  steps: z.array(z.string()),
+  recurrence: QuestRecurrenceSchema.optional(),
+  size: QuestSizeSchema.optional(),
+});
+
+/** Quête personnelle, écrite dans l'app. Sans talent, elle ne rapporte que de l'or (selon `size`). */
+export const CustomQuestSchema = z
+  .object({
+    name: z.string().trim().min(1),
+    description: z.string().default(''),
+    talents: z.array(QuestTalentRefSchema).default([]),
+    steps: questSteps.default([]),
+    recurrence: QuestRecurrenceSchema.optional(),
+    size: QuestSizeSchema.optional(),
+  })
+  .superRefine((q, ctx) => {
+    const seen = new Set<string>();
+    q.talents.forEach((t, i) => {
+      const key = `${t.specializationId}/${t.talentId}`;
+      if (seen.has(key)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['talents', i],
+          message: `talent "${key}" en double`,
+        });
+      }
+      seen.add(key);
+    });
+    if (q.talents.length === 0 && !q.size) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['size'],
+        message: 'une quête sans talent doit avoir une taille (small, medium, large)',
+      });
+    }
+    if (q.talents.length > 0 && q.size) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['size'],
+        message: "la taille ne s'applique qu'à une quête sans talent",
+      });
+    }
+  });
+
 /**
  * Structure seule, sans règles croisées. Sert à relire un arbre déjà stocké : une règle ajoutée
  * plus tard ne doit pas rendre illisibles les données existantes.
@@ -49,6 +126,8 @@ export const TreeFileStructureSchema = z.object({
     columns: z.number().int().min(1).max(6),
   }),
   talents: z.array(TalentSchema).min(1),
+  /** Facultatif : absent plutôt que vide, pour ne pas réécrire les arbres qui n'en ont pas. */
+  quests: z.array(TreeQuestSchema).optional(),
 });
 
 export const TreeFileSchema = TreeFileStructureSchema.superRefine((tree, ctx) => {
@@ -148,6 +227,33 @@ export const TreeFileSchema = TreeFileStructureSchema.superRefine((tree, ctx) =>
       }
     });
   });
+
+  const questIds = new Set<string>();
+  tree.quests?.forEach((q, i) => {
+    const path = ['quests', i];
+    if (questIds.has(q.id)) {
+      ctx.addIssue({ code: 'custom', path: [...path, 'id'], message: `quête "${q.id}" dupliquée` });
+    }
+    questIds.add(q.id);
+    const rewarded = new Set<string>();
+    q.talents.forEach((id, j) => {
+      if (!byId.has(id)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: [...path, 'talents', j],
+          message: `talent récompensé "${id}" inexistant`,
+        });
+      }
+      if (rewarded.has(id)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: [...path, 'talents', j],
+          message: `talent récompensé "${id}" en double`,
+        });
+      }
+      rewarded.add(id);
+    });
+  });
 });
 
 type Cell = { tier: number; column: number };
@@ -175,6 +281,14 @@ export type Prerequisite = z.infer<typeof PrerequisiteSchema>;
 export type Talent = z.infer<typeof TalentSchema>;
 export type TreeFile = z.infer<typeof TreeFileSchema>;
 export type TreeFileInput = z.input<typeof TreeFileSchema>;
+export type QuestRecurrence = z.infer<typeof QuestRecurrenceSchema>;
+export type QuestPeriod = QuestRecurrence['per'];
+export type TreeQuest = z.infer<typeof TreeQuestSchema>;
+export type QuestSize = z.infer<typeof QuestSizeSchema>;
+export type QuestTalentRef = z.infer<typeof QuestTalentRefSchema>;
+export type CustomQuest = z.infer<typeof CustomQuestSchema>;
+export type CustomQuestInput = z.input<typeof CustomQuestSchema>;
+export type QuestDefinition = z.infer<typeof QuestDefinitionSchema>;
 
 /** Rend les erreurs de validation lisibles : "talents[3].ranks : message". */
 export function formatIssues(error: z.ZodError): string[] {

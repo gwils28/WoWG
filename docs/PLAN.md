@@ -124,3 +124,42 @@ Le serveur applique ces mêmes fonctions (source unique de vérité). Le front s
 - **Phase 3** : on lance le serveur, puis on teste à la main avec `curl` (prévisualisation, application, +1 / -1, retrait refusé avec 409).
 - **Phases 4 à 6** : on lance `npm run dev`, puis on parcourt l'app dans Chrome (extension Claude in Chrome). Parcours : import de la fixture, montée de rangs jusqu'au déblocage d'un enfant, tentative de retrait refusée, édition d'un talent puis `git diff trees/`, journal filtré, export puis restauration de la sauvegarde. Captures d'écran pour valider le rendu.
 - **Phase 7** : utilisation réelle sur tes deux domaines.
+
+## v2 : quêtes et or (SPEC section 10)
+
+### Modèle
+
+Fichier d'arbre, champ facultatif :
+
+```ts
+quests?: TreeQuest[]
+TreeQuest {
+  id: slug                     // unique dans l'arbre
+  name, description
+  talents: slug[]              // >= 1, sans doublon, existants dans l'arbre
+  steps?: string[]             // 0 à 10
+  recurrence?: { times: 1..20, per: 'day' | 'week' | 'month', periods: 1..52 }
+}
+```
+
+Base, migration 3 :
+
+- `custom_quests` (id, definition JSON, created_at, updated_at) : talents référencés par `{ specializationId, talentId }`, ou aucun avec `size`.
+- `quest_runs` (id, source `tree` | `custom`, specialization_id + quest_id ou custom_quest_id, snapshot JSON de la définition, gold figé, accepted_at, deadline, steps_done JSON, status `active` | `completed` | `abandoned`, completed_at, note).
+- `quest_ticks` (id, run_id, occurred_at, created_at).
+- `gold_events` (id, amount signé, reason `quest` | `quest-undo` | plus tard `purchase`, run_id, occurred_at, created_at).
+- `rank_events.quest_run_id` nullable (ALTER TABLE ADD COLUMN).
+
+### Phases
+
+8. **Shared, quêtes** : schéma `quests` (règles croisées : ids uniques, talents existants), `export-schema`, diff étendu aux quêtes. Logique pure : disponibilité, périodes calendaires et progression du rythme, prête à rendre, barème d'or, rendu (talents ignorés si maxés), annulation (refus enfant dépendant ou solde négatif). Tests.
+9. **Serveur, quêtes et or** : migration 3, repository, routes (liste disponibles / actives / terminées, accepter, cocher étape, occurrence +/-, rendre, abandonner, annuler un rendu, CRUD quêtes perso, solde), journal et sauvegarde étendus. Tests d'API.
+10. **Front, quêtes** : onglet et page Quêtes, marqueurs « ! » / « ? » sur l'arbre et infobulle, dialogues accepter / rendre, formulaire de quête perso, solde d'or (barre du haut, fiche), journal.
+11. **Contenu, quêtes** : skill `generate-tree` (génération des quêtes + mode « ajouter des quêtes à un arbre existant »), puis ajout aux 36 arbres existants, classe par classe avec toi.
+12. **Boutique** : à spécifier (interview dédiée).
+
+### Vérification
+
+- Phase 8 : fixture avec quêtes valide, versions cassées (talent inconnu, id dupliqué) refusées avec message clair. Tests de périodes sur les bords (changement de semaine ISO, de mois).
+- Phase 9 : `curl` sur un serveur isolé (port 3101) : accepter, occurrences, rendre (rangs + or), annuler refusé quand un enfant dépend.
+- Phase 10 : parcours dans Chrome sur serveur isolé : quête proposée acceptée depuis un « ! », progression, rendu, déblocage d'un enfant, quête perso or seul, journal.

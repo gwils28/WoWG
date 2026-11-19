@@ -23,6 +23,29 @@
 
 ## Écarts au plan
 
+- Phase 10 : page `/quetes` (en cours, disponibles groupées par classe, épinglées d'abord, terminées) ; `/quetes?classe=<domaine>` filtre les disponibles (lien « Quêtes de la classe » sur la vue d'une classe). Onglet « Quêtes » avec le nombre de suivis en cours (badge doré si l'un est prêt à rendre), solde d'or dans la barre du haut et sur la fiche.
+- Phase 10 : marqueurs sur l'arbre : « ! » disponible, « ? » doré prêt à rendre, « ? » terne en cours ; une quête indisponible n'est pas signalée. Le marqueur est décoratif (le clic sur le talent monte toujours un rang) ; l'infobulle liste les quêtes du talent.
+- Phase 10 : confirmations en deux temps dans la page (abandonner, supprimer, annuler un rendu), jamais de boîte du navigateur.
+- Phase 10 : journal : l'or apparaît seulement sans filtre de domaine ou de spécialisation (il n'appartient à aucune classe), et suit les filtres de dates. À date égale, la ligne d'or d'un rendu passe au-dessus des rangs qu'il a accordés.
+- Phase 10 : l'échéance proposée à l'acceptation est calculée côté client à partir de la date locale ; la date d'une occurrence est saisie en date locale (comme un rang).
+
+- Phase 9 : une occurrence est acceptée dès le début de la période d'acceptation (sortie du lundi pour une quête acceptée le jeudi), cohérent avec le calcul du rythme. Avant cette période : 400.
+- Phase 9 : annuler un rendu remet le suivi « en cours » (étapes et occurrences conservées, donc prêt à rendre de nouveau). Refusé si la même quête a été reprise entre-temps (un seul suivi actif par quête, aussi garanti par un index unique partiel).
+- Phase 9 : les rangs accordés au rendu sont gardés dans le suivi (`grants`) pour l'annulation ; les événements de rang et d'or portent l'id du suivi.
+- Phase 9 : supprimer une quête personnelle la supprime vraiment ; ses suivis gardent leur copie de la définition.
+- Phase 9 : le journal (`GET /journal`) reste celui des rangs, enrichi de `questRunId` et `questName`. Les événements d'or sont sur `GET /gold` ; la fusion dans la page Journal se fera au front (phase 10).
+- Phase 9 : l'état des quêtes d'un arbre (`questStates` : available, unavailable, active, ready) n'est renvoyé que par `GET /specializations/:id`.
+- Phase 9 : horloge injectable (`now` dans `createApp`) utilisée par les quêtes uniquement ; les rangs saisis à la main gardent l'heure réelle.
+- Phase 9 : `app.ts` découpé : routes des quêtes dans `quests.ts`, accès base dans `quest-repository.ts`, utilitaires HTTP dans `http.ts`.
+
+- Phase 8 : talent récompensé verrouillé au moment du rendu (cas possible après un retrait de rang manuel, ou pour une quête personnelle) : rendu refusé avec le motif, comme un clic sur le talent. Seuls un talent au rang max, supprimé ou d'un arbre disparu sont ignorés.
+- Phase 8 : au rendu, les talents sont traités par palier croissant (un parent récompensé passe avant son enfant) ; à l'annulation, par palier décroissant.
+- Phase 8 : annuler un rendu est refusé si le rang a déjà été retiré à la main (pas de -1 sans effet dans l'historique).
+- Phase 8 : une quête rapporte au moins 1 or, même si ses talents sont introuvables.
+- Phase 8 : périodes du rythme et échéance calculées sur la partie date UTC, comme le journal (même décalage possible entre minuit et 1 h heure de Paris).
+- Phase 8 : `quests` reste absent (pas `[]`) dans un arbre qui n'en a pas, pour que l'édition dans l'app ne réécrive pas les 36 arbres existants. L'éditeur met à jour les quêtes quand un talent est renommé, et retire un talent supprimé des quêtes (une quête sans talent restant est supprimée).
+- Phase 8 : le diff d'import signale aussi les quêtes ajoutées, modifiées, supprimées (affiché dans la page Import, compté dans « aucune différence »).
+
 - Hors plan (entre phases 6 et 7) : classes. La barre du haut ne liste plus les domaines (intenable à plusieurs dizaines) : onglet « Classes » qui ouvre directement la page `/classes` (recherche, tri, épingles). La fiche personnage n'affiche plus de classes. Une classe s'ouvre sur `/classe/:domaine/:spé` ; `/specialisation/:id` redirige. Les épingles sont dans la table `preferences` (migration 2) et dans la sauvegarde (champ `preferences` facultatif : une sauvegarde plus ancienne se restaure sans épingle). Activité d'une classe (tri « récentes ») = dernier import ou dernière saisie de rang (date d'enregistrement, pas la date déclarée).
 - Hors plan : niveau plafonné à 100 (courbe inchangée, 4 950 points), 5 paliers de 20 niveaux (Novice, Initié, Aguerri, Vétéran, Légende) avec un portrait par palier sur la fiche personnage.
 - Portraits : rendus du jeu, donc jamais versionnés (règle « aucun asset Blizzard » pour le dépôt). Dossier `portraits/` ignoré par git (`WOWG_PORTRAITS_DIR`), fichiers `palier-1.png` à `palier-5.png` (png, jpg ou webp), servis par `GET /api/portraits/:palier`. Sans fichier, un emblème générique s'affiche. Les rendus d'origine (fond à motif d'un site de rendu) ont été détourés en PNG transparents ; le fond de scène est généré en CSS.

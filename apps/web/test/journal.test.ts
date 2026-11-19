@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import type { JournalEntry } from '../src/lib/api';
-import { formatDay, groupByDay, rankLabel, summarizeBackup } from '../src/lib/journal';
+import {
+  formatDay,
+  groupByDay,
+  mergeTimeline,
+  rankLabel,
+  summarizeBackup,
+} from '../src/lib/journal';
+import type { GoldEventView } from '../src/lib/api';
 
 const entry = (id: number, occurredAt: string): JournalEntry =>
   ({ id, occurredAt, delta: 1, rankAfter: 1, maxRank: 3 }) as JournalEntry;
@@ -39,5 +46,26 @@ describe('journal', () => {
     ).toEqual({ exportedAt: '2026-11-18T10:00:00.000Z', specializations: 2, events: 1 });
     expect(() => summarizeBackup({ domain: {} })).toThrow(/pas une sauvegarde/);
     expect(() => summarizeBackup({ format: 'wowg-backup', events: [] })).toThrow(/incomplète/);
+  });
+});
+
+describe('chronologie rangs et or', () => {
+  const gold = (id: number, occurredAt: string): GoldEventView =>
+    ({ id, occurredAt, amount: 2, reason: 'quest' }) as GoldEventView;
+
+  it('fusionne par date, ligne d or en tête à date égale', () => {
+    const items = mergeTimeline(
+      [entry(1, '2026-11-18T10:00:00.000Z'), entry(2, '2026-11-19T10:00:00.000Z')],
+      [gold(1, '2026-11-19T10:00:00.000Z'), gold(2, '2026-11-01T10:00:00.000Z')],
+      {},
+    );
+    expect(items.map((i) => `${i.kind}${i.id}`)).toEqual(['gold1', 'rank2', 'rank1', 'gold2']);
+  });
+
+  it('masque l or avec un filtre de classe, applique les filtres de dates', () => {
+    const g = [gold(1, '2026-11-19T10:00:00.000Z'), gold(2, '2026-11-01T10:00:00.000Z')];
+    expect(mergeTimeline([], g, { domain: 'boxer' })).toEqual([]);
+    expect(mergeTimeline([], g, { from: '2026-11-10' }).map((i) => i.id)).toEqual([1]);
+    expect(mergeTimeline([], g, { to: '2026-11-10' }).map((i) => i.id)).toEqual([2]);
   });
 });

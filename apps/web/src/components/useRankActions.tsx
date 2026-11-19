@@ -19,6 +19,8 @@ export function useRankActions(id: string, tree: TreeFile | undefined, ranks: Ra
     void qc.invalidateQueries({ queryKey: ['character'] });
     void qc.invalidateQueries({ queryKey: ['specs'] });
     void qc.invalidateQueries({ queryKey: ['journal'] });
+    // un rang change la disponibilité des quêtes
+    void qc.invalidateQueries({ queryKey: ['quests'] });
   };
   const onError = (e: Error) =>
     toast(e instanceof ApiError ? e.errors.join(', ') : e.message, 'error');

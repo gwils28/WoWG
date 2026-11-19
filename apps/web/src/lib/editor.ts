@@ -51,7 +51,10 @@ export function withMaxRank(talent: Talent, maxRank: number): Talent {
   return { ...talent, maxRank, ranks };
 }
 
-/** Renomme l'id d'un talent (talents nouveaux uniquement) et met à jour les prérequis qui le visent. */
+/**
+ * Renomme l'id d'un talent (talents nouveaux uniquement) et met à jour les prérequis et les quêtes
+ * qui le visent.
+ */
 export function renameTalent(tree: TreeFile, oldId: string, newId: string): TreeFile {
   return {
     ...tree,
@@ -62,16 +65,30 @@ export function renameTalent(tree: TreeFile, oldId: string, newId: string): Tree
         p.talentId === oldId ? { ...p, talentId: newId } : p,
       ),
     })),
+    ...(tree.quests && {
+      quests: tree.quests.map((q) => ({
+        ...q,
+        talents: q.talents.map((t) => (t === oldId ? newId : t)),
+      })),
+    }),
   };
 }
 
-/** Supprime un talent et les prérequis qui le référencent. */
+/**
+ * Supprime un talent, les prérequis qui le référencent et ses mentions dans les quêtes. Une quête
+ * qui ne récompense plus aucun talent est supprimée.
+ */
 export function removeTalent(tree: TreeFile, id: string): TreeFile {
   return {
     ...tree,
     talents: tree.talents
       .filter((t) => t.id !== id)
       .map((t) => ({ ...t, prerequisites: t.prerequisites.filter((p) => p.talentId !== id) })),
+    ...(tree.quests && {
+      quests: tree.quests
+        .map((q) => ({ ...q, talents: q.talents.filter((t) => t !== id) }))
+        .filter((q) => q.talents.length > 0),
+    }),
   };
 }
 

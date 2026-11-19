@@ -21,7 +21,10 @@ export function hasChanges(diff: TreeDiff) {
     diff.added.length > 0 ||
     diff.removed.length > 0 ||
     diff.modified.length > 0 ||
-    diff.metadataChanged.length > 0
+    diff.metadataChanged.length > 0 ||
+    diff.quests.added.length > 0 ||
+    diff.quests.removed.length > 0 ||
+    diff.quests.modified.length > 0
   );
 }
 
@@ -30,7 +33,8 @@ export function DiffSummary({ diff }: { diff: TreeDiff }) {
     return (
       <div className="diff">
         <p className="diff__line diff__line--added">
-          Nouvel arbre : {diff.added.length} talents seront créés.
+          Nouvel arbre : {diff.added.length} talents seront créés
+          {diff.quests.added.length > 0 && `, avec ${diff.quests.added.length} quêtes`}.
         </p>
       </div>
     );
@@ -66,6 +70,7 @@ export function DiffSummary({ diff }: { diff: TreeDiff }) {
           {diff.removed.map((t) => t.name).join(', ')}
         </p>
       )}
+      <QuestsDiffLines diff={diff} />
       {diff.orphans.length > 0 && (
         <p className="diff__warn">
           Progression conservée mais orpheline :{' '}
@@ -88,4 +93,30 @@ export function diffMarks(diff: TreeDiff) {
   for (const t of diff.added) marks[t.id] = 'added';
   for (const m of diff.modified) marks[m.id] = 'modified';
   return marks;
+}
+
+function QuestsDiffLines({ diff }: { diff: TreeDiff }) {
+  const { added, removed, modified } = diff.quests;
+  const names = (list: { name: string }[]) => list.map((q) => q.name).join(', ');
+  return (
+    <>
+      {added.length > 0 && (
+        <p className="diff__line diff__line--added">
+          + {added.length} quête{added.length > 1 ? 's' : ''} : {names(added)}
+        </p>
+      )}
+      {modified.length > 0 && (
+        <p className="diff__line diff__line--modified">
+          ~ {modified.length} quête{modified.length > 1 ? 's' : ''} modifiée
+          {modified.length > 1 ? 's' : ''} : {names(modified)}
+        </p>
+      )}
+      {removed.length > 0 && (
+        <p className="diff__line diff__line--removed">
+          - {removed.length} quête{removed.length > 1 ? 's' : ''} supprimée
+          {removed.length > 1 ? 's' : ''} : {names(removed)}
+        </p>
+      )}
+    </>
+  );
 }

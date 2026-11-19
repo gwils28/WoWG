@@ -7,6 +7,7 @@ import {
   type TreeFile,
 } from '@wowg/shared';
 import { transaction, type Db } from './db';
+import { createQuestRepository, type QuestData } from './quest-repository';
 
 export interface StoredSpecialization {
   id: string;
@@ -21,6 +22,8 @@ export interface StoredEvent extends RankEvent {
   id: number;
   specializationId: string;
   createdAt: string;
+  /** Suivi de quête à l'origine de l'événement (rendu ou annulation), sinon null. */
+  questRunId: number | null;
 }
 
 interface SpecRow {
@@ -40,6 +43,7 @@ interface EventRow {
   occurred_at: string;
   note: string | null;
   created_at: string;
+  quest_run_id: number | null;
 }
 
 const toSpec = (r: SpecRow): StoredSpecialization => ({
@@ -60,6 +64,7 @@ const toEvent = (r: EventRow): StoredEvent => ({
   occurredAt: r.occurred_at,
   note: r.note,
   createdAt: r.created_at,
+  questRunId: r.quest_run_id,
 });
 
 const now = () => new Date().toISOString();
@@ -106,15 +111,30 @@ export function createRepository(db: Db) {
 
     addEvent(
       specializationId: string,
-      e: { talentId: string; delta: RankDelta; occurredAt?: string; note?: string | null },
+      e: {
+        talentId: string;
+        delta: RankDelta;
+        occurredAt?: string;
+        note?: string | null;
+        questRunId?: number | null;
+      },
     ): StoredEvent {
       const ts = now();
       const res = db
         .prepare(
-          `INSERT INTO rank_events (specialization_id, talent_id, delta, occurred_at, note, created_at)
-           VALUES (?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO rank_events
+             (specialization_id, talent_id, delta, occurred_at, note, created_at, quest_run_id)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
         )
-        .run(specializationId, e.talentId, e.delta, e.occurredAt ?? ts, e.note ?? null, ts);
+        .run(
+          specializationId,
+          e.talentId,
+          e.delta,
+          e.occurredAt ?? ts,
+          e.note ?? null,
+          ts,
+          e.questRunId ?? null,
+        );
       const row = db.prepare('SELECT * FROM rank_events WHERE id = ?').get(res.lastInsertRowid);
       return toEvent(row as unknown as EventRow);
     },
@@ -138,11 +158,15 @@ export function createRepository(db: Db) {
     /** Remplace tout le contenu (restauration d'une sauvegarde). */
     replaceAll(
       specs: Omit<StoredSpecialization, 'domainId'>[],
-      events: StoredEvent[],
+      events: (Omit<StoredEvent, 'questRunId'> & { questRunId?: number | null })[],
       preferences: Record<string, unknown> = {},
+      quests?: QuestData,
     ) {
+      const questRepo = createQuestRepository(db);
       transaction(db, () => {
-        db.exec('DELETE FROM rank_events; DELETE FROM specializations; DELETE FROM preferences;');
+        db.exec('DELETE FROM rank_events;');
+        questRepo.clear();
+        db.exec('DELETE FROM specializations; DELETE FROM preferences;');
         for (const [key, value] of Object.entries(preferences)) this.setPreference(key, value);
         const insSpec = db.prepare(
           `INSERT INTO specializations (id, domain_id, definition, source_path, imported_at, updated_at)
@@ -158,9 +182,11 @@ export function createRepository(db: Db) {
             s.updatedAt,
           );
         }
+        if (quests) questRepo.insertAll(quests);
         const insEvent = db.prepare(
-          `INSERT INTO rank_events (specialization_id, talent_id, delta, occurred_at, note, created_at)
-           VALUES (?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO rank_events
+             (specialization_id, talent_id, delta, occurred_at, note, created_at, quest_run_id)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
         );
         for (const e of events) {
           insEvent.run(
@@ -170,6 +196,7 @@ export function createRepository(db: Db) {
             e.occurredAt,
             e.note ?? null,
             e.createdAt,
+            e.questRunId ?? null,
           );
         }
       });

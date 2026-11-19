@@ -1,13 +1,20 @@
 {
   "schemaVersion": 1,
-  "domain": { "id": "sport-sante", "name": "Sport / santé", "icon": "game-icons:muscle-up" },
+  "domain": {
+    "id": "sport-sante",
+    "name": "Sport / santé",
+    "icon": "game-icons:muscle-up"
+  },
   "specialization": {
     "id": "course-a-pied",
     "name": "Course à pied",
     "description": "Arbre de test : endurance, vitesse et objectif semi-marathon.",
     "icon": "game-icons:run"
   },
-  "grid": { "tiers": 3, "columns": 3 },
+  "grid": {
+    "tiers": 3,
+    "columns": 3
+  },
   "talents": [
     {
       "id": "endurance",
@@ -38,7 +45,12 @@
       "column": 1,
       "maxRank": 2,
       "ranks": ["6 x 400 m", "10 x 400 m"],
-      "prerequisites": [{ "talentId": "endurance", "rank": 2 }]
+      "prerequisites": [
+        {
+          "talentId": "endurance",
+          "rank": 2
+        }
+      ]
     },
     {
       "id": "recuperation",
@@ -59,8 +71,46 @@
       "column": 2,
       "maxRank": 1,
       "ranks": ["Terminer un semi-marathon officiel"],
-      "prerequisites": [{ "talentId": "fractionne" }, { "talentId": "cadence", "rank": 1 }],
+      "prerequisites": [
+        {
+          "talentId": "fractionne"
+        },
+        {
+          "talentId": "cadence",
+          "rank": 1
+        }
+      ],
       "ultimate": true
+    }
+  ],
+  "quests": [
+    {
+      "id": "sorties-regulieres",
+      "name": "Sorties régulières",
+      "description": "Courir en endurance fondamentale, sans chercher la vitesse.",
+      "talents": ["endurance"],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seance-piste",
+      "name": "Séance sur piste",
+      "description": "Découvrir le fractionné sur une piste d'athlétisme.",
+      "talents": ["fractionne"],
+      "steps": [
+        "Trouver une piste accessible",
+        "Faire 6 x 400 m",
+        "Noter les temps de chaque répétition"
+      ]
+    },
+    {
+      "id": "preparer-le-semi",
+      "name": "Préparer le semi",
+      "description": "Boucler un semi-marathon en soignant la récupération.",
+      "talents": ["recuperation", "semi-marathon"]
     }
   ]
 }

@@ -7,9 +7,14 @@ import { JournalPage } from './pages/JournalPage';
 import { ClassPage, LegacySpecRedirect } from './pages/ClassPage';
 import { ClassesPage } from './pages/ClassesPage';
 import { ToolsPage } from './pages/ToolsPage';
+import { QuestsPage } from './pages/QuestsPage';
+import { GoldAmount } from './components/quests/QuestParts';
 
 function Layout() {
   const { data } = useQuery({ queryKey: ['character'], queryFn: api.character });
+  const quests = useQuery({ queryKey: ['quests'], queryFn: api.quests });
+  const activeCount = quests.data?.active.length ?? 0;
+  const readyCount = quests.data?.active.filter((r) => r.progress.ready).length ?? 0;
   // l'onglet Classes reste actif sur la page d'une classe (/classe/...)
   const inClasses = useLocation().pathname.startsWith('/classe');
   return (
@@ -25,8 +30,24 @@ function Layout() {
           <NavLink to="/classes" className={inClasses ? 'active' : undefined}>
             Classes
           </NavLink>
+          <NavLink to="/quetes">
+            Quêtes
+            {activeCount > 0 && (
+              <span
+                className={`topnav__badge${readyCount > 0 ? ' topnav__badge--ready' : ''}`}
+                title={`${activeCount} en cours${readyCount ? `, ${readyCount} à rendre` : ''}`}
+              >
+                {activeCount}
+              </span>
+            )}
+          </NavLink>
         </nav>
         {data && <span className="topbar__level">Niv. {data.level}</span>}
+        {data && (
+          <span className="topbar__gold">
+            <GoldAmount amount={data.gold} />
+          </span>
+        )}
         {/* navigation secondaire : historique et maintenance, volontairement discrète */}
         <nav className="subnav" aria-label="Secondaire">
           <NavLink to="/journal" title="Journal de progression">
@@ -67,6 +88,7 @@ export function App() {
         <Route path="classes" element={<ClassesPage />} />
         <Route path="classe/:domainId/:specId?" element={<ClassPage />} />
         <Route path="specialisation/:id" element={<LegacySpecRedirect />} />
+        <Route path="quetes" element={<QuestsPage />} />
         <Route path="journal" element={<JournalPage />} />
         <Route path="outils" element={<ToolsPage />} />
         <Route path="import" element={<Navigate to="/outils" replace />} />

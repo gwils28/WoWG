@@ -27,7 +27,7 @@ for (const file of files) {
   if (res.ok) {
     const { tree } = res;
     console.log(
-      `✓ ${file} : ${tree.domain.name} / ${tree.specialization.name}, ${tree.talents.length} talents, ${maxPoints(tree)} points`,
+      `✓ ${file} : ${tree.domain.name} / ${tree.specialization.name}, ${tree.talents.length} talents, ${maxPoints(tree)} points, ${tree.quests?.length ?? 0} quêtes`,
     );
   } else {
     failed = true;

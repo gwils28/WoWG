@@ -1,14 +1,14 @@
-import type { JournalEntry } from './api';
+import type { GoldEventView, JournalEntry, JournalFilters } from './api';
 
-export interface JournalDay {
+export interface JournalDay<T = JournalEntry> {
   /** AAAA-MM-JJ, tel que saisi (pas de conversion de fuseau) */
   day: string;
-  entries: JournalEntry[];
+  entries: T[];
 }
 
 /** Regroupe des entrées déjà triées (récentes d'abord) par jour, en gardant l'ordre. */
-export function groupByDay(entries: JournalEntry[]): JournalDay[] {
-  const days: JournalDay[] = [];
+export function groupByDay<T extends { occurredAt: string }>(entries: T[]): JournalDay<T>[] {
+  const days: JournalDay<T>[] = [];
   for (const e of entries) {
     const day = e.occurredAt.slice(0, 10);
     const last = days.at(-1);
@@ -27,6 +27,35 @@ export function formatDay(day: string): string {
     month: 'long',
     year: 'numeric',
   });
+}
+
+export type TimelineItem = ({ kind: 'rank' } & JournalEntry) | ({ kind: 'gold' } & GoldEventView);
+
+/**
+ * Rangs et or dans une seule chronologie (récents d'abord). L'or n'appartient à aucune classe :
+ * il n'apparaît que sans filtre de domaine ou de spécialisation, mais suit les filtres de dates.
+ */
+export function mergeTimeline(
+  ranks: JournalEntry[],
+  gold: GoldEventView[],
+  filters: JournalFilters,
+): TimelineItem[] {
+  const goldShown =
+    filters.domain || filters.spec
+      ? []
+      : gold.filter((g) => {
+          const day = g.occurredAt.slice(0, 10);
+          return (!filters.from || day >= filters.from) && (!filters.to || day <= filters.to);
+        });
+  return [
+    ...ranks.map((r) => ({ kind: 'rank' as const, ...r })),
+    ...goldShown.map((g) => ({ kind: 'gold' as const, ...g })),
+  ].sort(
+    (a, b) =>
+      b.occurredAt.localeCompare(a.occurredAt) ||
+      // à date égale : la ligne d'or d'un rendu en tête, au-dessus des rangs qu'il a accordés
+      (a.kind === b.kind ? b.id - a.id : a.kind === 'gold' ? -1 : 1),
+  );
 }
 
 /** "Rang 2 → 3 / 5" pour un gain, "Rang 3 → 2 / 5" pour un retrait. */
