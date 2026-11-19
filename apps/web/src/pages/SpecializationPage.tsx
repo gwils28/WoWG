@@ -5,6 +5,7 @@ import { diffTrees, parseTree, type TreeFile } from '@wowg/shared';
 import { api, ApiError } from '../lib/api';
 import { classPath, specPath } from '../lib/classes';
 import { errorsByTalent, isCellFree, newTalentAt } from '../lib/editor';
+import { talentQuestMarks } from '../lib/quests';
 import { DiffSummary, diffMarks, hasChanges } from '../components/DiffSummary';
 import { GameIcon } from '../components/GameIcon';
 import { PinButton } from '../components/PinButton';
@@ -130,6 +131,7 @@ export function SpecializationPage({ id }: { id: string }) {
                 ranks={ranks}
                 onAdd={onAdd}
                 onRemove={onRemove}
+                quests={talentQuestMarks(tree, spec.data.questStates)}
               />
             )}
           </div>

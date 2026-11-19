@@ -23,6 +23,12 @@
 
 ## Écarts au plan
 
+- Phase 10 : page `/quetes` (en cours, disponibles groupées par classe, épinglées d'abord, terminées) ; `/quetes?classe=<domaine>` filtre les disponibles (lien « Quêtes de la classe » sur la vue d'une classe). Onglet « Quêtes » avec le nombre de suivis en cours (badge doré si l'un est prêt à rendre), solde d'or dans la barre du haut et sur la fiche.
+- Phase 10 : marqueurs sur l'arbre : « ! » disponible, « ? » doré prêt à rendre, « ? » terne en cours ; une quête indisponible n'est pas signalée. Le marqueur est décoratif (le clic sur le talent monte toujours un rang) ; l'infobulle liste les quêtes du talent.
+- Phase 10 : confirmations en deux temps dans la page (abandonner, supprimer, annuler un rendu), jamais de boîte du navigateur.
+- Phase 10 : journal : l'or apparaît seulement sans filtre de domaine ou de spécialisation (il n'appartient à aucune classe), et suit les filtres de dates. À date égale, la ligne d'or d'un rendu passe au-dessus des rangs qu'il a accordés.
+- Phase 10 : l'échéance proposée à l'acceptation est calculée côté client à partir de la date locale ; la date d'une occurrence est saisie en date locale (comme un rang).
+
 - Phase 9 : une occurrence est acceptée dès le début de la période d'acceptation (sortie du lundi pour une quête acceptée le jeudi), cohérent avec le calcul du rythme. Avant cette période : 400.
 - Phase 9 : annuler un rendu remet le suivi « en cours » (étapes et occurrences conservées, donc prêt à rendre de nouveau). Refusé si la même quête a été reprise entre-temps (un seul suivi actif par quête, aussi garanti par un index unique partiel).
 - Phase 9 : les rangs accordés au rendu sont gardés dans le suivi (`grants`) pour l'annulation ; les événements de rang et d'or portent l'id du suivi.

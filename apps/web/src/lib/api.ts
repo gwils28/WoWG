@@ -1,4 +1,16 @@
-import type { LevelProgress, LevelTier, Ranks, TreeDiff, TreeFile } from '@wowg/shared';
+import type {
+  CustomQuestInput,
+  LevelProgress,
+  LevelTier,
+  QuestDefinition,
+  QuestProgress,
+  QuestRecurrence,
+  QuestSize,
+  QuestTalentRef,
+  Ranks,
+  TreeDiff,
+  TreeFile,
+} from '@wowg/shared';
 
 export interface SpecSummary {
   id: string;
@@ -14,6 +26,18 @@ export interface SpecDetail extends SpecSummary {
   ranks: Ranks;
   orphans: { talentId: string; rank: number }[];
   sourcePath: string | null;
+  /** État des quêtes proposées de l'arbre (marqueurs « ! » et « ? »). */
+  questStates?: TreeQuestState[];
+}
+
+export type TreeQuestStateKind = 'available' | 'unavailable' | 'active' | 'ready';
+
+export interface TreeQuestState {
+  id: string;
+  talents: string[];
+  state: TreeQuestStateKind;
+  runId: number | null;
+  reason?: string;
 }
 
 export interface DomainSummary {
@@ -33,6 +57,7 @@ export interface Character extends LevelProgress {
   /** Ids des domaines épinglés, dans l'ordre d'épinglage. */
   pinned: string[];
   domains: DomainSummary[];
+  gold: number;
 }
 
 export interface RankEventView {
@@ -54,6 +79,8 @@ export interface JournalEntry extends RankEventView {
   orphan: boolean;
   domain: TreeFile['domain'] | null;
   specialization: TreeFile['specialization'] | null;
+  questRunId: number | null;
+  questName: string | null;
 }
 
 export interface JournalFilters {
@@ -69,6 +96,93 @@ export interface ImportPreview {
   diff: TreeDiff;
   targetPath: string;
 }
+
+// --- Quêtes et or ---
+
+export interface QuestTalentView extends QuestTalentRef {
+  exists: boolean;
+  name: string;
+  icon: string | null;
+  rank: number;
+  maxRank: number | null;
+  nextCriterion: string | null;
+  specializationName: string;
+}
+
+export interface QuestOrigin {
+  domain: TreeFile['domain'];
+  specialization: TreeFile['specialization'];
+}
+
+interface QuestBody {
+  name: string;
+  description: string;
+  talents: QuestTalentView[];
+  steps: string[];
+  recurrence?: QuestRecurrence;
+  size?: QuestSize;
+  gold: number;
+}
+
+export interface TreeQuestOffer extends QuestBody {
+  source: 'tree';
+  specializationId: string;
+  questId: string;
+  origin: QuestOrigin | null;
+}
+
+export interface CustomQuestView extends QuestBody {
+  source: 'custom';
+  customQuestId: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type QuestOffer = TreeQuestOffer | CustomQuestView;
+
+export interface QuestRun {
+  id: number;
+  source: 'tree' | 'custom';
+  specializationId: string | null;
+  questId: string | null;
+  customQuestId: number | null;
+  definition: Omit<QuestDefinition, 'talents'> & { talents: QuestTalentView[] };
+  gold: number;
+  acceptedAt: string;
+  deadline: string | null;
+  stepsDone: number[];
+  status: 'active' | 'completed' | 'abandoned';
+  completedAt: string | null;
+  grants: QuestTalentRef[] | null;
+  note: string | null;
+  ticks: { id: number; occurredAt: string }[];
+  progress: QuestProgress;
+  overdue: boolean;
+  origin: QuestOrigin | null;
+}
+
+export interface QuestBoard {
+  gold: number;
+  active: QuestRun[];
+  available: QuestOffer[];
+  completed: QuestRun[];
+  custom: CustomQuestView[];
+}
+
+export interface GoldEventView {
+  id: number;
+  amount: number;
+  reason: 'quest' | 'quest-undo';
+  runId: number | null;
+  occurredAt: string;
+  createdAt: string;
+  questName: string | null;
+}
+
+export type AcceptQuest = (
+  | { source: 'tree'; specializationId: string; questId: string }
+  | { source: 'custom'; customQuestId: number }
+) & { deadline?: string | null };
 
 export class ApiError extends Error {
   constructor(
@@ -125,5 +239,34 @@ export const api = {
   /** URL directe : le serveur renvoie un en-tête Content-Disposition */
   backupUrl: '/api/backup',
   restoreBackup: (backup: unknown) =>
-    request<{ specializations: number; events: number }>('POST', '/backup', backup),
+    request<{ specializations: number; events: number; questRuns?: number; goldEvents?: number }>(
+      'POST',
+      '/backup',
+      backup,
+    ),
+  quests: () => request<QuestBoard>('GET', '/quests'),
+  acceptQuest: (body: AcceptQuest) => request<QuestRun>('POST', '/quests/accept', body),
+  setDeadline: (runId: number, deadline: string | null) =>
+    request<QuestRun>('PATCH', `/quest-runs/${runId}`, { deadline }),
+  setStep: (runId: number, index: number, done: boolean) =>
+    request<QuestRun>('PUT', `/quest-runs/${runId}/steps/${index}`, { done }),
+  addTick: (runId: number, occurredAt?: string) =>
+    request<QuestRun>('POST', `/quest-runs/${runId}/ticks`, occurredAt ? { occurredAt } : {}),
+  removeTick: (runId: number, tickId: number) =>
+    request<QuestRun>('DELETE', `/quest-runs/${runId}/ticks/${tickId}`),
+  completeQuest: (runId: number, body: { note?: string; occurredAt?: string }) =>
+    request<{
+      run: QuestRun;
+      gold: number;
+      skipped: { ref: QuestTalentRef; reason: string }[];
+    }>('POST', `/quest-runs/${runId}/complete`, body),
+  abandonQuest: (runId: number) => request<QuestRun>('POST', `/quest-runs/${runId}/abandon`),
+  undoQuest: (runId: number) =>
+    request<{ run: QuestRun; gold: number }>('POST', `/quest-runs/${runId}/undo`),
+  createCustomQuest: (quest: CustomQuestInput) =>
+    request<CustomQuestView>('POST', '/custom-quests', quest),
+  updateCustomQuest: (id: number, quest: CustomQuestInput) =>
+    request<CustomQuestView>('PUT', `/custom-quests/${id}`, quest),
+  deleteCustomQuest: (id: number) => request<{ deleted: number }>('DELETE', `/custom-quests/${id}`),
+  gold: () => request<{ balance: number; events: GoldEventView[] }>('GET', '/gold'),
 };

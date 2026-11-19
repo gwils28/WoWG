@@ -6,6 +6,7 @@ import { TalentTree } from '../components/TalentTree';
 import { useRankActions } from '../components/useRankActions';
 import { api, type SpecSummary } from '../lib/api';
 import { specPath } from '../lib/classes';
+import { talentQuestMarks } from '../lib/quests';
 import { SpecializationPage } from './SpecializationPage';
 
 /** /classe/:domainId : les spécialisations côte à côte ; /classe/:domainId/:specId : une seule. */
@@ -39,6 +40,9 @@ function ClassOverview({ domainId }: { domainId: string }) {
           {points}
           <small>/{maxPoints}</small>
         </span>
+        <Link to={`/quetes?classe=${domain.id}`} className="spec-page__all">
+          Quêtes de la classe
+        </Link>
         <Link to="/classes" className="spec-page__all">
           Toutes les classes
         </Link>
@@ -86,7 +90,13 @@ function SpecColumn({ summary }: { summary: SpecSummary }) {
         {spec.isLoading && <p className="muted">Chargement...</p>}
         {spec.isError && <p className="error">{spec.error.message}</p>}
         {spec.data && (
-          <TalentTree tree={spec.data.tree} ranks={ranks} onAdd={onAdd} onRemove={onRemove} />
+          <TalentTree
+            tree={spec.data.tree}
+            ranks={ranks}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            quests={talentQuestMarks(spec.data.tree, spec.data.questStates)}
+          />
         )}
       </div>
       {dialog}

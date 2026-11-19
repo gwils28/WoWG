@@ -12,6 +12,7 @@ import {
   type TreeFile,
 } from '@wowg/shared';
 import { arrowPath, CELL, ICON, PAD, placeTooltip, talentCenter, treeSize } from '../lib/layout';
+import { QUEST_STATE_LABELS, type TalentQuests } from '../lib/quests';
 import { GameIcon } from './GameIcon';
 
 export type TalentMark = 'added' | 'modified';
@@ -33,9 +34,11 @@ interface Props {
   edit?: EditHandlers;
   /** Prévisualisation d'import : talents ajoutés ou modifiés. */
   marks?: Record<string, TalentMark>;
+  /** Quêtes par talent : marqueurs « ! » / « ? » et liste dans l'infobulle. */
+  quests?: Record<string, TalentQuests>;
 }
 
-export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props) {
+export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks, quests }: Props) {
   // talent survolé et son bouton, ancre de l'infobulle
   const [hovered, setHovered] = useState<{ id: string; anchor: HTMLElement } | null>(null);
   const { width, height } = treeSize(tree);
@@ -146,6 +149,7 @@ export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props)
             rank={ranks[t.id] ?? 0}
             state={talentState(tree, ranks, t.id)}
             extraClass={classes.join(' ')}
+            quests={quests?.[t.id]}
             onHover={(anchor) => setHovered(anchor ? { id: t.id, anchor } : null)}
             onClick={(quick) => (edit ? edit.onSelect(t.id) : onAdd?.(t, quick))}
             onRemove={edit ? undefined : onRemove && (() => onRemove(t))}
@@ -159,6 +163,7 @@ export function TalentTree({ tree, ranks, onAdd, onRemove, edit, marks }: Props)
           tree={tree}
           ranks={ranks}
           talent={hoveredTalent}
+          quests={quests?.[hoveredTalent.id]}
           hint={edit ? 'Clic : modifier ce talent.' : undefined}
           playable={Boolean(onAdd)}
         />
@@ -172,6 +177,7 @@ function TalentNode({
   rank,
   state,
   extraClass,
+  quests,
   onHover,
   onClick,
   onRemove,
@@ -180,6 +186,7 @@ function TalentNode({
   rank: number;
   state: TalentState;
   extraClass: string;
+  quests?: TalentQuests;
   onHover: (anchor: HTMLElement | null) => void;
   onClick: (quick: boolean) => void;
   onRemove?: () => void;
@@ -206,6 +213,11 @@ function TalentNode({
       }}
     >
       <GameIcon icon={talent.icon} size={ICON - 14} className="talent__icon" />
+      {quests && (
+        <span className={`talent__quest talent__quest--${quests.mark}`} aria-hidden>
+          {quests.mark === 'available' ? '!' : '?'}
+        </span>
+      )}
       {state !== 'locked' && (
         <span className="talent__rank">
           {rank}/{talent.maxRank}
@@ -224,6 +236,7 @@ function TalentTooltip({
   tree,
   ranks,
   talent,
+  quests,
   hint,
   playable,
 }: {
@@ -231,6 +244,7 @@ function TalentTooltip({
   tree: TreeFile;
   ranks: Ranks;
   talent: Talent;
+  quests?: TalentQuests;
   hint?: string;
   playable: boolean;
 }) {
@@ -285,6 +299,12 @@ function TalentTooltip({
         <p key={m.talentId} className="tooltip__missing">
           Requiert {m.required} point{m.required > 1 ? 's' : ''} en {m.name} ({m.current}/
           {m.required})
+        </p>
+      ))}
+      {quests?.quests.map((q) => (
+        <p key={q.id} className={`tooltip__quest tooltip__quest--${q.state}`}>
+          <span className="tooltip__label">{q.state === 'available' ? '!' : '?'} Quête :</span>{' '}
+          {q.name} ({QUEST_STATE_LABELS[q.state]})
         </p>
       ))}
       {(hint || (playable && playHint)) && <p className="tooltip__hint">{hint ?? playHint}</p>}
