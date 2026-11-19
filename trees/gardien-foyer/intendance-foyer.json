@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien-foyer",
+    "name": "Gardien du foyer",
+    "icon": "game-icons:family-house"
+  },
+  "specialization": {
+    "id": "intendance-foyer",
+    "name": "Intendance du foyer",
+    "description": "Repas, organisation, entretien et partage équitable des tâches pour un foyer qui tourne sans charge mentale.",
+    "icon": "game-icons:cooking-pot"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "cuisine-quotidien",
+      "name": "Cuisine du quotidien",
+      "description": "Savoir nourrir la famille sans réfléchir.",
+      "icon": "game-icons:cook",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "5 recettes du quotidien cuisinées sans recette sous les yeux",
+        "15 recettes",
+        "30 recettes réunies dans un carnet de recettes du foyer"
+      ]
+    },
+    {
+      "id": "menus",
+      "name": "Menus de la semaine",
+      "description": "Décider une fois, plutôt que chaque soir.",
+      "icon": "game-icons:calendar",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Menus de la semaine planifiés 4 semaines d'affilée",
+        "12 semaines d'affilée, liste de courses tirée des menus"
+      ]
+    },
+    {
+      "id": "routine-menage",
+      "name": "Routine ménage",
+      "description": "Un peu chaque jour plutôt que tout le samedi.",
+      "icon": "game-icons:broom",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Tâches ménagères du foyer listées avec leur fréquence",
+        "15 min de remise en ordre chaque soir (vaisselle, surfaces, rangement) pendant 4 semaines"
+      ]
+    },
+    {
+      "id": "charge-mentale",
+      "name": "Charge mentale visible",
+      "description": "Rendre visibles toutes les tâches, même celles qu'on ne voit pas.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Inventaire de toutes les tâches du foyer, y compris invisibles (anticiper, penser à), fait avec l'autre parent",
+        "Qui fait quoi mesuré pendant 2 semaines (temps et nombre de tâches)"
+      ]
+    },
+    {
+      "id": "cuisine-avance",
+      "name": "Cuisine en avance",
+      "description": "Préparer le week-end pour souffler en semaine.",
+      "icon": "game-icons:pressure-cooker",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Session de 2 h qui prépare 3 repas de la semaine, 4 fois",
+        "6 repas maison d'avance au congélateur en permanence pendant 2 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-quotidien",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "courses",
+      "name": "Courses organisées",
+      "description": "Une liste partagée, un seul passage.",
+      "icon": "game-icons:shopping-cart",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Liste de courses partagée (application) utilisée par tout le foyer pendant 1 mois",
+        "Courses en un seul passage ou un seul drive par semaine pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "menus",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "linge",
+      "name": "Linge",
+      "description": "Trier, laver, sécher, plier, ranger.",
+      "icon": "game-icons:washing-machine",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Lessive complète (tri, programme, séchage, pliage, rangement) gérée seul pendant 4 semaines",
+        "Routine du linge tenue 3 mois sans panier qui déborde"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine-menage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "repartition",
+      "name": "Répartition équitable",
+      "description": "Un partage des tâches décidé à deux.",
+      "icon": "game-icons:weight-scale",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Nouvelle répartition des tâches décidée à deux à partir de l'inventaire",
+        "Écart de temps entre les deux adultes sous 20 % sur une nouvelle mesure de 2 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charge-mentale",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "repas-famille",
+      "name": "Repas de famille",
+      "description": "Nourrir l'enfant maison et manger ensemble.",
+      "icon": "game-icons:hot-meal",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Repas de l'enfant adaptés à son âge préparés maison 5 jours sur 7 pendant 4 semaines",
+        "Dîner en famille à table sans écran, 5 soirs sur 7 pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-avance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agenda-familial",
+      "name": "Agenda familial",
+      "description": "Rien d'oublié : rendez-vous, garde, anniversaires.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Agenda partagé du foyer (rendez-vous, garde, activités, anniversaires) tenu 2 mois",
+        "Point logistique de 15 min sur la semaine à venir avec l'autre parent, 8 semaines",
+        "Anniversaires et événements familiaux anticipés 2 semaines avant, sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "courses",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maison-rangee",
+      "name": "Maison rangée",
+      "description": "Moins d'objets, une place pour chacun.",
+      "icon": "game-icons:basket",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Désencombrement d'une pièce par mois pendant 6 mois",
+        "Rangement du soir en 10 min tenu 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "linge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relais",
+      "name": "Relais parental",
+      "description": "Chacun peut tenir seul le foyer et l'enfant.",
+      "icon": "game-icons:family-house",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des routines (horaires, repas, coucher, contacts) prête pour que chaque parent tienne seul 3 jours",
+        "Un week-end seul avec l'enfant, foyer tenu sans aide"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repartition",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisine-equilibree",
+      "name": "Cuisine équilibrée",
+      "description": "Bien manger sans gaspiller.",
+      "icon": "game-icons:knife-fork",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Repas équilibrés (légume, féculent, protéine) 5 jours sur 7 pendant 4 semaines",
+        "Gaspillage alimentaire en baisse : restes réutilisés, denrées jetées pesées en baisse sur 1 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repas-famille",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "entretien-fond",
+      "name": "Entretien de fond",
+      "description": "Le grand ménage, planifié dans l'année.",
+      "icon": "game-icons:sparkles",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Calendrier du grand ménage saisonnier écrit (vitres, frigo, four, matelas, placards)",
+        "Calendrier tenu 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "maison-rangee",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "garde-secours",
+      "name": "Garde de secours",
+      "description": "Une solution quand tout tombe en même temps.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 solutions de garde de secours identifiées (famille, voisin, baby-sitter de confiance)",
+        "Une garde de secours utilisée avec des consignes écrites prêtes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "relais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "recevoir",
+      "name": "Recevoir",
+      "description": "Accueillir à la maison sans s'épuiser.",
+      "icon": "game-icons:party-flags",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un repas avec des invités organisé de A à Z, 3 fois",
+        "Une fête familiale organisée à la maison (anniversaire de l'enfant)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-equilibree",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "imprevus",
+      "name": "Plan d'imprévus",
+      "description": "Parent malade, enfant malade, panne : déjà prévu.",
+      "icon": "game-icons:medicines",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan d'imprévus écrit (parent malade, enfant malade, absence de garde, panne d'électroménager)",
+        "Pharmacie familiale inventoriée et dates vérifiées tous les 6 mois, 2 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "entretien-fond",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisine-avec-enfant",
+      "name": "Cuisiner avec l'enfant",
+      "description": "Transmettre le goût et les gestes.",
+      "icon": "game-icons:cupcake",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "L'enfant participe à une préparation chaque semaine pendant 3 mois",
+        "Une recette de famille transmise et cuisinée ensemble"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recevoir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-organise",
+      "name": "Foyer organisé",
+      "description": "Des routines qui s'adaptent à la vie.",
+      "icon": "game-icons:cog",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un mois sans tâche oubliée ni rattrapage le week-end, noté",
+        "Routines du foyer réajustées et réécrites à 2 changements de rythme (rentrée, nouveau travail)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "imprevus",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-serein",
+      "name": "Foyer serein",
+      "description": "Un foyer qui tourne, partagé et apaisé.",
+      "icon": "game-icons:hearts",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois avec une répartition jugée équitable par les deux adultes au bilan mensuel",
+        "12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-avec-enfant",
+          "rank": 1
+        },
+        {
+          "talentId": "foyer-organise",
+          "rank": 1
+        },
+        {
+          "talentId": "agenda-familial",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

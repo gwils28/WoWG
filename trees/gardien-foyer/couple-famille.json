@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien-foyer",
+    "name": "Gardien du foyer",
+    "icon": "game-icons:family-house"
+  },
+  "specialization": {
+    "id": "couple-famille",
+    "name": "Couple et famille",
+    "description": "Entretenir le couple, faire vivre la famille et être un père présent et exemplaire.",
+    "icon": "game-icons:lovers"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "rendez-vous-couple",
+      "name": "Rendez-vous à deux",
+      "description": "Rester des amoureux, pas seulement des parents.",
+      "icon": "game-icons:candle-light",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Une soirée à deux sans l'enfant et sans écran par mois pendant 3 mois",
+        "Même rythme pendant 12 mois",
+        "Un week-end à deux sans l'enfant"
+      ]
+    },
+    {
+      "id": "point-couple",
+      "name": "Point de couple",
+      "description": "Parler de la relation, pas seulement de logistique.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Point mensuel à deux sur la relation (ce qui va, ce qui pèse, ce qu'on veut) tenu 3 mois",
+        "Tenu 12 mois"
+      ]
+    },
+    {
+      "id": "traditions",
+      "name": "Traditions familiales",
+      "description": "Les rituels qui font une famille.",
+      "icon": "game-icons:candles",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 traditions familiales choisies à deux (fêtes, rituel du dimanche, vacances)",
+        "Chaque tradition vécue sur une année complète"
+      ]
+    },
+    {
+      "id": "deconnexion-travail",
+      "name": "Déconnexion du travail",
+      "description": "Rentrer à la maison vraiment disponible.",
+      "icon": "game-icons:night-sleep",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Notifications pro coupées avant de retrouver la famille, 5 jours sur 7 pendant 4 semaines",
+        "Aucun travail ni mail pro le week-end pendant 3 mois"
+      ]
+    },
+    {
+      "id": "attentions",
+      "name": "Petites attentions",
+      "description": "Des attentions régulières dans le couple.",
+      "icon": "game-icons:love-letter",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une attention par semaine pour l'autre (mot, surprise, cadeau) pendant 8 semaines",
+        "Préférences de chacun discutées à deux, attentions adaptées pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rendez-vous-couple",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vision-commune",
+      "name": "Vision commune",
+      "description": "Savoir ensemble où va la famille.",
+      "icon": "game-icons:compass",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Vision du foyer à 5 ans écrite à deux, hors argent (lieu, enfants, travail, rythme)",
+        "Vision revue à deux chaque année, 2 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "point-couple",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sorties-famille",
+      "name": "Sorties en famille",
+      "description": "Découvrir le monde tous ensemble.",
+      "icon": "game-icons:sun",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une sortie à trois par mois (nature, ferme, plage) pendant 6 mois",
+        "Vacances en famille préparées en tenant compte du rythme de l'enfant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "traditions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exemplarite",
+      "name": "Exemplarité",
+      "description": "Être le modèle que tu veux transmettre.",
+      "icon": "game-icons:crowned-heart",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 comportements à transmettre listés (politesse, calme, curiosité...), un travaillé chaque mois pendant 5 mois",
+        "Excuses présentées à l'enfant après une erreur de ta part, 3 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "deconnexion-travail",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "soutien-partenaire",
+      "name": "Soutenir l'autre parent",
+      "description": "Libérer du temps pour l'autre parent.",
+      "icon": "game-icons:heart-plus",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une demi-journée par mois où tu gardes l'enfant pour libérer l'autre parent, pendant 6 mois",
+        "Un projet personnel de l'autre parent soutenu concrètement (temps, organisation) pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "attentions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reparer",
+      "name": "Réparer après une dispute",
+      "description": "Se disputer sans se blesser, et se réconcilier vite.",
+      "icon": "game-icons:linked-rings",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Règles de dispute écrites à deux (jamais devant l'enfant, pas de mots blessants, pause possible)",
+        "Réparation faite dans les 24 h après chaque dispute pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vision-commune",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "journal-enfant",
+      "name": "Mémoire de famille",
+      "description": "Garder la trace des années qui filent.",
+      "icon": "game-icons:photo-camera",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Photos de l'année triées et album imprimé",
+        "Journal de l'enfant (étapes, mots, anecdotes) tenu chaque mois pendant 1 an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sorties-famille",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "equilibre-travail",
+      "name": "Équilibre travail-famille",
+      "description": "Du temps protégé pour la famille.",
+      "icon": "game-icons:sundial",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Heure de fin de journée fixée et respectée 4 jours sur 5 pendant 8 semaines",
+        "Une demi-journée par semaine dédiée à la famille (temps partiel, RTT, congé parental) pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exemplarite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "complicite",
+      "name": "Complicité",
+      "description": "Partager autre chose que le quotidien.",
+      "icon": "game-icons:engagement-ring",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cours ou activité régulière à deux tenu 3 mois",
+        "Un voyage à deux d'au moins 4 jours"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "soutien-partenaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "histoire-familiale",
+      "name": "Histoire familiale",
+      "description": "Transmettre d'où vient la famille.",
+      "icon": "game-icons:family-tree",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Arbre généalogique sur 3 générations fait",
+        "Récits des grands-parents enregistrés (enfance, métiers, lieux) pour l'enfant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "journal-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "enfant-malade",
+      "name": "Enfant malade",
+      "description": "Les absences pour l'enfant, partagées à égalité.",
+      "icon": "game-icons:medical-pack",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Jours d'absence pour enfant malade partagés à parts égales sur 6 mois",
+        "Sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "equilibre-travail",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "couple-solide",
+      "name": "Couple solide",
+      "description": "Faire le bilan et célébrer le chemin parcouru.",
+      "icon": "game-icons:nested-hearts",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Bilan annuel du couple (année écoulée, envies pour la suivante) fait à deux, 2 années",
+        "Anniversaire de rencontre ou de mariage célébré, 3 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "complicite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "projet-famille",
+      "name": "Projet de famille",
+      "description": "Un projet suivi tous ensemble, avec l'enfant.",
+      "icon": "game-icons:treehouse",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Projet suivi en famille sur 3 mois (élevage d'un petit animal, collection, mini-spectacle), étapes notées",
+        "Un 2e projet choisi par l'enfant lui-même, mené au bout"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "histoire-familiale",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "equipe-parentale",
+      "name": "Équipe parentale",
+      "description": "Élever l'enfant à deux, avec une ligne commune.",
+      "icon": "game-icons:opposite-hearts",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un livre ou un atelier sur la parentalité lu ou suivi à deux, puis discuté",
+        "Bilan éducatif à deux tous les 6 mois (ce qui marche, ce qu'on change) pendant 1 an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "couple-solide",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conseil-famille",
+      "name": "Conseil de famille",
+      "description": "Chacun a sa voix, l'enfant aussi.",
+      "icon": "game-icons:round-star",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Conseil de famille mensuel (avec l'enfant dès 4 ans) tenu 6 mois",
+        "Tenu 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "projet-famille",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pilier-du-foyer",
+      "name": "Pilier du foyer",
+      "description": "Un couple uni et un père présent, reconnu par les siens.",
+      "icon": "game-icons:heart-tower",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Satisfaction de couple notée 8/10 ou plus par les deux, 4 trimestres de suite",
+        "L'autre parent confirme au bilan annuel ta présence et ton implication à égalité, 2 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "equipe-parentale",
+          "rank": 1
+        },
+        {
+          "talentId": "conseil-famille",
+          "rank": 1
+        },
+        {
+          "talentId": "reparer",
+          "rank": 2
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
