@@ -164,8 +164,9 @@ describe('progression et rendu', () => {
     });
     expect(await ranks()).toMatchObject({ fractionne: 1 });
 
+    // recherche par run (pas journal[0]) : le tri par date dépend de l'horloge
     const journal = (await call('GET', '/journal')).body;
-    expect(journal[0]).toMatchObject({
+    expect(journal.find((e: any) => e.questRunId === run.id)).toMatchObject({
       talentId: 'fractionne',
       questRunId: run.id,
       questName: 'Séance sur piste',
