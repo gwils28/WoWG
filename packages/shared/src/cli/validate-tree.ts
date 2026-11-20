@@ -1,15 +1,19 @@
 /**
  * Valide un ou plusieurs fichiers d'arbre.
- * Usage : npm run validate-tree -- trees/sport-sante/course-a-pied.json [...]
+ * Usage : npm run validate-tree -- [--quests] trees/sport-sante/course-a-pied.json [...]
+ * --quests : affiche aussi chaque quête (talents, rythme, étapes, or du barème).
  * Code de sortie 1 si au moins un fichier est invalide.
  */
 import { readFileSync } from 'node:fs';
 import { parseTree } from '../schema';
 import { maxPoints } from '../logic/ranks';
+import { questGold, treeQuestDefinition } from '../logic/quests';
 
-const files = process.argv.slice(2);
+const args = process.argv.slice(2);
+const showQuests = args.includes('--quests');
+const files = args.filter((a) => a !== '--quests');
 if (files.length === 0) {
-  console.error('Usage : npm run validate-tree -- <fichier.json> [...]');
+  console.error('Usage : npm run validate-tree -- [--quests] <fichier.json> [...]');
   process.exit(2);
 }
 
@@ -29,6 +33,20 @@ for (const file of files) {
     console.log(
       `✓ ${file} : ${tree.domain.name} / ${tree.specialization.name}, ${tree.talents.length} talents, ${maxPoints(tree)} points, ${tree.quests?.length ?? 0} quêtes`,
     );
+    if (showQuests) {
+      const lookup = () => ({ tree, ranks: {} });
+      const name = (id: string) => tree.talents.find((t) => t.id === id)?.name ?? id;
+      for (const q of tree.quests ?? []) {
+        const gold = questGold(treeQuestDefinition(tree.specialization.id, q), lookup);
+        const rhythm = q.recurrence
+          ? `${q.recurrence.times}x/${q.recurrence.per} x ${q.recurrence.periods}`
+          : 'ponctuelle';
+        const steps = q.steps?.length ? `, ${q.steps.length} étapes` : '';
+        console.log(
+          `    ${q.id} : ${q.name} -> ${q.talents.map(name).join(', ')} [${rhythm}${steps}] ${gold} or`,
+        );
+      }
+    }
   } else {
     failed = true;
     console.error(`✗ ${file} : ${res.errors.length} erreur(s)`);

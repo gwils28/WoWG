@@ -380,5 +380,154 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "routine-fente-basse",
+      "name": "Routine fente basse",
+      "description": "Étirement des fléchisseurs de hanche en fente basse, 2 × 45 s par côté, coché chaque jour où il est fait.",
+      "talents": [
+        "flechisseurs-hanche"
+      ],
+      "recurrence": {
+        "times": 5,
+        "per": "week",
+        "periods": 2
+      }
+    },
+    {
+      "id": "ouverture-thoracique-hebdo",
+      "name": "Ouverture thoracique",
+      "description": "Routine de 5 min de rotations à quatre pattes et d'extensions sur chaise, trois fois par semaine.",
+      "talents": [
+        "mobilite-thoracique"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "chevilles-genou-mur",
+      "name": "Chevilles au mur",
+      "description": "3 séries de 10 avancées genou-mur par côté, trois fois par semaine, et mesure de la distance pied-mur en fin de semaine.",
+      "talents": [
+        "chevilles"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "reveil-mobilite-routine",
+      "name": "Réveil mobilité",
+      "description": "5 min au réveil (chat-vache, rotations, étirements), cochées chaque matin où elles sont faites.",
+      "talents": [
+        "reveil-mobilite"
+      ],
+      "recurrence": {
+        "times": 5,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "squat-profond-tenu",
+      "name": "Squat profond tenu",
+      "description": "Trois fois par semaine, cumuler 2 min en squat profond talons au sol (appui des mains autorisé au début), en plusieurs fois si besoin.",
+      "talents": [
+        "squat-profond"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "epaules-au-mur",
+      "name": "Épaules au mur",
+      "description": "Trois fois par semaine : glissements de bras dos au mur et étirement à la serviette dans le dos, 10 min, côté raide en premier.",
+      "talents": [
+        "epaules-libres"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "chaine-posterieure-seance",
+      "name": "Assouplir la chaîne postérieure",
+      "description": "Trois séances de 10 min par semaine (flexion avant jambes tendues, étirement des ischios allongé), avec mesure doigts-sol en fin de semaine.",
+      "talents": [
+        "ischio-jambiers"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "cours-yoga-pilates",
+      "name": "Cours de yoga ou pilates",
+      "description": "Une séance de yoga ou de pilates d'au moins 30 min par semaine, en cours ou en vidéo guidée.",
+      "talents": [
+        "yoga-pilates"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "rendez-vous-kine-osteo",
+      "name": "Rendez-vous kiné ou ostéo",
+      "description": "Faire le point sur le dos et la posture avec un professionnel et repartir avec des conseils écrits.",
+      "talents": [
+        "seance-kine-osteo"
+      ],
+      "steps": [
+        "Trouver un kiné ou un ostéopathe",
+        "Prendre rendez-vous",
+        "Faire la séance et noter les exercices conseillés"
+      ]
+    },
+    {
+      "id": "sequence-personnelle",
+      "name": "Séquence personnelle",
+      "description": "Écrire sa séquence de 30 min à partir des exercices déjà pratiqués, puis la pratiquer deux fois par semaine.",
+      "talents": [
+        "pratique-autonome"
+      ],
+      "steps": [
+        "Écrire la séquence (exercices, ordre, durées)"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 10
+      }
+    },
+    {
+      "id": "test-corps-delie",
+      "name": "Test du corps délié",
+      "description": "Passer les quatre tests du corps délié dans la même semaine et noter le résultat de chacun.",
+      "talents": [
+        "corps-delie"
+      ],
+      "steps": [
+        "Squat profond tenu 2 min",
+        "Paumes au sol jambes tendues",
+        "Pouces au mur bras tendus, dos plaqué",
+        "Doigts qui se touchent dans le dos des deux côtés"
+      ]
+    }
   ]
 }

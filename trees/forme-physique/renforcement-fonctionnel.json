@@ -314,5 +314,104 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "seance-complete",
+      "name": "Séance complète",
+      "description": "Trois séances de renforcement par semaine, chacune précédée de 5 min d'échauffement, cochées à la fin de la séance.",
+      "talents": [
+        "regularite",
+        "rituel-seance"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "pompes-hors-seance",
+      "name": "Pompes hors séance",
+      "description": "Les jours sans séance, une série facile de pompes (la moitié de son maximum, variante du rang en cours).",
+      "talents": [
+        "pompes"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "equilibre-brossage",
+      "name": "Équilibre au brossage",
+      "description": "Tenir sur un pied pendant le brossage des dents (1 min par pied), puis yeux fermés quand c'est acquis, trois soirs par semaine.",
+      "talents": [
+        "equilibre"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "porter-lourd-hebdo",
+      "name": "Porter lourd",
+      "description": "Une fois par semaine en fin de séance, 3 allers de 100 m avec deux charges (bidons, sacs), dos droit, en notant les arrêts.",
+      "talents": [
+        "port-de-charges"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "relever-du-sol-exercice",
+      "name": "Se relever du sol",
+      "description": "Trois fois par semaine, 5 relevés depuis la position assise en tailleur avec le moins d'appuis possible, côté faible en premier.",
+      "talents": [
+        "relever-du-sol"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "journal-cote-faible",
+      "name": "Journal côté faible",
+      "description": "À chaque séance, noter les exercices unilatéraux faits côté faible en premier et le volume de chaque côté.",
+      "talents": [
+        "symetrie"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "epreuve-du-maitre",
+      "name": "Épreuve du maître",
+      "description": "Valider dans la même semaine toutes les variantes du talent ultime, chacune notée avec sa date.",
+      "talents": [
+        "maitre-poids-du-corps"
+      ],
+      "steps": [
+        "Rowing pieds surélevés",
+        "Pompes pieds surélevés",
+        "Squat tempo 4 s",
+        "Fente bulgare",
+        "Pont fessier unilatéral",
+        "Bird-dog enchaîné",
+        "Planche latérale pieds superposés",
+        "Marche de l'ours 40 s"
+      ]
+    }
   ]
 }
