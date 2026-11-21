@@ -68,7 +68,7 @@ Domaines initiaux : Sport / santé, Langues / culture.
 
 - Succès (achievements) débloqués automatiquement (ex. premier talent ultime, 10 rangs en un mois).
 - Quêtes et or : voir section 10 (spécifiée le 2026-11-19).
-- Boutique de récompenses réelles payées en or (section 10.8, à spécifier).
+- Étal : récompenses réelles achetées avec l'or (section 10.8, spécifiée le 2026-11-21).
 
 ### Hors périmètre pour l'instant
 
@@ -138,7 +138,7 @@ Une quête est une action concrète, éventuellement répétée dans le temps, q
 
 ### 10.5 Barème d'or (automatique)
 
-- Par talent récompensé au palier p : `1 + floor((p - 1) / 2)` (paliers 1-2 : 1, 3-4 : 2, 5-6 : 3, 7+ : 4). Talent ultime : +2.
+- Par talent récompensé au palier p : `1 + floor((p - 1) / 2)` (paliers 1-2 : 1, 3-4 : 2, 5-6 : 3, 7+ : 4). Talent ultime : +2. Un talent déjà au rang max au moment du calcul ne rapporte pas son or de talent (évite de refaire à l'infini une quête perso pour son or ; ajouté le 2026-11-21).
 - Rythme : `+ ceil(times * periods / 4)` (ex. 3 x 4 semaines : +3).
 - Étapes : `+ floor(nombre d'étapes / 3)`.
 - Quête sans talent : small 1, medium 2, large 4 (rythme et étapes s'ajoutent).
@@ -163,6 +163,76 @@ Une quête est une action concrète, éventuellement répétée dans le temps, q
 - Fiche personnage : solde d'or.
 - Sauvegarde : quêtes personnelles, suivis, occurrences, événements d'or (champs facultatifs, une ancienne sauvegarde se restaure sans).
 
-### 10.8 Boutique (phase ultérieure, à spécifier)
+### 10.8 Étal (récompenses réelles)
 
-Cartes de récompense réelles définies par l'utilisateur (ex. « Un bon café », 2 or). Acheter une carte crée un événement d'or négatif. Le modèle d'événements d'or est conçu pour l'accueillir sans migration de rupture.
+Issue de l'interview du 2026-11-21, prix proposés par l'agent `economiste-rpg` (`.claude/agents/economiste-rpg.md`).
+
+#### Principe
+
+L'or gagné par les quêtes s'échange contre des récompenses réelles que l'utilisateur s'offre. L'Étal est la page qui présente le catalogue et permet d'acheter. Un achat est consommé immédiatement : pas d'inventaire.
+
+| Terme              | Définition                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
+| Carte              | Récompense du catalogue : nom, description, rareté, prix, recharge, achat unique. Éditable dans l'app. |
+| Achat              | Échange d'une carte contre son prix en or, daté. Crée un événement d'or négatif.                       |
+| Recharge           | Nombre de jours avant de pouvoir racheter la même carte.                                               |
+| Objectif d'épargne | Une carte épinglée, avec la progression du solde vers son prix.                                        |
+
+#### Carte
+
+- Nom, description (y mettre le plafond indicatif en euros, ex. « au plus ~1 000 € »).
+- Rareté : commune (blanc), inhabituelle (vert), rare (bleu), épique (violet), légendaire (or orangé).
+- Prix : or entier, au moins 1. Prix fixe, pas d'indexation sur le revenu ; révision manuelle, sans effet sur les achats passés.
+- Recharge en jours (facultative). Valeur proposée à la création selon la rareté : commune 1, inhabituelle 7, rare 30, épique 90, légendaire 365.
+- Achat unique (booléen) : pour un objet durable. La carte est archivée après l'achat.
+- Archivée : retirée de la vente, visible dans une section repliée, réactivable. Archiver plutôt que supprimer une carte déjà achetée (l'historique garde une copie de la carte).
+
+#### Achat
+
+- Possible si la carte n'est pas archivée, si le solde couvre le prix et si la recharge est écoulée : la carte redevient achetable le jour `dernier achat + recharge` (jours calendaires, UTC comme le journal). Le dernier achat ignore les achats annulés.
+- En une transaction : crée l'achat avec une copie de la carte (nom, rareté, prix) et un événement d'or `-prix` (raison `purchase`). Archive la carte si achat unique. Date modifiable, comme un rang.
+- **Annuler un achat** : depuis le journal, sans limite de temps. Crée l'événement inverse `+prix` (raison `purchase-undo`), marque l'achat annulé, réactive la carte si elle avait été archivée par cet achat. Un achat annulé ne se rétablit pas : on rachète.
+
+#### Objectif d'épargne
+
+- Au plus une carte épinglée à la fois (préférence). Affichée en tête de l'Étal : solde / prix, et estimation « environ N semaines » au rythme des 4 dernières semaines (or gagné par les quêtes, net des annulations de rendu, achats exclus). Sans revenu sur la période : pas d'estimation.
+- Une carte archivée ou achetée en achat unique perd son épinglage.
+
+#### Interface
+
+- Barre du haut : onglet « Étal » après « Quêtes ».
+- Page Étal : objectif d'épargne, puis cartes groupées par rareté (de commune à légendaire), chacune avec sa couleur de rareté, son prix, et son état (achetable, solde insuffisant, « disponible dans N jours »). Bouton « Acheter » avec confirmation (récapitulatif du prix et du solde après achat). Bouton « Nouvelle carte », édition, archivage, épinglage. Section repliée « Archivées ».
+- Journal : achats et annulations d'achat (événements d'or), bouton « Annuler l'achat ».
+- Sauvegarde : cartes, achats, objectif d'épargne (champs facultatifs, une ancienne sauvegarde se restaure sans).
+
+#### Catalogue initial (chargé une fois, après la phase 12)
+
+| Rareté       | Carte                              | Prix | Recharge     |
+| ------------ | ---------------------------------- | ---- | ------------ |
+| Commune      | Take five (20-30 min libres)       | 1    | 1 j          |
+| Commune      | Bon café                           | 2    | 1 j          |
+| Commune      | Snack gourmand                     | 2    | 1 j          |
+| Commune      | Bonne bière                        | 3    | 2 j          |
+| Inhabituelle | Cinéma                             | 6    | 7 j          |
+| Inhabituelle | 1h30 de jeux vidéo                 | 6    | 3 j          |
+| Inhabituelle | Exposition                         | 8    | 7 j          |
+| Inhabituelle | Restaurant                         | 10   | 7 j          |
+| Rare         | Concert                            | 30   | 30 j         |
+| Rare         | Séjour court (2-3 jours)           | 40   | 30 j         |
+| Épique       | Rhum millésimé                     | 80   | 90 j         |
+| Épique       | Vêtement de qualité                | 80   | 90 j         |
+| Épique       | Casque audio                       | 100  | achat unique |
+| Épique       | Voyage (Europe, au plus 1 semaine) | 120  | 90 j         |
+| Légendaire   | Vélo hollandais                    | 250  | achat unique |
+| Légendaire   | Contrebasse                        | 350  | achat unique |
+| Légendaire   | Pèlerinage à New York              | 400  | achat unique |
+
+Repères (agent `economiste-rpg`) : revenu de départ environ 20 or/mois (3 quêtes perso), environ 45 or/mois avec 2 classes équipées de quêtes. Une commune s'achète en quelques jours, une inhabituelle en 1 à 2 semaines, une légendaire demande 6 à 10 mois d'épargne en régime de croisière.
+
+#### Règles d'équilibre (conventions, non imposées par l'app)
+
+- Une quête perso avec talents dure au moins 2 semaines (les cycles courts paient plus par semaine).
+- Une séance compte pour une seule quête : abandonner une quête perso quand une quête proposée équivalente est acceptée.
+- Quête perso sans talent « large » : au moins 2 h d'effort réel.
+- Or qui s'accumule (solde au-delà de 3 mois de revenu sans objectif) : nommer un objectif ou relever les prix de 25 %. Or qui manque (moins d'une commune par semaine pendant un mois) : baisser les communes et inhabituelles plutôt que toucher au barème.
+- Révision de l'économie : passer par l'agent `economiste-rpg`.

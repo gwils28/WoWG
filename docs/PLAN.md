@@ -156,10 +156,56 @@ Base, migration 3 :
 9. **Serveur, quêtes et or** : migration 3, repository, routes (liste disponibles / actives / terminées, accepter, cocher étape, occurrence +/-, rendre, abandonner, annuler un rendu, CRUD quêtes perso, solde), journal et sauvegarde étendus. Tests d'API.
 10. **Front, quêtes** : onglet et page Quêtes, marqueurs « ! » / « ? » sur l'arbre et infobulle, dialogues accepter / rendre, formulaire de quête perso, solde d'or (barre du haut, fiche), journal.
 11. **Contenu, quêtes** : skill `generate-tree` (génération des quêtes + mode « ajouter des quêtes à un arbre existant »), puis ajout aux 36 arbres existants, classe par classe avec toi.
-12. **Boutique** : à spécifier (interview dédiée).
+12. **Étal** : spécifié le 2026-11-21, voir « v2 : Étal » ci-dessous (phases 12a à 12d).
 
 ### Vérification
 
 - Phase 8 : fixture avec quêtes valide, versions cassées (talent inconnu, id dupliqué) refusées avec message clair. Tests de périodes sur les bords (changement de semaine ISO, de mois).
 - Phase 9 : `curl` sur un serveur isolé (port 3101) : accepter, occurrences, rendre (rangs + or), annuler refusé quand un enfant dépend.
 - Phase 10 : parcours dans Chrome sur serveur isolé : quête proposée acceptée depuis un « ! », progression, rendu, déblocage d'un enfant, quête perso or seul, journal.
+
+## v2 : Étal (SPEC 10.8)
+
+### Modèle
+
+`packages/shared` :
+
+```ts
+Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary'
+RewardCard {
+  name: string                 // non vide
+  description: string          // défaut ''
+  rarity: Rarity
+  price: int >= 1
+  cooldownDays?: int 1..3650   // absent : rachetable à volonté
+  unique: boolean              // défaut false : archivée après achat
+}
+DEFAULT_COOLDOWN: { common: 1, uncommon: 7, rare: 30, epic: 90, legendary: 365 }
+```
+
+Base, migration 4 :
+
+- `reward_cards` (id, definition JSON, archived 0/1, created_at, updated_at).
+- `purchases` (id, card_id, snapshot JSON `{ name, rarity, price }`, purchased_at, undone_at nullable, archived_card 0/1 : la carte a été archivée par cet achat, created_at).
+- `gold_events.purchase_id` nullable (ALTER TABLE ADD COLUMN) ; raisons `purchase` et `purchase-undo`.
+- Objectif d'épargne : préférence `savingsGoal` (id de carte), table `preferences` existante.
+
+Logique pure (`packages/shared/src/logic/market.ts`) :
+
+- `cardAvailability(card, archived, purchases, balance, now)` : `ok` ou raison (`archived`, `cooldown` avec jour de disponibilité et jours restants, `insufficient` avec or manquant). Les achats annulés sont ignorés.
+- `canUndoPurchase(purchase)` : refusé seulement si déjà annulé.
+- `weeklyIncome(goldEvents, now)` : or des 4 dernières semaines (raisons `quest` et `quest-undo`) divisé par 4 ; `savingsEstimate(price, balance, income)` : semaines restantes arrondies au-dessus, `null` sans revenu, 0 si atteint.
+- Barème : `questGold` ignore l'or d'un talent déjà au rang max (SPEC 10.5).
+
+### Phases
+
+12a. **Shared, Étal** : schéma `RewardCardSchema` (+ `export-schema` si exposé), `market.ts`, changement de `questGold`. Tests : recharge sur les bords de jour, achat annulé ignoré pour la recharge, solde exact égal au prix accepté, estimation d'épargne (revenu nul, objectif atteint), talent au max sans or.
+12b. **Serveur, Étal** : migration 4, `market-repository.ts`, routes `apps/server/src/market.ts` (`GET /market` : cartes avec état, archivées, objectif et estimation, solde ; CRUD `/reward-cards`, `PUT /reward-cards/:id/archive` ; `POST /reward-cards/:id/purchase` (date facultative) ; `POST /purchases/:id/undo` ; `PUT /market/goal`). `/gold` renvoie aussi le nom de la carte des événements d'achat. Sauvegarde étendue (champs facultatifs). Tests d'API : achat refusé (solde, recharge, archivée), achat unique archive puis annulation réactive, annulation deux fois refusée (409), restauration d'une ancienne sauvegarde sans Étal.
+12c. **Front, Étal** : onglet « Étal », page `apps/web/src/pages/MarketPage.tsx` et `components/market/` (carte avec couleur de rareté en variables CSS du thème, dialogue d'achat, formulaire de carte avec recharge pré-remplie selon la rareté, objectif d'épargne), entrées d'achat dans le journal avec « Annuler l'achat ».
+12d. **Contenu** : chargement du catalogue initial (SPEC 10.8) via l'API sur la vraie base, après accord, et vérification des prix sur l'Étal.
+
+### Vérification
+
+- 12a et 12b : `npm test`, `npm run lint`, `npm run typecheck` ; `curl` sur un serveur isolé (port 3101, `WOWG_DATA_DIR` dans le scratchpad) : gagner de l'or via une quête perso sans talent, acheter, recharge refusée, annuler depuis l'API.
+- 12c : parcours dans Chrome sur le serveur isolé (port 5174) : création de cartes des 5 raretés, achat, carte en recharge, achat unique archivé, annulation depuis le journal, objectif d'épargne. Captures pour valider les couleurs de rareté.
+- 12d : le service `wowg` est redémarré (`systemctl --user restart wowg`) pour servir la nouvelle version.
