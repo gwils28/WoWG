@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "guerisseur",
+    "name": "Guérisseur",
+    "icon": "game-icons:healing"
+  },
+  "specialization": {
+    "id": "corps",
+    "name": "Corps",
+    "description": "Ton corps de quarante ans tient la distance : cardio, force, mobilité et santé suivie.",
+    "icon": "game-icons:vitruvian-man"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "marche-course",
+      "name": "Marche-course",
+      "description": "Démarrer la course en alternant avec la marche, sans brusquer le dos ni les genoux.",
+      "icon": "game-icons:walk",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Alterner 1 min de course et 2 min de marche pendant 20 min, 3 sorties en 2 semaines",
+        "Alterner 2 min de course et 1 min de marche pendant 30 min"
+      ]
+    },
+    {
+      "id": "pompes-inclinees",
+      "name": "Premières pompes",
+      "description": "Poussée horizontale, coudes à 45° et bassin gainé malgré le grand levier.",
+      "icon": "game-icons:push",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Mains surélevées (table ou barre) : 3 × 12, coudes à 45°, bassin gainé",
+        "Au sol : 3 × 6, bassin gainé"
+      ]
+    },
+    {
+      "id": "avis-kine",
+      "name": "Avis du kiné",
+      "description": "Faire regarder ta scoliose par un kiné avant de charger le dos.",
+      "icon": "game-icons:nurse-male",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 1,
+      "ranks": [
+        "Une séance de kiné faite pour ta scoliose, avec 3 exercices ou consignes notés (ce qui est conseillé, ce qui est à éviter)"
+      ]
+    },
+    {
+      "id": "dossier-sante",
+      "name": "Dossier santé",
+      "description": "Rassembler en un endroit ce qu'un médecin doit savoir de toi.",
+      "icon": "game-icons:health-normal",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Médecin traitant déclaré et une page santé écrite (antécédents, traitements, allergies, vaccins)",
+        "Mon espace santé activé, ordonnances et résultats récents rangés dedans"
+      ]
+    },
+    {
+      "id": "releve-sommeil",
+      "name": "Relevé de sommeil",
+      "description": "Mesurer tes nuits avant de chercher à les changer.",
+      "icon": "game-icons:sleepy",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 1,
+      "ranks": [
+        "Heures de coucher, de lever et réveils nocturnes relevés sur 14 nuits (montre ou carnet), moyenne calculée"
+      ]
+    },
+    {
+      "id": "course-continue",
+      "name": "Course continue",
+      "description": "Courir sans pause à allure facile (les séances de boxe ne comptent pas ici).",
+      "icon": "game-icons:running-shoe",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Courir 20 min sans t'arrêter",
+        "Courir 30 min sans t'arrêter"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-course"
+        }
+      ]
+    },
+    {
+      "id": "rowing-inverse",
+      "name": "Rowing inversé",
+      "description": "Tirage horizontal à la barre contre la posture voûtée du bureau.",
+      "icon": "game-icons:pull",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Genoux fléchis à 90° : 3 × 12, 1 s de pause omoplates serrées",
+        "Jambes tendues, talons au sol : 3 × 8"
+      ]
+    },
+    {
+      "id": "routine-dos",
+      "name": "Routine du dos",
+      "description": "Les exercices donnés par le kiné, faits souvent et brièvement.",
+      "icon": "game-icons:spine-arrow",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Routine prescrite par le kiné (10 min au plus) faite 5 jours sur 7 pendant 2 semaines",
+        "Même routine tenue 4 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "avis-kine"
+        }
+      ]
+    },
+    {
+      "id": "bilan-medecin",
+      "name": "Bilan des 40 ans",
+      "description": "Une consultation de fond chez ton médecin traitant, analyses comprises.",
+      "icon": "game-icons:stethoscope",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Consultation de bilan dédiée chez ton médecin traitant, distincte d'un certificat sportif : tension, poids, tour de taille notés",
+        "Bilan sanguin prescrit fait et résultats commentés avec le médecin"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "dossier-sante",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sept-heures",
+      "name": "Sept heures",
+      "description": "Dormir assez pour récupérer, malgré les nuits de jeune parent.",
+      "icon": "game-icons:night-sleep",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "7 h de sommeil ou plus 5 nuits sur 7 pendant 2 semaines (montre ou carnet)",
+        "7 h ou plus 5 nuits sur 7 pendant 4 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "releve-sommeil"
+        }
+      ]
+    },
+    {
+      "id": "cinq-kilometres",
+      "name": "Cinq kilomètres",
+      "description": "Tenir la distance de référence, puis gagner en allure sans forcer.",
+      "icon": "game-icons:stopwatch",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Courir 5 km sans t'arrêter",
+        "Courir 5 km en moins de 35 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "course-continue"
+        }
+      ]
+    },
+    {
+      "id": "planche-laterale",
+      "name": "Planche latérale",
+      "description": "Anti-inclinaison : obliques et stabilisateurs latéraux, précieux pour la scoliose.",
+      "icon": "game-icons:radial-balance",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Genoux fléchis : 3 tours × 25 s par côté, côté faible en premier",
+        "Jambes tendues, pieds décalés : 3 tours × 40 s par côté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rowing-inverse",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chevilles-mobiles",
+      "name": "Chevilles mobiles",
+      "description": "Flexion de cheville, clé du squat talons au sol à ta taille.",
+      "icon": "game-icons:foot-plaster",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Test genou-mur : genou au mur avec le pied à 8 cm, des deux côtés",
+        "Pied à 12 cm, des deux côtés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine-dos",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "assiette-verte",
+      "name": "Assiette verte",
+      "description": "Des légumes à chaque repas principal, sans régime ni comptage.",
+      "icon": "game-icons:carrot",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Légumes à 2 repas par jour, 5 jours sur 7 pendant 4 semaines",
+        "Même rythme tenu 8 semaines d'affilée"
+      ]
+    },
+    {
+      "id": "aisance-aquatique",
+      "name": "Aisance aquatique",
+      "description": "Se sentir bien dans l'eau avant de chercher à nager.",
+      "icon": "game-icons:water-splash",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "5 séances encadrées par un maître-nageur pour toi seul (hors éveil aquatique avec l'enfant)",
+        "Tête sous l'eau, 10 bulles d'affilée, puis flotter 10 s sur le ventre et sur le dos sans aide",
+        "Glisser 5 m bras tendus après une poussée au mur, puis 25 m de battements avec planche"
+      ]
+    },
+    {
+      "id": "squat-complet",
+      "name": "Squat complet",
+      "description": "Poussée du bas du corps, buste redressé et talons au sol.",
+      "icon": "game-icons:weight-lifting-down",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Amplitude complète, descente en 3 s, talons au sol : 3 × 10",
+        "Pause de 2 s en bas : 3 × 15"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "planche-laterale",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "depistages",
+      "name": "Dépistages à jour",
+      "description": "Les examens et rappels recommandés à 40 ans, listés puis faits.",
+      "icon": "game-icons:checklist",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Liste écrite des dépistages, rappels de vaccins et examens recommandés à ton âge (hors dentiste), avec la date prévue de chacun, validée par ton médecin",
+        "Tous les éléments de la liste faits ou à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bilan-medecin"
+        }
+      ]
+    },
+    {
+      "id": "crawl",
+      "name": "Crawl",
+      "description": "Nager le crawl en continu, de la longueur à la distance du triathlon XS.",
+      "icon": "game-icons:waves",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "25 m de crawl sans t'arrêter",
+        "100 m de crawl sans t'arrêter",
+        "400 m de crawl sans t'arrêter (distance du triathlon XS)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "aisance-aquatique"
+        }
+      ]
+    },
+    {
+      "id": "porter-lourd",
+      "name": "Porter lourd",
+      "description": "Marche du fermier : prise, gainage et posture en portant des charges du quotidien.",
+      "icon": "game-icons:weight",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "2 × 10 kg (bidons, sacs) sur 100 m sans poser, dos droit",
+        "2 × 15 kg sur 100 m sans poser, dos droit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "squat-complet",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "squat-profond",
+      "name": "Squat profond",
+      "description": "Tenir la position accroupie, talons au sol, buste redressé.",
+      "icon": "game-icons:kneeling",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Tenir 30 s en squat profond talons au sol, appui des mains autorisé",
+        "Tenir 1 min sans appui",
+        "Tenir 1 min 30 sans appui, buste redressé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chevilles-mobiles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "velo-adulte",
+      "name": "Vélo adulte",
+      "description": "Apprendre le vélo sur un cadre à ta taille (XL ou XXL), selle basse au début.",
+      "icon": "game-icons:dutch-bike",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Démarrer seul et pédaler 50 m sans poser le pied",
+        "Faire des huit dans un parking et lâcher une main 5 s pour signaler en roulant droit",
+        "Sortie de 25 km sur voie verte"
+      ]
+    },
+    {
+      "id": "chaine-posterieure",
+      "name": "Chaîne postérieure",
+      "description": "Souplesse des ischio-jambiers et du bas du dos, testée debout jambes tendues.",
+      "icon": "game-icons:leg",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Debout jambes tendues, bout des doigts à mi-tibia",
+        "Bout des doigts aux chevilles",
+        "Bout des doigts au sol"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "squat-profond",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sommeil-regulier",
+      "name": "Sommeil régulier",
+      "description": "Des heures de coucher et de lever stables, qui calent ton horloge.",
+      "icon": "game-icons:sunrise",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Coucher et lever à heure fixe (à 30 min près) 6 jours sur 7 pendant 8 semaines",
+        "Même régularité tenue 16 semaines d'affilée"
+      ]
+    },
+    {
+      "id": "enchainements",
+      "name": "Enchaînements",
+      "description": "Courir juste après le vélo (jambes lourdes) et apprendre les transitions.",
+      "icon": "game-icons:finish-line",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 km de vélo puis 1 km de course, transition incluse",
+        "Simulation XS complète : 400 m de nage, 10 km de vélo, 2,5 km de course dans la même matinée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "velo-adulte"
+        }
+      ]
+    },
+    {
+      "id": "dentiste",
+      "name": "Dentiste",
+      "description": "Des contrôles dentaires réguliers plutôt que des urgences.",
+      "icon": "game-icons:tooth",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Contrôle chez le dentiste fait (détartrage compris)",
+        "Deuxième contrôle fait dans les 12 mois qui suivent le premier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "depistages",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "force-complete",
+      "name": "Force complète",
+      "description": "Les variantes avancées du haut et du bas du corps validées ensemble (hors boxe).",
+      "icon": "game-icons:strong",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dans la même semaine : rowing jambes tendues 4 × 12, pompes au sol 3 × 15, squat avec pause 3 × 15, planche latérale jambes tendues 3 × 40 s par côté",
+        "Dans la même semaine : rowing pieds surélevés 3 × 8, pompes avec descente de 3 s 3 × 12, fente bulgare 3 × 8 par jambe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "porter-lourd",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tableau-sante",
+      "name": "Tableau de bord santé",
+      "description": "Quelques chiffres suivis dans le temps pour voir venir plutôt que subir.",
+      "icon": "game-icons:heart-beats",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tension, poids, tour de taille et fréquence cardiaque au repos relevés chaque trimestre pendant 12 mois (4 relevés)",
+        "Relevés présentés à ton médecin, un objectif chiffré fixé avec lui et atteint au relevé suivant"
+      ]
+    },
+    {
+      "id": "triathlon",
+      "name": "Triathlète",
+      "description": "Terminer un triathlon officiel, du format découverte au sprint.",
+      "icon": "game-icons:checkered-flag",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Terminer un triathlon XS officiel (environ 400 m, 10 km, 2,5 km)",
+        "Terminer un triathlon S officiel (750 m, 20 km, 5 km)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "enchainements"
+        }
+      ]
+    },
+    {
+      "id": "suivi-dos",
+      "name": "Suivi dans la durée",
+      "description": "Le suivi du dos tenu sur plusieurs années, après le premier avis du kiné.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 9,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "4 séances de suivi sur 12 mois (une par trimestre)",
+        "8 séances sur 24 mois"
+      ]
+    },
+    {
+      "id": "forme-durable",
+      "name": "Forme durable",
+      "description": "Ton test annuel de forme, réussi puis tenu dans la durée.",
+      "icon": "game-icons:muscle-up",
+      "tier": 10,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Test annuel dans la même semaine : 5 km sous 30 min, 20 pompes, squat profond tenu 2 min, paumes au sol jambes tendues",
+        "Même test réussi 3 années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "force-complete",
+          "rank": 1
+        },
+        {
+          "talentId": "suivi-dos",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

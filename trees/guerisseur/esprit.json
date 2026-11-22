@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "guerisseur",
+    "name": "Guérisseur",
+    "icon": "game-icons:healing"
+  },
+  "specialization": {
+    "id": "esprit",
+    "name": "Esprit",
+    "description": "Tu gardes la tête claire : calme, émotions régulées, écrans tenus à distance et amitiés entretenues.",
+    "icon": "game-icons:sun-cloud"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "meditation-guidee",
+      "name": "Méditation guidée",
+      "description": "Commencer petit, avec un guide audio.",
+      "icon": "game-icons:meditation",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances de méditation guidée de 5 min",
+        "5 min de méditation guidée 5 jours sur 7 pendant 2 semaines"
+      ]
+    },
+    {
+      "id": "meteo-interieure",
+      "name": "Météo intérieure",
+      "description": "Mettre un chiffre sur ton bien-être et un mot sur ce que tu ressens.",
+      "icon": "game-icons:psychic-waves",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Score de bien-être WHO-5 mesuré une première fois et noté comme point de départ",
+        "10 moments d'émotion forte notés : émotion, intensité de 1 à 10, ce qui l'a déclenchée"
+      ]
+    },
+    {
+      "id": "mono-tache",
+      "name": "Une chose à la fois",
+      "description": "Faire une seule chose à la fois dans la vie perso, du début à la fin.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 tâches perso hors travail (papiers, rangement, démarche) menées d'une traite sans t'interrompre, notées",
+        "15 tâches menées de cette façon"
+      ]
+    },
+    {
+      "id": "coin-lecture",
+      "name": "Coin lecture",
+      "description": "Lire pour le plaisir, hors travail, hors technique et hors histoire du soir.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un livre choisi pour le plaisir et 30 min de lecture dans la semaine",
+        "Ce livre plaisir terminé"
+      ]
+    },
+    {
+      "id": "respiration-apaisante",
+      "name": "Respiration apaisante",
+      "description": "Cohérence cardiaque et respiration lente pour faire redescendre la pression.",
+      "icon": "game-icons:windy-stripes",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cohérence cardiaque (5 min) apprise et pratiquée 5 fois",
+        "Utilisée dans 5 moments de stress, effet noté de 1 à 10"
+      ]
+    },
+    {
+      "id": "pause-reaction",
+      "name": "Pause avant de réagir",
+      "description": "Respirer avant de répondre dans une situation tendue.",
+      "icon": "game-icons:pause-button",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Pause marquée avant de répondre dans 5 situations tendues hors couple (travail, famille élargie, commerces et services), notées",
+        "10 situations notées",
+        "20 situations notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meteo-interieure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "deconnexion-travail",
+      "name": "Déconnexion du travail",
+      "description": "Rentrer chez toi vraiment disponible, le travail laissé au travail.",
+      "icon": "game-icons:sundial",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Heure de coupure pro fixée et notifications pro coupées automatiquement à cette heure, tenu 4 semaines d'affilée",
+        "Aucun travail ni mail pro le week-end pendant 8 semaines"
+      ]
+    },
+    {
+      "id": "prendre-nouvelles",
+      "name": "Prendre des nouvelles",
+      "description": "Garder le contact avec tes amis, la famille étant suivie dans Foyer.",
+      "icon": "game-icons:rotary-phone",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un ami (hors famille) appelé chaque semaine pendant 4 semaines",
+        "Deux amis vus en vrai dans le même mois (repas, balade, sortie)"
+      ]
+    },
+    {
+      "id": "meditation-autonome",
+      "name": "Méditation sans guide",
+      "description": "Méditer seul, un peu plus longtemps.",
+      "icon": "game-icons:lotus",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 min sans guide, 5 jours sur 7 pendant 4 semaines",
+        "Même pratique tenue 8 semaines d'affilée"
+      ]
+    },
+    {
+      "id": "recadrer-pensees",
+      "name": "Recadrer ses pensées",
+      "description": "Séparer les faits de l'interprétation et chercher une lecture plus juste.",
+      "icon": "game-icons:mirror-mirror",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice des 3 colonnes (situation, pensée, autre lecture) fait 10 fois",
+        "Fait 25 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pause-reaction",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rituel-amis",
+      "name": "Rituel entre amis",
+      "description": "Un rendez-vous régulier avec des amis, qui tient tout seul.",
+      "icon": "game-icons:candle-light",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un rendez-vous régulier avec des amis hors du foyer (repas, sortie, jeu) fixé et tenu 2 fois, hors pratiques suivies dans tes autres classes",
+        "Tenu chaque mois pendant 2 mois de plus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prendre-nouvelles"
+        }
+      ]
+    },
+    {
+      "id": "reguler",
+      "name": "Réguler",
+      "description": "Avoir des stratégies qui marchent pour toi quand une émotion déborde.",
+      "icon": "game-icons:anchor",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 stratégies de régulation testées (respiration, marche, mise à distance), efficacité notée de 1 à 10",
+        "La meilleure appliquée 10 fois en situation, notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recadrer-pensees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrans-adulte",
+      "name": "Écrans tenus",
+      "description": "Ton seul talent d'écrans : mesurer puis réduire ton temps d'écran de loisir.",
+      "icon": "game-icons:smartphone",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Notifications perso non essentielles coupées (5 applis gardées, listées) et temps d'écran de loisir mesuré 2 semaines",
+        "Temps d'écran de loisir réduit de 30 % pendant 4 semaines, téléphone hors de la chambre la nuit",
+        "Sous ton objectif pendant 8 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "deconnexion-travail",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cercle-amis",
+      "name": "Cercle d'amis",
+      "description": "Un cercle proche hors du foyer, entretenu mois après mois.",
+      "icon": "game-icons:three-friends",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 amis (hors famille) vus ou appelés chaque mois pendant 3 mois",
+        "Une journée ou un week-end de loisir organisé par toi pour des amis hors du foyer, hors ateliers comptés dans Transmission"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rituel-amis",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "meditation-longue",
+      "name": "Méditation longue",
+      "description": "Des séances plus longues, de temps en temps.",
+      "icon": "game-icons:candles",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une séance de 30 min",
+        "Une demi-journée de pratique (3 h, guidée ou en groupe)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-autonome",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "limites",
+      "name": "Limites saines",
+      "description": "Dire non et protéger ton énergie.",
+      "icon": "game-icons:stop-sign",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "5 demandes d'autrui refusées en une phrase, sans te justifier davantage, notées",
+        "Une limite importante posée (travail, amis ou famille élargie)",
+        "Cette limite tenue 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reguler",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conges-coupes",
+      "name": "Congés coupés",
+      "description": "Des vacances où le travail ne te suit pas.",
+      "icon": "game-icons:sun",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une semaine de congés sans mail ni message pro, répondeur posé",
+        "Deux semaines d'affilée sans mail ni message pro"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrans-adulte",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pratique-en-groupe",
+      "name": "Pratique en groupe",
+      "description": "Méditer avec d'autres, en séance ou en atelier.",
+      "icon": "game-icons:campfire",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances de méditation en groupe",
+        "15 séances de méditation en groupe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-longue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-resilience",
+      "name": "Plan de résilience",
+      "description": "Tirer parti des épreuves passées et préparer les suivantes.",
+      "icon": "game-icons:rainbow-star",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Retour d'expérience écrit sur une difficulté passée : ce qui a aidé, ce qui a manqué",
+        "Plan de résilience personnel écrit (signaux d'alerte, ressources dont un professionnel de santé, actions) et confié à une personne de confiance"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "limites",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "soin-de-soi",
+      "name": "Soin de soi",
+      "description": "Planifier des moments qui ressourcent, rien que pour toi.",
+      "icon": "game-icons:sprout",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un moment plaisir pour toi planifié et vécu chaque semaine pendant 12 semaines, hors lecture et hors pratiques suivies ailleurs (musique, échecs, boxe, sport)",
+        "Même rythme tenu 26 semaines d'affilée"
+      ]
+    },
+    {
+      "id": "retraite",
+      "name": "Retraite",
+      "description": "Quelques jours entiers consacrés à la pratique, loin du quotidien.",
+      "icon": "game-icons:lotus-flower",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un week-end de retraite de méditation (2 jours)",
+        "Une retraite de 4 jours ou plus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pratique-en-groupe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "nouvelles-amities",
+      "name": "Nouvelles amitiés",
+      "description": "Rencontrer, puis entretenir.",
+      "icon": "game-icons:two-feathers",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 nouvelles personnes rencontrées et revues au moins une fois",
+        "Une nouvelle amitié entretenue 6 mois (vue ou appelée chaque mois)"
+      ]
+    },
+    {
+      "id": "exprimer-besoins",
+      "name": "Exprimer ses besoins",
+      "description": "Dire ce que tu ressens et demandes, sans reproche.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une demande formulée avec observation, ressenti et besoin, 5 fois notées",
+        "Un désaccord important (travail, amis, famille élargie), autre que la limite posée dans Limites saines, traité de cette façon, issue notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-resilience",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "communaute",
+      "name": "Communauté",
+      "description": "Appartenir à un groupe qui compte, hors des pratiques suivies dans tes autres classes.",
+      "icon": "game-icons:meeple-group",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Membre actif depuis 6 mois d'un groupe (cercle de lecture, groupe de marche, amicale), hors jam, échecs, boxe, bénévolat et parents d'élèves",
+        "Un rôle tenu dans ce groupe (organiser, accueillir)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nouvelles-amities",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "meditation-ancree",
+      "name": "Méditation ancrée",
+      "description": "Une pratique de calme tenue dans la durée.",
+      "icon": "game-icons:body-balance",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Méditation de 10 min ou plus, 5 jours sur 7 pendant 6 mois",
+        "Une deuxième période de 6 mois tenue dans l'année qui suit"
+      ]
+    },
+    {
+      "id": "lecteur",
+      "name": "Lecteur",
+      "description": "Beaucoup de livres lus pour le plaisir, au fil des années.",
+      "icon": "game-icons:book-pile",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "12 livres plaisir lus en 12 mois",
+        "24 livres plaisir lus en 24 mois"
+      ]
+    },
+    {
+      "id": "equilibre-interieur",
+      "name": "Équilibre intérieur",
+      "description": "Un bien-être mesuré et tenu dans la durée.",
+      "icon": "game-icons:glass-heart",
+      "tier": 10,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Score WHO-5 de 15 ou plus chaque mois pendant 12 mois",
+        "15 ou plus pendant 24 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "meditation-ancree",
+          "rank": 1
+        },
+        {
+          "talentId": "exprimer-besoins",
+          "rank": 1
+        },
+        {
+          "talentId": "lecteur",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

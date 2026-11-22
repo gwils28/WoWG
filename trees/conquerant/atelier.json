@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conquerant",
+    "name": "Conquérant",
+    "icon": "game-icons:spartan-helmet"
+  },
+  "specialization": {
+    "id": "atelier",
+    "name": "Atelier",
+    "description": "La maison et le terrain s'améliorent de tes mains, en sécurité et dans les règles.",
+    "icon": "game-icons:hammer-nails"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "caisse-outils",
+      "name": "Caisse à outils",
+      "description": "Les bons outils et les protections, réunis avant le premier chantier.",
+      "icon": "game-icons:toolbox",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Caisse de base réunie (marteau, tournevis, mètre, niveau, cutter, pince, perceuse-visseuse, détecteur de câbles), inventaire noté",
+        "EPI réunis (gants, lunettes, protections auditives, masque FFP2, chaussures de sécurité), liste acheter, louer ou emprunter établie"
+      ]
+    },
+    {
+      "id": "peinture-enduits",
+      "name": "Peinture et enduits",
+      "description": "Des murs nets, des finitions propres.",
+      "icon": "game-icons:paint-roller",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Trous et fissures d'un mur rebouchés, poncés et invisibles après peinture",
+        "Un pan de mur repeint (protection, lessivage, 2 couches), photos avant et après",
+        "Une pièce complète repeinte, plafond compris, découpes nettes (ton logement ou chez un proche)"
+      ]
+    },
+    {
+      "id": "lire-batiment",
+      "name": "Lire un bâtiment",
+      "description": "Comprendre comment une maison tient debout.",
+      "icon": "game-icons:family-house",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche illustrée du bâti : fondations, murs porteurs, dalle, charpente, couverture",
+        "Plan d'un logement lu : pièces, cotes, orientation, niveaux et réseaux repérés"
+      ]
+    },
+    {
+      "id": "carnet-maison",
+      "name": "Carnet de la maison",
+      "description": "La mémoire de ton logement, prête pour la future maison.",
+      "icon": "game-icons:notebook",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet du logement actuel : vannes d'eau, compteurs, tableau électrique, chauffe-eau repérés et photographiés",
+        "Entretiens et dates notés, calendrier d'entretien de l'année établi"
+      ]
+    },
+    {
+      "id": "percage-fixation",
+      "name": "Perçage et fixation",
+      "description": "Fixer solidement, au bon endroit, sans percer un câble.",
+      "icon": "game-icons:drill",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Étagère fixée de niveau dans un mur plein avec les bonnes chevilles, câbles et tuyaux détectés avant perçage, charge testée",
+        "Meuble haut ou support TV fixé sur plaque de plâtre (chevilles à expansion)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "caisse-outils",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "electricite-base",
+      "name": "Électricité de base",
+      "description": "Intervenir sur un appareillage, toujours hors tension.",
+      "icon": "game-icons:electrical-socket",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Tableau électrique lu : disjoncteurs étiquetés par pièce, rôle du différentiel 30 mA noté",
+        "Consignation appliquée sur 3 interventions simples (couper, vérifier l'absence de tension au VAT)",
+        "Luminaire, prise ou interrupteur remplacé à l'identique et testé, 3 fois"
+      ]
+    },
+    {
+      "id": "materiaux-mortier",
+      "name": "Matériaux et mortier",
+      "description": "Savoir ce que tu mets en œuvre, et le doser.",
+      "icon": "game-icons:concrete-bag",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des matériaux courants (parpaing, brique, béton cellulaire, bois, plâtre) et de leurs usages",
+        "Mortier gâché au bon dosage, 1 sac utilisé (scellement, rebouchage)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lire-batiment",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "entretien-jardin",
+      "name": "Entretien du terrain",
+      "description": "Un extérieur tenu, chez un proche en attendant le tien.",
+      "icon": "game-icons:wheelbarrow",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une journée d'entretien d'un jardin (proche ou jardin partagé) : tonte, bordures, désherbage",
+        "3 journées sur une même saison, fiche de ce qui a été fait"
+      ]
+    },
+    {
+      "id": "outillage-chantier",
+      "name": "Outillage de chantier",
+      "description": "Les machines qui coupent et percent fort, maniées en sécurité.",
+      "icon": "game-icons:circular-saw",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 coupes droites à la scie circulaire en sécurité (guide, serre-joints), en atelier partagé ou chez un proche",
+        "Perforateur et disqueuse loués et utilisés sur un chantier, règles d'usage de l'échelle appliquées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "percage-fixation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plomberie-sanitaires",
+      "name": "Plomberie et sanitaires",
+      "description": "L'eau qui arrive et repart sans fuite.",
+      "icon": "game-icons:sink",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Siphon démonté et nettoyé, joint de robinet ou cartouche de mitigeur changé, sans fuite après 48 h",
+        "Robinet ou mitigeur complet remplacé et joint silicone refait, sans fuite après 1 semaine"
+      ]
+    },
+    {
+      "id": "maconnerie",
+      "name": "Béton et maçonnerie",
+      "description": "Couler, monter, aligner.",
+      "icon": "game-icons:brick-wall",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Petit massif béton coffré (socle, seuil), de niveau, chez un proche ou en formation",
+        "Un rang de parpaings monté droit et de niveau (formation ou chantier)",
+        "Muret de 3 rangs avec angle harpé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "materiaux-mortier",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "bois-buches",
+      "name": "Bois et bûches",
+      "description": "Le bois de chauffage fendu, rangé, en sécurité.",
+      "icon": "game-icons:axe-in-log",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "1 stère fendu au merlin et rangé, EPI portés (chez un proche ou en affouage)",
+        "Formation tronçonneuse suivie avant toute coupe, gros arbres confiés à un élagueur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "entretien-jardin",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "menuiserie",
+      "name": "Menuiserie intérieure",
+      "description": "Couper juste et assembler du bois.",
+      "icon": "game-icons:hand-saw",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "5 coupes d'équerre à la scie et à la scie sauteuse",
+        "Porte réglée (charnières, gâche) qui ne frotte plus",
+        "Meuble simple fabriqué de A à Z (étagère, banc) en panneau ou tasseaux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "outillage-chantier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "taille-arbres",
+      "name": "Taille et arbres",
+      "description": "Haies et fruitiers taillés au bon moment.",
+      "icon": "game-icons:fruit-tree",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une haie taillée à la bonne période (chez un proche ou en jardin partagé)",
+        "Taille de formation ou de fructification d'un fruitier, en atelier de taille ou chez un proche"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bois-buches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "name": "Diagnostics immobiliers",
+      "description": "Lire l'état d'un bien avant de l'acheter.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 4,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Rôle de chaque diagnostic résumé (DPE, amiante, plomb, termites, électricité, gaz)",
+        "Dossiers de diagnostics de 2 annonces réelles lus, travaux à prévoir listés et estimés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "carnet-maison",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sols",
+      "name": "Revêtements de sol",
+      "description": "Du sol aux plinthes, des finitions qui durent.",
+      "icon": "game-icons:packed-planks",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Plinthes posées ou remplacées dans une pièce",
+        "Parquet flottant ou sol vinyle posé dans une petite pièce (chez toi, chez un proche ou en atelier)",
+        "2 m² de carrelage posés (coupes, colle, joints) en formation ou sur un chantier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "menuiserie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ossature-cloisons",
+      "name": "Ossature, cloisons et isolation",
+      "description": "Monter une paroi droite et bien isolée.",
+      "icon": "game-icons:wood-beam",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Cadre en bois de 2 m construit d'équerre (diagonales égales à 5 mm près)",
+        "Cloison de 2 m sur rails et montants, plaques vissées, bandes et enduit de joints faits (chantier d'un proche ou formation)",
+        "Isolation de combles perdus ou d'un mur réalisée sur un chantier encadré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "maconnerie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chiffrage",
+      "name": "Chiffrage",
+      "description": "Savoir ce que coûte un chantier avant de le lancer.",
+      "icon": "game-icons:pencil-ruler",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Devis d'artisans comparés poste par poste pour un projet réel (ton logement, celui d'un proche ou une maison visitée)",
+        "Métré et budget matériaux d'un chantier établis, écart avec la dépense finale sous 15 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "diagnostics",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "salle-eau",
+      "name": "Salle d'eau",
+      "description": "Étanchéité et raccordements faits dans les règles.",
+      "icon": "game-icons:shower",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Étanchéité sous carrelage et pente de douche réalisées sur un chantier encadré ou en formation",
+        "Meuble vasque posé et raccordé complètement, sans fuite après 1 semaine"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sols",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cloture",
+      "name": "Clôture et portail",
+      "description": "Fermer un terrain proprement.",
+      "icon": "game-icons:wooden-fence",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "5 poteaux de clôture scellés et alignés (chez un proche ou en chantier participatif)",
+        "10 m de grillage ou de panneaux posés",
+        "Portillon posé et réglé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "taille-arbres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "urbanisme",
+      "name": "Urbanisme et déclarations",
+      "description": "Construire dans les règles de la commune.",
+      "icon": "game-icons:contract",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Seuils de déclaration préalable et de permis de construire résumés, PLU d'une commune visée lu",
+        "Dossier de déclaration préalable préparé pour un abri ou une extension (projet réel ou maison visée)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chiffrage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "formations-securite",
+      "name": "Formations sécurité",
+      "description": "Les habilitations qui ouvrent les chantiers sérieux.",
+      "icon": "game-icons:mining-helmet",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Habilitation électrique BS (ou formation équivalente) obtenue",
+        "Formation au travail en hauteur ou au montage d'échafaudage roulant suivie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "menuiserie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "charpente-toiture",
+      "name": "Charpente et toiture",
+      "description": "Ce qui protège du ciel.",
+      "icon": "game-icons:wood-frame",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Pergola ou auvent en bois construit (chez un proche ou en chantier participatif)",
+        "Gouttières nettoyées et tuiles remplacées avec un couvreur ou en formation, échelle sécurisée et personne au pied"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ossature-cloisons",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "renovation-piece",
+      "name": "Rénovation de pièce",
+      "description": "Une pièce entière transformée de tes mains.",
+      "icon": "game-icons:paint-bucket",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une pièce rénovée de bout en bout (murs, sol, appareillage) dans ton logement ou chez un proche, autre que la pièce repeinte en Peinture et enduits, photos avant et après",
+        "Une deuxième pièce rénovée en moins de temps que la première (durées notées)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "salle-eau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "terrasse",
+      "name": "Terrasse bois",
+      "description": "Un extérieur où l'on vit.",
+      "icon": "game-icons:planks",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plan et calepinage d'une terrasse, puis 5 m² sur plots posés (chantier d'un proche ou formation)",
+        "Terrasse de 15 m² ou plus réalisée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cloture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maison-entretenue",
+      "name": "Logement entretenu",
+      "description": "Les réparations du quotidien, c'est toi.",
+      "icon": "game-icons:house",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Journal de 6 mois : la majorité des réparations du logement faites toi-même, pros réservés au gaz, à la structure et au tableau",
+        "Journal de 12 mois : 80 % de l'entretien et des réparations faits toi-même"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "formations-securite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chantiers-equipe",
+      "name": "Chef de chantier",
+      "description": "Tu fais avancer un chantier à plusieurs, en sécurité.",
+      "icon": "game-icons:team-upgrade",
+      "tier": 9,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Une journée de chantier organisée avec 3 personnes ou plus (préparation, matériel, consignes de sécurité), compte rendu écrit",
+        "3 journées de ce type organisées, dont une avec location de matériel"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "urbanisme",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "batisseur",
+      "name": "Bâtisseur",
+      "description": "Tu as bâti de tes mains et mené un vrai chantier.",
+      "icon": "game-icons:block-house",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un ouvrage construit de la fondation au toit (abri, carport, appentis), chez toi ou chez un proche, conforme à la déclaration préalable",
+        "Une extension ou une rénovation lourde de plusieurs pièces (au moins un lot de structure, réseaux ou isolation), distincte des pièces de Rénovation de pièce, menée en maître d'ouvrage, lots confiés et lots faits toi-même, budget tenu à 10 % près"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charpente-toiture",
+          "rank": 1
+        },
+        {
+          "talentId": "renovation-piece",
+          "rank": 1
+        },
+        {
+          "talentId": "chantiers-equipe",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

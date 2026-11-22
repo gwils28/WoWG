@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "passeur",
+    "name": "Passeur",
+    "icon": "game-icons:family-tree"
+  },
+  "specialization": {
+    "id": "transmission",
+    "name": "Transmission",
+    "description": "Ce que tu sais sert au-delà du foyer : expliquer, initier, encadrer, aider une association, voter.",
+    "icon": "game-icons:gift-of-knowledge"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "analogies",
+      "name": "Analogies",
+      "description": "Tu as en réserve des images simples pour expliquer tes domaines.",
+      "icon": "game-icons:puzzle",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet d'analogies : 5 analogies notées pour des notions de tes domaines (réseau de neurones, accord, levier, ouverture)",
+        "10 analogies, chacune testée une fois sur quelqu'un et annotée (marche ou à revoir)"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "associations-du-coin",
+      "name": "Associations du coin",
+      "description": "Tu sais quelles associations agissent près de chez toi et de quoi elles ont besoin.",
+      "icon": "game-icons:treasure-map",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 associations locales repérées (forum des associations, mairie, annuaire), le besoin de chacune noté",
+        "3 associations rencontrées (permanence, assemblée générale, forum)"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "trouver-structure",
+      "name": "Trouver un club",
+      "description": "Tu repères où encadrer des jeunes dans tes disciplines.",
+      "icon": "game-icons:castle",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 structures jeunesse contactées (club d'échecs, club de boxe, centre social)",
+        "Une séance jeunes observée en binôme avec un encadrant en place"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "comprendre-commune",
+      "name": "Comprendre sa commune",
+      "description": "Tu sais qui décide quoi dans ta commune.",
+      "icon": "game-icons:modern-city",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fonctionnement résumé : maire, conseil municipal, compétences de la commune, de l'intercommunalité et du département",
+        "Budget de la commune lu : 5 premiers postes, investissements, dette par habitant"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "sans-jargon",
+      "name": "Sans jargon",
+      "description": "Tu expliques avec des mots que tout le monde comprend.",
+      "icon": "game-icons:thought-bubble",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Lexique de 20 mots de jargon de tes domaines, chacun traduit en mots simples",
+        "3 explications à un non-initié sans aucun mot incompris (question posée à la fin)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "analogies",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plateformes-benevolat",
+      "name": "Bénévolat de compétences",
+      "description": "Tes compétences sont visibles des associations qui en ont besoin.",
+      "icon": "game-icons:laptop",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Profil créé sur une plateforme de bénévolat de compétences (Data for Good, Benevolt, Tous Bénévoles, Pro Bono Lab), compétences décrites",
+        "3 missions proposées étudiées, une candidature envoyée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "associations-du-coin",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cadre-encadrant",
+      "name": "Cadre de l'encadrant",
+      "description": "Tu connais les obligations de qui encadre des mineurs.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Obligations de l'encadrant bénévole résumées (honorabilité, assurance, autorisations parentales, signalement)",
+        "Contrôle d'honorabilité fait par la structure"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "trouver-structure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "voter",
+      "name": "Vote éclairé",
+      "description": "Tu votes en connaissance de cause.",
+      "icon": "game-icons:vote",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Inscription sur les listes électorales vérifiée en ligne, bureau de vote et prochaines élections notés",
+        "Professions de foi du prochain scrutin lues, choix écrit avec 3 raisons, puis vote"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "comprendre-commune",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "verifier-compris",
+      "name": "Vérifier la compréhension",
+      "description": "Tu vérifies ce qui a été compris au lieu de demander « c'est clair ? ».",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 explications suivies d'une reformulation ou d'un essai par la personne",
+        "15 explications vérifiées ainsi, incompréhensions repérées notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sans-jargon",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mission-ponctuelle",
+      "name": "Mission ponctuelle",
+      "description": "Tu donnes un coup de main concret à une association.",
+      "icon": "game-icons:party-flags",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une mission ponctuelle pour une association (événement, stand, collecte), hors chantiers et jardins comptés dans Atelier",
+        "3 missions ponctuelles pour au moins 2 associations"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plateformes-benevolat",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "assistant",
+      "name": "Assistant encadrant",
+      "description": "Tu coanimes des séances jeunes aux côtés d'un encadrant.",
+      "icon": "game-icons:meeple-group",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances jeunes coanimées avec un encadrant",
+        "8 séances, dont une partie de séance menée seul sous son regard"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-encadrant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conseil-municipal",
+      "name": "Conseil municipal",
+      "description": "Tu suis les décisions de ta commune et tu y fais entendre ta voix.",
+      "icon": "game-icons:banging-gavel",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un conseil municipal suivi (sur place ou en vidéo), 3 décisions notées",
+        "2 conseils suivis et un avis donné en réunion publique, concertation ou enquête publique"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "preparer-seance",
+      "name": "Préparer une séance",
+      "description": "Une séance de transmission se prépare comme un plan.",
+      "icon": "game-icons:notebook",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Fiche de séance de 30 min écrite : objectif en une phrase, 3 étapes, un exercice, une question de vérification",
+        "3 fiches de séance pour 3 domaines différents",
+        "Une fiche corrigée avec l'avis des participants (ce qui a aidé, ce qui a perdu), puis rejouée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "verifier-compris",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "besoin-asso",
+      "name": "Cadrer le besoin",
+      "description": "Tu comprends le vrai problème d'une association avant de proposer une solution.",
+      "icon": "game-icons:spyglass",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Entretien de cadrage avec une association écrit : problème, utilisateurs, contraintes (budget nul, bénévoles non techniciens)",
+        "Cahier des charges d'une page validé par l'association"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mission-ponctuelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "initiateur",
+      "name": "Initiateur diplômé",
+      "description": "Ta fédération reconnaît ta capacité à initier des jeunes.",
+      "icon": "game-icons:diploma",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Formation fédérale d'initiateur commencée (DIFFE aux échecs, initiateur FFBoxe ou équivalent)",
+        "Diplôme obtenu",
+        "5 séances jeunes préparées et animées seul"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assistant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vulgariser-ia",
+      "name": "Vulgariser l'IA",
+      "description": "Tu rends l'IA compréhensible à ceux qui n'y connaissent rien.",
+      "icon": "game-icons:robot-golem",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Explication de 5 min de « ce qu'est une IA générative et ses limites » donnée à un proche non-tech, qui la réexplique avec ses mots",
+        "Même explication adaptée à 3 profils différents (ado, senior, collègue non-tech)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preparer-seance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mission-data",
+      "name": "Mission data",
+      "description": "Tes compétences data servent une association, bénévolement.",
+      "icon": "game-icons:database",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une mission data courte livrée à une association (tableau de bord, nettoyage de fichier, automatisation simple), hors mission facturée",
+        "3 missions data livrées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "besoin-asso",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "don-du-sang",
+      "name": "Don du sang",
+      "description": "Ton sang soigne des inconnus.",
+      "icon": "game-icons:blood",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 dons (sang, plasma ou plaquettes) en 12 mois",
+        "10 dons cumulés"
+      ]
+    },
+    {
+      "id": "une-page",
+      "name": "L'essentiel en une page",
+      "description": "Une page suffit à faire comprendre l'essentiel d'un sujet.",
+      "icon": "game-icons:papers",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Une page « l'essentiel pour non-initiés » sur un sujet de tes domaines, relue par un non-initié qui la comprend (hors articles publiés pour ta réputation pro)",
+        "2 pages de plus sur des sujets différents",
+        "3 pages réutilisées par d'autres (collègues, proches) sans que tu aies à réexpliquer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vulgariser-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "benevole-regulier",
+      "name": "Bénévole régulier",
+      "description": "Une association peut compter sur toi dans la durée.",
+      "icon": "game-icons:ancient-columns",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Bénévole dans une association au moins 2 fois par mois pendant 3 mois",
+        "Pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mission-data",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "atelier-proches",
+      "name": "Atelier pour proches",
+      "description": "Tu animes une initiation pour des adultes de ton entourage.",
+      "icon": "game-icons:chess-knight",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Atelier d'une heure pour des proches adultes (initiation échecs, bricolage, musique) préparé avec une fiche de séance et animé",
+        "Un 2e atelier dans un autre de tes domaines",
+        "3 ateliers animés en tout, avis des participants notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "une-page",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "saison-complete",
+      "name": "Saison complète",
+      "description": "Tu tiens un groupe de jeunes sur toute une saison.",
+      "icon": "game-icons:whistle",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une demi-saison encadrée (septembre à janvier), moins de 2 absences",
+        "La saison entière (septembre à juin), moins de 3 absences"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "initiateur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "outil-durable",
+      "name": "Outil qui dure",
+      "description": "Ce que tu livres à une association vit sans toi.",
+      "icon": "game-icons:gears",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Un outil livré à une association avec un guide pour non-techniciens (une page ou une vidéo)",
+        "Outil utilisé chaque mois par l'association pendant 6 mois",
+        "Outil ou méthode repris par une 2e association"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "benevole-regulier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parents-eleves",
+      "name": "Parents d'élèves",
+      "description": "Tu prends part à la vie de l'école de ton enfant, sans mandat.",
+      "icon": "game-icons:round-table",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Vote aux élections de parents d'élèves et compte rendu du conseil d'école lu",
+        "Coup de main à 2 actions des parents d'élèves dans l'année (fête de l'école, bourse aux livres, sortie)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conseil-municipal",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "accompagner-progression",
+      "name": "Accompagner une progression",
+      "description": "Tu accompagnes un proche jusqu'à l'objectif qu'il s'est fixé.",
+      "icon": "game-icons:path-distance",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un proche adulte accompagné 6 mois dans un apprentissage (échecs, instrument, bricolage), objectif fixé ensemble et étapes notées",
+        "L'objectif fixé est atteint"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "atelier-proches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "passeur-de-relais",
+      "name": "Passeur de relais",
+      "description": "Ce que tu as transmis continue sans toi.",
+      "icon": "game-icons:torch",
+      "tier": 10,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une personne que tu as initiée transmet à son tour ce qu'elle a appris",
+        "Un projet d'intérêt général lancé par toi continue sans toi avec d'autres bénévoles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "accompagner-progression",
+          "rank": 1
+        },
+        {
+          "talentId": "outil-durable",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

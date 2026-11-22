@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "passeur",
+    "name": "Passeur",
+    "icon": "game-icons:family-tree"
+  },
+  "specialization": {
+    "id": "foyer",
+    "name": "Foyer",
+    "description": "Le foyer tourne sans que tout repose sur une seule tête : intendance, couple tenu, famille élargie entourée.",
+    "icon": "game-icons:family-house"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "cuisine-du-quotidien",
+      "name": "Cuisine du quotidien",
+      "description": "Tu nourris le foyer seul, sans plat tout prêt ni recette sous les yeux.",
+      "icon": "game-icons:cook",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "3 plats du quotidien cuisinés seul de A à Z, courses comprises",
+        "5 plats cuisinés sans recette sous les yeux",
+        "Une semaine de dîners du foyer cuisinés par toi, sans plat préparé du commerce"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "inventaire-taches",
+      "name": "Inventaire du foyer",
+      "description": "Tu rends visible tout ce qui fait tourner la maison, y compris ce qui ne se voit pas.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Inventaire écrit de toutes les tâches du foyer, y compris invisibles (anticiper, penser à, racheter, prendre rendez-vous), avec leur fréquence",
+        "Tes propres tâches notées pendant 1 semaine (nombre et temps passé)"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "reconnaissance",
+      "name": "Reconnaissance",
+      "description": "Tu sais dire ce que tu apprécies chez l'autre parent, sans rien attendre en retour.",
+      "icon": "game-icons:love-letter",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 choses que tu apprécies chez l'autre parent écrites",
+        "Chacune dite à voix haute dans les 7 jours qui suivent"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "famille-elargie",
+      "name": "Famille à portée",
+      "description": "Tu as sous la main de quoi joindre et fêter toute ta famille élargie.",
+      "icon": "game-icons:book-cover",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Coordonnées de toute la famille élargie réunies (parents, fratrie, oncles et tantes, cousins proches)",
+        "Anniversaires de chacun notés dans l'agenda avec un rappel une semaine avant"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "menus-semaine",
+      "name": "Menus de la semaine",
+      "description": "Tu sais à l'avance ce que le foyer mange, et les courses en découlent.",
+      "icon": "game-icons:calendar",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Menus de la semaine planifiés 2 semaines d'affilée",
+        "4 semaines d'affilée, liste de courses tirée des menus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-du-quotidien",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agenda-foyer",
+      "name": "Agenda du foyer",
+      "description": "Un agenda partagé tient la mémoire du foyer à la place de ta tête.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Agenda partagé du foyer créé (rendez-vous, garde, activités) et rempli pour le mois à venir",
+        "Tenu à jour 4 semaines, chaque rendez-vous saisi le jour où il est pris"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "inventaire-taches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "attentions",
+      "name": "Attentions",
+      "description": "De petits gestes réguliers pour l'autre parent, à ton initiative.",
+      "icon": "game-icons:present",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une attention par semaine pour l'autre parent (mot, service rendu, petite surprise) pendant 2 semaines",
+        "Pendant 4 semaines, sans rappel ni occasion particulière"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reconnaissance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiche-sante-parents",
+      "name": "Fiche santé des parents",
+      "description": "Le jour où tes parents ont besoin de toi, tu sais qui appeler et quoi dire.",
+      "icon": "game-icons:medical-pack",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche santé et contacts de tes parents établie avec eux (médecins, traitements, allergies, personne à prévenir)",
+        "Copie rangée chez eux et chez toi, emplacement donné à ta fratrie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "famille-elargie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisine-avance",
+      "name": "Cuisine d'avance",
+      "description": "Une session de cuisine prépare plusieurs repas de la semaine.",
+      "icon": "game-icons:pressure-cooker",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Session de 2 h qui prépare 3 repas de la semaine, 4 fois",
+        "4 repas maison d'avance au congélateur en permanence pendant 6 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "menus-semaine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "charge-reprise",
+      "name": "Charge reprise",
+      "description": "Tu prends en entier des tâches invisibles, de la pensée à l'exécution.",
+      "icon": "game-icons:juggler",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 tâches invisibles de l'inventaire reprises entièrement par toi (anticiper, faire, vérifier)",
+        "Tenues 2 mois sans rappel de personne"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agenda-foyer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reparer-tensions",
+      "name": "Réparer les tensions",
+      "description": "Tu fais le premier pas après une tension, quoi qu'il arrive de l'autre côté.",
+      "icon": "game-icons:linked-rings",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Tes 3 règles personnelles en cas de tension écrites (jamais devant l'enfant, aucun mot blessant, pause demandée avant de monter)",
+        "Un premier pas de réparation de ta part dans les 24 h après chaque tension, tenu 6 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "attentions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fratrie",
+      "name": "Fratrie",
+      "description": "Tu entretiens le lien avec tes frères et sœurs (ou cousins proches) au-delà des fêtes.",
+      "icon": "game-icons:three-friends",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un appel ou une visite à chaque frère ou sœur (à défaut, cousin proche) dans le mois",
+        "Une initiative commune lancée avec ta fratrie (cadeau aux parents, visite groupée, répartition de l'aide)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fiche-sante-parents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "anti-gaspi",
+      "name": "Zéro gaspillage",
+      "description": "Les restes deviennent des repas et la poubelle maigrit.",
+      "icon": "game-icons:trash-can",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Denrées jetées pesées pendant 2 semaines (point de départ)",
+        "Poids jeté divisé par deux sur 1 mois, restes réutilisés",
+        "Niveau tenu 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cuisine-avance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fiche-relais",
+      "name": "Foyer en relais",
+      "description": "Un adulte peut tenir le foyer seul grâce à tes consignes écrites.",
+      "icon": "game-icons:papers",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des routines (horaires, repas, coucher, contacts) prête pour qu'un adulte tienne seul le foyer 3 jours",
+        "Un week-end seul avec l'enfant, foyer tenu sans aide"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charge-reprise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "appel-parents",
+      "name": "Appel aux parents",
+      "description": "Tes parents entendent ta voix chaque semaine, pas seulement quand il y a un souci.",
+      "icon": "game-icons:rotary-phone",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Appel à chacun de tes parents chaque semaine pendant 4 semaines",
+        "Chaque semaine pendant 12 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fratrie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "linge",
+      "name": "Linge",
+      "description": "Tu gères le linge du foyer de bout en bout, sans panier qui déborde.",
+      "icon": "game-icons:washing-machine",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Lessive complète (tri, programme, séchage, pliage, rangement) gérée seul pendant 4 semaines",
+        "Routine du linge tenue 6 mois sans panier qui déborde"
+      ]
+    },
+    {
+      "id": "garde-secours",
+      "name": "Garde de secours",
+      "description": "Quand la garde habituelle tombe, tu as une solution prête.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "3 solutions de garde de secours identifiées (famille, voisin, baby-sitter de confiance), contacts dans l'agenda",
+        "Chaque solution de garde briefée : fiche relais remise, accès au logement et autorisation de récupérer l'enfant (crèche, assistante maternelle) donnés",
+        "Une garde de secours utilisée avec ces consignes, retour noté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fiche-relais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relais-offert",
+      "name": "Relais offert",
+      "description": "Tu prends l'enfant seul pour libérer du temps à l'autre parent.",
+      "icon": "game-icons:heart-plus",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une demi-journée par mois prise seul avec l'enfant, annoncée d'avance pour que l'autre parent en dispose librement, pendant 3 mois (hors week-ends comptés dans Foyer en relais)",
+        "Une journée entière par mois, 3 mois de plus, mêmes conditions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reparer-tensions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-imprevus",
+      "name": "Plan des imprévus",
+      "description": "Les petits accidents de la vie courante ne désorganisent plus la semaine (les crises sont dans Abri).",
+      "icon": "game-icons:umbrella",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Plan d'imprévus écrit (parent malade, enfant malade, absence de garde, panne d'électroménager)",
+        "2 imprévus réels, autres qu'une absence de garde, gérés avec le plan, ajustements notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-secours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "histoire-familiale",
+      "name": "Histoire familiale",
+      "description": "Ton enfant saura d'où il vient.",
+      "icon": "game-icons:photo-camera",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Arbre généalogique sur 3 générations fait",
+        "Récits des grands-parents enregistrés (enfance, métiers, lieux), 2 heures au total",
+        "Livret de l'histoire familiale (photos, récits) imprimé pour l'enfant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "appel-parents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisine-avec-enfant",
+      "name": "Cuisiner avec l'enfant",
+      "description": "L'enfant met la main à la pâte et la cuisine devient un moment partagé.",
+      "icon": "game-icons:cupcake",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "L'enfant participe à une préparation chaque semaine pendant 3 mois",
+        "Pendant 3 mois de plus, et un repas complet préparé ensemble pour des invités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "anti-gaspi",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "volontes-parents",
+      "name": "Volontés des parents",
+      "description": "Tu connais les volontés de tes parents avant d'avoir à les deviner.",
+      "icon": "game-icons:quill-ink",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Conversation sur leurs volontés tenue (directives anticipées, mandat de protection future), décisions notées",
+        "Lieu des documents et décisions partagés avec ta fratrie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "histoire-familiale",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "point-couple",
+      "name": "Point de couple",
+      "description": "Le seul rendez-vous du catalogue qui se fait à deux : un point mensuel sur la relation.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 8,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Point mensuel à deux sur la relation (ce qui va, ce qui pèse, ce qu'on veut) tenu 3 mois",
+        "Tenu 6 mois de plus (9 mois d'affilée en tout), le dernier point consacré au bilan de l'année"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "relais-offert",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "presence-parents",
+      "name": "Présence auprès des parents",
+      "description": "Tu es là pour tes parents vieillissants, et tu prépares la suite avec ta fratrie.",
+      "icon": "game-icons:walking-boot",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Une visite à tes parents chaque trimestre pendant 1 an, avec l'enfant",
+        "Plan d'aide écrit avec ta fratrie pour le jour où tes parents perdront en autonomie (qui fait quoi, logement, budget)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "volontes-parents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-sans-pilote",
+      "name": "Foyer sans pilote unique",
+      "description": "Le foyer ne dépend plus d'une seule tête : tes fiches et tes routines tiennent dans la durée.",
+      "icon": "game-icons:cog",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une semaine entière seul avec l'enfant, foyer tenu sans aide (repas, linge, garde, rendez-vous)",
+        "Toutes les fiches du foyer (relais, imprévus, garde, recettes) mises à jour 2 fois dans l'année, à un changement de rythme (rentrée, nouveau travail)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-imprevus",
+          "rank": 1
+        },
+        {
+          "talentId": "linge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "traditions",
+      "name": "Traditions",
+      "description": "La famille se retrouve autour de rituels que tu fais vivre.",
+      "icon": "game-icons:candles",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "3 traditions du foyer choisies (rituel du dimanche, fête de saison, sortie annuelle), hors réunion de famille élargie, vécues une première fois",
+        "Chacune vécue 2 années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "presence-parents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "trois-generations",
+      "name": "Maison des trois générations",
+      "description": "Ta maison rassemble les trois générations de la famille.",
+      "icon": "game-icons:round-table",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une réunion de trois générations organisée par toi (repas, hébergement, programme), chez toi ou dans un lieu que tu loues, 10 personnes ou plus",
+        "Rendue annuelle, 3 années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "traditions",
+          "rank": 1
+        },
+        {
+          "talentId": "foyer-sans-pilote",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

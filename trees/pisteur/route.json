@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pisteur",
+    "name": "Pisteur",
+    "icon": "game-icons:compass"
+  },
+  "specialization": {
+    "id": "route",
+    "name": "Route",
+    "description": "Tu reprends le volant jusqu'à conduire partout, et tu sais t'orienter et préparer un grand départ.",
+    "icon": "game-icons:road"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "code-revise",
+      "name": "Code révisé",
+      "description": "Remettre le code de la route à jour dans ta tête.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 séries d'entraînement de 40 questions faites en une semaine, scores notés",
+        "20 séries faites, moyenne notée"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "prise-en-main",
+      "name": "Prise en main",
+      "description": "Retrouver le poste de conduite et les premiers kilomètres.",
+      "icon": "game-icons:steering-wheel",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Poste réglé (siège, volant, 3 rétroviseurs, appuie-tête) et commandes trouvées sans regarder à l'arrêt (feux, essuie-glaces, warning, désembuage) en moins de 30 s",
+        "5 séances de conduite notées au journal (date, durée, trajet)"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "trajets-connus",
+      "name": "Trajets connus",
+      "description": "Reprendre confiance sur les trajets du quotidien.",
+      "icon": "game-icons:house-keys",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un trajet du quotidien aller-retour fait seul, 3 fois",
+        "5 trajets réguliers différents faits seul"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "controles-depart",
+      "name": "Contrôles avant départ",
+      "description": "Un véhicule regardé avant de partir.",
+      "icon": "game-icons:car-wheel",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tour du véhicule (pneus, feux, plaques, vitres) fait avant 5 départs",
+        "Fiche des voyants rouges et orange faite à partir du carnet du véhicule"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "panneaux-priorites",
+      "name": "Panneaux et priorités",
+      "description": "Les règles qui évitent la plupart des accrochages.",
+      "icon": "game-icons:direction-signs",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Quiz de 30 panneaux à 28/30 et quiz des marquages au sol à 18/20",
+        "Série thématique intersections et priorités à 9/10, 3 fois",
+        "Limitations par défaut (agglomération, route, voie rapide, autoroute, pluie) et distances d'arrêt à 50, 90 et 130 km/h récitées sans erreur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "code-revise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bataille",
+      "name": "Stationnement en bataille",
+      "description": "Se garer en marche arrière sans y penser.",
+      "icon": "game-icons:home-garage",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Recul en ligne droite de 30 m dans une allée de parking vide, sans en sortir",
+        "5 places en marche arrière sur parking vide, roues dans la place et véhicule droit",
+        "5 places en marche arrière entre deux voitures, 2 corrections au plus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prise-en-main",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ville",
+      "name": "Circulation en ville",
+      "description": "Tenir sa place dans le trafic urbain.",
+      "icon": "game-icons:modern-city",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "30 min en centre-ville aux heures creuses, 3 fois",
+        "30 min en centre-ville aux heures de pointe, 3 fois",
+        "Traversée aux heures de pointe de 3 villes que tu ne connais pas (giratoires à plusieurs voies, voies de bus), GPS autorisé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "trajets-connus",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "creneau",
+      "name": "Créneau",
+      "description": "La manœuvre qui ouvre toutes les places de rue.",
+      "icon": "game-icons:traffic-cone",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Créneau entre deux cônes espacés de la longueur du véhicule + 1,5 m sur parking vide, 5 réussites",
+        "Créneau entre deux voitures en rue calme, roues à moins de 30 cm du trottoir, 5 réussites",
+        "Créneau en rue passante avec circulation derrière, 5 réussites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bataille",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "voie-rapide",
+      "name": "Voie rapide et autoroute",
+      "description": "Rouler vite en sécurité : insertion, changements de voie, longues lignes droites.",
+      "icon": "game-icons:speedometer",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Insertion depuis la bretelle à la vitesse du flux, 5 fois",
+        "Premier trajet de 30 min sur autoroute, péage compris, 5 changements de voie avec rétroviseur et angle mort",
+        "100 km d'autoroute au régulateur avec une pause, 3 dépassements de poids lourds en sécurité"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ville",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pneus-pression",
+      "name": "Pneus et crevaison",
+      "description": "Des pneus suivis et une crevaison qui ne te laisse pas bloqué.",
+      "icon": "game-icons:flat-tire",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Pression vérifiée et ajustée en station selon l'étiquette de portière, usure contrôlée aux témoins",
+        "Roue de secours et cric (ou kit anti-crevaison) repérés et roue changée une fois à l'arrêt chez toi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controles-depart",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "preparer-trajet",
+      "name": "Préparer et s'orienter",
+      "description": "Savoir où tu vas avant de partir, avec ou sans GPS.",
+      "icon": "game-icons:treasure-map",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Itinéraire et stationnement à l'arrivée repérés avant de partir, GPS réglé avant le départ et jamais manipulé en roulant, 5 trajets",
+        "Un trajet de 30 min vers un lieu inconnu fait sur carte routière préparée et panneaux de direction, GPS coupé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ville",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "examen-blanc",
+      "name": "Examen blanc",
+      "description": "Le niveau du code vérifié comme le jour de l'examen.",
+      "icon": "game-icons:checklist",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "35/40 à un examen blanc",
+        "37/40 trois fois de suite",
+        "39/40 à un examen blanc"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "panneaux-priorites",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "demi-tour-cote",
+      "name": "Demi-tour et côte",
+      "description": "Faire demi-tour et repartir en pente sans stress.",
+      "icon": "game-icons:anticlockwise-rotation",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Demi-tour en 3 manœuvres sur rue calme, 5 réussites sans toucher le trottoir, et redémarrage en côte sans reculer, 5 fois",
+        "Demi-tour en 3 manœuvres dans une rue étroite, 3 réussites, et redémarrage en côte avec un véhicule derrière, 5 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "creneau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "nuit-pluie",
+      "name": "Nuit et pluie",
+      "description": "Conduire quand on voit moins bien et que ça glisse.",
+      "icon": "game-icons:night-sky",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "3 trajets sous la pluie, vitesse réduite et distances doublées",
+        "Trajet connu de nuit, 3 fois, feux de route et de croisement bien alternés",
+        "1 h d'autoroute de nuit ou sous forte pluie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voie-rapide",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conduite-defensive",
+      "name": "Conduite défensive",
+      "description": "Anticiper l'erreur des autres avant qu'elle ne devienne la tienne.",
+      "icon": "game-icons:attached-shield",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carte des 5 points dangereux de ton trajet quotidien faite (intersection masquée, sortie d'école...), conduite adaptée notée",
+        "10 situations notées sur un trimestre où l'erreur d'un autre usager a été anticipée, sans freinage d'urgence"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "nuit-pluie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "panne-constat",
+      "name": "Panne et constat",
+      "description": "Savoir quoi faire au bord de la route après une panne ou un accrochage.",
+      "icon": "game-icons:hazard-sign",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Gilet, triangle, constat vierge, stylo et attestation d'assurance à jour dans le véhicule",
+        "Conduite à tenir en cas de panne sur autoroute écrite et simulée à l'arrêt : warning, gilet, triangle placé en moins de 3 min",
+        "Constat amiable rempli sur un cas d'entraînement avec le guide de l'assureur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pneus-pression",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "long-trajet",
+      "name": "Long trajet",
+      "description": "Tenir la distance sans fatigue dangereuse.",
+      "icon": "game-icons:path-distance",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "150 km avec une pause",
+        "300 km avec une pause toutes les 2 h",
+        "500 km dans la journée, conducteur unique, pause toutes les 2 h notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preparer-trajet",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parkings-etroits",
+      "name": "Parkings et rues étroites",
+      "description": "Se faufiler là où la place manque.",
+      "icon": "game-icons:mountain-road",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Entrer, se garer et ressortir de 3 parkings souterrains différents sans toucher",
+        "Centre ancien aux rues étroites (repéré à l'avance) traversé sans toucher ni bloquer, 3 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "demi-tour-cote",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conducteur-quotidien",
+      "name": "Conducteur du quotidien",
+      "description": "La voiture redevenue un outil de tous les jours.",
+      "icon": "game-icons:car-key",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Conduite au moins 4 jours sur 7 pendant 1 mois (journal)",
+        "Même rythme pendant 4 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conduite-defensive",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "carnet-entretien",
+      "name": "Carnet d'entretien",
+      "description": "Un véhicule entretenu à l'heure, sans mauvaise surprise.",
+      "icon": "game-icons:mechanic-garage",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Dates de prochaine révision et de contrôle technique notées avec un rappel programmé",
+        "Révision faite à l'échéance, facture classée avec le carnet, contrôle technique à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "panne-constat",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maitre-gabarit",
+      "name": "Maître du gabarit",
+      "description": "Chaque place prise du premier coup.",
+      "icon": "game-icons:crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 mois où chaque stationnement est réussi du premier coup ou en une correction (journal tenu)",
+        "6 mois au même niveau, sans choc ni rayure sur le véhicule"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parkings-etroits",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "voiture-pleine",
+      "name": "Voiture pleine",
+      "description": "Conduire avec la famille à bord et le coffre chargé.",
+      "icon": "game-icons:family-house",
+      "tier": 7,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "5 trajets à 5 personnes ou plus, distances allongées",
+        "Un trajet de plus d'une heure avec toutes les places occupées et le coffre plein"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "long-trajet",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "code-reflexe",
+      "name": "Code en réflexe",
+      "description": "Le code tenu sans réviser, des mois après la reprise.",
+      "icon": "game-icons:book-pile",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois après la reprise : 39/40 à un examen blanc sans série de révision dans le mois précédent",
+        "1 an après la reprise : 39/40 à un examen blanc sans révision préalable"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "examen-blanc"
+        }
+      ]
+    },
+    {
+      "id": "grand-depart",
+      "name": "Grand départ",
+      "description": "Le départ en vacances préparé et conduit par toi.",
+      "icon": "game-icons:caravan",
+      "tier": 8,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Départ préparé seul : itinéraire, pauses, chargement réparti et arrimé, pression des pneus réglée en mode charge",
+        "Trajet de vacances de plus de 400 km avec 5 passagers ou plus, sans incident, distinct des trajets comptés en Long trajet et Voiture pleine"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voiture-pleine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "quatre-saisons-route",
+      "name": "Toutes saisons",
+      "description": "Un véhicule et un conducteur prêts pour toutes les conditions de l'année.",
+      "icon": "game-icons:snowflake-1",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Véhicule préparé pour l'hiver (pneus hiver ou 4 saisons, ou chaînes montées une fois à l'arrêt), kit hiver dans le coffre (raclette, couverture, lampe)",
+        "Sur 12 mois, au moins un trajet noté dans 4 de ces conditions : forte pluie, nuit, brouillard, forte chaleur, givre ou neige"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "carnet-entretien",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "route-etrangere",
+      "name": "Conduire à l'étranger",
+      "description": "Prendre la route hors de France sans être surpris par les règles locales.",
+      "icon": "game-icons:earth-africa-europe",
+      "tier": 9,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Règles d'un pays visité relevées avant le départ (vitesses, péage ou vignette, équipements obligatoires, alcool)",
+        "Une semaine de conduite à l'étranger, ton véhicule ou une location, sans incident"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grand-depart",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conducteur-sur",
+      "name": "Conducteur sûr",
+      "description": "Conduire partout, longtemps, sans accroc.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "12 mois de conduite régulière sans accrochage ni infraction, en ville, sur autoroute, de nuit et voiture pleine",
+        "24 mois au même niveau"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conducteur-quotidien"
+        },
+        {
+          "talentId": "quatre-saisons-route",
+          "rank": 1
+        },
+        {
+          "talentId": "code-reflexe",
+          "rank": 1
+        },
+        {
+          "talentId": "maitre-gabarit",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

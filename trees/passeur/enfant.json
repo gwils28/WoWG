@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "passeur",
+    "name": "Passeur",
+    "icon": "game-icons:family-tree"
+  },
+  "specialization": {
+    "id": "enfant",
+    "name": "Enfant",
+    "description": "Tu accompagnes ton enfant de 2 ans jusqu'à l'école : langage, cadre, autonomie, écrans tenus, posture de guide.",
+    "icon": "game-icons:kid-slide"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "langage",
+      "name": "Langage",
+      "description": "Tu nourris le langage de ton enfant en reprenant et en enrichissant ses phrases.",
+      "icon": "game-icons:talk",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Nouveaux mots de l'enfant notés pendant 1 semaine (point de départ)",
+        "10 situations où tu as reformulé et enrichi sa phrase, notées"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "routine-coucher",
+      "name": "Routine du coucher",
+      "description": "Le coucher suit des étapes connues que l'enfant peut anticiper.",
+      "icon": "game-icons:alarm-clock",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Routine du coucher écrite (étapes, heure) et affichée en images",
+        "L'enfant enchaîne 3 étapes en regardant le tableau, sans rappel, 5 fois notées"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "attention-entiere",
+      "name": "Attention entière",
+      "description": "Quand ton enfant te parle, tu t'arrêtes et tu l'écoutes vraiment.",
+      "icon": "game-icons:eye-target",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 moments où l'enfant te parle et où tu t'arrêtes (mains libres, à sa hauteur, regard) avant de répondre, notés",
+        "30 moments notés"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "carnet-sante",
+      "name": "Santé de l'enfant",
+      "description": "Le suivi médical de ton enfant est à jour et transmissible.",
+      "icon": "game-icons:medical-thermometer",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet de santé vérifié : vaccins et examens obligatoires de l'âge à jour",
+        "Fiche santé de l'enfant (allergies, traitements, médecin, poids) prête pour la garde et les urgences"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "histoire-du-soir",
+      "name": "Histoire du soir",
+      "description": "Un livre partagé chaque soir, le premier pas vers le plaisir de lire.",
+      "icon": "game-icons:open-book",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Histoire lue au coucher 5 soirs sur 7 pendant 2 semaines",
+        "Pendant 4 semaines, l'enfant choisit lui-même le livre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "langage",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "emotions-nommees",
+      "name": "Émotions nommées",
+      "description": "Tu aides ton enfant à mettre des mots sur ce qu'il ressent.",
+      "icon": "game-icons:sun-cloud",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 colères ou pleurs accompagnés en nommant l'émotion de l'enfant, notés",
+        "Coin calme ou outil des émotions (album, roue) mis en place et utilisé 5 fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "routine-coucher",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "offrir-choix",
+      "name": "Offrir le choix",
+      "description": "Tu remplaces des ordres par des choix à sa mesure.",
+      "icon": "game-icons:choice",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "20 consignes remplacées par un choix entre 2 options (« le pyjama bleu ou le rouge ? »), notées",
+        "Une décision à sa mesure laissée à l'enfant chaque semaine pendant 4 semaines (tenue, jeu, goûter)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "attention-entiere",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "avant-trois-ans",
+      "name": "Pas d'écran avant 3 ans",
+      "description": "Ton enfant grandit sans écran jusqu'à ses 3 ans.",
+      "icon": "game-icons:sunglasses",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Aucun écran pour l'enfant (hors appels vidéo avec la famille) pendant 4 semaines",
+        "10 activités calmes listées pour les moments où l'écran tenterait (attente, restaurant, voiture), 5 utilisées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "attention-entiere",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "motricite",
+      "name": "Motricité",
+      "description": "Ton enfant bouge, grimpe et joue dehors régulièrement.",
+      "icon": "game-icons:soccer-ball",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Activité motrice dehors (parc, draisienne, ballon) 3 fois par semaine pendant 4 semaines",
+        "Activité d'éveil hebdomadaire hors piscine (gym, éveil musical, danse) commencée et suivie 4 séances"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "histoire-du-soir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cadre-bienveillant",
+      "name": "Cadre bienveillant",
+      "description": "Des règles claires, posées sans cri ni humiliation.",
+      "icon": "game-icons:rule-book",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Tes 5 règles de la maison écrites, formulées positivement (« on marche dans la maison »)",
+        "Appliquées 4 semaines sans cri ni punition humiliante de ta part, notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "emotions-nommees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "temps-de-chercher",
+      "name": "Temps de chercher",
+      "description": "Tu laisses à l'enfant le temps de trouver avant de l'aider.",
+      "icon": "game-icons:sands-of-time",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 fois où tu as compté jusqu'à 10 avant d'aider l'enfant bloqué, notées",
+        "30 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "offrir-choix",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maison-securisee",
+      "name": "Maison sécurisée",
+      "description": "La maison protège l'enfant des accidents domestiques (le feu et l'intrusion sont dans Abri).",
+      "icon": "game-icons:house-keys",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Tour de la maison à hauteur d'enfant : 10 risques relevés (prises, produits, escaliers, fenêtres, médicaments)",
+        "Tous les risques relevés traités",
+        "Nouveau tour fait à une nouvelle étape (escalade, ouverture des portes), risques traités"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "carnet-sante",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "autonomie",
+      "name": "Autonomie",
+      "description": "L'enfant fait seul ce qu'il peut faire seul.",
+      "icon": "game-icons:shirt",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "3 gestes que l'enfant fait seul (manger, se déchausser, ranger) encouragés et notés",
+        "Propreté de jour accompagnée sans pression, acquise",
+        "S'habille seul le matin, constaté sur 2 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-bienveillant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "risque-mesure",
+      "name": "Risque mesuré",
+      "description": "Tu laisses l'enfant explorer, dans des limites décidées à l'avance.",
+      "icon": "game-icons:mountain-climbing",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Liste des risques acceptables par âge écrite (grimper, couteau à bout rond, s'éloigner un peu)",
+        "5 nouvelles libertés accordées et observées sans intervenir, notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "temps-de-chercher",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "urgences-enfant",
+      "name": "Urgences de l'enfant",
+      "description": "Tu sais quoi faire quand ton enfant se blesse ou tombe malade d'un coup.",
+      "icon": "game-icons:first-aid-kit",
+      "tier": 4,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Conduite à tenir écrite : fièvre, chute sur la tête, étouffement, brûlure, intoxication (centre antipoison)",
+        "Formation aux premiers secours du nourrisson et de l'enfant suivie (attestation, distincte du PSC1)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "maison-securisee",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premiers-apprentissages",
+      "name": "Premiers apprentissages",
+      "description": "Tri, couleurs, formes et nombres s'apprennent en jouant.",
+      "icon": "game-icons:abacus",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Jeux de tri, couleurs, formes et comptage jusqu'à 10 chaque semaine pendant 3 mois",
+        "L'enfant compte 10 objets et nomme 6 couleurs, noté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "motricite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "responsabilite",
+      "name": "Petites responsabilités",
+      "description": "L'enfant tient un rôle à sa mesure dans la maison.",
+      "icon": "game-icons:star-medal",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une responsabilité à sa mesure (mettre son assiette dans l'évier, ranger ses chaussures) faite sans rappel, 10 fois notées en 1 mois",
+        "2 responsabilités faites sans rappel, 20 fois notées en 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "autonomie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "hygiene-de-vie",
+      "name": "Hygiène de vie",
+      "description": "Sommeil et dents de l'enfant sont suivis.",
+      "icon": "game-icons:toothbrush",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Sommeil de l'enfant noté 2 semaines (coucher, réveils, sieste), heure de coucher ajustée à ses besoins",
+        "Première visite chez le dentiste faite et brossage guidé appris (gestes montrés, minuteur)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "urgences-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "curiosite",
+      "name": "Curiosité",
+      "description": "Tu prends ses « pourquoi » au sérieux et tu cherches avec lui.",
+      "icon": "game-icons:seedling",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Réponse cherchée ensemble à 10 « pourquoi » de l'enfant (album, observation), notés",
+        "Une expérience simple à la maison (plantation, eau, aimants) par mois pendant 4 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premiers-apprentissages",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rituel-echange",
+      "name": "Rituel d'échange",
+      "description": "Un moment fixe où ton enfant raconte et où tu relances.",
+      "icon": "game-icons:campfire",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un moment fixe d'échange (trajet, bain, goûter) où l'enfant raconte et tu relances (« et alors ? », « raconte-moi »), 3 fois par semaine pendant 2 mois",
+        "Même rythme pendant 4 mois de plus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "risque-mesure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "regles-ecrans",
+      "name": "Règles des écrans",
+      "description": "Après 3 ans, les écrans de l'enfant suivent des règles écrites.",
+      "icon": "game-icons:contract",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règles écran de l'enfant pour après 3 ans écrites (durée, contenus choisis, jamais seul, jamais au repas ni avant le coucher)",
+        "Appliquées 3 mois après ses 3 ans, écarts notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "avant-trois-ans",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rentree-maternelle",
+      "name": "Rentrée en maternelle",
+      "description": "L'entrée à l'école est préparée et suivie.",
+      "icon": "game-icons:school-bag",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Rentrée en maternelle préparée (visite, albums sur l'école, rythme ajusté)",
+        "Premier trimestre d'école : un échange avec l'enseignant, points notés et suivis"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "curiosite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "valeurs",
+      "name": "Valeurs vécues",
+      "description": "Les valeurs de la famille se vivent au quotidien plutôt que de se réciter.",
+      "icon": "game-icons:heart-key",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 valeurs familiales écrites (partager, remercier, aider, dire vrai, respecter)",
+        "Pour chacune, une habitude vécue avec l'enfant, notée sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "responsabilite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "traverser-echec",
+      "name": "Traverser l'échec",
+      "description": "Tu accompagnes ses échecs sans minimiser ni réparer à sa place.",
+      "icon": "game-icons:ground-sprout",
+      "tier": 8,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un échec important de l'enfant accompagné : écoute, puis « qu'est-ce que tu veux essayer ? », sans minimiser ni réparer, noté",
+        "Il retente de lui-même, 3 cas notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rituel-echange",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eveil-aquatique",
+      "name": "Éveil aquatique",
+      "description": "L'enfant découvre l'eau avec toi et s'y sent en sécurité.",
+      "icon": "game-icons:swimfins",
+      "tier": 8,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Un trimestre d'éveil aquatique suivi avec l'enfant",
+        "L'enfant met la tête sous l'eau et flotte avec une aide légère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "hygiene-de-vie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scolarite",
+      "name": "Suivi de la scolarité",
+      "description": "Tu suis l'école de ton enfant de près, année après année.",
+      "icon": "game-icons:notebook",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cahier de liaison ou application de l'école lu chaque semaine pendant un trimestre, chaque demande traitée dans la semaine",
+        "Réunion de classe et entretien individuel faits chaque année, 2 années"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rentree-maternelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrans-partages",
+      "name": "Écrans partagés",
+      "description": "Ton enfant regarde avec toi et apprend à se demander si c'est vrai.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "20 contenus regardés avec l'enfant, suivis de 2 questions (qu'as-tu aimé ? c'était vrai ou inventé ?)",
+        "L'enfant pose de lui-même la question « c'est vrai ? » ou repère une publicité, 5 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "regles-ecrans",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "enfant-epanoui",
+      "name": "Enfant épanoui",
+      "description": "Ton enfant entre à l'école élémentaire autonome, confiant et curieux.",
+      "icon": "game-icons:sunrise",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Livret de fin de petite ou moyenne section : autonomie, relations et plaisir d'apprendre jugés positifs par l'enseignant",
+        "Premier bilan de CP jugé positif de la même façon, et 3 situations notées sur 6 mois où l'enfant vient de lui-même te confier un souci"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scolarite",
+          "rank": 1
+        },
+        {
+          "talentId": "traverser-echec",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

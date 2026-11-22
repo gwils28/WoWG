@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conquerant",
+    "name": "Conquérant",
+    "icon": "game-icons:spartan-helmet"
+  },
+  "specialization": {
+    "id": "independance",
+    "name": "Indépendance",
+    "description": "Ton activité d'indépendant tourne : offre, clients, revenus récurrents, réputation et anglais de travail.",
+    "icon": "game-icons:suitcase"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "positionnement",
+      "name": "Offre et positionnement",
+      "description": "Qui tu aides, à résoudre quoi, preuves à l'appui.",
+      "icon": "game-icons:flag-objective",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Positionnement écrit (cible, problème résolu, preuves) relu par 5 personnes du métier, retours notés",
+        "Offre écrite : prestations, livrables et format d'intervention"
+      ]
+    },
+    {
+      "id": "statut",
+      "name": "Statut et cadre",
+      "description": "La bonne structure, choisie et ouverte.",
+      "icon": "game-icons:contract",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Statuts comparés (micro-entreprise, société unipersonnelle, portage) selon le chiffre visé, choix écrit",
+        "Création préparée : simulateur officiel passé pour 2 statuts (net, cotisations, protection sociale), pièces réunies, date de lancement fixée"
+      ]
+    },
+    {
+      "id": "contrats",
+      "name": "Contrats",
+      "description": "Un cadre écrit qui protège chaque mission.",
+      "icon": "game-icons:stamper",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle de contrat ou CGV rédigé (propriété intellectuelle, responsabilité, paiement)",
+        "Modèle relu par un juriste, corrections intégrées"
+      ]
+    },
+    {
+      "id": "vitrine-pro",
+      "name": "Vitrine professionnelle",
+      "description": "Ce qu'on trouve sur toi raconte ton offre.",
+      "icon": "game-icons:id-card",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Profil professionnel réécrit autour de ton positionnement, 3 réalisations chiffrées",
+        "Page en ligne présentant ton offre et 2 études de cas"
+      ]
+    },
+    {
+      "id": "tarifs",
+      "name": "Tarifs",
+      "description": "Un prix calculé, pas deviné.",
+      "icon": "game-icons:price-tag",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tarif journalier calculé depuis le revenu visé, les charges et les jours facturables",
+        "Tarif plancher et tarif cible écrits, comparés à 3 références de marché (baromètre, plateforme, pairs)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "positionnement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "facturation",
+      "name": "Facturation et échéances",
+      "description": "L'administratif de l'activité réglé d'avance.",
+      "icon": "game-icons:abacus",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Structure créée (ou portage signé), compte bancaire dédié et assurance responsabilité civile pro ouverts",
+        "Outil de facturation conforme en place et calendrier des déclarations sociales, fiscales et de TVA programmé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "statut",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "articles-techniques",
+      "name": "Articles techniques",
+      "description": "Tu écris pour tes pairs ce que tu sais faire.",
+      "icon": "game-icons:quill",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un article technique de fond publié (hors rapport de recherche compté dans Ingénierie IA, hors vulgarisation comptée dans Transmission)",
+        "3 articles techniques de fond publiés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vitrine-pro",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conversation-anglais",
+      "name": "Conversation en anglais",
+      "description": "L'anglais parlé remis en route, chaque semaine.",
+      "icon": "game-icons:talk",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Niveau CECRL de départ mesuré par un test en ligne, tuteur ou partenaire de tandem trouvé",
+        "30 min de conversation en anglais chaque semaine pendant 4 semaines"
+      ]
+    },
+    {
+      "id": "prospection",
+      "name": "Prospection",
+      "description": "Aller chercher les clients plutôt que les attendre.",
+      "icon": "game-icons:archery-target",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Liste de 50 entreprises cibles avec un contact identifié pour chacune",
+        "20 prises de contact personnalisées, réponses notées",
+        "Taux de réponse des 20 prises de contact calculé, message retravaillé, 20 nouvelles prises de contact envoyées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tarifs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decouverte-client",
+      "name": "Rendez-vous découverte",
+      "description": "Comprendre le besoin avant de proposer.",
+      "icon": "game-icons:discussion",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Trame de découverte (besoin, enjeu, budget, décideur) écrite",
+        "Trame utilisée sur 3 rendez-vous, compte rendu envoyé au prospect sous 24 h à chaque fois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contrats",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "talk-meetup",
+      "name": "Prise de parole",
+      "description": "Tu montes sur scène pour parler métier.",
+      "icon": "game-icons:speaker",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Présentation technique devant ton équipe ou ta communauté d'entreprise",
+        "Talk dans un meetup externe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "articles-techniques",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecrit-pro-anglais",
+      "name": "Écrit professionnel en anglais",
+      "description": "Écrire en anglais sans traducteur.",
+      "icon": "game-icons:envelope",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "10 e-mails professionnels écrits en anglais sans traducteur, corrigés par un tuteur",
+        "Document technique de 2 pages rédigé en anglais avec moins de 5 corrections"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conversation-anglais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "proposition",
+      "name": "Proposition commerciale",
+      "description": "Une proposition claire qui donne envie de signer.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Modèle de proposition prêt (contexte, approche, livrables, planning, prix)",
+        "5 propositions envoyées, chacune relue avec ta check-list avant envoi",
+        "Taux de signature calculé sur tes 10 dernières propositions, 3 causes de refus notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prospection",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "premieres-missions",
+      "name": "Premières missions",
+      "description": "Les premiers clients qui te font confiance.",
+      "icon": "game-icons:briefcase",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Première mission signée",
+        "Première mission livrée et payée",
+        "Mission signée avec un 2e client"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decouverte-client",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reunions-anglais",
+      "name": "Réunions en anglais",
+      "description": "Tenir ta place dans une réunion en anglais.",
+      "icon": "game-icons:conversation",
+      "tier": 4,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Prise de parole dans 5 réunions de travail en anglais",
+        "Une réunion de 30 min animée en anglais",
+        "Une réunion difficile (désaccord, arbitrage) menée en anglais"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecrit-pro-anglais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tresorerie-pro",
+      "name": "Trésorerie de l'activité",
+      "description": "L'argent de l'activité anticipé, provisionné et encaissé à temps (le budget du foyer reste dans Trésor).",
+      "icon": "game-icons:cash",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Prévisionnel de trésorerie de l'activité sur 12 mois (encaissements, charges, provisions)",
+        "Cotisations et impôts provisionnés à chaque encaissement pendant 3 mois",
+        "Délai moyen de paiement mesuré, chaque facture en retard relancée à l'échéance pendant 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "facturation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "qualite-service",
+      "name": "Qualité de service",
+      "description": "Des clients qui disent du bien de ton travail.",
+      "icon": "game-icons:star-medal",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Bilan de fin de mission écrit avec le client sur 2 missions",
+        "3 recommandations de clients publiées sur ton profil"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premieres-missions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "contributions-oss",
+      "name": "Contributions open source",
+      "description": "Ton code utile à d'autres, dans leurs projets.",
+      "icon": "game-icons:branch-arrow",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Contributions acceptées dans 3 projets open source tiers (hors code de recherche compté dans Ingénierie IA)",
+        "10 contributions acceptées, dont une fonctionnalité complète"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "talk-meetup",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "negociation",
+      "name": "Négociation",
+      "description": "Défendre ton prix et obtenir des engagements longs.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 négociations de prix menées sans baisse sans contrepartie (périmètre, durée, paiement)",
+        "Un contrat-cadre ou une mission de 3 mois ou plus négocié"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "proposition",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "recurrence",
+      "name": "Revenus récurrents",
+      "description": "Des revenus qui reviennent chaque mois.",
+      "icon": "game-icons:cycle",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un contrat d'accompagnement, de maintenance ou d'abonnement signé",
+        "Revenus récurrents couvrant 25 % du chiffre d'affaires sur 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "qualite-service",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "certification-b2",
+      "name": "Certification B2",
+      "description": "Un niveau B2 reconnu officiellement.",
+      "icon": "game-icons:diploma",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Test blanc B2 (IELTS ou TOEIC) réussi 2 fois de suite",
+        "Certification officielle B2 obtenue (TOEIC 785 ou plus, IELTS 6 ou plus)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reunions-anglais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "se-remunerer",
+      "name": "Se rémunérer",
+      "description": "L'activité te paie un salaire régulier (l'épargne du foyer reste dans Trésor).",
+      "icon": "game-icons:pay-money",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Rémunération mensuelle fixe versée depuis l'activité pendant 6 mois",
+        "Mode de rémunération optimisé avec un expert-comptable, gain calculé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tresorerie-pro",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "conference",
+      "name": "Conférence",
+      "description": "Ta parole compte au-delà des meetups.",
+      "icon": "game-icons:acoustic-megaphone",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Proposition de talk acceptée dans une conférence",
+        "Talk en anglais dans une conférence internationale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contributions-oss",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pipeline",
+      "name": "Pipeline commercial",
+      "description": "Tu sais ce qui va signer et quand.",
+      "icon": "game-icons:funnel",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline (prospects, propositions, signatures) mis à jour chaque semaine pendant 3 mois",
+        "Taux de signature de 40 % ou plus sur tes 10 dernières propositions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "negociation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "activite-perenne",
+      "name": "Activité pérenne",
+      "description": "Une activité qui tient dans la durée.",
+      "icon": "game-icons:anchor",
+      "tier": 8,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "6 mois d'activité avec au moins une mission en cours en permanence",
+        "Revenu d'indépendant équivalent à un mi-temps sur 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recurrence",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plein-temps",
+      "name": "Indépendant à plein temps",
+      "description": "L'indépendance devient ton métier.",
+      "icon": "game-icons:office-chair",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Revenu d'indépendant équivalent à un plein temps sur 12 mois",
+        "Deux années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "activite-perenne",
+          "rank": 1
+        },
+        {
+          "talentId": "se-remunerer",
+          "rank": 1
+        },
+        {
+          "talentId": "pipeline",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "anglais-c1",
+      "name": "Anglais C1",
+      "description": "Tu travailles en anglais sans frein.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 9,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Test blanc C1 (IELTS 7) réussi 2 fois de suite",
+        "Certification officielle C1 obtenue (IELTS 7, TOEIC 945 ou Cambridge C1)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "certification-b2",
+          "rank": 1
+        },
+        {
+          "talentId": "conference",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "expert-independant",
+      "name": "Expert indépendant",
+      "description": "On vient te chercher, au prix de ton expertise.",
+      "icon": "game-icons:crown",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet plein 6 mois et 2 missions refusées faute de place",
+        "Tarif dans le quart supérieur du marché de ta spécialité (baromètre publié) pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plein-temps",
+          "rank": 1
+        },
+        {
+          "talentId": "anglais-c1",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pisteur",
+    "name": "Pisteur",
+    "icon": "game-icons:compass"
+  },
+  "specialization": {
+    "id": "echiquier",
+    "name": "Échiquier",
+    "description": "Tu calcules avant de jouer : tactique, plans, finales et parties classées.",
+    "icon": "game-icons:chess-knight"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "mats-courts",
+      "name": "Mats en 1 et en 2",
+      "description": "Voir les mats qui sont sur l'échiquier.",
+      "icon": "game-icons:chess-queen",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles thème Mat en 1 résolus sur Lichess, 90 % de réussite",
+        "50 puzzles thème Mat en 2, 80 % de réussite"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "principes-ouverture",
+      "name": "Principes d'ouverture",
+      "description": "Sortir ses pièces et mettre son roi à l'abri.",
+      "icon": "game-icons:chess-pawn",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 parties où pièces légères développées et roque faits avant le coup 10 (relecture)",
+        "20 parties consécutives, même critère"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "mats-elementaires",
+      "name": "Mats élémentaires",
+      "description": "Conclure quand on a gagné du matériel.",
+      "icon": "game-icons:chess-king",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Mat roi et dame contre roi en moins de 2 min contre l'ordinateur",
+        "Mat roi et tour contre roi en moins de 3 min contre l'ordinateur"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "parties-classees",
+      "name": "Parties classées",
+      "description": "Poser ton point de départ sur Chess.com.",
+      "icon": "game-icons:chess-rook",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "10 parties rapides (10+0 ou plus) jouées en entier sur Chess.com",
+        "10 parties blitz (3+2 ou 5+0) jouées en entier sur Chess.com",
+        "Classements rapide et blitz Chess.com notés comme point de départ, avec la date"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "motifs-tactiques",
+      "name": "Fourchettes et clouages",
+      "description": "Les motifs tactiques qui gagnent du matériel.",
+      "icon": "game-icons:chess-bishop",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "100 puzzles thème Fourchette sur Lichess",
+        "100 puzzles thèmes Clouage et Enfilade",
+        "80 % de réussite sur 50 puzzles consécutifs de ces trois thèmes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mats-courts",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "repertoire",
+      "name": "Répertoire d'ouvertures",
+      "description": "Savoir quoi jouer dans les premiers coups, avec les deux couleurs.",
+      "icon": "game-icons:white-book",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Ouverture avec les Blancs choisie, ligne principale notée sur 8 coups",
+        "Défenses contre 1.e4 et contre 1.d4 choisies, notées sur 8 coups",
+        "Étude (Lichess ou Chess.com) avec 3 variantes sur 10 coups pour chaque ouverture"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "principes-ouverture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finales-pions",
+      "name": "Finales de pions",
+      "description": "Opposition, carré et pion qui va à dame.",
+      "icon": "game-icons:empty-chessboard",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "30 exercices d'opposition et de règle du carré",
+        "Roi et pion contre roi gagné 10 fois sur 10 contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mats-elementaires",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "analyser-parties",
+      "name": "Analyser ses parties",
+      "description": "Apprendre de chaque défaite.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Chaque partie rapide perdue analysée (réflexion seul, puis moteur) pendant 2 semaines",
+        "Même habitude pendant 4 semaines, erreur principale notée dans un carnet"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parties-classees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "puzzles-reguliers",
+      "name": "Puzzles réguliers",
+      "description": "L'œil tactique entretenu par une dose régulière.",
+      "icon": "game-icons:puzzle",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "15 puzzles par jour, 5 jours sur 7 pendant 4 semaines",
+        "Même rythme pendant 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "motifs-tactiques",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finales-tours",
+      "name": "Finales de tours",
+      "description": "Les deux positions que tout joueur doit connaître.",
+      "icon": "game-icons:black-book",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Position de Lucena gagnée 5 fois contre l'ordinateur",
+        "Position de Philidor tenue 5 fois contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-pions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "controle-tilt",
+      "name": "Contrôle du tilt",
+      "description": "S'arrêter avant que la colère ne joue à ta place.",
+      "icon": "game-icons:brain-freeze",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règle « stop après 2 défaites d'affilée » respectée 4 semaines",
+        "Même règle respectée 8 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "analyser-parties",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "motifs-avances",
+      "name": "Découvertes et déviations",
+      "description": "Les combinaisons qui demandent de voir un coup plus loin.",
+      "icon": "game-icons:lightning-branches",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "100 puzzles thèmes Attaque à la découverte et Échec double, 80 % de réussite sur les 50 derniers",
+        "100 puzzles thèmes Déviation, Attraction et Élimination du défenseur, 80 % de réussite sur les 50 derniers"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "puzzles-reguliers",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rester-en-theorie",
+      "name": "Rester en théorie",
+      "description": "Un répertoire qui tient face aux vrais adversaires.",
+      "icon": "game-icons:bookmark",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Ouverture revue avec l'explorateur après chaque partie classée pendant 1 mois",
+        "Plus de 80 % de parties sorties de l'ouverture sans désavantage sur 30 parties (analyse)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "repertoire",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "classement-1000",
+      "name": "Cap des 1000",
+      "description": "Premiers paliers de classement sur Chess.com.",
+      "icon": "game-icons:chess-knight",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "800 en rapide sur Chess.com",
+        "900 en rapide et 800 en blitz sur Chess.com",
+        "1000 en rapide et 900 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-tilt",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "classement-puzzles",
+      "name": "Classement puzzles",
+      "description": "Ta force tactique mesurée sur l'échelle des puzzles Lichess.",
+      "icon": "game-icons:diamond-trophy",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "1500 au classement puzzles Lichess",
+        "1650 au classement puzzles Lichess",
+        "1800 au classement puzzles Lichess"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "motifs-avances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "structures-plans",
+      "name": "Pions et plans",
+      "description": "Savoir quoi faire une fois l'ouverture finie.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 parties commentées sur les structures de pions étudiées, structure et plan type notés",
+        "Plan écrit en une phrase à la sortie de l'ouverture sur 20 de tes parties, suivi jusqu'au coup 25 sur 10 d'entre elles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rester-en-theorie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "finales-legeres",
+      "name": "Finales de pièces légères",
+      "description": "Fous et cavaliers en fin de partie.",
+      "icon": "game-icons:horse-head",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "30 exercices de finales de fous et de cavaliers",
+        "Bon fou contre mauvais fou gagné 3 fois contre l'ordinateur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-tours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "calcul-visualisation",
+      "name": "Calcul et visualisation",
+      "description": "Calculer sans toucher les pièces.",
+      "icon": "game-icons:third-eye",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "50 puzzles Mat en 3 résolus sans déplacer les pièces avant d'avoir tout calculé, 80 % de réussite",
+        "20 puzzles classés 1500 résolus à l'aveugle (position lue, sans échiquier)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "classement-puzzles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conversion",
+      "name": "Conversion",
+      "description": "Transformer un avantage en victoire.",
+      "icon": "game-icons:upgrade",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "10 positions gagnantes (+3) converties contre l'ordinateur Lichess niveau 5",
+        "10 parties rapides gagnées à partir d'un avantage de +3 sans le laisser filer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "finales-legeres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "classement-1200",
+      "name": "Cap des 1200",
+      "description": "Un classement qui monte et qui tient sur Chess.com.",
+      "icon": "game-icons:stairs-goal",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "1100 en rapide et 1000 en blitz sur Chess.com",
+        "1200 en rapide et 1100 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "classement-1000"
+        }
+      ]
+    },
+    {
+      "id": "jeu-positionnel",
+      "name": "Jeu positionnel",
+      "description": "Gagner par l'accumulation de petits avantages.",
+      "icon": "game-icons:queen-crown",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "20 parties de maîtres commentées étudiées, plan de chaque camp noté",
+        "5 de tes parties gagnées sans tactique décisive, par avantage positionnel (analyse)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "structures-plans",
+          "rank": 1
+        },
+        {
+          "talentId": "conversion",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tournoi-homologue",
+      "name": "Tournoi à la pendule",
+      "description": "Jouer face à un adversaire réel, en club ou en tournoi homologué.",
+      "icon": "game-icons:stopwatch",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Licence FFE prise et premier tournoi homologué (rapide ou partie longue) joué en entier",
+        "3 tournois homologués terminés, chaque partie analysée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "classement-1200",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "woodpecker",
+      "name": "Méthode Woodpecker",
+      "description": "Graver les motifs tactiques par la répétition.",
+      "icon": "game-icons:cycle",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Cycle de 300 puzzles refait 3 fois en temps décroissant",
+        "Second cycle complet de 300 nouveaux puzzles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "calcul-visualisation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "fou-cavalier",
+      "name": "Mat du fou et du cavalier",
+      "description": "La finale technique qui couronne l'étude des finales.",
+      "icon": "game-icons:crowned-skull",
+      "tier": 8,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Mat fou et cavalier contre roi réussi contre l'ordinateur en moins de 50 coups",
+        "Réussi 3 fois de suite en moins de 5 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conversion",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "partie-complete",
+      "name": "Partie complète",
+      "description": "Ouverture, plan, tactique et finale réunis dans la même victoire.",
+      "icon": "game-icons:laurels",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "3 parties rapides gagnées contre mieux classé : répertoire suivi, plan clair, finale convertie (analyse)",
+        "10 parties gagnées, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeu-positionnel",
+          "rank": 1
+        },
+        {
+          "talentId": "woodpecker",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "classement-1400",
+      "name": "Cap des 1400",
+      "description": "Le dernier palier avant les 1500 sur Chess.com.",
+      "icon": "game-icons:medal",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "1300 en rapide et 1200 en blitz sur Chess.com",
+        "1400 en rapide et 1300 en blitz sur Chess.com"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tournoi-homologue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "oeil-du-pisteur",
+      "name": "Œil du pisteur",
+      "description": "Un joueur de club solide, en ligne comme à la pendule.",
+      "icon": "game-icons:hunter-eyes",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "1500 en rapide sur Chess.com",
+        "1500 en rapide et en blitz tenus 3 mois",
+        "Elo FFE de 1400 ou plus en cadence lente, ou classement FIDE standard obtenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "partie-complete",
+          "rank": 1
+        },
+        {
+          "talentId": "classement-1400",
+          "rank": 1
+        },
+        {
+          "talentId": "fou-cavalier",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

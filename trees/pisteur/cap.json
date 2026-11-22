@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pisteur",
+    "name": "Pisteur",
+    "icon": "game-icons:compass"
+  },
+  "specialization": {
+    "id": "cap",
+    "name": "Cap",
+    "description": "Tu décides où mettre ton énergie : revue de la semaine, saisons, décisions préparées et monde lu pour anticiper.",
+    "icon": "game-icons:horizon-road"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "priorites-du-moment",
+      "name": "Tes priorités",
+      "description": "Savoir ce qui compte maintenant et ce que tu laisses de côté.",
+      "icon": "game-icons:stairs-goal",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tes engagements en cours (travail, foyer, projets) listés sur une page, 3 priorités choisies pour les 3 prochains mois",
+        "Un de tes engagements en cours arrêté ou reporté pour faire de la place aux 3 priorités, noté avec sa raison"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "metier-ia",
+      "name": "Ton métier face à l'IA",
+      "description": "Voir clairement quelles tâches de ton métier l'IA prend, augmente ou laisse.",
+      "icon": "game-icons:cyber-eye",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Tes tâches d'une semaine listées et classées : automatisables, augmentées, humaines",
+        "Un outil d'IA essayé sur chacune des 3 tâches les plus exposées, temps gagné ou perdu mesuré sur 2 semaines"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "tableau-macro",
+      "name": "Tableau de bord macro",
+      "description": "Lire les grands chiffres de l'économie et ce que dit la banque centrale.",
+      "icon": "game-icons:pie-chart",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tableau des 6 indicateurs (croissance, inflation, chômage, taux de la BCE, taux à 10 ans, prix du baril) rempli pour la France et la zone euro, sources notées",
+        "Un communiqué de la BCE lu et résumé : décision, raisons, effets attendus"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "previsions",
+      "name": "Prévisions notées",
+      "description": "Mettre des probabilités sur l'avenir au lieu d'avis flous.",
+      "icon": "game-icons:dice-target",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "10 prévisions écrites avec une probabilité et une date (« 70 % : l'UE adopte X avant juin »)",
+        "10 prévisions de plus, dont 5 sur ta propre vie (délai d'un projet, dépense, résultat attendu)"
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": "semaine-type",
+      "name": "Semaine type",
+      "description": "Donner une forme à ta semaine avant que les urgences ne la remplissent.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Semaine type dessinée (blocs fixes : travail, enfant, sport, musique, repos) et confrontée à une semaine réelle",
+        "Écarts mesurés sur 3 semaines réelles, semaine type corrigée en conséquence"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "priorites-du-moment",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "journal-decisions",
+      "name": "Journal de décisions",
+      "description": "Garder la trace de tes choix pour juger la décision et non la chance.",
+      "icon": "game-icons:notebook",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "5 décisions notées au moment de les prendre (hors décisions d'investissement, suivies dans Trésor) : contexte, options, choix, confiance en %",
+        "15 décisions notées",
+        "5 d'entre elles relues au moins 3 semaines après : qualité de la décision jugée à part de son issue"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "priorites-du-moment",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "taux-et-foyer",
+      "name": "Les taux et toi",
+      "description": "Comprendre ce que les taux font au foyer, en lecture seule.",
+      "icon": "game-icons:house",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Effet d'une hausse de 1 point des taux chiffré pour le foyer (crédit, livrets, obligations, prix de l'immobilier), calcul seul sans rien changer à ton argent",
+        "Même calcul pour une baisse de 1 point, les deux scénarios comparés sur une page"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "tableau-macro",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pieges-prevision",
+      "name": "Pièges de la prévision",
+      "description": "Connaître les erreurs classiques des prévisionnistes pour les éviter.",
+      "icon": "game-icons:wolf-trap",
+      "tier": 2,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "10 prévisions célèbres ratées étudiées, cause de chaque échec notée (prolonger la tendance, expert unique, excès de confiance)",
+        "Tes 10 premières prévisions tranchées : erreurs analysées, 3 leçons écrites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "previsions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-hebdo",
+      "name": "Revue de la semaine",
+      "description": "Un rendez-vous fixe avec toi-même pour regarder la semaine passée et poser la suivante.",
+      "icon": "game-icons:calendar",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Revue de la semaine (bilan, agenda, 3 priorités) tenue 4 semaines d'affilée",
+        "Tenue 8 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "semaine-type",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "biais-decision",
+      "name": "Biais de décision",
+      "description": "Repérer les pièges de ton propre jugement avant qu'ils ne décident à ta place.",
+      "icon": "game-icons:cracked-mask",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 biais (ancrage, coûts irrécupérables, confirmation, excès de confiance...) définis chacun avec un exemple tiré de ta vie",
+        "Liste de contrôle anti-biais écrite et passée sur 5 décisions du journal"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "journal-decisions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "marche-du-metier",
+      "name": "Le marché de ton métier",
+      "description": "Savoir ce que le marché demande à quelqu'un qui fait ton métier.",
+      "icon": "game-icons:factory",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "30 offres d'emploi ou de mission de ton métier relevées : compétences demandées et secteurs qui recrutent, en tableau",
+        "Même relevé 2 mois plus tard, 3 tendances notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "metier-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "score-brier",
+      "name": "Score de Brier",
+      "description": "Mesurer la justesse de tes prévisions avec un chiffre.",
+      "icon": "game-icons:target-arrows",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "20 prévisions tranchées, score de Brier calculé dans un tableur",
+        "30 prévisions tranchées, score suivi par catégorie (monde, travail, vie perso)",
+        "Score de Brier sous 0,25 (mieux qu'un 50 % systématique) sur 30 prévisions tranchées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pieges-prevision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pre-mortem",
+      "name": "Pré-mortem",
+      "description": "Imaginer l'échec avant de commencer pour mieux l'éviter.",
+      "icon": "game-icons:tied-scroll",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Pré-mortem d'un projet perso ou pro : « dans 2 ans, c'est un échec, pourquoi ? », 10 causes et 3 parades",
+        "Fait avant 3 décisions importantes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "biais-decision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "megatendances",
+      "name": "Grandes tendances",
+      "description": "Voir les mouvements de fond qui changeront ta région et ton travail.",
+      "icon": "game-icons:globe",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carte de 8 grandes tendances (climat, démographie, IA, multipolarité, énergie, urbanisation, dette, santé) avec un chiffre chacune",
+        "Pour chacune, effet attendu à 10 ans sur ta région et sur ton métier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "marche-du-metier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "lire-une-crise",
+      "name": "Lire une crise",
+      "description": "Comprendre une crise du monde en croisant plusieurs regards.",
+      "icon": "game-icons:convergence-target",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Une crise actuelle analysée sur une page avec 4 grilles (histoire, géographie, ressources, démographie), sources de 3 pays différents",
+        "2 crises analysées ainsi",
+        "3 crises analysées, la première relue 2 mois après : ce que tu avais bien vu ou manqué"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "taux-et-foyer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "saison",
+      "name": "Saison",
+      "description": "Choisir pour un trimestre les classes que tu pousses et celles que tu entretiens.",
+      "icon": "game-icons:sun-cloud",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une saison écrite en début de trimestre : 2 classes en turbo, les 3 autres en maintien, un objectif chiffré par classe en turbo",
+        "Bilan écrit en fin de trimestre : objectifs atteints ou non, cause notée, saison suivante choisie"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-hebdo"
+        }
+      ]
+    },
+    {
+      "id": "competences-avenir",
+      "name": "Compétences d'avenir",
+      "description": "Décider quoi apprendre et quoi lâcher à partir de ta veille.",
+      "icon": "game-icons:upgrade",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan tiré de ta veille : 2 compétences à acquérir, 1 à abandonner, chacune avec une échéance",
+        "Plan revu au bout d'un trimestre : avancement noté, plan ajusté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "megatendances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "concours-prevision",
+      "name": "Concours de prévision",
+      "description": "Confronter tes prévisions à celles d'autres prévisionnistes.",
+      "icon": "game-icons:podium",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Inscrit sur une plateforme de prévision (Metaculus, Good Judgment Open), 10 questions prévues",
+        "20 questions tranchées sur la plateforme",
+        "Meilleur que la médiane des prévisionnistes sur 20 questions tranchées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "score-brier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-tenue",
+      "name": "Revue au long cours",
+      "description": "La revue de la semaine devenue un réflexe qui tient dans la durée.",
+      "icon": "game-icons:sands-of-time",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Revue de la semaine tenue 26 semaines d'affilée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "saison",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "grande-decision",
+      "name": "Grande décision",
+      "description": "Instruire une décision lourde avec méthode plutôt que dans l'urgence.",
+      "icon": "game-icons:crossroad",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une décision lourde de ta vie (travail, logement, organisation familiale) instruite par écrit : 3 options au moins, critères pondérés, avis de 2 personnes extérieures, date limite tenue",
+        "Son issue évaluée 6 mois après, leçon notée au journal de décisions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pre-mortem"
+        }
+      ]
+    },
+    {
+      "id": "chocs-activite",
+      "name": "Chocs pour ton activité",
+      "description": "Prévoir ce qui pourrait casser ton travail et préparer une parade.",
+      "icon": "game-icons:earth-crack",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 chocs mondiaux qui toucheraient ton activité listés (récession, rupture technologique, crise énergétique...), probabilité et impact notés",
+        "Pour les 2 plus graves, une parade engagée (compétence en cours d'acquisition, réseau activé), liste revue 6 mois après"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "competences-avenir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bilan-decisions",
+      "name": "Bilan des décisions",
+      "description": "Tirer de ton journal des règles de décision qui te ressemblent.",
+      "icon": "game-icons:scales",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Journal de décisions tenu 6 mois, 40 décisions ou plus",
+        "Relecture complète : décisions classées (bonne ou mauvaise décision, bonne ou mauvaise issue), 3 règles personnelles écrites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grande-decision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scenarios",
+      "name": "Scénarios du monde",
+      "description": "Penser plusieurs futurs plutôt qu'un seul.",
+      "icon": "game-icons:split-arrows",
+      "tier": 7,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "3 scénarios contrastés à 10 ans écrits sur un sujet (Europe et énergie, Taïwan, démographie), avec 3 signaux annonciateurs chacun",
+        "Signaux suivis 6 mois, scénario le plus probable désigné puis mis à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "concours-prevision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "quatre-saisons",
+      "name": "Quatre saisons",
+      "description": "Une année entière pilotée saison par saison.",
+      "icon": "game-icons:cycle",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Saison écrite en début de trimestre et bilan en fin, 4 trimestres de suite",
+        "Revue de l'année écrite à partir des 4 bilans de saison, hors bilan financier compté dans Trésor : 3 leçons, cap de l'année suivante"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-tenue"
+        }
+      ]
+    },
+    {
+      "id": "note-conjoncture",
+      "name": "Note de conjoncture",
+      "description": "Écrire chaque année où en est l'économie et ce que cela change pour toi.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 8,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Note de conjoncture annuelle écrite (où en est l'économie, 3 risques, effets sur le foyer et sur ton métier), relue par quelqu'un du domaine",
+        "Un an après, la note confrontée aux faits, écarts expliqués"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lire-une-crise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decider-en-avance",
+      "name": "Décider en avance",
+      "description": "Agir sur une tendance avant qu'elle ne s'impose à tout le monde.",
+      "icon": "game-icons:empty-hourglass",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une décision professionnelle prise en avance sur une tendance (formation, positionnement, type de client), raisonnement écrit et daté",
+        "Son résultat évalué 12 mois après"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bilan-decisions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "calibration",
+      "name": "Calibration",
+      "description": "Des probabilités qui veulent dire ce qu'elles disent.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 9,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "100 prévisions tranchées sur au moins 12 mois, courbe de calibration tracée",
+        "Courbe refaite un an plus tard, 3 corrections de ta façon de prévoir notées et appliquées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scenarios",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "coup-d-avance",
+      "name": "Coup d'avance",
+      "description": "Voir venir avant les autres, preuves datées à l'appui.",
+      "icon": "game-icons:all-seeing-eye",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un choc ou une tendance annoncé par écrit au moins 6 mois avant d'être évident, preuve datée",
+        "Score de Brier sous 0,2 sur 50 prévisions tranchées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decider-en-avance",
+          "rank": 1
+        },
+        {
+          "talentId": "calibration",
+          "rank": 1
+        },
+        {
+          "talentId": "note-conjoncture",
+          "rank": 1
+        },
+        {
+          "talentId": "chocs-activite",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

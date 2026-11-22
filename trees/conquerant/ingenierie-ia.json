@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "conquerant",
+    "name": "Conquérant",
+    "icon": "game-icons:spartan-helmet"
+  },
+  "specialization": {
+    "id": "ingenierie-ia",
+    "name": "Ingénierie IA",
+    "description": "Tu conçois et fais tourner des systèmes d'IA fiables, du prototype à la production.",
+    "icon": "game-icons:circuitry"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "premier-agent",
+      "name": "Premier agent outillé",
+      "description": "Un agent qui agit avec des outils sur une vraie tâche.",
+      "icon": "game-icons:robot-grab",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Agent avec 2 outils ou plus qui accomplit une tâche réelle de bout en bout, code versionné",
+        "Ce même agent utilisé sur 5 tâches réelles, échecs notés et classés"
+      ]
+    },
+    {
+      "id": "jeu-evaluation",
+      "name": "Jeu d'évaluation",
+      "description": "Mesurer avant de changer quoi que ce soit.",
+      "icon": "game-icons:checklist",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Jeu d'éval de 50 cas annotés, relancé à chaque changement",
+        "Éval intégrée en CI avec seuil bloquant"
+      ]
+    },
+    {
+      "id": "service-modele",
+      "name": "Servir un modèle",
+      "description": "Un modèle ou un LLM exposé proprement derrière une API.",
+      "icon": "game-icons:server-rack",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Modèle ou appel LLM servi par une API conteneurisée avec tests",
+        "Prompts, modèles et paramètres versionnés dans le dépôt, image reconstruite depuis un commit"
+      ]
+    },
+    {
+      "id": "fiches-papiers",
+      "name": "Lecture de papiers",
+      "description": "Les papiers techniques lus et fichés, pas seulement survolés.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "3 papiers techniques lus et fichés (problème, méthode, résultats, limites), hors lecture plaisir comptée dans Esprit",
+        "6 papiers lus et fichés"
+      ]
+    },
+    {
+      "id": "ingenierie-contexte",
+      "name": "Ingénierie de contexte",
+      "description": "Le bon contexte, au bon coût.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 variantes de prompt ou de contexte comparées sur le jeu d'éval, choix justifié par les scores",
+        "Tokens de contexte par requête réduits de 30 % (sélection, compression) à qualité égale"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "premier-agent",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "llm-juge",
+      "name": "LLM-juge",
+      "description": "Un juge automatique dont tu connais la fiabilité.",
+      "icon": "game-icons:scales",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "LLM-juge calibré sur 100 annotations humaines, taux d'accord mesuré",
+        "Évaluation en ligne sur un échantillon du trafic réel, résultats suivis chaque semaine pendant 4 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeu-evaluation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ci-cd-ml",
+      "name": "CI/CD pour le ML",
+      "description": "Chaque changement testé et déployé sans geste manuel.",
+      "icon": "game-icons:cycle",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "CI avec tests unitaires, de données et de modèle",
+        "Déploiement continu d'un modèle ou d'un prompt validé par la CI, retour arrière en moins de 5 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "service-modele",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "benchmark-prevision",
+      "name": "Benchmark de prévision",
+      "description": "Les méthodes classiques comparées honnêtement avant tout modèle à la mode.",
+      "icon": "game-icons:histogram",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Benchmark ETS, ARIMA, Theta et LightGBM sur un jeu public, backtest glissant avec fuites vérifiées, publié",
+        "Même protocole appliqué à 3 jeux de domaines différents"
+      ]
+    },
+    {
+      "id": "rag-evalue",
+      "name": "RAG évalué",
+      "description": "Une recherche documentaire dont la qualité est chiffrée.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "RAG évalué : précision du retrieval et fidélité des réponses mesurées",
+        "RAG hybride (lexical, vecteurs, reranking) qui améliore une métrique mesurée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ingenierie-contexte",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "evaluation-agents",
+      "name": "Évaluation d'agents",
+      "description": "Juger un agent sur son chemin, pas seulement sur sa réponse.",
+      "icon": "game-icons:target-arrows",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Éval d'agent sur trajectoires : outils appelés, étapes, erreurs récupérées",
+        "Benchmark d'agents public reproduit sur ta propre pile"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "llm-juge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevision-probabiliste",
+      "name": "Prévision probabiliste",
+      "description": "Prévoir une incertitude, pas un seul chiffre.",
+      "icon": "game-icons:dice-six-faces-five",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Intervalles conformes calibrés (couverture à 2 points de la cible) sur un cas réel",
+        "Prévision par quantiles évaluée au CRPS ou à la pinball loss sur 3 jeux"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "benchmark-prevision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reimplementation",
+      "name": "Réimplémentation",
+      "description": "Refaire une méthode publiée pour la comprendre vraiment.",
+      "icon": "game-icons:anvil",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "1 méthode réimplémentée et confrontée aux résultats publiés",
+        "2 méthodes réimplémentées",
+        "3 méthodes réimplémentées, écarts avec les papiers expliqués par écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fiches-papiers",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "orchestration",
+      "name": "Orchestration d'agents",
+      "description": "Plusieurs agents et outils qui coopèrent sans se perdre.",
+      "icon": "game-icons:mesh-network",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Graphe d'agents avec état, reprise après erreur et validation humaine",
+        "Serveur MCP écrit par toi et utilisé par ce système",
+        "Système multi-agents évalué contre un agent unique sur le même jeu d'éval"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rag-evalue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "monitoring-production",
+      "name": "Monitoring en production",
+      "description": "Tu vois ce que fait ton système avant tes utilisateurs.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Dérive des données et de la qualité suivie avec alertes sur une application en production",
+        "Traces, latence et coût par requête sur un tableau de bord",
+        "Alerte de dérive déclenchée et traitée, post-mortem écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ci-cd-ml",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "modeles-fondation",
+      "name": "Modèles de fondation",
+      "description": "Les modèles pré-entraînés de séries temporelles mis à l'épreuve.",
+      "icon": "game-icons:brain",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Zero-shot contre spécialiste comparés sur un benchmark publié",
+        "Fine-tuning d'un modèle de fondation qui bat son zero-shot sur un cas réel",
+        "Routeur ou ensemble zero-shot et spécialiste en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevision-probabiliste",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "garde-fous",
+      "name": "Garde-fous et sécurité",
+      "description": "Un système d'IA qui résiste aux abus et aux erreurs.",
+      "icon": "game-icons:cog-lock",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Défenses contre l'injection de prompt testées par un jeu de 50 attaques ou plus",
+        "Revue de sécurité d'un agent en production (permissions, données, journalisation) écrite, corrections faites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evaluation-agents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevision-production",
+      "name": "Prévision en production",
+      "description": "Tes prévisions alimentent de vraies décisions, tous les jours.",
+      "icon": "game-icons:factory",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plus de 1 000 séries prévues en production, temps de calcul et coût mesurés",
+        "Ta prévision remplace une référence établie, gain mesuré sur 3 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "modeles-fondation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "benchmark-reproductible",
+      "name": "Benchmark reproductible",
+      "description": "Un résultat que n'importe qui peut refaire.",
+      "icon": "game-icons:gears",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Benchmark de méthodes réimplémentées (hors benchmark de prévision) publié avec code, données et seeds",
+        "Benchmark reproduit par une autre personne (issue, message ou citation datée)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reimplementation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agent-production",
+      "name": "Agent en production",
+      "description": "Un agent sur lequel des gens comptent.",
+      "icon": "game-icons:rocket",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Agent en production utilisé par 20 personnes ou plus",
+        "En production depuis 6 mois avec un niveau de qualité suivi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "orchestration",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "industrialisation-llm",
+      "name": "Industrialisation LLM",
+      "description": "Une chaîne de mise en production LLM complète et réutilisable.",
+      "icon": "game-icons:factory-arm",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Application LLM en production avec versionnage, observabilité, passerelle (clés, quotas, repli entre fournisseurs) et budget suivis",
+        "La même chaîne réutilisée pour une 2e application, mise en place en moins de 2 semaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "monitoring-production",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "preprint",
+      "name": "Preprint",
+      "description": "Tes travaux écrits au format de la recherche.",
+      "icon": "game-icons:quill-ink",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Rapport technique avec code publié (méthode, protocole, résultats, limites)",
+        "Preprint publié sur arXiv ou HAL"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "benchmark-reproductible",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "amelioration-continue",
+      "name": "Amélioration continue",
+      "description": "Les retours des utilisateurs nourrissent l'éval, l'éval guide les versions.",
+      "icon": "game-icons:recycle",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Retours utilisateurs versés au jeu d'éval, gain mesuré sur 3 itérations",
+        "Boucle tenue 6 mois sur une application en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-fous",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "inference-causale",
+      "name": "Inférence causale",
+      "description": "Passer de « que va-t-il se passer » à « qu'est-ce qui a causé quoi ».",
+      "icon": "game-icons:crystal-eye",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Contrefactuel temporel (impact d'une intervention estimé par un modèle de prévision) publié avec tests placebos",
+        "Double ML ou contrôle synthétique appliqué à une décision réelle, diagnostics (recouvrement, sensibilité) publiés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevision-production",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "assistant-documentaire",
+      "name": "Assistant documentaire",
+      "description": "Les documents d'une équipe deviennent interrogeables, tableaux et images compris.",
+      "icon": "game-icons:files",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pipeline documentaire (PDF, images, tableaux) extrait et évalué",
+        "Assistant documentaire en production adopté par une équipe entière, fidélité mesurée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agent-production",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plateforme-interne",
+      "name": "Plateforme interne",
+      "description": "Tes briques d'IA servent à d'autres projets que les tiens.",
+      "icon": "game-icons:stack",
+      "tier": 8,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Template ou librairie interne adoptée par 2 autres projets",
+        "Adoptée par une équipe entière"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "industrialisation-llm",
+          "rank": 1
+        },
+        {
+          "talentId": "amelioration-continue",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "agents-autonomes",
+      "name": "Agents autonomes",
+      "description": "Des agents qui tiennent des tâches longues sans toi.",
+      "icon": "game-icons:robot-golem",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Agent qui mène des tâches de plus d'1 h sans intervention, taux de succès mesuré sur 20 tâches",
+        "Taux de succès de 80 % ou plus tenu 6 mois en production"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assistant-documentaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "papier-accepte",
+      "name": "Papier accepté",
+      "description": "Tes travaux passent la relecture par les pairs.",
+      "icon": "game-icons:podium-winner",
+      "tier": 9,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Papier accepté en workshop ou en conférence à comité de lecture",
+        "2e papier accepté, dont un en conférence principale ou en revue"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preprint",
+          "rank": 1
+        },
+        {
+          "talentId": "inference-causale",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reference-metier",
+      "name": "Référence du métier",
+      "description": "Ce que tu as construit fait référence au-delà de ton équipe.",
+      "icon": "game-icons:artificial-intelligence",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Système d'IA conçu par toi, en production depuis 12 mois avec éval en CI, garde-fous et monitoring, utilisé par 50 personnes ou plus",
+        "Une méthode, librairie ou benchmark à toi adopté par 3 organisations extérieures à ton employeur (citation, dépendance déclarée ou adoption écrite)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "agents-autonomes",
+          "rank": 1
+        },
+        {
+          "talentId": "plateforme-interne",
+          "rank": 1
+        },
+        {
+          "talentId": "papier-accepte",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

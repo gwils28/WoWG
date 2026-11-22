@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien",
+    "name": "Gardien",
+    "icon": "game-icons:checked-shield"
+  },
+  "specialization": {
+    "id": "abri",
+    "name": "Abri",
+    "description": "Ton foyer tient seul plusieurs jours sans réseau et sait quoi faire face au feu, à l'intrusion ou à l'accident.",
+    "icon": "game-icons:house"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "eau-3-jours",
+      "name": "Eau pour 3 jours",
+      "description": "De l'eau potable pour tenir trois jours sans le réseau.",
+      "icon": "game-icons:water-gallon",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Stock d'eau potable pour 3 jours pour tout le foyer, saisi dans l'inventaire Shelterkwak",
+        "Date de renouvellement à 6 mois notée sur chaque contenant et dans Shelterkwak (bidons remplis ou bouteilles dans leur date)"
+      ]
+    },
+    {
+      "id": "lumiere",
+      "name": "Lumière",
+      "description": "Y voir clair quand le courant tombe.",
+      "icon": "game-icons:flashlight",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une lampe frontale ou torche par personne, avec piles de rechange",
+        "Lampe rangée à un endroit fixe, retrouvée dans le noir complet en moins de 1 min (essai chronométré)"
+      ]
+    },
+    {
+      "id": "detecteurs",
+      "name": "Détecteurs",
+      "description": "Être prévenu à temps de la fumée et du monoxyde de carbone.",
+      "icon": "game-icons:ringing-alarm",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Détecteur de fumée installé à chaque niveau du logement, testé au bouton",
+        "Détecteur de CO installé près de chaque appareil à combustion, testé, date de changement des piles notée"
+      ]
+    },
+    {
+      "id": "plan-familial",
+      "name": "Plan familial d'urgence",
+      "description": "Chacun sait qui fait quoi et où se retrouver.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plan familial d'urgence écrit (rôles, points de rendez-vous, contacts)",
+        "Plan imprimé, rangé avec le sac et dans la boîte à gants, envoyé à chaque adulte du foyer et à ton contact d'urgence"
+      ]
+    },
+    {
+      "id": "vivres-3-jours",
+      "name": "Placards de crise",
+      "description": "Manger trois jours sans courses ni cuisson.",
+      "icon": "game-icons:mason-jar",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Inventaire de ce que contiennent déjà les placards saisi dans Shelterkwak",
+        "Nourriture pour 3 jours, dont des aliments mangeables sans cuisson, et un ouvre-boîte manuel"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-3-jours",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cuisson-hors-reseau",
+      "name": "Cuisson hors réseau",
+      "description": "Faire un repas chaud sans gaz de ville ni électricité.",
+      "icon": "game-icons:camp-cooking-pot",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Réchaud et combustible pour 3 jours, stockés en sécurité",
+        "Un repas complet du foyer cuit dehors sur le réchaud, en conditions réelles"
+      ]
+    },
+    {
+      "id": "extincteur",
+      "name": "Extincteur",
+      "description": "Éteindre un départ de feu avant qu'il ne prenne.",
+      "icon": "game-icons:fire-extinguisher",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Extincteur et couverture anti-feu en place dans la cuisine",
+        "Extincteur manié une fois pour de vrai (formation, journée des pompiers, ou extincteur périmé vidé dehors)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "detecteurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "risques-alertes",
+      "name": "Risques et alertes",
+      "description": "Savoir ce qui menace ta commune et être prévenu à temps.",
+      "icon": "game-icons:siren",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Risques de la commune lus (DICRIM, Géorisques), fiche réflexe écrite pour les 3 principaux",
+        "FR-Alert, Vigilance Météo-France et Vigicrues activés sur ton téléphone",
+        "Radio FM à piles ou à dynamo testée, fréquence locale de la radio publique notée sur papier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-familial",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "eau-potable",
+      "name": "Rendre l'eau potable",
+      "description": "Transformer une eau douteuse en eau qu'on peut boire.",
+      "icon": "game-icons:water-drop",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Pastilles de purification ou Javel non parfumée en stock, dosage noté sur une fiche",
+        "Eau brute rendue potable une fois par filtration puis ébullition ou chloration, en pleine nature"
+      ]
+    },
+    {
+      "id": "recharger",
+      "name": "Recharger",
+      "description": "Garder téléphones et lampes chargés sans le secteur.",
+      "icon": "game-icons:battery-pack",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Batteries externes chargées, vérifiées chaque semaine pendant 4 semaines",
+        "Panneau solaire portable testé : un téléphone rechargé à 100 % sur une journée"
+      ]
+    },
+    {
+      "id": "sortir-fumee",
+      "name": "Sortir de la fumée",
+      "description": "Quitter le logement en feu, même de nuit.",
+      "icon": "game-icons:smoke-bomb",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan d'évacuation incendie du logement dessiné, 2 sorties repérées par pièce de vie, point de rassemblement fixé",
+        "Exercice incendie de nuit fait (ramper, toucher les portes, enfant porté jusqu'au point de rassemblement), chronométré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "extincteur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sac-evacuation",
+      "name": "Sac d'évacuation",
+      "description": "Partir en dix minutes avec l'essentiel.",
+      "icon": "game-icons:light-backpack",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un sac d'évacuation prêt pour le foyer (eau, en-cas, lampe, vêtements, trousse, affaires de l'enfant)",
+        "Sac porté 30 min à pied avec l'enfant, contenu ajusté ensuite et liste mise à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "risques-alertes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reserve-14-jours",
+      "name": "Réserve de 14 jours",
+      "description": "Tenir deux semaines sur tes stocks.",
+      "icon": "game-icons:canned-fish",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Eau potable pour 14 jours",
+        "Nourriture pour 14 jours, avec des menus écrits",
+        "Niveau Prévoyant (14 jours) atteint dans Shelterkwak, hygiène, médicaments et énergie compris"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "eau-potable",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "station-electrique",
+      "name": "Station électrique",
+      "description": "Une réserve d'électricité pour l'essentiel.",
+      "icon": "game-icons:car-battery",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Besoins électriques prioritaires chiffrés en Wh par jour (lumière, téléphones, radio, froid)",
+        "Station portable de 500 Wh ou plus, rechargée au solaire et testée sur une journée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "recharger"
+        }
+      ]
+    },
+    {
+      "id": "premiers-secours",
+      "name": "Premiers secours",
+      "description": "Protéger, alerter, secourir face à un accident.",
+      "icon": "game-icons:first-aid-kit",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Numéros d'urgence (15, 17, 18, 112) mémorisés et conduite à tenir face à un accident (protéger, alerter, secourir) résumée",
+        "Trousse de secours à la maison et dans le véhicule, contenu vérifié",
+        "Formation PSC1 suivie (attestation)"
+      ]
+    },
+    {
+      "id": "rotation-stocks",
+      "name": "Rotation des stocks",
+      "description": "Des réserves toujours dans leur date.",
+      "icon": "game-icons:recycle",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Dates de péremption des stocks saisies dans Shelterkwak, rotation premier entré, premier sorti en place",
+        "3 mois sans aucune date dépassée ni eau périmée (contrôle mensuel noté)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reserve-14-jours",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "logement-securise",
+      "name": "Logement sécurisé",
+      "description": "Un logement qui décourage l'intrusion.",
+      "icon": "game-icons:locked-door",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Audit de sécurité du logement fait (accès, éclairage, points faibles)",
+        "Points faibles traités sans gros travaux (entrebâilleur, éclairage extérieur, détecteur de présence), poses non comptées dans Atelier"
+      ]
+    },
+    {
+      "id": "voisins-solidaires",
+      "name": "Voisins solidaires",
+      "description": "Des voisins sur qui compter, et qui comptent sur toi.",
+      "icon": "game-icons:door-watcher",
+      "tier": 5,
+      "column": 5,
+      "maxRank": 3,
+      "ranks": [
+        "Deux voisins connus par leur nom, numéros échangés",
+        "Personnes fragiles autour de toi repérées, signal d'alerte convenu avec les voisins (SMS groupé, sifflet)",
+        "Accord d'entraide réciproque avec un autre foyer à moins de 30 min (clés, stocks, accueil)"
+      ]
+    },
+    {
+      "id": "chaud-froid",
+      "name": "Chaud et froid",
+      "description": "Garder le foyer à bonne température sans chauffage ni clim.",
+      "icon": "game-icons:thermometer-cold",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Couchage chaud hors réseau pour chacun (sacs de couchage adaptés, couvertures)",
+        "Plan canicule écrit, pièce la plus fraîche identifiée et thermomètre intérieur en place, appliqué pendant un épisode de chaleur ou de froid"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "station-electrique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-intrusion",
+      "name": "Plan intrusion",
+      "description": "Savoir quoi faire si quelqu'un entre.",
+      "icon": "game-icons:closed-doors",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Plan intrusion écrit (pièce refuge qui ferme, téléphone chargé, ne pas aller au contact, appel au 17)",
+        "Exercice d'intrusion de nuit simulé : pièce refuge rejointe avec l'enfant, appel simulé, débrief écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "logement-securise"
+        }
+      ]
+    },
+    {
+      "id": "contact-hors-region",
+      "name": "Contact hors région",
+      "description": "Un relais loin de la crise et un lieu où se replier.",
+      "icon": "game-icons:candlestick-phone",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Contact référent hors de la région et lieu de repli à plus de 50 km convenus, notés dans le plan",
+        "Message passé par ce contact pendant un exercice, itinéraire vers le lieu de repli tracé sur carte papier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sac-evacuation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epreuve-eau",
+      "name": "Épreuve de l'eau",
+      "description": "Vivre sur tes réserves quand le robinet se tait.",
+      "icon": "game-icons:manual-water-pump",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "48 h sans eau du réseau pour toi et l'enfant au moins, sur tes réserves, consommation notée",
+        "7 jours sans eau du réseau pour toi et l'enfant au moins (épreuve Shelterkwak)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rotation-stocks",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exercice-evacuation",
+      "name": "Exercice d'évacuation",
+      "description": "Tout le monde dehors, vite et dans l'ordre.",
+      "icon": "game-icons:exit-door",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Exercice chronométré : toi et l'enfant dehors en moins de 15 min, sac pris, eau, gaz et électricité coupés",
+        "Moins de 5 min, puis trajet jusqu'au point de rendez-vous hors du quartier"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "contact-hors-region",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reserve-30-jours",
+      "name": "Réserve de 30 jours",
+      "description": "Un mois d'autonomie en eau et en vivres.",
+      "icon": "game-icons:water-tank",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Eau et nourriture pour 30 jours, saisies dans Shelterkwak",
+        "Réserve de 30 jours tenue 12 mois, rotation sans perte"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epreuve-eau",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "coupure-electrique",
+      "name": "Épreuve de coupure",
+      "description": "Vivre sans courant, sans dégâts ni improvisation.",
+      "icon": "game-icons:battery-0",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "24 h disjoncteur général coupé, toi et l'enfant au moins (par exemple un week-end en relais), sans dommage (congélateur, chauffage)",
+        "48 h disjoncteur général coupé, sans dommage ni improvisation, débrief écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chaud-froid",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "energie-solaire",
+      "name": "Énergie d'appoint",
+      "description": "Une semaine d'électricité essentielle tirée du soleil.",
+      "icon": "game-icons:solar-power",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Station d'au moins 1 kWh rechargée au solaire, couvrant une semaine de besoins prioritaires",
+        "Semaine testée : éclairage, radio et téléphones tenus sur le solaire seul, relevés notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "coupure-electrique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "foyer-entraine",
+      "name": "Foyer entraîné",
+      "description": "Les exercices deviennent des réflexes, année après année.",
+      "icon": "game-icons:meeple-group",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Exercices évacuation, incendie de nuit et intrusion refaits dans la même année, chacun au moins 6 mois après sa première fois, débrief écrit",
+        "2 années de suite, plan familial mis à jour après chaque débrief"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exercice-evacuation"
+        }
+      ]
+    },
+    {
+      "id": "foyer-autonome",
+      "name": "Foyer autonome",
+      "description": "Ton foyer vit sans réseau ni ravitaillement, et le prouve dans la durée.",
+      "icon": "game-icons:fallout-shelter",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "72 h vécues sur tes seules réserves, sans eau ni électricité du réseau ni ravitaillement, toi et l'enfant au moins (au logement ou au lieu de repli), débrief écrit",
+        "Niveau Endurant (90 jours) atteint dans Shelterkwak et tenu 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "energie-solaire",
+          "rank": 1
+        },
+        {
+          "talentId": "foyer-entraine",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

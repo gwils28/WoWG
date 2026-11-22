@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien",
+    "name": "Gardien",
+    "icon": "game-icons:checked-shield"
+  },
+  "specialization": {
+    "id": "garde",
+    "name": "Garde",
+    "description": "Tu sais encaisser, esquiver et garder ton calme sous la pression, sur le ring comme dans la rue.",
+    "icon": "game-icons:guards"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "jab-direct",
+      "name": "Jab et direct",
+      "description": "Les deux coups droits, base de toute la boxe.",
+      "icon": "game-icons:punch",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "3 rounds de 2 min de shadow jab-direct filmés, garde remontée après chaque coup",
+        "100 jabs et 100 directs au sac dans une séance, technique validée par le coach",
+        "Jab doublé et jab-direct sur pattes d'ours, 3 rounds sans baisser la garde"
+      ]
+    },
+    {
+      "id": "equipement-regles",
+      "name": "Équipement et règles",
+      "description": "Être équipé et savoir ce qui compte en assaut.",
+      "icon": "game-icons:boxing-glove",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Casque, protège-dents moulé, gants 14-16 oz et coquille achetés et ajustés",
+        "Règlement de boxe éducative FFBoxe lu, ce qui fait une touche expliqué au coach"
+      ]
+    },
+    {
+      "id": "echauffement-bandes",
+      "name": "Échauffement et bandes",
+      "description": "Préparer le corps et les mains avant de frapper.",
+      "icon": "game-icons:bandage-roll",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Échauffement de 10 min (épaules, poignets, nuque, rotation thoracique) avant chaque séance, 2 semaines",
+        "Mains bandées seul, aucune douleur aux poignets sur 4 séances"
+      ]
+    },
+    {
+      "id": "fuir-alerter",
+      "name": "Fuir et alerter",
+      "description": "Face à une agression, la meilleure défense est de ne pas être là.",
+      "icon": "game-icons:running-shoe",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Règle personnelle écrite : face à une agression, tu fuis et tu alertes (17 ou 112, SMS au 114)",
+        "Numéros d'urgence en favoris et appel d'urgence rapide configuré sur ton téléphone, testé sans l'envoyer"
+      ]
+    },
+    {
+      "id": "garde-deplacements",
+      "name": "Garde et déplacements",
+      "description": "Une garde qui reste haute et des pieds qui ne se croisent pas.",
+      "icon": "game-icons:footprint",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Garde tenue 3 rounds de shadow sans baisser la main arrière (vidéo)",
+        "Pas avant, arrière et latéraux 3 rounds de 2 min sans croiser les pieds (vidéo)",
+        "Pivots sur le pied avant des deux côtés, 3 rounds de shadow"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jab-direct",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exercices-partenaire",
+      "name": "Exercices à deux",
+      "description": "Apprendre à toucher et à être touché, en sécurité.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Exercices codifiés (attaque contre parade) avec 5 partenaires différents",
+        "Exercices semi-libres, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "equipement-regles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "corde",
+      "name": "Corde à sauter",
+      "description": "Le rythme des jambes du boxeur.",
+      "icon": "game-icons:jumping-rope",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "3 rounds de 2 min de corde, 1 min de repos",
+        "3 rounds de 3 min",
+        "Pas de boxeur alternés sur 3 rounds de 3 min"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "echauffement-bandes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "evitement",
+      "name": "Évitement",
+      "description": "Voir venir le danger et garder la distance.",
+      "icon": "game-icons:radar-sweep",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Trajets habituels revus : zones à éviter et lieux refuges (commerces ouverts, commissariat) notés",
+        "10 situations notées où tu as repéré des signaux et gardé la distance"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "fuir-alerter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "crochets-uppercuts",
+      "name": "Crochets et uppercuts",
+      "description": "Les coups courts, portés par la rotation des hanches.",
+      "icon": "game-icons:fulguro-punch",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Crochets avant et arrière au sac 3 rounds, rotation des hanches visible en vidéo",
+        "Uppercuts avant et arrière au sac 3 rounds, sans armer le coup",
+        "Crochets et uppercuts tête et corps sur pattes d'ours, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "garde-deplacements",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "assaut-touche",
+      "name": "Assaut à la touche",
+      "description": "L'assaut libre, où l'on touche sans frapper fort.",
+      "icon": "game-icons:high-punch",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Premier round d'assaut à la touche en club",
+        "10 rounds d'assaut cumulés",
+        "30 rounds d'assaut cumulés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "exercices-partenaire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rounds-sac",
+      "name": "Rounds au sac",
+      "description": "Tenir la durée et le rythme d'un vrai round.",
+      "icon": "game-icons:punching-bag",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "3 rounds de 2 min au sac sans s'arrêter",
+        "4 rounds de 3 min au sac, 1 min de repos",
+        "6 rounds de 3 min au sac, 1 min de repos"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "corde",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cadre-legal",
+      "name": "Cadre légal",
+      "description": "Savoir ce que la loi permet, avant et après.",
+      "icon": "game-icons:scales",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Conditions de la légitime défense résumées (attaque injuste et actuelle, riposte nécessaire, immédiate, proportionnée)",
+        "Conduite après une agression résumée (sûreté, 17, témoins, certificat médical, plainte, France Victimes)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evitement",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "esquives-blocages",
+      "name": "Esquives et blocages",
+      "description": "Encaisser sans subir : bloquer, rouler, sortir de l'axe.",
+      "icon": "game-icons:dodge",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Bloquer jab et direct d'un partenaire au ralenti, 2 rounds",
+        "Rotations sous une corde tendue, 3 rounds de shadow, amplitude adaptée au dos",
+        "Esquives et rotations sur jab et crochet d'un partenaire à vitesse moyenne, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "crochets-uppercuts",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "controle-touche",
+      "name": "Contrôle de la touche",
+      "description": "Toucher juste, sans appuyer.",
+      "icon": "game-icons:feather",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 assauts où le coach valide que toutes les touches sont contrôlées",
+        "15 assauts sans avertissement pour coup appuyé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assaut-touche",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "self-defense",
+      "name": "Self-défense",
+      "description": "Se dégager et se protéger quand fuir ne suffit pas.",
+      "icon": "game-icons:fist",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Initiation à la self-défense encadrée suivie (dégagements, chutes, protection)",
+        "6 séances ou un stage de 2 jours terminés, dégagements de saisie validés par l'instructeur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-legal",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "combinaisons",
+      "name": "Combinaisons",
+      "description": "Enchaîner les coups sans ouvrir sa garde.",
+      "icon": "game-icons:punch-blast",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Les 6 combinaisons numérotées enchaînées sur pattes d'ours, sur appel du coach",
+        "3 rounds de shadow avec 10 combinaisons différentes (vidéo)",
+        "Combinaisons de 4 coups et plus sur pattes d'ours, 3 rounds sans perte de garde"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "esquives-blocages",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "plan-lecture",
+      "name": "Plan et lecture",
+      "description": "Arriver avec un plan et lire l'adversaire.",
+      "icon": "game-icons:eye-target",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Objectif tactique noté avant chaque assaut et vérifié après, sur 5 assauts",
+        "Main préférée et une habitude de l'adversaire identifiées en 1 round, confirmé par le coach, 5 fois",
+        "Plan adapté au 2e round sur 5 assauts"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "controle-touche",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "desamorcer",
+      "name": "Désamorcer",
+      "description": "Faire retomber la tension par la posture et la voix.",
+      "icon": "game-icons:hand-ok",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Posture et voix de désamorçage (mains ouvertes, distance, phrases courtes) travaillées en stage ou en club, 3 mises en situation",
+        "5 scénarios joués en jeu de rôle, sortie par la parole ou la fuite validée par l'instructeur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "self-defense",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sparring-regulier",
+      "name": "Sparring régulier",
+      "description": "L'assaut devient une habitude, face à des profils variés.",
+      "icon": "game-icons:crossed-swords",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Sparring contrôlé 2 fois par mois pendant 3 mois",
+        "Même rythme pendant 6 mois, face à 3 profils (gaucher, boxeur rapide, boxeur qui avance)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plan-lecture",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "saison-sans-blessure",
+      "name": "Saison sans blessure",
+      "description": "Durer, pour boxer encore dans dix ans.",
+      "icon": "game-icons:healing-shield",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "3 mois de pratique sans arrêt pour blessure ou douleur",
+        "6 mois sans arrêt"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rounds-sac",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parades-contres",
+      "name": "Parades et contres",
+      "description": "Transformer la défense en attaque.",
+      "icon": "game-icons:sword-clash",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Parade du jab suivie d'un direct en exercice à deux, 3 rounds",
+        "Contre-crochet après esquive rotative, 3 rounds"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "combinaisons",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sang-froid",
+      "name": "Sang-froid",
+      "description": "Garder la tête froide quand le stress monte.",
+      "icon": "game-icons:meditation",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Mise en situation encadrée et consentie sous stress (scénario surprise), débriefée avec l'instructeur sur ce que la loi aurait permis",
+        "Deuxième mise en situation surprise, au moins 6 mois après la première, progrès noté par l'instructeur (réaction, distance, appel)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "desamorcer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "defense-active",
+      "name": "Défense active",
+      "description": "Tenir un round entier sous les coups sans être touché net.",
+      "icon": "game-icons:eye-shield",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "1 round de défense pure à la touche, touché net à la tête 5 fois au plus",
+        "3 rounds, même critère"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parades-contres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premiere-competition",
+      "name": "Première compétition",
+      "description": "Monter sur le ring devant des juges.",
+      "icon": "game-icons:medal",
+      "tier": 8,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Premier interclub ou gala éducatif disputé",
+        "Première compétition officielle FFBoxe ouverte aux adultes de ta catégorie terminée (licence compétition, certificat médical avec avis sur la scoliose)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sparring-regulier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "technicien-complet",
+      "name": "Technicien complet",
+      "description": "Une boxe propre, validée par ton club.",
+      "icon": "game-icons:laurels-trophy",
+      "tier": 9,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Shadow de 3 rounds filmé (attaque, défense, déplacements, contres) validé par le coach",
+        "Grade technique validé (gant de couleur FFBoxe ou équivalent proposé par le club)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "defense-active",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "garde-de-fer",
+      "name": "Garde de fer",
+      "description": "Tu gagnes en compétition, en boxant juste et sans te faire toucher.",
+      "icon": "game-icons:mailed-fist",
+      "tier": 10,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Premier assaut remporté en compétition officielle FFBoxe ouverte aux adultes de ta catégorie (éducative, loisir ou vétéran)",
+        "3 assauts officiels remportés dans une même saison"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "technicien-complet",
+          "rank": 1
+        },
+        {
+          "talentId": "premiere-competition"
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "gardien",
+    "name": "Gardien",
+    "icon": "game-icons:checked-shield"
+  },
+  "specialization": {
+    "id": "tresor",
+    "name": "Trésor",
+    "description": "Ton argent amortit les coups : budget suivi, précaution, foyer protégé et patrimoine qui travaille.",
+    "icon": "game-icons:open-treasure-chest"
+  },
+  "grid": {
+    "tiers": 10,
+    "columns": 5
+  },
+  "talents": [
+    {
+      "id": "saisie-kwak",
+      "name": "Saisie régulière",
+      "description": "Chaque euro du foyer passe par Kwak.",
+      "icon": "game-icons:notebook",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Tes comptes et les comptes communs du foyer importés dans Kwak, dépenses et revenus du mois en cours saisis",
+        "Saisie faite chaque semaine pendant 2 semaines, aucune transaction en attente"
+      ]
+    },
+    {
+      "id": "assurances",
+      "name": "Assurances du foyer",
+      "description": "Savoir ce qui te couvre et ce qui ne te couvre pas.",
+      "icon": "game-icons:shield-reflect",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Contrats listés (habitation, auto, santé, prévoyance) avec garanties et franchises",
+        "Doublons et trous de garantie identifiés et notés, chacun avec une action décidée"
+      ]
+    },
+    {
+      "id": "matrice-patrimoine",
+      "name": "Matrice de patrimoine",
+      "description": "La photo complète de ce que le foyer possède et doit.",
+      "icon": "game-icons:abacus",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Toutes les lignes auxquelles tu as accès (tes comptes et les comptes communs) saisies dans Kwak, actifs et dettes",
+        "Chaque dette notée avec taux, mensualité, capital restant et coût total"
+      ]
+    },
+    {
+      "id": "droits-retraite",
+      "name": "Droits à la retraite",
+      "description": "Ce que ta carrière t'a déjà acquis.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Relevé de carrière consulté sur le service officiel, périodes manquantes signalées",
+        "Estimation de pension à l'âge visé notée"
+      ]
+    },
+    {
+      "id": "categories",
+      "name": "Catégories",
+      "description": "Savoir où part l'argent.",
+      "icon": "game-icons:files",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Toutes les dépenses du mois classées, moins de 5 % dans une catégorie fourre-tout",
+        "Charges fixes saisies avec leur périodicité, total mensuel équivalent connu",
+        "Objectif mensuel fixé pour chaque catégorie de dépense"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "saisie-kwak",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "budget-crise",
+      "name": "Budget de crise",
+      "description": "Le minimum vital du foyer, chiffré d'avance.",
+      "icon": "game-icons:life-buoy",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Montant mensuel minimal du foyer calculé, dépenses coupées en premier listées",
+        "Plan écrit pour une baisse de revenu de 30 % (coupes, délais, aides)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "saisie-kwak",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "papiers-acces",
+      "name": "Papiers et accès",
+      "description": "Retrouver en cinq minutes tout papier ou accès du foyer.",
+      "icon": "game-icons:full-folder",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Documents du foyer classés et numérisés, durées de conservation respectées",
+        "Dossier d'urgence pour le foyer : comptes, contrats, contacts, accès"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assurances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "objectifs-foyer",
+      "name": "Objectifs financiers",
+      "description": "Chaque projet du foyer a un montant et une échéance.",
+      "icon": "game-icons:great-pyramid",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Objectifs du foyer créés dans la pyramide Kwak, chacun avec montant et échéance",
+        "Chaque objectif financé par au moins une enveloppe"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "matrice-patrimoine",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-mensuelle",
+      "name": "Revue du mois",
+      "description": "Un rendez-vous mensuel avec tes comptes.",
+      "icon": "game-icons:checklist",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Revue mensuelle faite dans Kwak (écarts aux objectifs, 1 décision notée)",
+        "Revue faite 2 mois de suite, décision du mois précédent vérifiée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "categories"
+        }
+      ]
+    },
+    {
+      "id": "epargne-automatique",
+      "name": "Épargne automatique",
+      "description": "L'épargne part avant la dépense.",
+      "icon": "game-icons:receive-money",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Virements vers la précaution et les objectifs programmés le jour de la paie (hors investissement long terme)",
+        "Virements tenus 2 mois de suite sans les annuler ni les réduire"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "budget-crise",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "enveloppes",
+      "name": "Enveloppes",
+      "description": "Le bon placement dans la bonne enveloppe.",
+      "icon": "game-icons:open-folder",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des enveloppes : plafonds, fiscalité, disponibilité (livrets, assurance-vie, PEA, PER)",
+        "Chaque ligne du foyer associée à son enveloppe et à sa raison d'être"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "objectifs-foyer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "besoin-retraite",
+      "name": "Besoin à la retraite",
+      "description": "Combien il te faudra, et quand partir.",
+      "icon": "game-icons:calculator",
+      "tier": 3,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Revenu souhaité à la retraite estimé, écart avec la pension calculé",
+        "Âge de départ visé choisi, effet d'un an de plus ou de moins sur la pension chiffré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "droits-retraite"
+        }
+      ]
+    },
+    {
+      "id": "depenses-irregulieres",
+      "name": "Dépenses irrégulières",
+      "description": "Plus de mauvaise surprise quand tombent les grosses échéances.",
+      "icon": "game-icons:calendar",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Dépenses annuelles (impôts, assurances, vacances, cadeaux) converties en provisions mensuelles dans Kwak",
+        "Provisions tenues un trimestre, écart entre prévu et réel sous 10 %"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "revue-mensuelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prevoyance",
+      "name": "Prévoyance",
+      "description": "Le foyer tient même si tu ne peux plus travailler.",
+      "icon": "game-icons:heart-shield",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Couverture décès et invalidité du foyer chiffrée (employeur et contrats)",
+        "Écart avec le besoin du foyer comblé ou accepté par écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "papiers-acces",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "frais",
+      "name": "Chasse aux frais",
+      "description": "Chaque euro de frais en moins travaille pour toi.",
+      "icon": "game-icons:pay-money",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Frais de chaque enveloppe relevés (gestion, courtage, unités de compte)",
+        "Coût des frais de chaque enveloppe calculé en euros sur 20 ans",
+        "Frais annuels totaux réduits (transfert, changement de support), économie notée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "enveloppes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "renegociation",
+      "name": "Renégociation",
+      "description": "Payer le juste prix pour les contrats du foyer.",
+      "icon": "game-icons:two-coins",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Assurances habitation et auto mises en concurrence, économie annuelle notée",
+        "Énergie, box et mobiles comparés, 300 € par an économisés au total"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "depenses-irregulieres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "taux-epargne",
+      "name": "Taux d'épargne",
+      "description": "La part des revenus que le foyer met de côté.",
+      "icon": "game-icons:pie-chart",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Taux d'épargne moyen des 6 derniers mois calculé et noté comme point de départ",
+        "Taux d'épargne du trimestre relevé de 3 points par rapport au point de départ"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epargne-automatique"
+        }
+      ]
+    },
+    {
+      "id": "succession",
+      "name": "Succession",
+      "description": "Ce que tu laisses va à qui tu veux, sans blocage.",
+      "icon": "game-icons:tied-scroll",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Rendez-vous chez un notaire fait : protection de ton conjoint et de ton enfant en cas de décès évaluée (statut du couple, testament), options notées",
+        "Testament rédigé ou déposé chez le notaire, clauses bénéficiaires des assurances-vie relues et à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prevoyance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "precaution",
+      "name": "Épargne de précaution",
+      "description": "Un coussin qui absorbe les coups durs.",
+      "icon": "game-icons:umbrella",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "Montant cible calculé en mois de charges fixes, objectif de précaution créé dans Kwak",
+        "50 % de la cible réunis",
+        "100 % réunis et maintenus 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "taux-epargne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "allocation-cible",
+      "name": "Allocation cible",
+      "description": "Une répartition choisie, pas subie.",
+      "icon": "game-icons:radial-balance",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Allocation cible écrite par catégorie, avec horizon et tolérance au risque",
+        "Écart à la cible suivi chaque mois dans Kwak pendant 4 mois, règle de rééquilibrage écrite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "frais",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "epargne-retraite",
+      "name": "Épargne retraite",
+      "description": "Préparer la retraite avec la bonne enveloppe.",
+      "icon": "game-icons:sundial",
+      "tier": 6,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Enveloppes de long terme comparées pour la retraite selon la fiscalité du foyer, choix noté",
+        "Versements retraite programmés, avantage fiscal de l'année calculé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "besoin-retraite"
+        }
+      ]
+    },
+    {
+      "id": "bilan-annuel",
+      "name": "Bilan financier annuel",
+      "description": "Le bilan d'argent qui fixe le cap de l'année suivante.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 7,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Bilan financier annuel écrit : dépenses par catégorie face aux objectifs de l'année, 3 enseignements",
+        "Objectifs de l'année suivante fixés à partir du bilan, budget annuel saisi dans Kwak"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "renegociation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "investissement-programme",
+      "name": "Investissement programmé",
+      "description": "Investir chaque mois, sans y penser.",
+      "icon": "game-icons:sprout",
+      "tier": 7,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Versement mensuel programmé sur une enveloppe de long terme",
+        "6 mois sans interruption ni baisse du montant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "allocation-cible",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "maitre-flux",
+      "name": "Maître des flux",
+      "description": "Les imprévus ne font plus vaciller le budget.",
+      "icon": "game-icons:coins-pile",
+      "tier": 8,
+      "column": 1,
+      "maxRank": 1,
+      "ranks": [
+        "Une année où toutes les dépenses imprévues sont absorbées par le budget, sans toucher à la précaution ni aux objectifs"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "bilan-annuel",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "apport-maison",
+      "name": "Apport du projet maison",
+      "description": "Le projet maison financé sans fragiliser le foyer.",
+      "icon": "game-icons:house-keys",
+      "tier": 8,
+      "column": 5,
+      "maxRank": 2,
+      "ranks": [
+        "Budget cible du projet maison écrit (prix, frais de notaire, travaux, équipement) et capacité d'emprunt simulée auprès de 2 banques ou d'un courtier",
+        "50 % de l'apport réunis sans toucher à la précaution"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "epargne-retraite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "train-de-vie",
+      "name": "Train de vie maîtrisé",
+      "description": "Gagner plus sans dépenser d'autant plus.",
+      "icon": "game-icons:anchor",
+      "tier": 9,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dépenses des 12 derniers mois tenues dans le budget annuel du bilan, à 5 % près",
+        "Sur 2 ans, hausse des dépenses inférieure à la hausse des revenus"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "precaution",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "discipline-investisseur",
+      "name": "Discipline d'investisseur",
+      "description": "Tenir le cap quand les marchés tanguent.",
+      "icon": "game-icons:stone-tower",
+      "tier": 9,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Journal des décisions d'investissement tenu 12 mois (date, raison, résultat)",
+        "Versements programmés maintenus 18 mois sans interruption ni vente hors de ta règle écrite, baisses de marché comprises (journal)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "investissement-programme"
+        }
+      ]
+    },
+    {
+      "id": "douze-mois-avance",
+      "name": "Douze mois d'avance",
+      "description": "Le foyer peut vivre une année entière sans revenu, sans entamer ses réserves vitales.",
+      "icon": "game-icons:locked-chest",
+      "tier": 10,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Épargne mobilisable (hors résidence principale, hors retraite et hors précaution et hors apport du projet maison) couvrant 12 mois de dépenses totales du foyer, constatée dans Kwak",
+        "24 mois couverts, tenus 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "train-de-vie",
+          "rank": 1
+        },
+        {
+          "talentId": "discipline-investisseur",
+          "rank": 1
+        }
+      ],
+      "ultimate": true
+    }
+  ]
+}
