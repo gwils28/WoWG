@@ -3,6 +3,7 @@ import { Navigate, NavLink, Outlet, Route, Routes, useLocation } from 'react-rou
 import { api } from './lib/api';
 import { HomePage } from './pages/HomePage';
 import { GameIcon } from './components/GameIcon';
+import { ArchivesPage } from './pages/ArchivesPage';
 import { JournalPage } from './pages/JournalPage';
 import { ClassPage, LegacySpecRedirect } from './pages/ClassPage';
 import { ClassesPage } from './pages/ClassesPage';
@@ -56,6 +57,10 @@ function Layout() {
             <GameIcon icon="game-icons:scroll-unfurled" size={16} />
             <span>Journal</span>
           </NavLink>
+          <NavLink to="/archives" title="Classes archivées (lecture seule)">
+            <GameIcon icon="game-icons:locked-chest" size={16} />
+            <span>Archives</span>
+          </NavLink>
           <NavLink to="/outils" title="Outils : import et sauvegarde" aria-label="Outils">
             <GameIcon icon="game-icons:cog" size={16} />
           </NavLink>
@@ -93,6 +98,7 @@ export function App() {
         <Route path="quetes" element={<QuestsPage />} />
         <Route path="etal" element={<MarketPage />} />
         <Route path="journal" element={<JournalPage />} />
+        <Route path="archives" element={<ArchivesPage />} />
         <Route path="outils" element={<ToolsPage />} />
         <Route path="import" element={<Navigate to="/outils" replace />} />
         <Route path="*" element={<NotFound />} />

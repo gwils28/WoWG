@@ -19,7 +19,7 @@ import {
   type TreeFile,
 } from '@wowg/shared';
 import type { Db } from './db';
-import { badRequest, DateInput, readBody, toIso } from './http';
+import { badRequest, conflict, DateInput, readBody, toIso } from './http';
 import { createRepository } from './repository';
 import { registerMarketRoutes } from './market';
 import { registerQuestRoutes } from './quests';
@@ -30,7 +30,16 @@ import {
   readTreeFile,
   writeTreeFile,
 } from './tree-files';
-import { character, PINNED_DOMAINS, pinnedDomains, specDetail, specSummary } from './views';
+import {
+  ARCHIVED_DOMAINS,
+  archivedDomains,
+  character,
+  isArchivedSpec,
+  PINNED_DOMAINS,
+  pinnedDomains,
+  specDetail,
+  specSummary,
+} from './views';
 
 export interface AppOptions {
   db: Db;
@@ -67,6 +76,7 @@ const JournalQuery = z.object({
 });
 
 const PinBody = z.object({ pinned: z.boolean() });
+const ArchiveBody = z.object({ archived: z.boolean() });
 
 const BackupSchema = z.object({
   format: z.literal('wowg-backup'),
@@ -201,6 +211,13 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
     return spec;
   };
 
+  /** Une classe archivée est en lecture seule (SPEC 11). */
+  const requireActive = (spec: { tree: TreeFile }) => {
+    if (archivedDomains(repo).includes(spec.tree.domain.id)) {
+      conflict(`classe « ${spec.tree.domain.name} » archivée : réactive-la d'abord`);
+    }
+  };
+
   /** Charge et valide un arbre depuis trees/ ou depuis le contenu fourni. */
   async function loadImport(body: z.infer<typeof ImportBody>): Promise<TreeFile> {
     const source = body.path !== undefined ? await readTreeFile(treesDir, body.path) : body.content;
@@ -247,14 +264,36 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
     return c.json({ pinned: next });
   });
 
+  app.put('/domains/:id/archive', async (c) => {
+    const id = c.req.param('id');
+    const { archived } = await readBody(c, ArchiveBody);
+    if (!repo.listSpecializations().some((s) => s.domainId === id)) {
+      return c.json({ errors: [`domaine "${id}" inconnu`] }, 404);
+    }
+    const current = archivedDomains(repo).filter((d) => d !== id);
+    const next = archived ? [...current, id] : current;
+    repo.setPreference(ARCHIVED_DOMAINS, next);
+    // une classe archivée n'a plus de raison d'être épinglée
+    if (archived)
+      repo.setPreference(
+        PINNED_DOMAINS,
+        pinnedDomains(repo).filter((d) => d !== id),
+      );
+    return c.json({ archived: next });
+  });
+
   app.get('/specializations', (c) =>
-    c.json(repo.listSpecializations().map((s) => specSummary(s, repo.ranks(s.id)))),
+    c.json(
+      repo
+        .listSpecializations()
+        .map((s) => specSummary(s, repo.ranks(s.id), isArchivedSpec(repo, s))),
+    ),
   );
 
   app.get('/specializations/:id', (c) => {
     const spec = requireSpec(c.req.param('id'));
     return c.json({
-      ...specDetail(spec, repo.ranks(spec.id)),
+      ...specDetail(spec, repo.ranks(spec.id), isArchivedSpec(repo, spec)),
       questStates: questViews.treeQuestStates(spec, nowIso()),
     });
   });
@@ -262,6 +301,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
   app.put('/specializations/:id', async (c) => {
     const id = c.req.param('id');
     const existing = requireSpec(id);
+    requireActive(existing);
     const res = parseTree(await readBody(c, z.unknown()));
     if (!res.ok) badRequest(res.errors);
     if (res.tree.specialization.id !== id) {
@@ -276,6 +316,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
 
   app.post('/specializations/:id/talents/:talentId/ranks', async (c) => {
     const spec = requireSpec(c.req.param('id'));
+    requireActive(spec);
     const talentId = c.req.param('talentId');
     const body = await readBody(c, RankBody, true);
     const check = canAddRank(spec.tree, repo.ranks(spec.id), talentId);
@@ -291,6 +332,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
 
   app.delete('/specializations/:id/talents/:talentId/ranks', (c) => {
     const spec = requireSpec(c.req.param('id'));
+    requireActive(spec);
     const talentId = c.req.param('talentId');
     const check = canRemoveRank(spec.tree, repo.ranks(spec.id), talentId);
     if (!check.ok) return c.json({ errors: [check.reason] }, 409);
@@ -313,6 +355,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
     const body = await readBody(c, ImportBody);
     const tree = await loadImport(body);
     const existing = repo.getSpecialization(tree.specialization.id);
+    if (existing) requireActive(existing);
     const ranks = existing ? repo.ranks(existing.id) : {};
     const diff = diffTrees(existing?.tree ?? null, tree, ranks);
     // un contenu envoyé directement est versionné dans trees/ comme les autres

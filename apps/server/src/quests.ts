@@ -31,6 +31,7 @@ import {
   type StoredQuestRun,
 } from './quest-repository';
 import type { Repository, StoredSpecialization } from './repository';
+import { archivedDomains } from './views';
 
 const deadline = z.iso.date().nullable().optional();
 
@@ -231,13 +232,17 @@ export function registerQuestRoutes(
     );
     const customQuests = questRepo.listCustomQuests();
 
+    const archived = new Set(archivedDomains(repo));
     const available = [
-      ...repo.listSpecializations().flatMap((spec) =>
-        (spec.tree.quests ?? [])
-          .filter((q) => !activeTree.has(`${spec.id}/${q.id}`))
-          .filter((q) => treeQuestAvailability(spec.tree, lookup(spec.id)!.ranks, q).ok)
-          .map((q) => views.treeOffer(spec, q.id, lookup)),
-      ),
+      ...repo
+        .listSpecializations()
+        .filter((spec) => !archived.has(spec.tree.domain.id))
+        .flatMap((spec) =>
+          (spec.tree.quests ?? [])
+            .filter((q) => !activeTree.has(`${spec.id}/${q.id}`))
+            .filter((q) => treeQuestAvailability(spec.tree, lookup(spec.id)!.ranks, q).ok)
+            .map((q) => views.treeOffer(spec, q.id, lookup)),
+        ),
       ...customQuests
         .filter((cq) => !activeCustom.has(cq.id))
         .map((cq) => views.customView(cq, lookup)),
@@ -267,6 +272,9 @@ export function registerQuestRoutes(
       if (!spec) notFound(`spécialisation "${body.specializationId}" inconnue`);
       const quest = spec.tree.quests?.find((q) => q.id === body.questId);
       if (!quest) notFound(`quête "${body.questId}" inconnue dans "${spec.id}"`);
+      if (archivedDomains(repo).includes(spec.tree.domain.id)) {
+        conflict(`classe « ${spec.tree.domain.name} » archivée : réactive-la d'abord`);
+      }
       if (
         activeRunOf({
           source: 'tree',
@@ -361,6 +369,16 @@ export function registerQuestRoutes(
     const progress = questProgress(run.definition, run, questRepo.listTicks(run.id), at);
     const plan = planTurnIn(run.definition, progress, lookup);
     if (!plan.ok) conflict(plan.reason);
+    // un rendu ne fait pas progresser une classe archivée (SPEC 11)
+    const archived = new Set(archivedDomains(repo));
+    const frozen = plan.grants
+      .map((g) => repo.getSpecialization(g.specializationId))
+      .find((spec) => spec && archived.has(spec.tree.domain.id));
+    if (frozen) {
+      conflict(
+        `classe « ${frozen.tree.domain.name} » archivée : abandonne la quête ou réactive la classe`,
+      );
+    }
     const occurredAt = toIso(body.occurredAt) ?? at;
     if (run.source === 'custom' && run.customQuestId !== null) {
       // limiteur anti-farm (SPEC 10.3) : un rendu non annulé par semaine ISO

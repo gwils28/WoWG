@@ -1,21 +1,31 @@
 /**
- * Passer du niveau L au niveau L+1 coûte L points (1 rang = 1 point).
- * Points cumulés pour atteindre le niveau L : L(L-1)/2. Niveau 1 à 0 point, niveau max 100
- * (4 950 points).
+ * Passer du niveau L au niveau L+1 coûte ceil(L / 5) points (1 rang = 1 point) : 1 point par
+ * niveau jusqu'au niveau 6, puis 2, 3... Courbe adoptée avec le catalogue v2 (SPEC 11, environ
+ * 900 points en tout) : Légende (niveau 81) demande 680 points, le niveau max 100 en demande
+ * 1 030, juste hors d'atteinte. Niveau 1 à 0 point.
  */
 export const MAX_LEVEL = 100;
+const STEP = 5;
 
+/** Coût pour passer du niveau `level` au suivant. */
+export function levelCost(level: number): number {
+  return Math.ceil(level / STEP);
+}
+
+/** Points cumulés pour atteindre le niveau `level`. */
 export function pointsForLevel(level: number): number {
-  return (level * (level - 1)) / 2;
+  const n = Math.max(0, level - 1);
+  const q = Math.floor(n / STEP);
+  const r = n % STEP;
+  // q blocs complets de STEP niveaux (coûts 1..q) puis r niveaux au coût q + 1
+  return (STEP * q * (q + 1)) / 2 + r * (q + 1);
 }
 
 export function levelFromPoints(points: number): number {
   const p = Math.max(0, Math.floor(points));
-  // plus grand L tel que L(L-1)/2 <= p
-  let level = Math.floor((1 + Math.sqrt(1 + 8 * p)) / 2);
-  while (pointsForLevel(level + 1) <= p) level++;
-  while (level > 1 && pointsForLevel(level) > p) level--;
-  return Math.min(level, MAX_LEVEL);
+  let level = 1;
+  while (level < MAX_LEVEL && pointsForLevel(level + 1) <= p) level++;
+  return level;
 }
 
 export interface LevelProgress {
@@ -23,7 +33,7 @@ export interface LevelProgress {
   points: number;
   /** Points gagnés depuis le début du niveau courant. */
   intoLevel: number;
-  /** Points nécessaires pour passer au niveau suivant (= level), 0 au niveau max. */
+  /** Points nécessaires pour passer au niveau suivant, 0 au niveau max. */
   toNext: number;
 }
 
@@ -33,7 +43,7 @@ export function levelProgress(points: number): LevelProgress {
     level,
     points,
     intoLevel: points - pointsForLevel(level),
-    toNext: level >= MAX_LEVEL ? 0 : level,
+    toNext: level >= MAX_LEVEL ? 0 : levelCost(level),
   };
 }
 

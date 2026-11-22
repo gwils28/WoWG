@@ -208,7 +208,7 @@ describe('personnage, journal et sauvegarde', () => {
 
   it('calcule le niveau et le résumé par domaine', async () => {
     const { body } = await call('GET', '/character');
-    expect(body).toMatchObject({ level: 3, points: 3, intoLevel: 0, toNext: 3 });
+    expect(body).toMatchObject({ level: 4, points: 3, intoLevel: 0, toNext: 1 });
     expect(body.domains).toHaveLength(1);
     expect(body.domains[0]).toMatchObject({
       points: 3,
@@ -244,6 +244,36 @@ describe('personnage, journal et sauvegarde', () => {
     );
     expect((await call('PUT', '/domains/inconnu/pin', { pinned: true })).status).toBe(404);
     expect((await call('PUT', '/domains/sport-sante/pin', { pinned: 'oui' })).status).toBe(400);
+  });
+
+  it('archive une classe : hors niveau, lecture seule, réactivable (SPEC 11)', async () => {
+    await call('PUT', '/domains/sport-sante/pin', { pinned: true });
+
+    const archived = await call('PUT', '/domains/sport-sante/archive', { archived: true });
+    expect(archived.body).toEqual({ archived: ['sport-sante'] });
+    const char = (await call('GET', '/character')).body;
+    expect(char.level).toBe(1);
+    expect(char.domains).toEqual([]);
+    expect(char.pinned).toEqual([]);
+    expect(char.archive).toMatchObject({ points: 3, level: 4 });
+    expect(char.archive.domains.map((d: any) => d.domain.id)).toEqual(['sport-sante']);
+    expect((await call('GET', '/specializations')).body[0].archived).toBe(true);
+    expect((await call('GET', '/specializations/course-a-pied')).body.archived).toBe(true);
+
+    expect((await addRank('cadence')).status).toBe(409);
+    expect((await removeRank('cadence')).status).toBe(409);
+    expect((await call('PUT', '/specializations/course-a-pied', sample())).status).toBe(409);
+    expect(
+      (await call('POST', '/import/apply', { path: 'sport-sante/course-a-pied.json' })).status,
+    ).toBe(409);
+
+    const restored = await call('PUT', '/domains/sport-sante/archive', { archived: false });
+    expect(restored.body).toEqual({ archived: [] });
+    expect((await call('GET', '/character')).body.archive.points).toBe(0);
+    expect((await call('GET', '/character')).body.level).toBe(4);
+    expect((await addRank('cadence')).status).toBe(201);
+    expect((await call('PUT', '/domains/inconnu/archive', { archived: true })).status).toBe(404);
+    expect((await call('PUT', '/domains/sport-sante/archive', { archived: 1 })).status).toBe(400);
   });
 
   it('sert le portrait du palier quand il existe', async () => {

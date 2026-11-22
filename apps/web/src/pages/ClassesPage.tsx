@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
-import { api } from '../lib/api';
+import { api, type DomainSummary } from '../lib/api';
 import { matchesQuery, classPath, relativeDay, sortDomains, type ClassSort } from '../lib/classes';
 import { GameIcon } from '../components/GameIcon';
 import { PinButton } from '../components/PinButton';
@@ -49,6 +49,14 @@ export function ClassesPage() {
         <span className="muted">
           {data.domains.length} classe{data.domains.length > 1 ? 's' : ''}, {data.pinned.length}{' '}
           épinglée{data.pinned.length > 1 ? 's' : ''}
+          {data.archive.domains.length > 0 && (
+            <>
+              {' · '}
+              <Link to="/archives">
+                {data.archive.domains.length} archivée{data.archive.domains.length > 1 ? 's' : ''}
+              </Link>
+            </>
+          )}
         </span>
         <div className="classes__tools">
           <input
@@ -87,36 +95,48 @@ export function ClassesPage() {
 
       <ul className="class-grid">
         {shown.map((d) => (
-          <li
-            key={d.domain.id}
-            className={`class-card panel${d.pinned ? ' class-card--pinned' : ''}`}
-          >
-            <Link to={classPath(d.domain.id)} className="class-card__link">
-              <span className="class-card__icon">
-                <GameIcon icon={d.domain.icon} size={34} />
-              </span>
-              <span className="class-card__body">
-                <span className="class-card__name">{d.domain.name}</span>
-                <span className="class-card__meta muted">
-                  {d.specializations.length} spé{d.specializations.length > 1 ? 's' : ''} ·{' '}
-                  {relativeDay(d.lastActivityAt)}
-                </span>
-                <span className="bar">
-                  <span
-                    className="bar__fill"
-                    style={{ width: `${d.maxPoints ? (d.points / d.maxPoints) * 100 : 0}%` }}
-                  />
-                </span>
-              </span>
-              <span className="class-card__points">
-                {d.points}
-                <small>/{d.maxPoints}</small>
-              </span>
-            </Link>
+          <ClassCard key={d.domain.id} summary={d}>
             <PinButton domainId={d.domain.id} name={d.domain.name} pinned={d.pinned} />
-          </li>
+          </ClassCard>
         ))}
       </ul>
     </div>
+  );
+}
+
+/** Carte d'une classe ; `children` : actions à droite (épingle, réactivation). */
+export function ClassCard({
+  summary: d,
+  children,
+}: {
+  summary: DomainSummary;
+  children?: React.ReactNode;
+}) {
+  return (
+    <li className={`class-card panel${d.pinned ? ' class-card--pinned' : ''}`}>
+      <Link to={classPath(d.domain.id)} className="class-card__link">
+        <span className="class-card__icon">
+          <GameIcon icon={d.domain.icon} size={34} />
+        </span>
+        <span className="class-card__body">
+          <span className="class-card__name">{d.domain.name}</span>
+          <span className="class-card__meta muted">
+            {d.specializations.length} spé{d.specializations.length > 1 ? 's' : ''} ·{' '}
+            {relativeDay(d.lastActivityAt)}
+          </span>
+          <span className="bar">
+            <span
+              className="bar__fill"
+              style={{ width: `${d.maxPoints ? (d.points / d.maxPoints) * 100 : 0}%` }}
+            />
+          </span>
+        </span>
+        <span className="class-card__points">
+          {d.points}
+          <small>/{d.maxPoints}</small>
+        </span>
+      </Link>
+      {children}
+    </li>
   );
 }

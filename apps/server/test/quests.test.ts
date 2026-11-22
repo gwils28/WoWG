@@ -134,6 +134,29 @@ describe('quêtes disponibles et acceptation', () => {
   });
 });
 
+describe('classe archivée', () => {
+  const archive = (archived: boolean) => call('PUT', '/domains/sport-sante/archive', { archived });
+
+  it('ses quêtes ne sont plus proposées ni acceptées', async () => {
+    await archive(true);
+    expect((await quests()).available).toEqual([]);
+    expect((await accept('sorties-regulieres')).status).toBe(409);
+    await archive(false);
+    expect((await accept('sorties-regulieres')).status).toBe(201);
+  });
+
+  it('un suivi en cours ne se rend plus tant que la classe est archivée', async () => {
+    await addRank('endurance');
+    await addRank('endurance');
+    const run = (await accept('seance-piste')).body;
+    await checkAllSteps(run.id, 3);
+    await archive(true);
+    expect((await complete(run.id)).status).toBe(409);
+    await archive(false);
+    expect((await complete(run.id)).status).toBe(200);
+  });
+});
+
 describe('progression et rendu', () => {
   it('étapes : rendu refusé tant que tout n’est pas coché, puis rangs et or', async () => {
     await addRank('endurance');

@@ -56,7 +56,7 @@ export function SpecializationPage({ id }: { id: string }) {
       </p>
     );
   }
-  const { tree, ranks, points, maxPoints, orphans } = spec.data;
+  const { tree, ranks, points, maxPoints, orphans, archived } = spec.data;
   const siblings = (all.data ?? []).filter((s) => s.domain.id === tree.domain.id);
   const shown = draft ?? tree;
   const diff = draft ? diffTrees(tree, draft, ranks) : null;
@@ -77,11 +77,13 @@ export function SpecializationPage({ id }: { id: string }) {
       <header className="spec-page__header">
         <GameIcon icon={tree.domain.icon} size={28} className="domain__icon" />
         <h1>{tree.domain.name}</h1>
-        <PinButton
-          domainId={tree.domain.id}
-          name={tree.domain.name}
-          pinned={character.data?.pinned.includes(tree.domain.id) ?? false}
-        />
+        {!archived && (
+          <PinButton
+            domainId={tree.domain.id}
+            name={tree.domain.name}
+            pinned={character.data?.pinned.includes(tree.domain.id) ?? false}
+          />
+        )}
         <Link to={classPath(tree.domain.id)} className="spec-page__all">
           Les {siblings.length} arbres de la classe
         </Link>
@@ -129,8 +131,8 @@ export function SpecializationPage({ id }: { id: string }) {
               <TalentTree
                 tree={tree}
                 ranks={ranks}
-                onAdd={onAdd}
-                onRemove={onRemove}
+                onAdd={archived ? undefined : onAdd}
+                onRemove={archived ? undefined : onRemove}
                 quests={talentQuestMarks(tree, spec.data.questStates)}
               />
             )}
@@ -167,6 +169,8 @@ export function SpecializationPage({ id }: { id: string }) {
                 </button>
               </div>
             </div>
+          ) : archived ? (
+            <p className="notice">Classe archivée : lecture seule. Réactive-la pour la modifier.</p>
           ) : (
             <div className="tree-panel__footer">
               <p className="hint">

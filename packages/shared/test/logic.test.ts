@@ -4,6 +4,7 @@ import {
   canRemoveRank,
   currentRanks,
   diffTrees,
+  levelCost,
   levelFromPoints,
   levelProgress,
   levelTier,
@@ -95,22 +96,28 @@ describe('points et niveau', () => {
     expect(maxPoints(tree)).toBe(9);
   });
 
-  it('suit la courbe L(L-1)/2', () => {
-    expect([1, 2, 3, 4, 25].map(pointsForLevel)).toEqual([0, 1, 3, 6, 300]);
-    expect([0, 1, 2, 3, 5, 6, 299, 300].map(levelFromPoints)).toEqual([1, 2, 2, 3, 3, 4, 24, 25]);
+  it('suit la courbe : passer de L à L+1 coûte ceil(L/5)', () => {
+    expect([1, 2, 6, 7, 11, 21, 41, 61, 81].map(pointsForLevel)).toEqual([
+      0, 1, 5, 7, 15, 50, 180, 390, 680,
+    ]);
+    expect([1, 5, 6, 7, 10, 11].map(levelCost)).toEqual([1, 1, 2, 2, 2, 3]);
+    expect([0, 1, 4, 5, 6, 7, 679, 680].map(levelFromPoints)).toEqual([1, 2, 5, 6, 6, 7, 80, 81]);
+    for (let l = 1; l < MAX_LEVEL; l++) {
+      expect(pointsForLevel(l + 1) - pointsForLevel(l)).toBe(levelCost(l));
+    }
   });
 
   it('donne la progression dans le niveau courant', () => {
-    expect(levelProgress(8)).toEqual({ level: 4, points: 8, intoLevel: 2, toNext: 4 });
+    expect(levelProgress(8)).toEqual({ level: 7, points: 8, intoLevel: 1, toNext: 2 });
     expect(levelProgress(0)).toEqual({ level: 1, points: 0, intoLevel: 0, toNext: 1 });
   });
 
   it('plafonne au niveau 100', () => {
-    expect(pointsForLevel(MAX_LEVEL)).toBe(4950);
-    expect(levelFromPoints(4949)).toBe(99);
-    expect(levelFromPoints(4950)).toBe(100);
+    expect(pointsForLevel(MAX_LEVEL)).toBe(1030);
+    expect(levelFromPoints(1029)).toBe(99);
+    expect(levelFromPoints(1030)).toBe(100);
     expect(levelFromPoints(9000)).toBe(100);
-    expect(levelProgress(5000)).toEqual({ level: 100, points: 5000, intoLevel: 50, toNext: 0 });
+    expect(levelProgress(1050)).toEqual({ level: 100, points: 1050, intoLevel: 20, toNext: 0 });
   });
 
   it('range le niveau dans un des 5 paliers', () => {

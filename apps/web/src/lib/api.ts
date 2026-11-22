@@ -21,6 +21,8 @@ export interface SpecSummary {
   points: number;
   maxPoints: number;
   updatedAt: string;
+  /** classe archivée : lecture seule (SPEC 11) */
+  archived: boolean;
 }
 
 export interface SpecDetail extends SpecSummary {
@@ -59,6 +61,8 @@ export interface Character extends LevelProgress {
   /** Ids des domaines épinglés, dans l'ordre d'épinglage. */
   pinned: string[];
   domains: DomainSummary[];
+  /** Classes archivées, hors niveau, avec leur propre total (SPEC 11). */
+  archive: { points: number; level: number; domains: DomainSummary[] };
   gold: number;
 }
 
@@ -262,6 +266,8 @@ export const api = {
   character: () => request<Character>('GET', '/character'),
   pinDomain: (domainId: string, pinned: boolean) =>
     request<{ pinned: string[] }>('PUT', `/domains/${domainId}/pin`, { pinned }),
+  archiveDomain: (domainId: string, archived: boolean) =>
+    request<{ archived: string[] }>('PUT', `/domains/${domainId}/archive`, { archived }),
   specializations: () => request<SpecSummary[]>('GET', '/specializations'),
   specialization: (id: string) => request<SpecDetail>('GET', `/specializations/${id}`),
   addRank: (specId: string, talentId: string, body: { note?: string; occurredAt?: string }) =>

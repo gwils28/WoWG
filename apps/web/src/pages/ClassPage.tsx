@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, Navigate, useParams } from 'react-router';
 import { GameIcon } from '../components/GameIcon';
+import { ArchiveButton } from '../components/ArchiveButton';
 import { PinButton } from '../components/PinButton';
 import { TalentTree } from '../components/TalentTree';
 import { useRankActions } from '../components/useRankActions';
@@ -23,6 +24,7 @@ function ClassOverview({ domainId }: { domainId: string }) {
   const siblings = (specs.data ?? []).filter((s) => s.domain.id === domainId);
   const domain = siblings[0]?.domain;
   if (!domain) return <p className="error">Classe « {domainId} » introuvable.</p>;
+  const archived = siblings[0]?.archived ?? false;
   const points = siblings.reduce((n, s) => n + s.points, 0);
   const maxPoints = siblings.reduce((n, s) => n + s.maxPoints, 0);
 
@@ -31,30 +33,40 @@ function ClassOverview({ domainId }: { domainId: string }) {
       <header className="spec-page__header">
         <GameIcon icon={domain.icon} size={28} className="domain__icon" />
         <h1>{domain.name}</h1>
-        <PinButton
-          domainId={domain.id}
-          name={domain.name}
-          pinned={character.data?.pinned.includes(domain.id) ?? false}
-        />
+        {!archived && (
+          <PinButton
+            domainId={domain.id}
+            name={domain.name}
+            pinned={character.data?.pinned.includes(domain.id) ?? false}
+          />
+        )}
         <span className="class-overview__points">
           {points}
           <small>/{maxPoints}</small>
         </span>
-        <Link to={`/quetes?classe=${domain.id}`} className="spec-page__all">
-          Quêtes de la classe
+        {!archived && (
+          <Link to={`/quetes?classe=${domain.id}`} className="spec-page__all">
+            Quêtes de la classe
+          </Link>
+        )}
+        <Link to={archived ? '/archives' : '/classes'} className="spec-page__all">
+          {archived ? 'Archives' : 'Toutes les classes'}
         </Link>
-        <Link to="/classes" className="spec-page__all">
-          Toutes les classes
-        </Link>
+        <ArchiveButton domainId={domain.id} name={domain.name} archived={archived} />
       </header>
+      {archived && (
+        <p className="notice">Classe archivée : lecture seule, hors niveau et hors quêtes.</p>
+      )}
       <div className="class-trees">
         {siblings.map((s) => (
           <SpecColumn key={s.id} summary={s} />
         ))}
       </div>
-      <p className="hint class-overview__hint">
-        Clic : monter un rang · Maj + clic : sans note · Clic droit : retirer
-      </p>
+      {!archived && (
+        <p className="hint class-overview__hint">
+          Clic : monter un rang · Maj + clic : sans note · Clic droit : retirer
+        </p>
+      )}
     </div>
   );
 }
@@ -78,7 +90,7 @@ function SpecColumn({ summary }: { summary: SpecSummary }) {
         <div>
           <h2>{s.name}</h2>
           <Link to={specPath(summary.domain.id, summary.id)} className="class-tree__detail">
-            Détail et édition
+            {summary.archived ? 'Détail' : 'Détail et édition'}
           </Link>
         </div>
         <span className="tree-panel__points">
@@ -93,8 +105,8 @@ function SpecColumn({ summary }: { summary: SpecSummary }) {
           <TalentTree
             tree={spec.data.tree}
             ranks={ranks}
-            onAdd={onAdd}
-            onRemove={onRemove}
+            onAdd={summary.archived ? undefined : onAdd}
+            onRemove={summary.archived ? undefined : onRemove}
             quests={talentQuestMarks(spec.data.tree, spec.data.questStates)}
           />
         )}
