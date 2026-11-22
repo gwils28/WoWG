@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "bricoleur",
-    "name": "Bricoleur",
+    "name": "Artisan",
     "icon": "game-icons:toolbox"
   },
   "specialization": {

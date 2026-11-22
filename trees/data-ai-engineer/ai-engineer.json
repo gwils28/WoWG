@@ -7,7 +7,7 @@
   },
   "specialization": {
     "id": "ai-engineer",
-    "name": "AI Engineer",
+    "name": "Ingénierie IA",
     "description": "Agents, évaluation, RAG et modèles : des systèmes LLM fiables en production.",
     "icon": "game-icons:robot-antennas"
   },
@@ -58,14 +58,14 @@
     {
       "id": "ingenierie-contexte",
       "name": "Ingénierie de contexte",
-      "description": "Prompts et contexte versionnés, testés et optimisés en coût.",
+      "description": "Choisir et alléger le contexte et les prompts sur des scores, pas à l'intuition.",
       "icon": "game-icons:scroll-unfurled",
       "tier": 1,
       "column": 4,
       "maxRank": 2,
       "ranks": [
-        "Prompts et contexte versionnés et testés sur le jeu d'éval",
-        "Coût par requête réduit de 30 % à qualité égale"
+        "3 variantes de prompt ou de contexte comparées sur le jeu d'éval, choix justifié par les scores",
+        "Tokens de contexte par requête réduits de 30 % (sélection, compression) à qualité égale"
       ]
     },
     {

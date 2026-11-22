@@ -289,7 +289,7 @@
       "column": 1,
       "maxRank": 2,
       "ranks": [
-        "Revue annuelle des assurances et de la prévoyance faite",
+        "Revue annuelle des garanties faite (montants assurés, bénéficiaires, exclusions), hors mise en concurrence des prix",
         "2 années de revue, contrats ajustés aux changements du foyer"
       ],
       "prerequisites": [
@@ -357,7 +357,7 @@
     },
     {
       "id": "foyer-serein",
-      "name": "Foyer serein",
+      "name": "Foyer à l'abri",
       "description": "Projets financés, foyer protégé.",
       "icon": "game-icons:crowned-heart",
       "tier": 7,

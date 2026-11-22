@@ -194,7 +194,7 @@
       "column": 3,
       "maxRank": 2,
       "ranks": [
-        "Virements d'épargne programmés le jour de la paie",
+        "Virements vers la précaution et les objectifs programmés le jour de la paie (hors investissement long terme)",
         "À chaque hausse de revenu, au moins la moitié de la hausse ajoutée aux virements"
       ],
       "prerequisites": [

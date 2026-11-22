@@ -46,14 +46,14 @@
     {
       "id": "mono-tache",
       "name": "Une chose à la fois",
-      "description": "Faire une seule chose, sans changer d'onglet ni regarder son téléphone.",
+      "description": "Faire une seule chose à la fois dans la vie perso, téléphone loin.",
       "icon": "game-icons:hourglass",
       "tier": 1,
       "column": 3,
       "maxRank": 2,
       "ranks": [
-        "10 blocs de 25 min sans changer de tâche ni toucher au téléphone",
-        "30 blocs"
+        "10 tâches perso hors travail (papiers, rangement, démarche en ligne) menées d'une traite, téléphone dans une autre pièce",
+        "30 tâches"
       ]
     },
     {
@@ -65,7 +65,7 @@
       "column": 4,
       "maxRank": 2,
       "ranks": [
-        "Notifications non essentielles coupées sur téléphone et ordinateur",
+        "Notifications perso non essentielles coupées (réseaux, jeux, promotions), 5 applis gardées listées",
         "Téléphone hors de la chambre 5 nuits sur 7 pendant 4 semaines"
       ]
     },
@@ -117,7 +117,7 @@
       "maxRank": 2,
       "ranks": [
         "Compter 10 respirations sans perdre le fil, réussi 5 séances de suite",
-        "30 min de lecture sans interruption ni téléphone, 10 fois"
+        "Exercice de concentration sur un point fixe (flamme, son) 10 min sans décrocher plus de 3 fois, 10 séances"
       ],
       "prerequisites": [
         {

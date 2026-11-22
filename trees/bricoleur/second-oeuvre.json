@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "bricoleur",
-    "name": "Bricoleur",
+    "name": "Artisan",
     "icon": "game-icons:toolbox"
   },
   "specialization": {
@@ -248,7 +248,7 @@
       "column": 3,
       "maxRank": 2,
       "ranks": [
-        "Fonctionnement du chauffe-eau et du chauffage compris, groupe de sécurité manœuvré",
+        "Schéma du chauffe-eau et du chauffage dessiné (arrivée, sécurité, vidange), groupe de sécurité manœuvré",
         "Radiateurs purgés et pression du circuit remise à la bonne valeur"
       ],
       "prerequisites": [

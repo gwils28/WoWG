@@ -46,7 +46,7 @@
     },
     {
       "id": "lecture",
-      "name": "Lecture",
+      "name": "Lecture de partition",
       "description": "Lire la clé de fa et les grilles sans compter dans sa tête.",
       "icon": "game-icons:musical-score",
       "tier": 1,

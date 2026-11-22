@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "domain": {
     "id": "joueur-echecs",
-    "name": "Joueur d'échecs",
+    "name": "Stratège",
     "icon": "game-icons:chess-king"
   },
   "specialization": {
     "id": "stratege",
-    "name": "Stratège",
+    "name": "Plans et finales",
     "description": "Ouvertures, plans de milieu de partie et finales : savoir quoi faire quand il n'y a pas de tactique.",
     "icon": "game-icons:chess-rook"
   },
@@ -99,7 +99,7 @@
       "id": "finales-pions",
       "name": "Finales de pions",
       "description": "Opposition et règle du carré.",
-      "icon": "game-icons:chess-pawn",
+      "icon": "game-icons:chess-knight",
       "tier": 2,
       "column": 4,
       "maxRank": 2,

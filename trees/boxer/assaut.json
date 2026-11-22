@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "boxer",
-    "name": "Boxer",
+    "name": "Pugiliste",
     "icon": "game-icons:boxing-glove"
   },
   "specialization": {
@@ -402,8 +402,8 @@
       "column": 2,
       "maxRank": 3,
       "ranks": [
-        "Terminer une compétition officielle d'assaut (boxe éducative, boxe loisir ou format adulte proposé par ta ligue)",
-        "Remporter un assaut en compétition",
+        "Remporter un assaut en compétition officielle",
+        "Remporter 3 assauts officiels dans une même saison",
         "Atteindre une finale de compétition départementale ou régionale"
       ],
       "prerequisites": [

@@ -305,7 +305,7 @@
       "id": "relever-solo",
       "name": "Relever un solo",
       "description": "Relever le chorus d'un soliste et le jouer avec le disque.",
-      "icon": "game-icons:quill-ink",
+      "icon": "game-icons:music-spell",
       "tier": 6,
       "column": 3,
       "maxRank": 2,

@@ -265,14 +265,14 @@
     },
     {
       "id": "seance-kine-osteo",
-      "name": "Séance kiné/Ostéo",
-      "description": "1 Séance par trimestre Ostéo / Kiné pour suivi",
+      "name": "Suivi kiné ou ostéo",
+      "description": "Faire suivre ton dos par un professionnel, idéalement une séance par trimestre.",
       "icon": "game-icons:nurse-male",
       "tier": 4,
       "column": 4,
       "maxRank": 1,
       "ranks": [
-        "Critère du rang 1"
+        "Une séance de kiné ou d'ostéopathie faite, 3 consignes ou exercices pour la scoliose notés"
       ],
       "prerequisites": []
     },
@@ -280,7 +280,7 @@
       "id": "hanches-ouvertes",
       "name": "Hanches ouvertes",
       "description": "Amplitude des hanches en fente latérale et au sol.",
-      "icon": "game-icons:contortionist",
+      "icon": "game-icons:body-balance",
       "tier": 5,
       "column": 1,
       "maxRank": 2,
@@ -318,7 +318,7 @@
       "id": "pratique-autonome",
       "name": "Pratique autonome",
       "description": "Construire et tenir sa propre séquence, sans support.",
-      "icon": "game-icons:meditation",
+      "icon": "game-icons:yin-yang",
       "tier": 6,
       "column": 3,
       "maxRank": 2,

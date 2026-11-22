@@ -285,7 +285,7 @@
       "column": 1,
       "maxRank": 1,
       "ranks": [
-        "Bases transmises au reste du foyer (évitement, dégagements, règles de la légitime défense)"
+        "Chaque adulte du foyer réussit un quiz de 10 questions (évitement, dégagements, légitime défense) et montre 2 dégagements"
       ],
       "prerequisites": [
         {
@@ -303,7 +303,7 @@
       "column": 3,
       "maxRank": 1,
       "ranks": [
-        "Numéros et recours contre les violences connus des adultes (17, 112, 114, 3919, 119, Masque 19)"
+        "Numéros et recours contre les violences (17, 112, 114, 3919, 119, Masque 19) affichés à la maison et récités sans aide par chaque adulte"
       ],
       "prerequisites": [
         {

@@ -7,7 +7,7 @@
   },
   "specialization": {
     "id": "mlops",
-    "name": "MLOps",
+    "name": "Industrialisation ML",
     "description": "Pipelines, déploiement, suivi en production, infrastructure et LLMOps.",
     "icon": "game-icons:factory-arm"
   },
@@ -161,7 +161,7 @@
       "id": "observabilite-llm",
       "name": "Observabilité LLM",
       "description": "Traces, coûts et dérive de qualité suivis en production.",
-      "icon": "game-icons:radar-sweep",
+      "icon": "game-icons:eye-target",
       "tier": 2,
       "column": 5,
       "maxRank": 2,
@@ -205,7 +205,7 @@
       "maxRank": 2,
       "ranks": [
         "Service ML avec autoscaling (Kubernetes ou Cloud Run)",
-        "Coût d'inférence réduit de 30 %"
+        "Coût d'inférence réduit de 30 % par l'autoscaling ou le dimensionnement des ressources"
       ],
       "prerequisites": [
         {
@@ -308,7 +308,7 @@
       "id": "modeles-ouverts-servis",
       "name": "Modèles ouverts servis",
       "description": "Servir soi-même un modèle ouvert, latence et débit maîtrisés.",
-      "icon": "game-icons:server-rack",
+      "icon": "game-icons:cpu",
       "tier": 4,
       "column": 5,
       "maxRank": 2,
@@ -384,7 +384,7 @@
       "id": "plateforme-interne",
       "name": "Plateforme interne",
       "description": "Outillage partagé que d'autres projets adoptent.",
-      "icon": "game-icons:factory",
+      "icon": "game-icons:gears",
       "tier": 6,
       "column": 2,
       "maxRank": 2,
@@ -413,7 +413,7 @@
       "maxRank": 2,
       "ranks": [
         "Application LLM en production : versionnage, observabilité, passerelle et budget suivis",
-        "La même chaîne mise en place pour un client ou une autre équipe"
+        "La même chaîne réutilisée pour une 2e application LLM, mise en place en moins de 2 semaines"
       ],
       "prerequisites": [
         {
@@ -430,7 +430,7 @@
       "id": "architecte-mlops",
       "name": "Architecte MLOps",
       "description": "Concevoir la chaîne complète, ML et LLM, et la faire adopter.",
-      "icon": "game-icons:factory-arm",
+      "icon": "game-icons:architect-mask",
       "tier": 7,
       "column": 3,
       "maxRank": 2,

@@ -66,7 +66,7 @@
       "column": 4,
       "maxRank": 2,
       "ranks": [
-        "Une activité avec d'autres (club, cours, association) par mois pendant 3 mois",
+        "Une activité de groupe nouvelle pour toi (atelier, cours d'essai, sortie organisée) par mois pendant 3 mois, hors des pratiques suivies dans tes autres classes",
         "Pendant 6 mois"
       ]
     },
@@ -124,14 +124,14 @@
     {
       "id": "donner",
       "name": "Donner",
-      "description": "Aider, rendre service, s'engager.",
+      "description": "Aider et rendre service autour de toi.",
       "icon": "game-icons:gift-of-knowledge",
       "tier": 2,
       "column": 4,
       "maxRank": 2,
       "ranks": [
         "10 services rendus ou coups de main notés",
-        "Engagement bénévole régulier pendant 3 mois"
+        "Une journée entière donnée à un proche ou un voisin pour un besoin hors bricolage et jardin (déménagement, garde, accompagnement)"
       ],
       "prerequisites": [
         {
@@ -225,7 +225,7 @@
       "maxRank": 2,
       "ranks": [
         "5 notions apprises expliquées par écrit, simplement",
-        "Une notion expliquée à quelqu'un qui l'a comprise"
+        "5 notions réexpliquées de mémoire un mois après les avoir apprises, trous repérés et comblés"
       ],
       "prerequisites": [
         {
@@ -243,7 +243,7 @@
       "column": 4,
       "maxRank": 2,
       "ranks": [
-        "Membre actif d'un groupe depuis 6 mois (club, association, jam...)",
+        "Membre actif depuis 6 mois d'un groupe hors de tes autres classes (cercle de lecture, groupe de marche, amicale)",
         "Un rôle dans ce groupe (organiser, accueillir)"
       ],
       "prerequisites": [
@@ -276,12 +276,12 @@
       "id": "apprenant-a-vie",
       "name": "Apprenant à vie",
       "description": "Apprendre chaque année, durablement.",
-      "icon": "game-icons:gift-of-knowledge",
+      "icon": "game-icons:book-aura",
       "tier": 6,
       "column": 1,
       "maxRank": 2,
       "ranks": [
-        "12 livres et un nouveau domaine abordé dans l'année",
+        "Plan d'apprentissage de l'année écrit en janvier (livres, domaine nouveau), tenu à 80 % au bilan de décembre",
         "Deux années de suite"
       ],
       "prerequisites": [
@@ -319,8 +319,8 @@
       "column": 2,
       "maxRank": 2,
       "ranks": [
-        "Lecture et contact avec tes proches chaque semaine pendant 6 mois",
-        "Pendant 12 mois"
+        "Bilan de l'année écrit (ce que tu as appris, ce que tu as fait pour tes proches), relu avec un proche hors du foyer qui confirme ta présence dans l'année",
+        "2 années de suite, avec un proche différent"
       ],
       "prerequisites": [
         {

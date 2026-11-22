@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "joueur-echecs",
-    "name": "Joueur d'échecs",
+    "name": "Stratège",
     "icon": "game-icons:chess-king"
   },
   "specialization": {
@@ -372,16 +372,16 @@
     {
       "id": "cap-1500",
       "name": "Cap des 1500",
-      "description": "1500 en rapide et en blitz, sur Lichess et Chess.com.",
+      "description": "1500 en rapide et en blitz, puis tenus dans la durée.",
       "icon": "game-icons:laurel-crown",
       "tier": 7,
       "column": 2,
       "maxRank": 4,
       "ranks": [
-        "1500 en rapide sur Lichess",
-        "1500 en blitz sur Lichess",
         "1500 en rapide sur Chess.com",
-        "1500 en blitz sur Chess.com"
+        "1500 en blitz sur Chess.com",
+        "1500 en rapide et en blitz sur Chess.com tenus 3 mois",
+        "1800 en rapide sur Lichess"
       ],
       "prerequisites": [
         {

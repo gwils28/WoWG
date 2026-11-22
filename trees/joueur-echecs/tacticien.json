@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "joueur-echecs",
-    "name": "Joueur d'échecs",
+    "name": "Stratège",
     "icon": "game-icons:chess-king"
   },
   "specialization": {
@@ -357,7 +357,7 @@
       "column": 2,
       "maxRank": 2,
       "ranks": [
-        "2000 au classement puzzles Lichess et score de 40 au Puzzle Storm",
+        "2100 au classement puzzles Lichess et score de 45 au Puzzle Storm",
         "2200 au classement puzzles Lichess"
       ],
       "prerequisites": [
