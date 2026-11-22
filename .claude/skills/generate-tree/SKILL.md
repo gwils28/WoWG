@@ -37,7 +37,24 @@ Si l'arbre existe déjà, lis-le d'abord et ne demande que ce qui change.
 
 Une quête est une action concrète, souvent répétée, qui fait avancer vers le critère du prochain rang d'un talent. La rendre donne +1 rang à chaque talent récompensé et de l'or (barème automatique, jamais écrit dans le fichier).
 
-- Volume : environ une quête pour deux talents (10 pour un arbre de 20 talents), réparties sur tous les paliers et tous les axes, y compris des quêtes vers l'ultime.
+- Volume : environ une quête pour deux talents, réparties sur tous les paliers et tous les axes, y compris une quête vers l'ultime. Pour un arbre v2 (28 talents, 10 paliers ; agent `economiste-rpg`, 2026-11-22) :
+
+  | Paliers | Quêtes               | Dont répétables                           | Forme                                                          | Or visé |
+  | ------- | -------------------- | ----------------------------------------- | -------------------------------------------------------------- | ------- |
+  | P1-P3   | 6                    | 3 à 4                                     | habitudes de 4 semaines, quelques ponctuelles                  | 2 à 6   |
+  | P4-P6   | 4 à 5                | 2                                         | habitudes de 6 à 8 semaines                                    | 4 à 10  |
+  | P7-P9   | 3                    | 0 à 1 (hebdomadaire, 12 semaines au plus) | jalons à étapes (s'inscrire, se préparer, réaliser, consigner) | 6 à 14  |
+  | P10     | 1                    | 0                                         | jalon de 4 à 6 étapes, sans rythme                             | 11 à 14 |
+  | Total   | environ 14 (12 à 16) | 5 à 7                                     |                                                                |         |
+
+- Anti-ferme à or (agent `economiste-rpg`) :
+  - Une occurrence = une vraie séance (au moins 20 min, ou une action non triviale). Une micro-habitude quotidienne se compte en semaines tenues (`times: 1, per: "week"`), pas en jours.
+  - `times × periods` : 24 au plus jusqu'au palier 6, 36 au plus au-delà. Pas de `per: "month"` avec `times: 1` sur 12 périodes, sauf si chaque occurrence dépasse 2 h.
+  - **Une seule quête par talent** (deux quêtes paieraient deux fois l'or d'un même rang).
+  - Pas de répétable sur un talent d'attente ou d'administratif (« 12 mois plus tard », « 3 années de suite ») : ponctuelle seulement.
+  - Au plus 2 étapes sur une répétable ; pas d'étapes de remplissage (3 étapes = +1 or).
+  - Pas de quête quotidienne sur un talent qui mesure un état (sommeil, assiette).
+  - `validate-tree` affiche ces garde-fous en avertissement (`!`) : or au-delà de 15, occurrences, étapes, talent visé deux fois. Corrige-les sauf raison écrite.
 - Au moins un tiers de quêtes répétables (`recurrence: { times, per: "day" | "week" | "month", periods }`, bornes : times 1 à 20, periods 1 à 52). Un rythme réaliste au regard des contraintes de temps de l'utilisateur : une habitude tenable, pas un exploit.
 - La plupart récompensent un seul talent. Plusieurs talents (2 au plus) seulement si l'action fait réellement progresser les deux. Talents de l'arbre uniquement, sans doublon.
 - Étapes (`steps`, 0 à 10) pour une quête ponctuelle qui se découpe naturellement (préparer, faire, consigner). Pas d'étapes décoratives.

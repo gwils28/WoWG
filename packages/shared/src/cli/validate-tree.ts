@@ -2,12 +2,13 @@
  * Valide un ou plusieurs fichiers d'arbre.
  * Usage : npm run validate-tree -- [--quests] trees/sport-sante/course-a-pied.json [...]
  * --quests : affiche aussi chaque quête (talents, rythme, étapes, or du barème).
+ * Les garde-fous économiques des quêtes (SPEC 10.6) s'affichent en avertissement, sans échec.
  * Code de sortie 1 si au moins un fichier est invalide.
  */
 import { readFileSync } from 'node:fs';
 import { parseTree } from '../schema';
 import { maxPoints } from '../logic/ranks';
-import { questGold, treeQuestDefinition } from '../logic/quests';
+import { questGold, questWarnings, treeQuestDefinition } from '../logic/quests';
 
 const args = process.argv.slice(2);
 const showQuests = args.includes('--quests');
@@ -47,6 +48,7 @@ for (const file of files) {
         );
       }
     }
+    for (const w of questWarnings(tree)) console.log(`  ! ${w}`);
   } else {
     failed = true;
     console.error(`✗ ${file} : ${res.errors.length} erreur(s)`);

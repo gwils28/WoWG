@@ -57,8 +57,11 @@ function lookupTalent(lookup: TreeLookup, ref: QuestTalentRef): Talent | undefin
 // --- Barème d'or (SPEC 10.5) -----------------------------------------------------------------
 
 export const GOLD_RULES = {
-  /** Or d'un talent : 1 + floor((palier - 1) / tierStep). */
-  tierStep: 2,
+  /**
+   * Or d'un talent par palier (index 0 = palier 1) ; au-delà, dernière valeur. Le haut de la
+   * table est relevé pour les arbres de 10 paliers du catalogue v2 (SPEC 10.5, 2026-11-22).
+   */
+  tierGold: [1, 1, 2, 2, 3, 3, 4, 5, 6, 8],
   ultimateBonus: 2,
   /** Rythme : + ceil(times * periods / recurrenceDivisor). */
   recurrenceDivisor: 4,
@@ -68,11 +71,9 @@ export const GOLD_RULES = {
 } as const;
 
 export function talentGold(talent: Pick<Talent, 'tier' | 'ultimate'>): number {
-  return (
-    1 +
-    Math.floor((talent.tier - 1) / GOLD_RULES.tierStep) +
-    (talent.ultimate ? GOLD_RULES.ultimateBonus : 0)
-  );
+  const table = GOLD_RULES.tierGold;
+  const base = table[Math.min(Math.max(talent.tier, 1), table.length) - 1] ?? 1;
+  return base + (talent.ultimate ? GOLD_RULES.ultimateBonus : 0);
 }
 
 /**
@@ -92,6 +93,49 @@ export function questGold(def: QuestDefinition, lookup: TreeLookup): number {
   }
   gold += Math.floor(def.steps.length / GOLD_RULES.stepsDivisor);
   return Math.max(1, gold);
+}
+
+/** Garde-fous économiques des quêtes d'un arbre (SPEC 10.6) : avertissements, jamais bloquants. */
+export const QUEST_LIMITS = {
+  maxGold: 15,
+  /** Occurrences (times × periods) au plus, selon le palier le plus haut récompensé. */
+  maxOccurrencesLow: 24,
+  maxOccurrencesHigh: 36,
+  lowTierMax: 6,
+  /** Étapes au plus sur une quête répétable. */
+  maxStepsRepeatable: 2,
+} as const;
+
+export function questWarnings(tree: TreeFile): string[] {
+  const warnings: string[] = [];
+  const lookup: TreeLookup = () => ({ tree, ranks: {} });
+  const byTalent = new Map<string, string[]>();
+  for (const q of tree.quests ?? []) {
+    const gold = questGold(treeQuestDefinition(tree.specialization.id, q), lookup);
+    if (gold > QUEST_LIMITS.maxGold) {
+      warnings.push(`${q.id} : ${gold} or, au-delà de ${QUEST_LIMITS.maxGold}`);
+    }
+    if (q.recurrence) {
+      const top = Math.max(0, ...q.talents.map((id) => findTalent(tree, id)?.tier ?? 0));
+      const max =
+        top > QUEST_LIMITS.lowTierMax
+          ? QUEST_LIMITS.maxOccurrencesHigh
+          : QUEST_LIMITS.maxOccurrencesLow;
+      const n = q.recurrence.times * q.recurrence.periods;
+      if (n > max) warnings.push(`${q.id} : ${n} occurrences, au-delà de ${max}`);
+      if ((q.steps?.length ?? 0) > QUEST_LIMITS.maxStepsRepeatable) {
+        warnings.push(
+          `${q.id} : répétable avec ${q.steps!.length} étapes, ${QUEST_LIMITS.maxStepsRepeatable} au plus`,
+        );
+      }
+    }
+    for (const id of q.talents) byTalent.set(id, [...(byTalent.get(id) ?? []), q.id]);
+  }
+  for (const [id, quests] of byTalent) {
+    if (quests.length > 1)
+      warnings.push(`${id} : récompensé par ${quests.length} quêtes (${quests.join(', ')})`);
+  }
+  return warnings;
 }
 
 export function goldBalance(events: readonly { amount: number }[]): number {

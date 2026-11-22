@@ -12,6 +12,7 @@ import {
   planTurnIn,
   questGold,
   questProgress,
+  questWarnings,
   recurrenceProgress,
   suggestedDeadline,
   talentGold,
@@ -118,12 +119,49 @@ describe('définitions', () => {
   });
 });
 
+describe('garde-fous des quêtes', () => {
+  it('rien à signaler sur la fixture', () => {
+    expect(questWarnings(tree)).toEqual([]);
+  });
+
+  it('signale or élevé, occurrences, étapes sur une répétable et talent visé deux fois', () => {
+    const raw = rawSample();
+    raw.quests = [
+      {
+        id: 'trop-long',
+        name: 'Trop long',
+        description: 'x',
+        talents: ['endurance'],
+        recurrence: { times: 5, per: 'week', periods: 6 },
+        steps: ['a', 'b', 'c'],
+      },
+      {
+        id: 'riche',
+        name: 'Riche',
+        description: 'x',
+        talents: ['endurance', 'semi-marathon'],
+        recurrence: { times: 6, per: 'week', periods: 8 },
+      },
+    ];
+    const parsed = parseTree(raw);
+    if (!parsed.ok) throw new Error(parsed.errors.join(', '));
+    expect(questWarnings(parsed.tree)).toEqual([
+      'trop-long : 30 occurrences, au-delà de 24',
+      'trop-long : répétable avec 3 étapes, 2 au plus',
+      'riche : 17 or, au-delà de 15',
+      'riche : 48 occurrences, au-delà de 24',
+      'endurance : récompensé par 2 quêtes (trop-long, riche)',
+    ]);
+  });
+});
+
 describe("barème d'or", () => {
   it('or par talent selon le palier, bonus ultime', () => {
-    expect([1, 2, 3, 4, 5, 6, 7, 8].map((tier) => talentGold({ tier }))).toEqual([
-      1, 1, 2, 2, 3, 3, 4, 4,
+    expect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((tier) => talentGold({ tier }))).toEqual([
+      1, 1, 2, 2, 3, 3, 4, 5, 6, 8, 8,
     ]);
     expect(talentGold({ tier: 7, ultimate: true })).toBe(6);
+    expect(talentGold({ tier: 10, ultimate: true })).toBe(10);
   });
 
   it('additionne talents, rythme, étapes et taille', () => {

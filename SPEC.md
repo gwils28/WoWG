@@ -138,7 +138,7 @@ Une quête est une action concrète, éventuellement répétée dans le temps, q
 
 ### 10.5 Barème d'or (automatique)
 
-- Par talent récompensé au palier p : `1 + floor((p - 1) / 2)` (paliers 1-2 : 1, 3-4 : 2, 5-6 : 3, 7+ : 4). Talent ultime : +2. Un talent déjà au rang max au moment du calcul ne rapporte pas son or de talent (évite de refaire à l'infini une quête perso pour son or ; ajouté le 2026-11-21).
+- Par talent récompensé, selon son palier (table `GOLD_RULES.tierGold`, révisée le 2026-11-22 pour les arbres de 10 paliers) : paliers 1-2 : 1, 3-4 : 2, 5-6 : 3, 7 : 4, 8 : 5, 9 : 6, 10 : 8. Talent ultime : +2 (ultime au palier 10 : 10). Un talent déjà au rang max au moment du calcul ne rapporte pas son or de talent (évite de refaire à l'infini une quête perso pour son or ; ajouté le 2026-11-21).
 - Rythme : `+ ceil(times * periods / 4)` (ex. 3 x 4 semaines : +3).
 - Étapes : `+ floor(nombre d'étapes / 3)`.
 - Quête sans talent : small 1, medium 2, large 4 (rythme et étapes s'ajoutent).
@@ -148,7 +148,8 @@ Une quête est une action concrète, éventuellement répétée dans le temps, q
 ### 10.6 Génération (skill `generate-tree`)
 
 - Le champ `quests` est facultatif (`schemaVersion` reste 1, les arbres existants restent valides).
-- Repères : environ une quête pour deux talents, au moins un tiers de répétables, la plupart avec un seul talent récompensé, des actions concrètes et vérifiables qui font progresser vers le critère du prochain rang.
+- Repères : environ une quête pour deux talents, au moins un tiers de répétables, la plupart avec un seul talent récompensé, des actions concrètes et vérifiables qui font progresser vers le critère du prochain rang. Arbres v2 (10 paliers) : environ 14 quêtes, une seule par talent, jalons à étapes pour les paliers 7 à 10 (détail dans la skill `generate-tree`).
+- Garde-fous (avertissements de `validate-tree`, non bloquants) : quête au-delà de 15 or, `times × periods` au-delà de 24 (paliers 1 à 6) ou de 36 (au-delà), répétable de plus de 2 étapes, talent récompensé par plusieurs quêtes (`questWarnings`, `packages/shared/src/logic/quests.ts`).
 - Identifiants de quête stables (slug), uniques dans l'arbre.
 - Nouveau mode de la skill : ajouter des quêtes à un arbre existant sans toucher aux talents.
 - Import : le diff signale aussi les quêtes ajoutées, modifiées, supprimées.
@@ -227,7 +228,7 @@ L'or gagné par les quêtes s'échange contre des récompenses réelles que l'ut
 | Légendaire   | Contrebasse                        | 300  | achat unique |
 | Légendaire   | Pèlerinage à New York              | 300  | achat unique |
 
-Repères (agent `economiste-rpg`, révisés le 2026-11-21) : revenu de départ environ 24 or/mois (3 quêtes perso), utilisateur assidu en croisière 20 à 26 or/mois (230 à 310 par an), occasionnel 6 à 8 or/mois. Le revenu dépend du nombre de séances par semaine, pas du nombre de quêtes proposées (une séance compte pour une seule quête). Une commune s'achète en quelques jours, une inhabituelle en 1 à 2 semaines, une légendaire demande 9 à 14 mois d'épargne pour un assidu qui épargne tout.
+Repères (agent `economiste-rpg`, révisés le 2026-11-22 pour le catalogue v2) : saison type (2 classes en turbo, 3 en maintien) tenue par un utilisateur assidu environ 28 or/mois (340 par an), réaliste (80 % des séances) environ 22 or/mois, occasionnel (une classe, à moitié) environ 8 or/mois. Revenu plat d'une année sur l'autre : il suit les séances, pas les paliers. Prix du catalogue inchangés. Le revenu dépend du nombre de séances par semaine, pas du nombre de quêtes proposées (une séance compte pour une seule quête). Une commune s'achète en quelques jours, une inhabituelle en 1 à 2 semaines, une légendaire demande 9 à 14 mois d'épargne pour un assidu qui épargne tout.
 
 #### Règles d'équilibre (conventions, non imposées par l'app)
 
@@ -235,6 +236,9 @@ Repères (agent `economiste-rpg`, révisés le 2026-11-21) : revenu de départ e
 - Une séance compte pour une seule quête : abandonner une quête perso quand une quête proposée équivalente est acceptée.
 - Quête perso sans talent « large » : au moins 2 h d'effort réel.
 - Or qui s'accumule (solde au-delà de 3 mois de revenu sans objectif) : nommer un objectif ou relever les prix de 25 %. Or qui manque (moins d'une commune par semaine pendant un mois) : baisser les communes et inhabituelles plutôt que toucher au barème.
+- Une quête perso compte dans la limite d'habitudes de sa classe (4 en turbo, 1 en maintien).
+- Quand une quête proposée vise le même talent qu'une quête perso, abandonner la quête perso (une séance, une quête).
+- Une quête perso qui vise une classe archivée ne peut pas être rendue : la réécrire sur des talents actifs.
 - Révision de l'économie : passer par l'agent `economiste-rpg`.
 
 ## 11. Archive des classes et catalogue v2
