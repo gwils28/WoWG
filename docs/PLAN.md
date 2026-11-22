@@ -211,6 +211,20 @@ Logique pure (`packages/shared/src/logic/market.ts`) :
 - 12c : parcours dans Chrome sur le serveur isolé (port 5174) : création de cartes des 5 raretés, achat, carte en recharge, achat unique archivé, annulation depuis le journal, objectif d'épargne. Captures pour valider les couleurs de rareté.
 - 12d : le service `wowg` est redémarré (`systemctl --user restart wowg`) pour servir la nouvelle version.
 
+## v2 : archive et catalogue par rôles (SPEC 11)
+
+### Phases
+
+13a. **Serveur, archive** : préférence `archivedDomains` (`views.ts`, sans migration), `PUT /domains/:id/archive`, `character()` sépare actives et archive (`archive: { points, level, domains }`), `specSummary.archived`, refus 409 sur rang, édition, réimport, acceptation et rendu de quête d'une classe archivée, quêtes archivées exclues de `GET /quests`. Tests d'API et de quêtes.
+13b. **Front, archive** : `ArchiveButton`, page `/archives` (lien discret dans la barre), classe et arbre archivés en lecture seule (pas d'épingle, pas de saisie, pas d'édition).
+13c. **Contenu, catalogue v2** : architecture des 5 classes par l'agent `game-master`, rédaction des 15 arbres (10 paliers, sans quêtes), audit croisé, import, puis archivage des 15 classes v1 (après accord) et tag git `catalogue-v1`.
+
+### Vérification
+
+- 13a : `npm test`, `npm run lint`, `npm run typecheck` ; `curl` sur le serveur isolé (archiver, niveau recalculé, rang refusé, réactiver).
+- 13b : parcours dans Chrome sur le serveur isolé (5174) : page Archives, classe archivée en lecture seule, réactivation.
+- 13c : `npm run validate-tree` sur les 15 arbres, aperçu d'import sans collision d'id avec la v1.
+
 ## Idées pour plus tard
 
 - **Saisons (turbo et maintien)** (idée du 2026-11-22, non spécifiée) : pour chaque trimestre, marquer quelques classes « turbo » et mettre les autres en « maintien », pour séquencer les axes au lieu de tous les mener de front. Vient de la classe « Architecte du temps », écartée parce que ses talents recoupaient des arbres existants (Limites saines, Une chose à la fois, Travail profond, Déconnexion du travail). À passer par un entretien et une section de SPEC avant tout code.

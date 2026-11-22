@@ -4,12 +4,14 @@
 
 ## Décisions (questions ouvertes de SPEC.md section 9)
 
-- Niveau : passer de L à L+1 coûte L points, points pour L = L(L-1)/2 (`packages/shared/src/logic/level.ts`).
+- Niveau : passer de L à L+1 coûte ceil(L/5) points (`packages/shared/src/logic/level.ts`). Jusqu'au 2026-11-22 : L points (L(L-1)/2 cumulés), abandonné avec le catalogue v2 (environ 900 points en tout, qui plafonnaient au niveau 43). Le game-master proposait L(L-1)/10, remplacé par ce coût entier de même ordre (Légende à 680 points, niveau 100 à 1 030) pour garder des points entiers dans la barre de progression.
 - Export d'un arbre édité : réécriture directe dans `trees/` par le serveur.
 - Icônes : `@iconify-json/game-icons` (CC BY 3.0, attribution dans l'app).
 - Prérequis : `rank` configurable par lien, défaut = rang max du parent.
 
 ## Choix conservateurs
+
+- Archive des classes (SPEC 11) : simple préférence `archivedDomains`, comme les épingles, plutôt qu'une colonne et une migration. Réversible, sauvegardée avec les préférences, sans toucher aux rangs ni au journal.
 
 - Points et niveau ne comptent que les talents encore définis : la progression orpheline est conservée mais n'entre pas dans le niveau.
 - Rang courant borné à 0 lors du cumul des événements (un retrait en trop n'a pas d'effet négatif).

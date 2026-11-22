@@ -236,3 +236,15 @@ Repères (agent `economiste-rpg`, révisés le 2026-11-21) : revenu de départ e
 - Quête perso sans talent « large » : au moins 2 h d'effort réel.
 - Or qui s'accumule (solde au-delà de 3 mois de revenu sans objectif) : nommer un objectif ou relever les prix de 25 %. Or qui manque (moins d'une commune par semaine pendant un mois) : baisser les communes et inhabituelles plutôt que toucher au barème.
 - Révision de l'économie : passer par l'agent `economiste-rpg`.
+
+## 11. Archive des classes et catalogue v2
+
+Décision du 2026-11-22 : le catalogue v1 (15 classes, 45 arbres de 7 paliers) est remplacé par un catalogue v2 de 5 classes, une par rôle de groupe (Tank, Soigneur, DPS, Soutien, Éclaireur), de 3 arbres jusqu'à 10 paliers. La v1 reste consultable.
+
+- Une classe (domaine) peut être **archivée** puis **réactivée** à tout moment. L'état est une préférence (`archivedDomains`), donc inclus dans la sauvegarde.
+- Une classe archivée disparaît de l'accueil, de la page Classes et des quêtes proposées. Elle reste consultable dans la page **Archives**, en lecture seule : pas de saisie ni de retrait de rang, pas d'édition, pas de réimport (refus 409).
+- Le **niveau** ne compte que les classes actives. L'archive affiche son propre total (points et niveau atteint).
+- Une quête d'arbre d'une classe archivée ne peut plus être acceptée, et un suivi en cours ne peut pas être rendu tant que la classe est archivée (abandon possible). L'annulation d'un rendu passé reste possible.
+- L'or, l'Étal et le journal ne changent pas : l'historique de la v1 reste dans le journal.
+- La progression v2 démarre à zéro : aucun report des rangs v1.
+- Courbe de niveau v2 : passer du niveau L au niveau L+1 coûte ceil(L/5) points. Légende (niveau 81) demande 680 points sur environ 900 au catalogue, le niveau 100 en demande 1 030.
