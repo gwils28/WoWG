@@ -75,12 +75,16 @@ export function talentGold(talent: Pick<Talent, 'tier' | 'ultimate'>): number {
   );
 }
 
-/** Or rapporté par une quête. Un talent introuvable ne rapporte rien ; une quête rapporte au moins 1. */
+/**
+ * Or rapporté par une quête. Un talent introuvable ou déjà au rang max ne rapporte rien (SPEC 10.5 :
+ * évite de refaire une quête pour l'or d'un talent achevé) ; une quête rapporte au moins 1.
+ */
 export function questGold(def: QuestDefinition, lookup: TreeLookup): number {
   let gold = def.size ? GOLD_RULES.size[def.size] : 0;
   for (const ref of def.talents) {
-    const talent = lookupTalent(lookup, ref);
-    if (talent) gold += talentGold(talent);
+    const ctx = lookup(ref.specializationId);
+    const talent = ctx && findTalent(ctx.tree, ref.talentId);
+    if (talent && (ctx.ranks[talent.id] ?? 0) < talent.maxRank) gold += talentGold(talent);
   }
   if (def.recurrence) {
     const { times, periods } = def.recurrence;
@@ -101,7 +105,8 @@ export function dayOf(iso: string): string {
   return iso.slice(0, 10);
 }
 
-function addDays(day: string, n: number): string {
+/** Jour décalé de n jours (AAAA-MM-JJ, UTC). */
+export function addDays(day: string, n: number): string {
   const d = new Date(`${day}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + n);
   return d.toISOString().slice(0, 10);
@@ -130,6 +135,25 @@ export function suggestedDeadline(rec: QuestRecurrence, acceptedAt: string): str
   if (rec.per === 'week') return addDays(mondayOf(day), 7 * rec.periods - 1);
   const [y, m] = day.split('-').map(Number) as [number, number];
   return new Date(Date.UTC(y, m - 1 + rec.periods, 0)).toISOString().slice(0, 10);
+}
+
+/** Lundi (AAAA-MM-JJ) de la semaine ISO contenant l'instant, en UTC. */
+export function isoWeekStart(iso: string): string {
+  return mondayOf(dayOf(iso));
+}
+
+/**
+ * Limiteur des quêtes personnelles (SPEC 10.3) : au plus un rendu par semaine ISO. `completedAts` :
+ * dates des rendus non annulés de la même quête personnelle.
+ */
+export function weeklyTurnInCheck(completedAts: readonly string[], occurredAt: string): Check {
+  const week = isoWeekStart(occurredAt);
+  if (!completedAts.some((at) => isoWeekStart(at) === week)) return { ok: true };
+  const [, m, d] = addDays(week, 7).split('-');
+  return {
+    ok: false,
+    reason: `quête personnelle déjà rendue cette semaine, de nouveau possible le lundi ${d}/${m}`,
+  };
 }
 
 /** En retard : le jour courant dépasse l'échéance (une quête due aujourd'hui ne l'est pas). */

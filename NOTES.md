@@ -59,6 +59,13 @@
 
 - Phase 3 : toutes les routes sont dans `apps/server/src/app.ts` (environ 250 lignes) plutôt qu'un dossier `routes/`. À découper si le fichier grossit.
 
+- Phase 12 (Étal, avis `economiste-rpg` du 2026-11-21) :
+  - Limiteur des quêtes perso : la semaine ISO est celle de la date de rendu saisie. Antidater un rendu permet de le contourner, c'est assumé (outil personnel, pas d'adversaire).
+  - Revenu de l'objectif d'épargne : fenêtre glissante de 56 jours (pas de semaines ISO), divisée par 8 ou par les semaines écoulées depuis le premier gain.
+  - Une carte déjà achetée (même annulée) ne se supprime pas : on l'archive. Archiver retire l'épinglage, réactiver ne le rétablit pas.
+  - Toléré : deux quêtes acceptées en même temps sur un talent à un rang du max paient chacune son or de talent (or figé à l'acceptation).
+  - Pas encore fait (priorité 2 de l'économiste) : annulation d'achat limitée à 7 jours, convention « quête d'entretien », revue de l'économie après 8 semaines de vraies données.
+
 ## Pièges
 
 - Avant de lancer un serveur de test, vérifier que les ports sont libres (`ss -ltn`) et lire le log de démarrage : si l'utilisateur a déjà `npm run dev` sur 3001, le serveur de test plante (EADDRINUSE) et les requêtes partent vers la vraie base. Utiliser `PORT=3101 WOWG_API_PORT=3101` et Vite en `--port 5174 --strictPort`, puis vérifier que `/api/character` répond avec une base vide avant d'écrire.

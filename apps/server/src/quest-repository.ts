@@ -44,13 +44,14 @@ export interface StoredTick {
   createdAt: string;
 }
 
-export type GoldReason = 'quest' | 'quest-undo';
+export type GoldReason = 'quest' | 'quest-undo' | 'purchase' | 'purchase-undo';
 
 export interface StoredGoldEvent {
   id: number;
   amount: number;
   reason: GoldReason;
   runId: number | null;
+  purchaseId: number | null;
   occurredAt: string;
   createdAt: string;
 }
@@ -100,6 +101,7 @@ interface GoldRow {
   amount: number;
   reason: GoldReason;
   run_id: number | null;
+  purchase_id: number | null;
   occurred_at: string;
   created_at: string;
 }
@@ -141,6 +143,7 @@ const toGold = (r: GoldRow): StoredGoldEvent => ({
   amount: r.amount,
   reason: r.reason,
   runId: r.run_id,
+  purchaseId: r.purchase_id,
   occurredAt: r.occurred_at,
   createdAt: r.created_at,
 });
@@ -300,15 +303,16 @@ export function createQuestRepository(db: Db) {
     addGoldEvent(e: {
       amount: number;
       reason: GoldReason;
-      runId: number | null;
+      runId?: number | null;
+      purchaseId?: number | null;
       occurredAt: string;
     }): StoredGoldEvent {
       const res = db
         .prepare(
-          `INSERT INTO gold_events (amount, reason, run_id, occurred_at, created_at)
-           VALUES (?, ?, ?, ?, ?)`,
+          `INSERT INTO gold_events (amount, reason, run_id, purchase_id, occurred_at, created_at)
+           VALUES (?, ?, ?, ?, ?, ?)`,
         )
-        .run(e.amount, e.reason, e.runId, e.occurredAt, now());
+        .run(e.amount, e.reason, e.runId ?? null, e.purchaseId ?? null, e.occurredAt, now());
       return one('SELECT * FROM gold_events WHERE id = ?', toGold, Number(res.lastInsertRowid))!;
     },
 
@@ -367,11 +371,19 @@ export function createQuestRepository(db: Db) {
       );
       for (const t of data.questTicks) insTick.run(t.id, t.runId, t.occurredAt, t.createdAt);
       const insGold = db.prepare(
-        `INSERT INTO gold_events (id, amount, reason, run_id, occurred_at, created_at)
-         VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO gold_events (id, amount, reason, run_id, purchase_id, occurred_at, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
       );
       for (const g of data.goldEvents) {
-        insGold.run(g.id, g.amount, g.reason, g.runId, g.occurredAt, g.createdAt);
+        insGold.run(
+          g.id,
+          g.amount,
+          g.reason,
+          g.runId,
+          g.purchaseId ?? null,
+          g.occurredAt,
+          g.createdAt,
+        );
       }
     },
   };

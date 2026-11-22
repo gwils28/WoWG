@@ -8,6 +8,8 @@ import type {
   QuestSize,
   QuestTalentRef,
   Ranks,
+  Rarity,
+  RewardCardInput,
   TreeDiff,
   TreeFile,
 } from '@wowg/shared';
@@ -172,11 +174,61 @@ export interface QuestBoard {
 export interface GoldEventView {
   id: number;
   amount: number;
-  reason: 'quest' | 'quest-undo';
+  reason: 'quest' | 'quest-undo' | 'purchase' | 'purchase-undo';
   runId: number | null;
+  purchaseId: number | null;
   occurredAt: string;
   createdAt: string;
   questName: string | null;
+  /** Achat lié (événements purchase et purchase-undo). */
+  purchase: { id: number; name: string; rarity: Rarity; price: number; undone: boolean } | null;
+}
+
+// --- Étal ---
+
+export type CardAvailabilityView =
+  | { ok: true }
+  | { ok: false; reason: 'archived' }
+  | { ok: false; reason: 'cooldown'; availableOn: string; daysLeft: number }
+  | { ok: false; reason: 'insufficient'; missing: number };
+
+export interface MarketCard {
+  id: number;
+  name: string;
+  description: string;
+  rarity: Rarity;
+  price: number;
+  cooldownDays?: number;
+  unique: boolean;
+  archived: boolean;
+  availability: CardAvailabilityView;
+  lastPurchasedAt: string | null;
+  purchaseCount: number;
+}
+
+export interface SavingsGoal {
+  cardId: number;
+  name: string;
+  rarity: Rarity;
+  price: number;
+  /** Semaines restantes au rythme récent ; 0 si atteint, null sans revenu. */
+  weeksLeft: number | null;
+}
+
+export interface Market {
+  balance: number;
+  weeklyIncome: number;
+  goal: SavingsGoal | null;
+  cards: MarketCard[];
+  archived: MarketCard[];
+}
+
+export interface PurchaseView {
+  id: number;
+  cardId: number;
+  snapshot: { name: string; rarity: Rarity; price: number };
+  purchasedAt: string;
+  undoneAt: string | null;
 }
 
 export type AcceptQuest = (
@@ -239,11 +291,13 @@ export const api = {
   /** URL directe : le serveur renvoie un en-tête Content-Disposition */
   backupUrl: '/api/backup',
   restoreBackup: (backup: unknown) =>
-    request<{ specializations: number; events: number; questRuns?: number; goldEvents?: number }>(
-      'POST',
-      '/backup',
-      backup,
-    ),
+    request<{
+      specializations: number;
+      events: number;
+      questRuns?: number;
+      goldEvents?: number;
+      purchases?: number;
+    }>('POST', '/backup', backup),
   quests: () => request<QuestBoard>('GET', '/quests'),
   acceptQuest: (body: AcceptQuest) => request<QuestRun>('POST', '/quests/accept', body),
   setDeadline: (runId: number, deadline: string | null) =>
@@ -269,4 +323,21 @@ export const api = {
     request<CustomQuestView>('PUT', `/custom-quests/${id}`, quest),
   deleteCustomQuest: (id: number) => request<{ deleted: number }>('DELETE', `/custom-quests/${id}`),
   gold: () => request<{ balance: number; events: GoldEventView[] }>('GET', '/gold'),
+  market: () => request<Market>('GET', '/market'),
+  createCard: (card: RewardCardInput) => request<MarketCard>('POST', '/reward-cards', card),
+  updateCard: (id: number, card: RewardCardInput) =>
+    request<MarketCard>('PUT', `/reward-cards/${id}`, card),
+  archiveCard: (id: number, archived: boolean) =>
+    request<MarketCard>('PUT', `/reward-cards/${id}/archive`, { archived }),
+  deleteCard: (id: number) => request<{ deleted: number }>('DELETE', `/reward-cards/${id}`),
+  purchase: (id: number, occurredAt?: string) =>
+    request<{ purchase: PurchaseView; card: MarketCard; gold: number }>(
+      'POST',
+      `/reward-cards/${id}/purchase`,
+      occurredAt ? { occurredAt } : {},
+    ),
+  undoPurchase: (purchaseId: number) =>
+    request<{ purchase: PurchaseView; gold: number }>('POST', `/purchases/${purchaseId}/undo`),
+  setGoal: (cardId: number | null) =>
+    request<{ cardId: number | null }>('PUT', '/market/goal', { cardId }),
 };

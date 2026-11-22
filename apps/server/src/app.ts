@@ -11,6 +11,8 @@ import {
   diffTrees,
   QuestDefinitionSchema,
   QuestTalentRefSchema,
+  PurchaseSnapshotSchema,
+  RewardCardSchema,
   formatIssues,
   parseTree,
   TreeFileStructureSchema,
@@ -19,6 +21,7 @@ import {
 import type { Db } from './db';
 import { badRequest, DateInput, readBody, toIso } from './http';
 import { createRepository } from './repository';
+import { registerMarketRoutes } from './market';
 import { registerQuestRoutes } from './quests';
 import {
   canonicalTreePath,
@@ -137,9 +140,35 @@ const BackupSchema = z.object({
       z.object({
         id: z.number().int(),
         amount: z.number().int(),
-        reason: z.enum(['quest', 'quest-undo']),
+        reason: z.enum(['quest', 'quest-undo', 'purchase', 'purchase-undo']),
         runId: z.number().int().nullable(),
+        purchaseId: z.number().int().nullable().optional(),
         occurredAt: z.string(),
+        createdAt: z.string(),
+      }),
+    )
+    .optional(),
+  // absents des sauvegardes antérieures à l'Étal
+  rewardCards: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        card: RewardCardSchema,
+        archived: z.boolean(),
+        createdAt: z.string(),
+        updatedAt: z.string(),
+      }),
+    )
+    .optional(),
+  purchases: z
+    .array(
+      z.object({
+        id: z.number().int(),
+        cardId: z.number().int(),
+        snapshot: PurchaseSnapshotSchema,
+        purchasedAt: z.string(),
+        undoneAt: z.string().nullable(),
+        archivedCard: z.boolean(),
         createdAt: z.string(),
       }),
     )
@@ -151,6 +180,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
   const app = new Hono().basePath('/api');
   const nowIso = () => now().toISOString();
   const { questRepo, views: questViews } = registerQuestRoutes(app, { db, repo, now: nowIso });
+  const { marketRepo } = registerMarketRoutes(app, { db, repo, questRepo, now: nowIso });
 
   app.onError((err, c) => {
     if (err instanceof HTTPException) return err.getResponse();
@@ -341,6 +371,7 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
       events: repo.listEvents(),
       preferences: repo.preferences(),
       ...questRepo.exportAll(),
+      ...marketRepo.exportAll(),
     };
     const date = backup.exportedAt.slice(0, 10);
     c.header('Content-Disposition', `attachment; filename="wowg-backup-${date}.json"`);
@@ -367,6 +398,18 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
         `${dangling.length} élément(s) référencent un suivi de quête absent de la sauvegarde`,
       ]);
     }
+    const cardIds = new Set((backup.rewardCards ?? []).map((card) => card.id));
+    const purchaseIds = new Set((backup.purchases ?? []).map((p) => p.id));
+    const orphans = [
+      ...(backup.purchases ?? []).filter((p) => !cardIds.has(p.cardId)),
+      ...(backup.goldEvents ?? []).filter(
+        (g) =>
+          g.purchaseId !== null && g.purchaseId !== undefined && !purchaseIds.has(g.purchaseId),
+      ),
+    ];
+    if (orphans.length) {
+      badRequest([`${orphans.length} élément(s) référencent une carte ou un achat absent`]);
+    }
     repo.replaceAll(
       backup.specializations.map((s) => ({ ...s, id: s.tree.specialization.id })),
       backup.events,
@@ -375,14 +418,19 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
         customQuests: backup.customQuests ?? [],
         questRuns: backup.questRuns ?? [],
         questTicks: backup.questTicks ?? [],
-        goldEvents: backup.goldEvents ?? [],
+        goldEvents: (backup.goldEvents ?? []).map((g) => ({
+          ...g,
+          purchaseId: g.purchaseId ?? null,
+        })),
       },
+      { rewardCards: backup.rewardCards ?? [], purchases: backup.purchases ?? [] },
     );
     return c.json({
       specializations: backup.specializations.length,
       events: backup.events.length,
       questRuns: backup.questRuns?.length ?? 0,
       goldEvents: backup.goldEvents?.length ?? 0,
+      purchases: backup.purchases?.length ?? 0,
     });
   });
 

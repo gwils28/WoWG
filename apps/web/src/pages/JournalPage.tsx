@@ -3,7 +3,8 @@ import { Link, useSearchParams } from 'react-router';
 import { api, type GoldEventView, type JournalEntry, type JournalFilters } from '../lib/api';
 import { specPath } from '../lib/classes';
 import { formatDay, groupByDay, mergeTimeline, rankLabel } from '../lib/journal';
-import { GoldAmount } from '../components/quests/QuestParts';
+import { ConfirmButton, GoldAmount } from '../components/quests/QuestParts';
+import { useMarketActions } from '../components/market/useMarketActions';
 import { GameIcon } from '../components/GameIcon';
 
 const KEYS = ['domain', 'spec', 'from', 'to'] as const;
@@ -184,6 +185,7 @@ function Entry({ entry: e }: { entry: JournalEntry }) {
 }
 
 function GoldEntry({ entry: e }: { entry: GoldEventView }) {
+  if (e.reason === 'purchase' || e.reason === 'purchase-undo') return <PurchaseEntry entry={e} />;
   const undo = e.reason === 'quest-undo';
   return (
     <li className={`journal-entry journal-entry--gold${undo ? ' journal-entry--loss' : ''}`}>
@@ -203,6 +205,54 @@ function GoldEntry({ entry: e }: { entry: GoldEventView }) {
             <GoldAmount amount={e.amount} sign />
           </span>
         </div>
+      </div>
+    </li>
+  );
+}
+
+/** Achat à l'Étal, ou son annulation. Un achat non annulé s'annule d'ici. */
+function PurchaseEntry({ entry: e }: { entry: GoldEventView }) {
+  const actions = useMarketActions();
+  const undo = e.reason === 'purchase-undo';
+  const p = e.purchase;
+  return (
+    <li className={`journal-entry journal-entry--gold${undo ? '' : ' journal-entry--spent'}`}>
+      <span className="journal-entry__icon">
+        <GameIcon icon={undo ? 'game-icons:back-forth' : 'game-icons:swap-bag'} size={30} />
+      </span>
+      <div className="journal-entry__body">
+        <div className="journal-entry__head">
+          <Link to="/etal" className="journal-entry__name">
+            {undo ? 'Achat annulé' : 'Achat'}
+            {p && (
+              <>
+                {' : '}
+                <span className={`rarity-text rarity-text--${p.rarity}`}>{p.name}</span>
+              </>
+            )}
+          </Link>
+          <span className="journal-entry__rank">
+            <GoldAmount amount={e.amount} sign />
+          </span>
+        </div>
+        {!undo && p && (
+          <div className="journal-entry__spec muted">
+            {p.undone ? (
+              'Annulé par la suite'
+            ) : (
+              <ConfirmButton
+                label="Annuler l'achat"
+                confirmLabel={`Rembourser ${p.price} or ?`}
+                disabled={actions.undoPurchase.isPending}
+                onConfirm={() =>
+                  actions.undoPurchase.mutate(p.id, {
+                    onSuccess: () => actions.toast(`Achat annulé : +${p.price} or`),
+                  })
+                }
+              />
+            )}
+          </div>
+        )}
       </div>
     </li>
   );

@@ -6,6 +6,7 @@ import {
   diffTrees,
   goldBalance,
   isOverdue,
+  isoWeekStart,
   parseTree,
   periodKey,
   planTurnIn,
@@ -21,6 +22,7 @@ import {
   type Ranks,
   type TreeLookup,
   type TreeQuest,
+  weeklyTurnInCheck,
 } from '../src';
 import { loadSample, rawSample } from './helpers';
 
@@ -148,6 +150,18 @@ describe("barème d'or", () => {
       steps: [],
     };
     expect(questGold(orphan, lookupWith({}))).toBe(1);
+  });
+
+  it("ne compte pas l'or d'un talent déjà au rang max", () => {
+    // endurance max 3, palier 1 : 1 or ; rythme 3 x 4 : +3
+    expect(questGold(def('sorties-regulieres'), lookupWith({ endurance: 2 }))).toBe(1 + 3);
+    expect(questGold(def('sorties-regulieres'), lookupWith({ endurance: 3 }))).toBe(3);
+    // récupération (max 1) achevée, semi-marathon ultime palier 3 encore dû
+    expect(questGold(def('preparer-le-semi'), lookupWith({ recuperation: 1 }))).toBe(4);
+    // tous au max, sans rythme ni étapes : plancher de 1 or
+    expect(
+      questGold(def('preparer-le-semi'), lookupWith({ recuperation: 1, 'semi-marathon': 1 })),
+    ).toBe(1);
   });
 
   it('solde = somme des événements', () => {
@@ -401,5 +415,27 @@ describe('diff des quêtes', () => {
       removed: [],
       modified: [],
     });
+  });
+});
+
+describe('limiteur hebdomadaire des quêtes personnelles', () => {
+  it('semaine ISO : du lundi au dimanche, en UTC', () => {
+    expect(isoWeekStart('2026-11-23T08:00:00.000Z')).toBe('2026-11-23'); // lundi
+    expect(isoWeekStart('2026-11-29T23:59:59.000Z')).toBe('2026-11-23'); // dimanche
+  });
+
+  it('refuse un second rendu la même semaine, accepte le lundi suivant', () => {
+    const done = ['2026-11-23T10:00:00.000Z'];
+    const res = weeklyTurnInCheck(done, '2026-11-29T20:00:00.000Z');
+    expect(res).toEqual({
+      ok: false,
+      reason: 'quête personnelle déjà rendue cette semaine, de nouveau possible le lundi 30/11',
+    });
+    expect(weeklyTurnInCheck(done, '2026-11-30T00:00:00.000Z').ok).toBe(true);
+    expect(weeklyTurnInCheck(done, '2026-11-22T23:00:00.000Z').ok).toBe(true); // semaine d'avant
+  });
+
+  it('sans rendu antérieur (ou rendu annulé, exclu par l’appelant) : accepté', () => {
+    expect(weeklyTurnInCheck([], '2026-11-23T10:00:00.000Z').ok).toBe(true);
   });
 });

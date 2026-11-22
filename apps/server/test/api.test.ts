@@ -311,6 +311,7 @@ describe('personnage, journal et sauvegarde', () => {
       events: 3,
       questRuns: 0,
       goldEvents: 0,
+      purchases: 0,
     });
     const char = (await (await fresh.request('/api/character')).json()) as any;
     expect(char.points).toBe(3);

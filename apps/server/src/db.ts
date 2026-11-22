@@ -74,6 +74,27 @@ export const MIGRATIONS: string[] = [
   );
   ALTER TABLE rank_events ADD COLUMN quest_run_id INTEGER REFERENCES quest_runs(id);
   `,
+  // Étal (SPEC 10.8)
+  `
+  CREATE TABLE reward_cards (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    definition  TEXT NOT NULL,
+    archived    INTEGER NOT NULL DEFAULT 0 CHECK (archived IN (0, 1)),
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+  );
+  CREATE TABLE purchases (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    card_id       INTEGER NOT NULL REFERENCES reward_cards(id),
+    snapshot      TEXT NOT NULL,
+    purchased_at  TEXT NOT NULL,
+    undone_at     TEXT,
+    archived_card INTEGER NOT NULL DEFAULT 0 CHECK (archived_card IN (0, 1)),
+    created_at    TEXT NOT NULL
+  );
+  CREATE INDEX purchases_card ON purchases(card_id);
+  ALTER TABLE gold_events ADD COLUMN purchase_id INTEGER REFERENCES purchases(id);
+  `,
 ];
 
 export type Db = DatabaseSync;

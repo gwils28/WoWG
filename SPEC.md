@@ -126,7 +126,7 @@ Une quête est une action concrète, éventuellement répétée dans le temps, q
 5. **Rendue** : en une transaction, crée un événement de rang +1 par talent récompensé (rattaché au suivi) et un événement d'or. Un talent déjà au rang max entre-temps est ignoré, l'or reste dû. Note et date facultatives, comme un rang.
 6. **Abandonnée** : à tout moment, sans effet. On peut la reprendre à neuf.
 
-- **Refaire** : une quête proposée rendue redevient disponible tant que l'un de ses talents n'est pas au rang max (« une fois par rang »). Une quête personnelle sans talent se refait à volonté.
+- **Refaire** : une quête proposée rendue redevient disponible tant que l'un de ses talents n'est pas au rang max (« une fois par rang »). Une quête personnelle, avec ou sans talent, se refait à volonté, mais se rend au plus une fois par semaine ISO : un rendu est refusé si la même quête personnelle a déjà un rendu non annulé daté de la même semaine (« disponible lundi »). C'est un limiteur, pas une pénalité (anti-farm, avis `economiste-rpg` du 2026-11-21).
 - **Échéance dépassée** : le suivi reste ouvert, signalé « en retard », et se rend normalement. Aucune pénalité (cohérent avec « pas de déclin »).
 - **Annuler un rendu** : crée les événements inverses (-1 rang, -or). Refusé si un retrait de rang est refusé (enfant dépendant) ou si le solde d'or deviendrait négatif.
 
@@ -195,7 +195,7 @@ L'or gagné par les quêtes s'échange contre des récompenses réelles que l'ut
 
 #### Objectif d'épargne
 
-- Au plus une carte épinglée à la fois (préférence). Affichée en tête de l'Étal : solde / prix, et estimation « environ N semaines » au rythme des 4 dernières semaines (or gagné par les quêtes, net des annulations de rendu, achats exclus). Sans revenu sur la période : pas d'estimation.
+- Au plus une carte épinglée à la fois (préférence). Affichée en tête de l'Étal : solde / prix, et estimation « environ N semaines » au rythme des 8 dernières semaines (somme divisée par 8, ou par le nombre de semaines écoulées depuis le premier gain d'or s'il y en a moins de 8 ; l'or tombe en bloc en fin de cycle, une fenêtre de 4 semaines serait trop instable) (or gagné par les quêtes, net des annulations de rendu, achats exclus). Sans revenu sur la période : pas d'estimation.
 - Une carte archivée ou achetée en achat unique perd son épinglage.
 
 #### Interface
@@ -214,20 +214,20 @@ L'or gagné par les quêtes s'échange contre des récompenses réelles que l'ut
 | Commune      | Snack gourmand                     | 2    | 1 j          |
 | Commune      | Bonne bière                        | 3    | 2 j          |
 | Inhabituelle | Cinéma                             | 6    | 7 j          |
-| Inhabituelle | 1h30 de jeux vidéo                 | 6    | 3 j          |
+| Inhabituelle | 1h30 de jeux vidéo                 | 4    | 2 j          |
 | Inhabituelle | Exposition                         | 8    | 7 j          |
 | Inhabituelle | Restaurant                         | 10   | 7 j          |
 | Rare         | Concert                            | 30   | 30 j         |
-| Rare         | Séjour court (2-3 jours)           | 40   | 30 j         |
-| Épique       | Rhum millésimé                     | 80   | 90 j         |
+| Rare         | Rhum millésimé                     | 40   | 90 j         |
+| Rare         | Séjour court (2-3 jours)           | 60   | 60 j         |
 | Épique       | Vêtement de qualité                | 80   | 90 j         |
 | Épique       | Casque audio                       | 100  | achat unique |
-| Épique       | Voyage (Europe, au plus 1 semaine) | 120  | 90 j         |
-| Légendaire   | Vélo hollandais                    | 250  | achat unique |
-| Légendaire   | Contrebasse                        | 350  | achat unique |
-| Légendaire   | Pèlerinage à New York              | 400  | achat unique |
+| Épique       | Voyage (Europe, au plus 1 semaine) | 150  | 180 j        |
+| Légendaire   | Vélo hollandais                    | 200  | achat unique |
+| Légendaire   | Contrebasse                        | 300  | achat unique |
+| Légendaire   | Pèlerinage à New York              | 300  | achat unique |
 
-Repères (agent `economiste-rpg`) : revenu de départ environ 20 or/mois (3 quêtes perso), environ 45 or/mois avec 2 classes équipées de quêtes. Une commune s'achète en quelques jours, une inhabituelle en 1 à 2 semaines, une légendaire demande 6 à 10 mois d'épargne en régime de croisière.
+Repères (agent `economiste-rpg`, révisés le 2026-11-21) : revenu de départ environ 24 or/mois (3 quêtes perso), utilisateur assidu en croisière 20 à 26 or/mois (230 à 310 par an), occasionnel 6 à 8 or/mois. Le revenu dépend du nombre de séances par semaine, pas du nombre de quêtes proposées (une séance compte pour une seule quête). Une commune s'achète en quelques jours, une inhabituelle en 1 à 2 semaines, une légendaire demande 9 à 14 mois d'épargne pour un assidu qui épargne tout.
 
 #### Règles d'équilibre (conventions, non imposées par l'app)
 

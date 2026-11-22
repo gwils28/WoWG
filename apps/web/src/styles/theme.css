@@ -13,6 +13,12 @@
   --green-lo: #1f6b1f;
   --red: #e0533f;
   --locked: #5b554c;
+  /* raretés de l'Étal */
+  --rarity-common: #ece6d8;
+  --rarity-uncommon: #4fd04f;
+  --rarity-rare: #4b9bf0;
+  --rarity-epic: #b46cf2;
+  --rarity-legendary: #f28c28;
   --font-title: 'Cinzel', 'Times New Roman', serif;
   --font-body: 'Alegreya Sans', system-ui, sans-serif;
   color-scheme: dark;
@@ -2348,4 +2354,267 @@ ul.diff__line {
 
 .journal-entry__quest:hover {
   text-decoration: underline;
+}
+
+/* ---------- Étal ---------- */
+
+.rarity-text--common {
+  color: var(--rarity-common);
+}
+.rarity-text--uncommon {
+  color: var(--rarity-uncommon);
+}
+.rarity-text--rare {
+  color: var(--rarity-rare);
+}
+.rarity-text--epic {
+  color: var(--rarity-epic);
+}
+.rarity-text--legendary {
+  color: var(--rarity-legendary);
+}
+
+.reward-card--common {
+  --rarity: var(--rarity-common);
+}
+.reward-card--uncommon {
+  --rarity: var(--rarity-uncommon);
+}
+.reward-card--rare {
+  --rarity: var(--rarity-rare);
+}
+.reward-card--epic {
+  --rarity: var(--rarity-epic);
+}
+.reward-card--legendary {
+  --rarity: var(--rarity-legendary);
+}
+
+.reward-card {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--rarity) 45%, var(--line));
+  border-left: 3px solid var(--rarity);
+  border-radius: 5px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--rarity) 9%, #221a13), #16110c);
+}
+
+.reward-card--legendary {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--rarity-legendary) 25%, transparent);
+}
+
+.reward-card--blocked {
+  opacity: 0.8;
+}
+
+.reward-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.reward-card__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.reward-card__title h3 {
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--rarity);
+}
+
+.reward-card__rarity {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.reward-card__desc,
+.reward-card__meta {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.reward-card__desc {
+  color: #cfc4ab;
+}
+
+.reward-card__meta {
+  font-size: 0.82rem;
+}
+
+.reward-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.reward-card__state {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.reward-card__state--ok {
+  color: var(--green);
+}
+
+.reward-card__state--insufficient {
+  color: #d08a2a;
+}
+
+.reward-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.market__toggle {
+  justify-self: start;
+  padding: 0;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-hi);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.savings {
+  display: grid;
+  gap: 0.6rem;
+  border-color: var(--savings, var(--gold-lo));
+}
+
+.savings--common {
+  --savings: var(--rarity-common);
+}
+.savings--uncommon {
+  --savings: var(--rarity-uncommon);
+}
+.savings--rare {
+  --savings: var(--rarity-rare);
+}
+.savings--epic {
+  --savings: var(--rarity-epic);
+}
+.savings--legendary {
+  --savings: var(--rarity-legendary);
+}
+
+.savings__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  color: var(--savings);
+}
+
+.savings__head h2 {
+  font-size: 1.1rem;
+}
+
+.savings__meter {
+  height: 10px;
+  border-radius: 999px;
+  background: #0a0806;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.savings__meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-lo), var(--gold-hi));
+}
+
+.savings__text {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.purchase-summary {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.purchase-summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.purchase-summary__after {
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.rarity-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.rarity-picker legend {
+  padding: 0;
+  margin-bottom: 0.3rem;
+}
+
+.rarity-picker__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-title);
+  cursor: pointer;
+}
+
+.card-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.card-form__check {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.card-form__errors {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.card-form__danger {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.journal-entry--spent .journal-entry__icon {
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .card-form__row {
+    grid-template-columns: 1fr;
+  }
 }

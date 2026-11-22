@@ -8,6 +8,7 @@ import {
 } from '@wowg/shared';
 import { transaction, type Db } from './db';
 import { createQuestRepository, type QuestData } from './quest-repository';
+import { createMarketRepository, type MarketData } from './market-repository';
 
 export interface StoredSpecialization {
   id: string;
@@ -161,11 +162,14 @@ export function createRepository(db: Db) {
       events: (Omit<StoredEvent, 'questRunId'> & { questRunId?: number | null })[],
       preferences: Record<string, unknown> = {},
       quests?: QuestData,
+      market?: MarketData,
     ) {
       const questRepo = createQuestRepository(db);
+      const marketRepo = createMarketRepository(db);
       transaction(db, () => {
         db.exec('DELETE FROM rank_events;');
         questRepo.clear();
+        marketRepo.clear();
         db.exec('DELETE FROM specializations; DELETE FROM preferences;');
         for (const [key, value] of Object.entries(preferences)) this.setPreference(key, value);
         const insSpec = db.prepare(
@@ -182,6 +186,8 @@ export function createRepository(db: Db) {
             s.updatedAt,
           );
         }
+        // les achats avant les événements d'or qui les référencent
+        if (market) marketRepo.insertAll(market);
         if (quests) questRepo.insertAll(quests);
         const insEvent = db.prepare(
           `INSERT INTO rank_events

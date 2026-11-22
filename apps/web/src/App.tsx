@@ -8,6 +8,7 @@ import { ClassPage, LegacySpecRedirect } from './pages/ClassPage';
 import { ClassesPage } from './pages/ClassesPage';
 import { ToolsPage } from './pages/ToolsPage';
 import { QuestsPage } from './pages/QuestsPage';
+import { MarketPage } from './pages/MarketPage';
 import { GoldAmount } from './components/quests/QuestParts';
 
 function Layout() {
@@ -41,6 +42,7 @@ function Layout() {
               </span>
             )}
           </NavLink>
+          <NavLink to="/etal">Étal</NavLink>
         </nav>
         {data && <span className="topbar__level">Niv. {data.level}</span>}
         {data && (
@@ -89,6 +91,7 @@ export function App() {
         <Route path="classe/:domainId/:specId?" element={<ClassPage />} />
         <Route path="specialisation/:id" element={<LegacySpecRedirect />} />
         <Route path="quetes" element={<QuestsPage />} />
+        <Route path="etal" element={<MarketPage />} />
         <Route path="journal" element={<JournalPage />} />
         <Route path="outils" element={<ToolsPage />} />
         <Route path="import" element={<Navigate to="/outils" replace />} />

@@ -14,6 +14,7 @@ import {
   suggestedDeadline,
   treeQuestAvailability,
   treeQuestDefinition,
+  weeklyTurnInCheck,
   type CustomQuest,
   type QuestDefinition,
   type QuestTalentRef,
@@ -22,6 +23,7 @@ import {
 } from '@wowg/shared';
 import { transaction, type Db } from './db';
 import { badRequest, conflict, DateInput, notFound, readBody, toIso } from './http';
+import { createMarketRepository } from './market-repository';
 import {
   createQuestRepository,
   type QuestRepository,
@@ -360,6 +362,15 @@ export function registerQuestRoutes(
     const plan = planTurnIn(run.definition, progress, lookup);
     if (!plan.ok) conflict(plan.reason);
     const occurredAt = toIso(body.occurredAt) ?? at;
+    if (run.source === 'custom' && run.customQuestId !== null) {
+      // limiteur anti-farm (SPEC 10.3) : un rendu non annulé par semaine ISO
+      const done = questRepo
+        .listRuns('completed')
+        .filter((r) => r.customQuestId === run.customQuestId && r.completedAt)
+        .map((r) => r.completedAt!);
+      const weekly = weeklyTurnInCheck(done, occurredAt);
+      if (!weekly.ok) conflict(weekly.reason);
+    }
     const note = body.note || null;
 
     transaction(db, () => {
@@ -447,9 +458,22 @@ export function registerQuestRoutes(
 
   app.get('/gold', (c) => {
     const names = new Map(questRepo.listRuns().map((r) => [r.id, r.definition.name]));
+    const purchases = new Map(
+      createMarketRepository(db)
+        .listPurchases()
+        .map((p) => [p.id, p]),
+    );
+    const purchaseView = (id: number | null) => {
+      const p = id === null ? undefined : purchases.get(id);
+      return p ? { id: p.id, ...p.snapshot, undone: p.undoneAt !== null } : null;
+    };
     const events = questRepo
       .listGoldEvents()
-      .map((e) => ({ ...e, questName: e.runId === null ? null : (names.get(e.runId) ?? null) }))
+      .map((e) => ({
+        ...e,
+        questName: e.runId === null ? null : (names.get(e.runId) ?? null),
+        purchase: purchaseView(e.purchaseId),
+      }))
       .sort((a, b) => b.occurredAt.localeCompare(a.occurredAt) || b.id - a.id);
     return c.json({ balance: questRepo.goldBalance(), events });
   });

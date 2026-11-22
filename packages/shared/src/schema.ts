@@ -108,6 +108,29 @@ export const CustomQuestSchema = z
     }
   });
 
+// --- Étal (SPEC 10.8) --------------------------------------------------------------------------
+
+export const RaritySchema = z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary']);
+
+/** Carte de l'Étal : récompense réelle achetée avec l'or. */
+export const RewardCardSchema = z.object({
+  name: z.string().trim().min(1),
+  description: z.string().default(''),
+  rarity: RaritySchema,
+  price: z.number().int().min(1),
+  /** Jours avant de pouvoir racheter la carte. Absent : rachetable à volonté. */
+  cooldownDays: z.number().int().min(1).max(3650).optional(),
+  /** Objet durable : la carte est archivée après l'achat. */
+  unique: z.boolean().default(false),
+});
+
+/** Copie de la carte figée dans un achat. */
+export const PurchaseSnapshotSchema = z.object({
+  name: z.string(),
+  rarity: RaritySchema,
+  price: z.number().int(),
+});
+
 /**
  * Structure seule, sans règles croisées. Sert à relire un arbre déjà stocké : une règle ajoutée
  * plus tard ne doit pas rendre illisibles les données existantes.
@@ -289,6 +312,10 @@ export type QuestTalentRef = z.infer<typeof QuestTalentRefSchema>;
 export type CustomQuest = z.infer<typeof CustomQuestSchema>;
 export type CustomQuestInput = z.input<typeof CustomQuestSchema>;
 export type QuestDefinition = z.infer<typeof QuestDefinitionSchema>;
+export type Rarity = z.infer<typeof RaritySchema>;
+export type RewardCard = z.infer<typeof RewardCardSchema>;
+export type RewardCardInput = z.input<typeof RewardCardSchema>;
+export type PurchaseSnapshot = z.infer<typeof PurchaseSnapshotSchema>;
 
 /** Rend les erreurs de validation lisibles : "talents[3].ranks : message". */
 export function formatIssues(error: z.ZodError): string[] {

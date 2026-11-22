@@ -23,7 +23,7 @@ export function BackupPanel() {
       setPending(null);
       void qc.invalidateQueries();
       toast(
-        `Sauvegarde restaurée : ${r.specializations} spécialisation(s), ${r.events} événement(s)${r.questRuns ? `, ${r.questRuns} quête(s)` : ''}`,
+        `Sauvegarde restaurée : ${r.specializations} spécialisation(s), ${r.events} événement(s)${r.questRuns ? `, ${r.questRuns} quête(s)` : ''}${r.purchases ? `, ${r.purchases} achat(s)` : ''}`,
       );
     },
     onError: (e) => {
