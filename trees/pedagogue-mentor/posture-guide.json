@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pedagogue-mentor",
+    "name": "Mentor",
+    "icon": "game-icons:teacher"
+  },
+  "specialization": {
+    "id": "posture-guide",
+    "name": "Posture de guide",
+    "description": "Écouter vraiment, questionner plutôt que répondre, laisser chercher et se tromper : guider sans faire à la place ni surprotéger.",
+    "icon": "game-icons:compass"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "laisser-finir",
+      "name": "Laisser finir",
+      "description": "Écouter jusqu'au bout sans couper ni compléter la phrase de l'autre.",
+      "icon": "game-icons:human-ear",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 conversations où tu as laissé l'autre finir sans couper ni compléter sa phrase, notées",
+        "20 conversations notées"
+      ]
+    },
+    {
+      "id": "questions-ouvertes",
+      "name": "Questions ouvertes",
+      "description": "Préférer « comment tu as fait ? » à « c'est bien ? ».",
+      "icon": "game-icons:help",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Liste de 10 questions ouvertes écrites et gardées sous la main (téléphone, frigo)",
+        "10 échanges où une question ouverte a remplacé un conseil ou une réponse toute faite, notés"
+      ]
+    },
+    {
+      "id": "reperer-reflexes",
+      "name": "Repérer ses réflexes",
+      "description": "Voir quand tu fais à la place ou protèges trop vite.",
+      "icon": "game-icons:mirror-mirror",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une semaine d'observation : 5 moments où tu as fait à la place ou protégé trop vite, notés",
+        "Tes 3 réflexes principaux écrits, chacun avec ce que tu feras à la place"
+      ]
+    },
+    {
+      "id": "temps-de-chercher",
+      "name": "Laisser chercher",
+      "description": "Attendre avant d'aider quelqu'un qui bloque.",
+      "icon": "game-icons:sands-of-time",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 fois où tu as compté jusqu'à 10 avant d'aider l'enfant ou un apprenant bloqué, notées",
+        "30 fois notées"
+      ]
+    },
+    {
+      "id": "attention-entiere",
+      "name": "Attention entière",
+      "description": "Écouter sans rien faire d'autre : mains libres, regard posé.",
+      "icon": "game-icons:eye-target",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 moments où l'enfant ou un proche te parle et où tu t'arrêtes (mains libres, à sa hauteur, regard) avant de répondre, notés",
+        "30 moments notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "laisser-finir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ecouter-sans-resoudre",
+      "name": "Écouter sans résoudre",
+      "description": "Accueillir un souci sans sauter sur la solution.",
+      "icon": "game-icons:silenced",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 fois où quelqu'un t'a confié un souci et où tu n'as donné aucun conseil non demandé, notées",
+        "Question « tu veux mon avis ou que je t'écoute ? » posée 10 fois, choix respecté"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "questions-ouvertes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "offrir-choix",
+      "name": "Offrir des choix",
+      "description": "Proposer des options plutôt que donner des ordres.",
+      "icon": "game-icons:choice",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "20 consignes remplacées par un choix entre 2 options (« le pyjama bleu ou le rouge ? »), notées",
+        "Une décision à sa mesure laissée à l'enfant chaque semaine pendant 2 mois (tenue, jeu, goûter)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "reperer-reflexes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "droit-erreur",
+      "name": "Droit à l'erreur",
+      "description": "Laisser se tromper quand c'est sans danger, puis en parler.",
+      "icon": "game-icons:broken-pottery",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 erreurs de l'enfant ou d'un apprenant laissées se produire (sans danger), puis reprises par une question plutôt qu'une correction",
+        "5 de tes propres ratés racontés à l'enfant avec ce que tu en as appris"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "temps-de-chercher",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "relances",
+      "name": "Relancer",
+      "description": "Encourager l'autre à continuer à parler.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Relances simples (« et alors ? », « raconte-moi », reprendre son dernier mot) utilisées dans 10 échanges notés",
+        "Un échange de 10 min où l'enfant a parlé plus que toi, 5 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "attention-entiere",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "risque-mesure",
+      "name": "Risque mesuré",
+      "description": "Accorder des libertés adaptées à l'âge plutôt que tout empêcher.",
+      "icon": "game-icons:mountain-climbing",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Liste des risques acceptables par âge (grimper, couteau à bout rond, outils, s'éloigner un peu) écrite avec l'autre parent",
+        "5 nouvelles libertés accordées et observées sans intervenir, notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "offrir-choix",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "guider-par-questions",
+      "name": "Guider par questions",
+      "description": "Amener à la solution par une suite de questions, sans la donner.",
+      "icon": "game-icons:direction-signs",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 problèmes de l'enfant ou d'un apprenant résolus par lui après au moins 3 questions de ta part, sans que tu donnes la réponse",
+        "15 problèmes résolus ainsi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ecouter-sans-resoudre"
+        },
+        {
+          "talentId": "relances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "debrief",
+      "name": "Débrief",
+      "description": "Après une activité, faire réfléchir à ce qui s'est passé.",
+      "icon": "game-icons:talk",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 débriefs en 3 questions après une activité (qu'as-tu aimé ? qu'est-ce qui était dur ? et la prochaine fois ?)",
+        "L'enfant ou l'apprenant fait son propre bilan sans qu'on le lui demande, 3 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "droit-erreur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rituel-echange",
+      "name": "Rituel d'échange",
+      "description": "Un moment régulier où l'enfant raconte et où tu écoutes.",
+      "icon": "game-icons:campfire",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un moment fixe d'échange (trajet, bain, goûter) où l'enfant raconte et tu relances, 3 fois par semaine pendant 2 mois",
+        "Même rythme pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "relances",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mentor-pas-sauveur",
+      "name": "Mentor, pas sauveur",
+      "description": "Aider un adulte à résoudre son problème sans prendre la main.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 fois où tu as aidé un collègue ou un proche sans toucher au clavier ni à l'outil, uniquement par questions et indications",
+        "La même personne résout seule un problème similaire la fois suivante, 3 cas notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "guider-par-questions",
+          "rank": 1
+        },
+        {
+          "talentId": "risque-mesure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "observer-sans-intervenir",
+      "name": "Observer sans intervenir",
+      "description": "Regarder l'enfant jouer pour découvrir ce qui l'attire vraiment.",
+      "icon": "game-icons:binoculars",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "8 observations de 15 min de l'enfant en jeu libre, sans intervenir, ce qu'il cherche à faire noté",
+        "3 activités proposées à partir de ces observations (ses centres d'intérêt, pas les tiens)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rituel-echange",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "traverser-echec",
+      "name": "Traverser un échec",
+      "description": "Accompagner un échec sans minimiser ni réparer à sa place.",
+      "icon": "game-icons:ground-sprout",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un échec important de l'enfant ou d'un apprenant accompagné : écoute, puis « qu'est-ce que tu veux essayer ? », sans minimiser ni réparer, noté",
+        "Il retente de lui-même, 3 cas notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "debrief",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "guide-de-confiance",
+      "name": "Guide de confiance",
+      "description": "Tu es un guide, ni exécutant ni simple protecteur.",
+      "icon": "game-icons:lighthouse",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 3,
+      "ranks": [
+        "Une décision importante pour lui (activité, conflit avec un copain) prise par l'enfant après une discussion où tu n'as posé que des questions",
+        "Bilan avec l'autre parent : tu es perçu comme guide plutôt que comme exécutant ou protecteur, 2 bilans à 6 mois d'écart",
+        "Un collègue ou un proche que tu as guidé dit avoir trouvé sa propre solution grâce à tes questions"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "mentor-pas-sauveur",
+          "rank": 1
+        },
+        {
+          "talentId": "observer-sans-intervenir",
+          "rank": 1
+        },
+        {
+          "talentId": "traverser-echec",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "jusqu-au-bout",
+      "name": "Jusqu'au bout",
+      "description": "Dans une conversation, laisser l'autre finir sans couper ni compléter sa phrase, puis la noter.",
+      "talents": [
+        "laisser-finir"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 2
+      }
+    },
+    {
+      "id": "compter-jusqu-a-dix",
+      "name": "Compter jusqu'à 10",
+      "description": "Quand l'enfant ou un apprenant bloque, compter jusqu'à 10 avant d'aider, et le noter.",
+      "talents": [
+        "temps-de-chercher"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "semaine-des-reflexes",
+      "name": "Semaine des réflexes",
+      "description": "Observer pendant une semaine quand tu fais à la place ou protèges trop vite ; faite quand les alternatives sont écrites.",
+      "talents": [
+        "reperer-reflexes"
+      ],
+      "steps": [
+        "Noter chaque moment où tu fais à la place ou protèges trop vite",
+        "Regrouper en 3 réflexes principaux",
+        "Écrire pour chacun ce que tu feras à la place"
+      ]
+    },
+    {
+      "id": "avis-ou-ecoute",
+      "name": "Avis ou écoute ?",
+      "description": "Quand quelqu'un te confie un souci, demander « tu veux mon avis ou que je t'écoute ? » et respecter le choix.",
+      "talents": [
+        "ecouter-sans-resoudre"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "deux-options",
+      "name": "Deux options",
+      "description": "Transformer une consigne en choix entre 2 options et le noter.",
+      "talents": [
+        "offrir-choix"
+      ],
+      "recurrence": {
+        "times": 5,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "liste-des-libertes",
+      "name": "Liste des libertés",
+      "description": "Écrire avec l'autre parent les risques acceptables pour l'âge de l'enfant ; faite quand la liste est validée à deux.",
+      "talents": [
+        "risque-mesure"
+      ],
+      "steps": [
+        "Lister ce que tu empêches aujourd'hui par réflexe",
+        "Trier avec l'autre parent : acceptable, acceptable sous surveillance, non",
+        "Choisir la première liberté à accorder"
+      ]
+    },
+    {
+      "id": "trois-questions-apres",
+      "name": "Les 3 questions après",
+      "description": "Après une activité, poser les 3 questions du débrief et noter les réponses.",
+      "talents": [
+        "debrief"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "observation-jeu-libre",
+      "name": "Observation du jeu libre",
+      "description": "Observer 15 min l'enfant jouer sans intervenir et noter ce qu'il cherche à faire.",
+      "talents": [
+        "observer-sans-intervenir"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pilier-de-la-cite",
+    "name": "Pilier de la cité",
+    "icon": "game-icons:greek-temple"
+  },
+  "specialization": {
+    "id": "citoyen-local",
+    "name": "Citoyen local",
+    "description": "Prendre part à la vie de ta commune, de l'école et des institutions : comprendre, participer, puis représenter.",
+    "icon": "game-icons:vote"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "voter",
+      "name": "Voter à chaque fois",
+      "description": "Ne manquer aucune élection, et voter en connaissance de cause.",
+      "icon": "game-icons:vote",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Inscription sur les listes électorales vérifiée en ligne, bureau de vote et prochaines élections notés",
+        "Vote à toutes les élections d'une année, programmes lus et choix écrit avant chaque scrutin",
+        "Toutes les élections sur 3 ans"
+      ]
+    },
+    {
+      "id": "comprendre-commune",
+      "name": "Comprendre sa commune",
+      "description": "Savoir qui décide quoi, et avec quel argent.",
+      "icon": "game-icons:modern-city",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Fonctionnement résumé : maire, conseil municipal, compétences de la commune, de l'intercommunalité et du département",
+        "Budget de la commune lu : 5 premiers postes, investissements, dette par habitant"
+      ]
+    },
+    {
+      "id": "conseil-municipal",
+      "name": "Assister au conseil",
+      "description": "Voir la démocratie locale de près.",
+      "icon": "game-icons:banging-gavel",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un conseil municipal suivi (sur place ou en vidéo), 3 décisions notées",
+        "3 conseils suivis dans l'année"
+      ]
+    },
+    {
+      "id": "don-du-sang",
+      "name": "Don du sang",
+      "description": "Un geste civique simple, qui sauve des vies.",
+      "icon": "game-icons:blood",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 3,
+      "ranks": [
+        "Un don de sang ou de plasma",
+        "3 dons dans l'année",
+        "10 dons cumulés (sang, plasma ou plaquettes)"
+      ]
+    },
+    {
+      "id": "prendre-la-parole",
+      "name": "Prendre part au débat",
+      "description": "Donner ton avis là où il est demandé.",
+      "icon": "game-icons:acoustic-megaphone",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un avis donné dans une réunion publique, une concertation ou une enquête publique",
+        "3 contributions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "voter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "budget-participatif",
+      "name": "Budget participatif",
+      "description": "Décider d'une partie de l'argent de la commune.",
+      "icon": "game-icons:coins",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Vote au budget participatif ou à une consultation locale",
+        "Un projet déposé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "comprendre-commune",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rencontrer-elus",
+      "name": "Rencontrer les élus",
+      "description": "Porter un sujet jusqu'à ceux qui décident.",
+      "icon": "game-icons:shaking-hands",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un élu rencontré sur un sujet précis (permanence, adjoint de quartier), réponse notée",
+        "Un problème du quartier signalé et suivi jusqu'à sa résolution"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conseil-municipal",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parents-eleves",
+      "name": "Parents d'élèves",
+      "description": "Participer à la vie de l'école de ton enfant.",
+      "icon": "game-icons:school-bag",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Candidat sur une liste de parents d'élèves",
+        "Élu, présent à tous les conseils d'école d'une année"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prendre-la-parole",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "conseil-quartier",
+      "name": "Conseil de quartier",
+      "description": "Siéger là où les habitants sont consultés.",
+      "icon": "game-icons:round-table",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Membre d'un conseil de quartier, d'un comité consultatif ou d'une commission extra-municipale",
+        "Présent à toutes les séances pendant un an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rencontrer-elus",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "reserve-citoyenne",
+      "name": "Réserve citoyenne",
+      "description": "Se tenir prêt à servir quand la collectivité en a besoin.",
+      "icon": "game-icons:police-badge",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Candidature à une réserve (réserve communale de sécurité civile, réserve citoyenne de l'Éducation nationale ou de la Police)",
+        "Première mission de réserve effectuée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "budget-participatif",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "justice-citoyenne",
+      "name": "Justice citoyenne",
+      "description": "Comprendre la place des citoyens dans la justice.",
+      "icon": "game-icons:justice-star",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Rôle des jurés d'assises et des assesseurs citoyens résumé, une audience publique suivie au tribunal",
+        "Candidature comme assesseur (tribunal pour enfants, pôle social) ou délégué du procureur"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "rencontrer-elus",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "porter-projet",
+      "name": "Porter un projet local",
+      "description": "Faire aboutir une idée pour ta commune.",
+      "icon": "game-icons:direction-signs",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un projet local porté jusqu'au vote ou à la décision (aire de jeux, piste cyclable, boîte à livres)",
+        "Projet réalisé et inauguré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "parents-eleves",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "exemple-civique",
+      "name": "L'exemple pour l'enfant",
+      "description": "Montrer à ton enfant ce que veut dire être citoyen.",
+      "icon": "game-icons:family-tree",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Enfant emmené à 3 moments civiques (vote, cérémonie, conseil municipal des enfants, don)",
+        "Candidature de l'enfant au conseil municipal des enfants ou comme délégué de classe encouragée, sans forcer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "conseil-quartier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "liste-municipale",
+      "name": "Sur une liste",
+      "description": "Passer de l'avis à la candidature.",
+      "icon": "game-icons:flying-flag",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Rencontre avec une liste municipale ou un collectif citoyen, programme discuté",
+        "Candidat sur une liste aux élections municipales"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "porter-projet",
+          "rank": 1
+        },
+        {
+          "talentId": "reserve-citoyenne",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pilier-cite",
+      "name": "Voix de la cité",
+      "description": "Tu représentes les habitants et tu leur rends des comptes.",
+      "icon": "game-icons:greek-temple",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Élu municipal, ou président élu d'un conseil de quartier ou d'une instance consultative de la commune",
+        "Un mandat complet tenu, bilan présenté publiquement aux habitants"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "liste-municipale",
+          "rank": 1
+        },
+        {
+          "talentId": "exemple-civique",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "ma-commune-en-une-page",
+      "name": "Ma commune en une page",
+      "description": "Résumer qui décide quoi dans ta commune ; fait quand la page est écrite.",
+      "talents": [
+        "comprendre-commune"
+      ],
+      "steps": [
+        "Lister les compétences de la commune et de l'intercommunalité",
+        "Noter les élus et leurs délégations",
+        "Écrire la page"
+      ]
+    },
+    {
+      "id": "suivre-un-conseil",
+      "name": "Suivre un conseil",
+      "description": "Suivre un conseil municipal et noter 3 décisions.",
+      "talents": [
+        "conseil-municipal"
+      ],
+      "steps": [
+        "Trouver la date et l'ordre du jour",
+        "Suivre le conseil sur place ou en vidéo",
+        "Noter 3 décisions et ce qu'elles changent"
+      ]
+    },
+    {
+      "id": "premier-don",
+      "name": "Premier don",
+      "description": "Donner ton sang ou ton plasma.",
+      "talents": [
+        "don-du-sang"
+      ],
+      "steps": [
+        "Vérifier que tu peux donner (questionnaire en ligne de l'EFS)",
+        "Prendre rendez-vous",
+        "Donner"
+      ]
+    },
+    {
+      "id": "avis-public",
+      "name": "Avis public",
+      "description": "Donner ton avis dans une concertation ou une réunion publique.",
+      "talents": [
+        "prendre-la-parole"
+      ],
+      "steps": [
+        "Repérer une concertation ou une réunion publique en cours",
+        "Préparer ton avis en 5 lignes",
+        "Le déposer ou le dire en réunion"
+      ]
+    },
+    {
+      "id": "sujet-de-quartier",
+      "name": "Un sujet de quartier",
+      "description": "Porter un problème du quartier auprès d'un élu et suivre la réponse.",
+      "talents": [
+        "rencontrer-elus"
+      ],
+      "steps": [
+        "Choisir un problème précis et le documenter (photos, dates)",
+        "Le présenter à un élu",
+        "Relancer jusqu'à une réponse"
+      ]
+    },
+    {
+      "id": "moment-civique",
+      "name": "Moment civique",
+      "description": "Emmener l'enfant à un moment civique et lui expliquer en mots simples.",
+      "talents": [
+        "exemple-civique"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    }
+  ]
+}

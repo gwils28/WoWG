@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pilier-de-la-cite",
+    "name": "Pilier de la cité",
+    "icon": "game-icons:greek-temple"
+  },
+  "specialization": {
+    "id": "benevole-competences",
+    "name": "Bénévole de compétences",
+    "description": "Mettre gratuitement ta data, ton IA et tes mains au service d'associations et de causes locales.",
+    "icon": "game-icons:hand-of-god"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "associations-du-coin",
+      "name": "Associations du coin",
+      "description": "Savoir qui agit près de chez toi et de quoi ils manquent.",
+      "icon": "game-icons:treasure-map",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 associations locales repérées (forum des associations, mairie, annuaire), le besoin de chacune noté",
+        "3 associations rencontrées (permanence, assemblée générale, forum)"
+      ]
+    },
+    {
+      "id": "plateformes-benevolat",
+      "name": "Plateformes de bénévolat",
+      "description": "Rendre tes compétences visibles pour les associations qui en cherchent.",
+      "icon": "game-icons:laptop",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Profil créé sur une plateforme de bénévolat de compétences (Data for Good, Benevolt, Tous Bénévoles, Pro Bono Lab), compétences décrites",
+        "3 missions proposées étudiées, une candidature envoyée"
+      ]
+    },
+    {
+      "id": "ta-cause",
+      "name": "Ta cause",
+      "description": "Choisir où ton temps donné compte le plus pour toi.",
+      "icon": "game-icons:heart-drop",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Les 3 causes qui comptent pour toi écrites, avec pourquoi (éducation, numérique, climat, santé, jeunesse...)",
+        "Une cause choisie pour l'année, les associations de cette cause listées"
+      ]
+    },
+    {
+      "id": "cadre-du-benevole",
+      "name": "Cadre du bénévole",
+      "description": "Donner du temps sans le prendre à la famille.",
+      "icon": "game-icons:calendar",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Temps donné fixé (heures par mois) et validé avec l'autre parent",
+        "Convention ou charte de bénévolat lue et signée avec une association (assurance, confidentialité, propriété du travail)"
+      ]
+    },
+    {
+      "id": "mission-ponctuelle",
+      "name": "Mission ponctuelle",
+      "description": "Donner un coup de main concret à une association, sans engagement long.",
+      "icon": "game-icons:party-flags",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une mission ponctuelle pour une association (événement, chantier, stand, collecte)",
+        "3 missions ponctuelles pour au moins 2 associations"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "associations-du-coin",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mission-data",
+      "name": "Mission data",
+      "description": "Résoudre un problème de données d'une association.",
+      "icon": "game-icons:database",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une mission data courte livrée à une association (tableau de bord, nettoyage de fichier, automatisation simple)",
+        "3 missions data livrées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "plateformes-benevolat",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "besoin-asso",
+      "name": "Comprendre le besoin",
+      "description": "Cadrer avant de coder, avec les contraintes d'une association.",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Entretien de cadrage avec une association écrit : problème, utilisateurs, contraintes (budget nul, bénévoles non techniciens)",
+        "Cahier des charges d'une page validé par l'association"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ta-cause",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "benevole-regulier",
+      "name": "Bénévole régulier",
+      "description": "Devenir quelqu'un sur qui l'association compte.",
+      "icon": "game-icons:ancient-columns",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Bénévole dans une association au moins 2 fois par mois pendant 3 mois",
+        "Pendant 12 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mission-ponctuelle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "outil-durable",
+      "name": "Un outil qui dure",
+      "description": "Livrer quelque chose que l'association peut faire vivre sans toi.",
+      "icon": "game-icons:gears",
+      "tier": 3,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un outil livré à une association avec un guide pour non-techniciens (une page ou une vidéo)",
+        "Outil toujours utilisé 6 mois après, sans ton intervention"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mission-data",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "aide-numerique",
+      "name": "Aide numérique",
+      "description": "Aider ceux que le numérique laisse de côté.",
+      "icon": "game-icons:computer-fan",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Permanence d'aide numérique tenue 3 fois (démarches en ligne, seniors, familles)",
+        "Une fois par mois pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-du-benevole",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "embarquer-autres",
+      "name": "Embarquer les autres",
+      "description": "Amener ton entourage à donner aussi.",
+      "icon": "game-icons:team-upgrade",
+      "tier": 4,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "2 personnes de ton entourage amenées à donner du temps à une association",
+        "Une journée de bénévolat d'équipe organisée (collègues ou amis)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "benevole-regulier",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mesurer-impact",
+      "name": "Mesurer l'impact",
+      "description": "Savoir ce que ton aide a vraiment changé.",
+      "icon": "game-icons:chart",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Impact d'une mission mesuré avec l'association (temps gagné, personnes aidées, euros économisés)",
+        "Bilan annuel de ton bénévolat écrit : heures, missions, impact"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "besoin-asso",
+          "rank": 1
+        },
+        {
+          "talentId": "outil-durable",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "projet-collectif",
+      "name": "Projet d'intérêt général",
+      "description": "Travailler avec d'autres bénévoles techniques sur un projet utile.",
+      "icon": "game-icons:team-idea",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Participation à une saison ou un hackathon d'intérêt général (Data for Good, Latitudes) jusqu'au rendu",
+        "Référent technique d'une équipe sur un projet de ce type"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "outil-durable",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "mecenat",
+      "name": "Mécénat de compétences",
+      "description": "Faire entrer le bénévolat dans ton activité professionnelle.",
+      "icon": "game-icons:gift-of-knowledge",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Mécénat de compétences proposé à ton employeur ou à tes clients (journées données à une association)",
+        "Une mission en mécénat de compétences réalisée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "aide-numerique",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "bureau-asso",
+      "name": "Au bureau",
+      "description": "Prendre part à la conduite d'une association.",
+      "icon": "game-icons:ionic-column",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Élu au bureau ou au conseil d'administration d'une association",
+        "Un mandat complet tenu (1 à 3 ans selon les statuts)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "embarquer-autres",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "essaimer",
+      "name": "Essaimer",
+      "description": "Ce que tu as construit sert à d'autres associations.",
+      "icon": "game-icons:plant-seed",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un outil ou une méthode que tu as créé repris par une 2e association",
+        "Kit ouvert (modèle, guide) mis à disposition des associations"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mesurer-impact",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pilier-associatif",
+      "name": "Pilier associatif",
+      "description": "Une association de ton territoire tient mieux debout grâce à toi.",
+      "icon": "game-icons:greek-temple",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une association atteste, en assemblée générale ou dans son rapport d'activité, que ton aide a changé son fonctionnement",
+        "Un projet d'intérêt général que tu as lancé continue avec d'autres bénévoles, sans toi"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "bureau-asso",
+          "rank": 1
+        },
+        {
+          "talentId": "projet-collectif",
+          "rank": 1
+        },
+        {
+          "talentId": "essaimer",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "reperage-assos",
+      "name": "Repérage des associations",
+      "description": "Repérer une association locale et noter ce dont elle manque.",
+      "talents": [
+        "associations-du-coin"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "profil-benevole",
+      "name": "Profil de bénévole",
+      "description": "Créer ton profil sur une plateforme de bénévolat de compétences ; fait quand tes compétences sont décrites.",
+      "talents": [
+        "plateformes-benevolat"
+      ],
+      "steps": [
+        "Choisir une plateforme",
+        "Décrire tes compétences en mots simples (data, IA, bricolage)",
+        "Indiquer ta disponibilité réelle"
+      ]
+    },
+    {
+      "id": "premiere-mission",
+      "name": "Première mission",
+      "description": "Donner un coup de main à une association lors d'un événement ou d'un chantier.",
+      "talents": [
+        "mission-ponctuelle"
+      ],
+      "steps": [
+        "Choisir l'association et la date",
+        "Faire la mission",
+        "Noter ce que tu as fait et ce qui t'a plu"
+      ]
+    },
+    {
+      "id": "cadrage-asso",
+      "name": "Cadrage avec une association",
+      "description": "Mener l'entretien de cadrage ; fait quand le besoin tient en une page.",
+      "talents": [
+        "besoin-asso"
+      ],
+      "steps": [
+        "Préparer 5 questions (problème, utilisateurs, outils actuels, contraintes, délai)",
+        "Mener l'entretien",
+        "Écrire le besoin sur une page et le faire relire"
+      ]
+    },
+    {
+      "id": "livrer-mission-data",
+      "name": "Livrer une mission data",
+      "description": "Livrer une mission data courte à une association ; faite quand elle l'utilise.",
+      "talents": [
+        "mission-data"
+      ],
+      "steps": [
+        "Valider le périmètre avec l'association",
+        "Réaliser et livrer",
+        "Vérifier que l'association sait s'en servir"
+      ]
+    },
+    {
+      "id": "presence-asso",
+      "name": "Présence à l'association",
+      "description": "Donner un créneau à l'association et noter ce que tu as fait.",
+      "talents": [
+        "benevole-regulier"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "permanence-numerique",
+      "name": "Permanence numérique",
+      "description": "Tenir une permanence d'aide numérique et noter les demandes.",
+      "talents": [
+        "aide-numerique"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "guide-une-page",
+      "name": "Guide en une page",
+      "description": "Écrire le guide d'utilisation d'un outil livré ; fait quand un bénévole non technicien s'en sert seul.",
+      "talents": [
+        "outil-durable"
+      ],
+      "steps": [
+        "Écrire le guide en une page (ou enregistrer une vidéo courte)",
+        "Le faire tester par un bénévole non technicien",
+        "Corriger selon ses difficultés"
+      ]
+    }
+  ]
+}

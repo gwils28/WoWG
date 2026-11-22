@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pedagogue-mentor",
+    "name": "Mentor",
+    "icon": "game-icons:teacher"
+  },
+  "specialization": {
+    "id": "boussole-numerique",
+    "name": "Boussole numérique",
+    "description": "Donner à ton enfant une boussole critique face aux écrans, à l'information et à l'IA, en commençant par tes propres usages.",
+    "icon": "game-icons:compass"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "telephone-a-sa-place",
+      "name": "Le téléphone à sa place",
+      "description": "Montrer l'exemple : le téléphone a une place à la maison, hors des mains en présence de l'enfant.",
+      "icon": "game-icons:smartphone",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un endroit fixe pour ton téléphone à la maison (panier, entrée), utilisé quand tu es avec l'enfant 5 jours sur 7 pendant 4 semaines",
+        "Même rythme pendant 12 semaines"
+      ]
+    },
+    {
+      "id": "mes-sources",
+      "name": "Mes sources",
+      "description": "Savoir d'où vient l'information que tu consommes.",
+      "icon": "game-icons:newspaper",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Sources d'info et comptes suivis passés en revue : chacun classé (information, opinion, publicité), les douteux retirés",
+        "Une rubrique de décryptage ou de fact-checking lue chaque semaine pendant 2 mois"
+      ]
+    },
+    {
+      "id": "biais-et-ruses",
+      "name": "Biais et ruses",
+      "description": "Reconnaître les pièges de l'esprit et des médias.",
+      "icon": "game-icons:fishing-hook",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche de 10 biais et ruses (titre choc, chiffre sans base, photo hors contexte, biais de confirmation), chacun avec un exemple vu",
+        "5 ruses repérées en direct dans tes propres lectures, notées sur la fiche"
+      ]
+    },
+    {
+      "id": "charte-ia",
+      "name": "Charte IA du foyer",
+      "description": "Décider comment l'IA est utilisée à la maison.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Charte d'usage de l'IA à la maison écrite (ce que tu délègues, ce que tu vérifies, données jamais partagées, place des enfants)",
+        "Charte discutée et adoptée avec l'autre parent"
+      ]
+    },
+    {
+      "id": "regarder-ensemble",
+      "name": "Regarder ensemble",
+      "description": "Un contenu partagé devient une conversation, sans écran avant 3 ans.",
+      "icon": "game-icons:tv",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 contenus partagés avec l'enfant (album ou imagier avant 3 ans, écran ensuite), suivis de 2 questions : qu'as-tu aimé ? c'était vrai ou inventé ?",
+        "30 contenus partagés et discutés ainsi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "telephone-a-sa-place",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vrai-ou-pour-de-faux",
+      "name": "Vrai ou pour de faux ?",
+      "description": "Jouer à distinguer le réel de l'imaginaire, dès le plus jeune âge.",
+      "icon": "game-icons:perspective-dice-six-faces-random",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Jeu « vrai ou pour de faux ? » joué 10 fois avec l'enfant (histoire, dessin animé, image)",
+        "L'enfant pose de lui-même la question « c'est vrai ? » sur un contenu, 5 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "mes-sources",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "expliquer-ia-enfant",
+      "name": "L'IA expliquée aux enfants",
+      "description": "Préparer une explication de l'IA à hauteur d'enfant.",
+      "icon": "game-icons:robot-golem",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Explication pour un enfant de 6 à 10 ans préparée : une analogie, une petite démo, 3 choses que l'IA ne sait pas faire",
+        "Explication donnée à un enfant de cet âge (neveu, enfant d'amis), ses questions notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "charte-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decrypter-pub",
+      "name": "Décrypter la pub",
+      "description": "Apprendre à l'enfant à voir qui parle et ce qu'on veut lui faire faire.",
+      "icon": "game-icons:shop",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "10 publicités décryptées avec l'enfant (qui paie ? que veut-on te faire faire ou acheter ?)",
+        "L'enfant repère seul une publicité cachée (placement de produit, influenceur), 3 fois notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "regarder-ensemble",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "trois-questions",
+      "name": "Les 3 questions",
+      "description": "Un réflexe familial face à une info : qui dit ça, comment le sait-il, que veut-il ?",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Les 3 questions (qui dit ça ? comment le sait-il ? que veut-il ?) affichées à la maison",
+        "Posées ensemble sur 10 infos, rumeurs ou vidéos ramenées par l'enfant"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "biais-et-ruses"
+        }
+      ]
+    },
+    {
+      "id": "vie-privee-enfant",
+      "name": "Vie privée de l'enfant",
+      "description": "Protéger l'image de l'enfant et lui apprendre que ses données comptent.",
+      "icon": "game-icons:padlock",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Règles sur les photos de l'enfant en ligne décidées avec l'autre parent et la famille (aucune publique, qui peut partager quoi)",
+        "Accord de l'enfant demandé avant toute photo partagée, dès 4 ans, pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vrai-ou-pour-de-faux",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pieger-ia",
+      "name": "Prendre l'IA en défaut",
+      "description": "Montrer à l'enfant que l'IA se trompe et invente.",
+      "icon": "game-icons:cracked-glass",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances avec l'enfant pour prendre une IA en défaut (erreur, invention, image truquée)",
+        "L'enfant repère seul une erreur d'une IA et explique pourquoi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "expliquer-ia-enfant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "creer-plutot-que-consommer",
+      "name": "Créer plutôt que consommer",
+      "description": "Utiliser le numérique pour fabriquer, pas seulement pour regarder.",
+      "icon": "game-icons:film-strip",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un projet numérique créatif mené au bout avec l'enfant (film en stop-motion, morceau enregistré, livre photo raconté)",
+        "Premiers pas en programmation (jeu débranché, ScratchJr) sur 5 séances"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "decrypter-pub",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "parler-ecrans",
+      "name": "Parler de ce qu'il voit",
+      "description": "Une porte ouverte pour que l'enfant parle de ce qu'il voit en ligne.",
+      "icon": "game-icons:chat-bubble",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Question « qu'as-tu vu d'étonnant sur un écran cette semaine ? » posée chaque semaine pendant 2 mois",
+        "L'enfant vient de lui-même te montrer un contenu qui l'a gêné ou troublé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "trois-questions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "premier-appareil",
+      "name": "Premier appareil",
+      "description": "Préparer ensemble le premier téléphone, la première tablette ou le premier compte.",
+      "icon": "game-icons:contract",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Contrat écrit avec l'enfant pour son premier appareil ou compte (durées, lieux, contenus, que faire en cas de problème)",
+        "Contrat revu ensemble tous les 6 mois, 2 révisions"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vie-privee-enfant"
+        },
+        {
+          "talentId": "parler-ecrans",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ia-pour-apprendre",
+      "name": "L'IA pour apprendre",
+      "description": "Utiliser l'IA comme un tuteur, jamais pour faire à sa place.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "10 séances où l'enfant utilise une IA pour comprendre (expliquer, quiz), jamais pour faire à sa place",
+        "L'enfant explique avec ses mots quand l'IA l'aide et quand elle triche à sa place"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pieger-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "boussole",
+      "name": "Boussole critique",
+      "description": "Ton enfant s'oriente seul dans le monde numérique.",
+      "icon": "game-icons:compass",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "L'enfant démonte seul une fausse info ou une arnaque et t'explique comment il l'a repérée",
+        "Il tient son contrat d'appareil 3 mois sans rappel de ta part"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "premier-appareil",
+          "rank": 1
+        },
+        {
+          "talentId": "ia-pour-apprendre",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "telephone-au-panier",
+      "name": "Téléphone au panier",
+      "description": "Poser ton téléphone à sa place fixe en rentrant, tant que tu es avec l'enfant.",
+      "talents": [
+        "telephone-a-sa-place"
+      ],
+      "recurrence": {
+        "times": 5,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "grand-menage-sources",
+      "name": "Grand ménage des sources",
+      "description": "Passer en revue tes sources d'info et tes abonnements ; fait quand les douteux sont retirés.",
+      "talents": [
+        "mes-sources"
+      ],
+      "steps": [
+        "Lister les sources et comptes que tu suis",
+        "Classer chacun : information, opinion ou publicité",
+        "Retirer les sources douteuses"
+      ]
+    },
+    {
+      "id": "ruse-de-la-semaine",
+      "name": "Ruse de la semaine",
+      "description": "Repérer une ruse ou un biais dans ce que tu lis et l'ajouter à la fiche avec l'exemple.",
+      "talents": [
+        "biais-et-ruses"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "ecrire-la-charte-ia",
+      "name": "Écrire la charte IA",
+      "description": "Rédiger la charte d'usage de l'IA du foyer ; faite quand elle tient sur une page.",
+      "talents": [
+        "charte-ia"
+      ],
+      "steps": [
+        "Lister ce que tu délègues déjà à une IA",
+        "Écrire ce que tu vérifies toujours et les données jamais partagées",
+        "Préciser la place des enfants"
+      ]
+    },
+    {
+      "id": "jeu-vrai-faux",
+      "name": "Jeu du vrai ou faux",
+      "description": "Jouer avec l'enfant à « vrai ou pour de faux ? » sur une histoire, une image ou un dessin animé.",
+      "talents": [
+        "vrai-ou-pour-de-faux"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "pub-decryptee",
+      "name": "Pub décryptée",
+      "description": "Décrypter une publicité avec l'enfant : qui paie, que veut-on lui faire faire ?",
+      "talents": [
+        "decrypter-pub"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "chasse-aux-erreurs",
+      "name": "Chasse aux erreurs",
+      "description": "Chercher avec l'enfant une erreur ou une invention d'une IA et en parler.",
+      "talents": [
+        "pieger-ia"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "question-de-la-semaine",
+      "name": "Question de la semaine",
+      "description": "Demander à l'enfant ce qu'il a vu d'étonnant sur un écran cette semaine, et écouter.",
+      "talents": [
+        "parler-ecrans"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    }
+  ]
+}

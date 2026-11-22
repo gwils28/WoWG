@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "vigie-du-monde",
+    "name": "Vigie du monde",
+    "icon": "game-icons:spyglass"
+  },
+  "specialization": {
+    "id": "rapports-de-force",
+    "name": "Rapports de force",
+    "description": "Lire le monde par l'histoire longue, la géographie, l'énergie, la démographie et la technologie, jusqu'à la rivalité autour de l'IA.",
+    "icon": "game-icons:world"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "temps-long",
+      "name": "Le temps long contre le flash",
+      "description": "Remplacer l'actualité en continu par des formats qui expliquent les causes.",
+      "icon": "game-icons:hourglass",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "4 semaines sans chaîne d'info en continu ni flash d'actualité, remplacés par un format long de géopolitique par semaine (podcast, revue, documentaire)",
+        "Même rythme pendant 12 semaines",
+        "Même rythme pendant 26 semaines"
+      ]
+    },
+    {
+      "id": "carte-muette",
+      "name": "Carte muette",
+      "description": "Savoir où sont les pays et les passages qui comptent.",
+      "icon": "game-icons:treasure-map",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "50 pays placés sans erreur sur une carte muette (quiz en ligne)",
+        "150 pays placés sans erreur",
+        "Les 8 détroits et canaux stratégiques (Ormuz, Malacca, Bab-el-Mandeb, Bosphore, Suez, Panama, Gibraltar, Taïwan) placés et leur rôle expliqué"
+      ]
+    },
+    {
+      "id": "ressources-energie",
+      "name": "Énergie et ressources",
+      "description": "Savoir qui produit ce dont le monde dépend.",
+      "icon": "game-icons:oil-rig",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carte des 5 premiers producteurs de pétrole, gaz, uranium, cuivre et terres rares dressée, sources notées",
+        "Mix énergétique de 5 grandes puissances comparé dans un tableau (AIE, Our World in Data)"
+      ]
+    },
+    {
+      "id": "ia-puissance",
+      "name": "L'IA, enjeu de puissance",
+      "description": "Comprendre pourquoi les puces et l'IA sont devenues une arme géopolitique.",
+      "icon": "game-icons:processor",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Chaîne de fabrication des puces IA tracée : conception, fonderie, machines de lithographie, matériaux, pays et entreprises",
+        "Contrôles à l'export sur les puces et les machines depuis 2022 résumés : qui vise qui, quels effets constatés"
+      ]
+    },
+    {
+      "id": "frise-histoire",
+      "name": "Frise du monde contemporain",
+      "description": "Avoir en tête la chronologie qui explique le présent.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Frise 1945 à aujourd'hui de 30 événements clés écrite de mémoire, puis corrigée",
+        "Frise étendue à 1815-1945, 50 événements, écrite de mémoire puis corrigée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "temps-long",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "dossier-pays",
+      "name": "Grille pays",
+      "description": "Analyser un pays avec toujours la même grille.",
+      "icon": "game-icons:flag-objective",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Grille pays (régime, population et âge médian, ressources, dépendances, alliances, conflits) remplie pour 3 pays",
+        "10 pays, dont les 5 membres permanents du Conseil de sécurité"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "carte-muette",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "dependances-europe",
+      "name": "Dépendances de l'Europe",
+      "description": "Savoir de qui l'Europe dépend pour son énergie et ses industries.",
+      "icon": "game-icons:oil-drum",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Dépendances de l'Europe cartographiées (gaz, pétrole, uranium, métaux critiques, panneaux solaires, batteries) avec les pays fournisseurs",
+        "Crise pétrolière de 1973 racontée : causes, effets, ce qui a changé ensuite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ressources-energie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "regulation-ia",
+      "name": "Régulations de l'IA",
+      "description": "Connaître les règles du jeu de l'IA selon les blocs.",
+      "icon": "game-icons:scales",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "AI Act résumé sur une page : niveaux de risque, obligations, calendrier",
+        "Approches réglementaires des États-Unis, de la Chine et de l'UE comparées dans un tableau"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "ia-puissance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "origines-conflits",
+      "name": "Origines des conflits",
+      "description": "Remonter aux causes historiques des conflits en cours.",
+      "icon": "game-icons:crossed-swords",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Origines historiques de 3 conflits en cours retracées, une page chacun (Ukraine, Proche-Orient, Sahel, Soudan...)",
+        "5 conflits retracés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "frise-histoire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "demographie",
+      "name": "Démographie",
+      "description": "Lire l'avenir d'un pays dans sa pyramide des âges.",
+      "icon": "game-icons:family-tree",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Pyramides des âges de 5 pays comparées (Japon, Nigeria, Chine, France, Inde), conséquences notées",
+        "Projections de l'ONU à 2050 lues pour 3 régions, enjeux écrits (retraites, migrations, main-d'œuvre)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "dependances-europe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "grilles-croisees",
+      "name": "Croiser les grilles",
+      "description": "Expliquer une crise en reliant histoire, géographie, ressources et démographie.",
+      "icon": "game-icons:convergence-target",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une crise actuelle analysée avec 4 grilles (histoire, géographie, ressources, démographie), une page",
+        "3 crises analysées ainsi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "dossier-pays",
+          "rank": 1
+        },
+        {
+          "talentId": "origines-conflits",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "duel-du-siecle",
+      "name": "Le duel du siècle",
+      "description": "Comprendre la rivalité entre les États-Unis et la Chine, et la place de l'Europe.",
+      "icon": "game-icons:chess-king",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Note sur 5 terrains de rivalité États-Unis / Chine (Taïwan, mer de Chine, puces, dollar, Afrique)",
+        "Position de l'Europe et de la France ajoutée pour chaque terrain"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "regulation-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "cartes-qui-parlent",
+      "name": "Cartes qui parlent",
+      "description": "Savoir ce qu'une carte montre, cache ou veut faire croire.",
+      "icon": "game-icons:compass",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 cartes de presse ou d'État analysées : projection, échelle, choix des couleurs, ce qu'elles montrent et cachent",
+        "Une carte faite par toi pour expliquer une crise, comprise par un proche"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "origines-conflits",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "monde-a-table",
+      "name": "Le monde à table",
+      "description": "Expliquer un événement mondial en famille avec du recul, sans anxiété.",
+      "icon": "game-icons:round-table",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un événement mondial expliqué en famille avec une carte et du recul historique, 5 fois notées",
+        "Une question de ton enfant sur une guerre ou une catastrophe reçue avec une réponse à sa hauteur, qui le rassure (vers 6 ans et plus)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "grilles-croisees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "debat-nuance",
+      "name": "Débattre avec nuance",
+      "description": "Défendre un point de vue avec calme, en commençant par comprendre l'autre.",
+      "icon": "game-icons:public-speaker",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 discussions sur un sujet international où tu as exposé la position adverse avant la tienne, notées",
+        "Un désaccord vif sur un sujet international mené sans hausser le ton, en concédant un point juste à l'autre"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cartes-qui-parlent",
+          "rank": 1
+        },
+        {
+          "talentId": "grilles-croisees",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "note-synthese",
+      "name": "Note de synthèse",
+      "description": "Écrire une analyse courte et sourcée sur une crise ou un pays.",
+      "icon": "game-icons:quill-ink",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Note de 2 pages sur un pays ou une crise, avec des sources de 3 pays différents, relue par quelqu'un",
+        "4 notes dans l'année"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "duel-du-siecle",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vigie",
+      "name": "Vigie",
+      "description": "Tu lis une crise nouvelle avec tes propres grilles, et le temps te donne raison.",
+      "icon": "game-icons:spyglass",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Une crise nouvelle analysée par écrit dans la semaine où elle éclate, puis relue 6 mois plus tard : causes principales bien identifiées",
+        "Même exercice réussi sur 3 crises en 2 ans"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "debat-nuance",
+          "rank": 1
+        },
+        {
+          "talentId": "note-synthese",
+          "rank": 1
+        },
+        {
+          "talentId": "monde-a-table",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "format-long-de-la-semaine",
+      "name": "Format long de la semaine",
+      "description": "Écouter un podcast ou lire un dossier de géopolitique de fond à la place de l'info en continu (aucune chaîne d'info ni flash cette semaine), et noter l'idée principale.",
+      "talents": [
+        "temps-long"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "quiz-carte-muette",
+      "name": "Quiz de carte muette",
+      "description": "Faire 10 min de quiz de carte muette et noter le score.",
+      "talents": [
+        "carte-muette"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "frise-de-memoire",
+      "name": "Frise de mémoire",
+      "description": "Écrire la frise 1945 à aujourd'hui de mémoire ; faite quand elle est corrigée.",
+      "talents": [
+        "frise-histoire"
+      ],
+      "steps": [
+        "Écrire de mémoire 30 événements avec leur date",
+        "Corriger avec une source (manuel, atlas historique)",
+        "Noter les 5 erreurs ou oublis à retenir"
+      ]
+    },
+    {
+      "id": "grille-pays-de-la-semaine",
+      "name": "Grille pays de la semaine",
+      "description": "Remplir la grille pays pour un nouveau pays.",
+      "talents": [
+        "dossier-pays"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "month",
+        "periods": 2
+      }
+    },
+    {
+      "id": "chaine-des-puces",
+      "name": "La chaîne des puces",
+      "description": "Tracer la chaîne de fabrication des puces IA ; faite quand chaque maillon a ses pays et ses entreprises.",
+      "talents": [
+        "ia-puissance"
+      ],
+      "steps": [
+        "Lister les maillons : conception, fonderie, lithographie, matériaux, assemblage",
+        "Pour chacun, noter les pays et les entreprises qui dominent",
+        "Repérer les 3 goulets d'étranglement"
+      ]
+    },
+    {
+      "id": "origine-d-un-conflit",
+      "name": "Origine d'un conflit",
+      "description": "Retracer en une page les origines historiques d'un conflit en cours.",
+      "talents": [
+        "origines-conflits"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "quatre-grilles",
+      "name": "Les 4 grilles",
+      "description": "Analyser une crise actuelle avec les 4 grilles ; faite quand la page est écrite.",
+      "talents": [
+        "grilles-croisees"
+      ],
+      "steps": [
+        "Choisir une crise actuelle",
+        "Noter ce que disent l'histoire, la géographie, les ressources et la démographie",
+        "Écrire la page qui relie les 4"
+      ]
+    },
+    {
+      "id": "le-monde-en-famille",
+      "name": "Le monde en famille",
+      "description": "Expliquer un événement mondial en famille avec une carte, et noter comment ça s'est passé.",
+      "talents": [
+        "monde-a-table"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "position-adverse",
+      "name": "Position de l'autre",
+      "description": "Dans une discussion sur l'actualité, exposer la position adverse avant la tienne, puis le noter.",
+      "talents": [
+        "debat-nuance"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pilier-de-la-cite",
+    "name": "Pilier de la cité",
+    "icon": "game-icons:greek-temple"
+  },
+  "specialization": {
+    "id": "encadrant-jeunes",
+    "name": "Encadrant de jeunes",
+    "description": "Transmettre aux jeunes dans un club ou une structure (échecs, boxe éducative, musique, numérique), jusqu'au diplôme d'encadrant.",
+    "icon": "game-icons:whistle"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "trouver-structure",
+      "name": "Trouver sa structure",
+      "description": "Choisir où encadrer, selon tes passions et ton temps.",
+      "icon": "game-icons:castle",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 structures jeunesse contactées (club d'échecs, de boxe, école de musique, centre social, atelier de code)",
+        "Une séance jeunes observée en binôme avec un encadrant en place"
+      ]
+    },
+    {
+      "id": "cadre-legal-encadrant",
+      "name": "Cadre de l'encadrant",
+      "description": "Connaître les obligations quand on s'occupe de mineurs.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Obligations de l'encadrant bénévole résumées (honorabilité, assurance, autorisations parentales, signalement)",
+        "Contrôle d'honorabilité fait par la structure"
+      ]
+    },
+    {
+      "id": "jeunes-par-age",
+      "name": "Les jeunes par âge",
+      "description": "Savoir ce qui motive un enfant de 7 ans et un ado de 14.",
+      "icon": "game-icons:kid-slide",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des besoins par âge (6-8, 9-11, 12-15 ans) : attention, motivation, ce qui marche",
+        "Fiche complétée par l'avis d'un éducateur ou d'un enseignant"
+      ]
+    },
+    {
+      "id": "coup-de-main-club",
+      "name": "Coup de main au club",
+      "description": "Aider lors des événements jeunes avant d'encadrer.",
+      "icon": "game-icons:party-flags",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Aide à un événement jeunes du club (tournoi, gala, fête de fin d'année)",
+        "3 événements"
+      ]
+    },
+    {
+      "id": "assistant",
+      "name": "Assistant encadrant",
+      "description": "Apprendre le métier aux côtés d'un encadrant.",
+      "icon": "game-icons:meeple-group",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 séances jeunes coanimées avec un encadrant",
+        "15 séances"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "trouver-structure",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "diplome-initiateur",
+      "name": "Diplôme d'initiateur",
+      "description": "Se former pour encadrer dans les règles de la fédération.",
+      "icon": "game-icons:diploma",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Formation fédérale d'initiateur commencée (DIFFE aux échecs, initiateur FFBoxe, BAFA ou équivalent)",
+        "Diplôme obtenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "cadre-legal-encadrant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "gerer-groupe",
+      "name": "Tenir un groupe",
+      "description": "Poser un cadre qui laisse la place au jeu.",
+      "icon": "game-icons:whistle",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Règles du groupe posées en début de séance et rappelées, 5 séances notées",
+        "Une séance agitée reprise en main sans crier, retour écrit"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeunes-par-age",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "seance-autonome",
+      "name": "Séance en autonomie",
+      "description": "Préparer et animer seul une séance jeunes.",
+      "icon": "game-icons:notebook",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une séance jeunes préparée et animée seul",
+        "10 séances"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "assistant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "evenement-jeunes",
+      "name": "Événement jeunes",
+      "description": "Organiser un moment fort pour les jeunes du club.",
+      "icon": "game-icons:trophy",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Un tournoi, une démonstration ou des portes ouvertes jeunes organisés",
+        "Un événement entre plusieurs groupes ou plusieurs clubs organisé"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "coup-de-main-club",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "progression-groupe",
+      "name": "Faire progresser un groupe",
+      "description": "Voir un groupe avancer sur une saison.",
+      "icon": "game-icons:stairs",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Progression d'un groupe suivie sur une saison (tests, niveaux ou grades)",
+        "Plus de la moitié des jeunes réinscrits la saison suivante"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "seance-autonome",
+          "rank": 1
+        },
+        {
+          "talentId": "diplome-initiateur",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "lien-parents",
+      "name": "Lien avec les parents",
+      "description": "Faire équipe avec les familles des jeunes.",
+      "icon": "game-icons:talk",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Point avec les parents en fin de trimestre (progrès, comportement), 3 trimestres",
+        "Réunion de parents animée en début de saison"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "gerer-groupe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "jeune-en-difficulte",
+      "name": "Jeune en difficulté",
+      "description": "Accompagner celui qui risque de décrocher.",
+      "icon": "game-icons:ground-sprout",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Un jeune en difficulté suivi 3 mois avec l'accord de la structure et des parents, points notés",
+        "Il reste dans l'activité la saison suivante"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "seance-autonome",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "diplome-superieur",
+      "name": "Diplôme d'entraîneur",
+      "description": "Passer au niveau d'encadrement supérieur.",
+      "icon": "game-icons:graduate-cap",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Formation du niveau supérieur commencée (DAFFE aux échecs, moniteur FFBoxe, animateur)",
+        "Diplôme obtenu"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "progression-groupe",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "accompagner-competition",
+      "name": "Accompagner en compétition",
+      "description": "Être là pour les jeunes quand ça compte.",
+      "icon": "game-icons:medal",
+      "tier": 5,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Jeunes accompagnés à une compétition ou une représentation (logistique, coaching, encouragements)",
+        "3 sorties"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "evenement-jeunes",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "saison-complete",
+      "name": "Saison complète",
+      "description": "Tenir un engagement d'encadrant sur la durée.",
+      "icon": "game-icons:calendar-half-year",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une saison entière encadrée (de septembre à juin), moins de 3 absences",
+        "2 saisons"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "jeune-en-difficulte",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "former-releve",
+      "name": "Former la relève",
+      "description": "Accompagner un nouvel encadrant jusqu'à l'autonomie.",
+      "icon": "game-icons:torch",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un nouvel encadrant ou un jeune assistant accompagné jusqu'à animer seul",
+        "2 encadrants formés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lien-parents",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "responsable-jeunes",
+      "name": "Responsable des jeunes",
+      "description": "La section jeunes vit et grandit sous ta responsabilité.",
+      "icon": "game-icons:star-medal",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Responsable de la section jeunes ou d'un groupe pendant 3 saisons, effectif stable ou en hausse",
+        "Un de tes jeunes atteint un niveau reconnu (titre départemental, examen de conservatoire, grade fédéral)"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "diplome-superieur",
+          "rank": 1
+        },
+        {
+          "talentId": "saison-complete",
+          "rank": 1
+        },
+        {
+          "talentId": "former-releve",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "trois-structures",
+      "name": "Trois structures",
+      "description": "Contacter 3 structures jeunesse ; fait quand les 3 ont répondu ou ont été relancées.",
+      "talents": [
+        "trouver-structure"
+      ],
+      "steps": [
+        "Lister les structures proches liées à tes passions",
+        "Contacter les 3 plus adaptées",
+        "Noter leurs besoins et leurs horaires"
+      ]
+    },
+    {
+      "id": "fiche-cadre-legal",
+      "name": "Fiche du cadre légal",
+      "description": "Résumer les obligations de l'encadrant de mineurs ; fait quand la fiche est relue par la structure.",
+      "talents": [
+        "cadre-legal-encadrant"
+      ],
+      "steps": [
+        "Lire les règles de la fédération ou de la structure",
+        "Résumer honorabilité, assurance, autorisations et signalement",
+        "Faire relire par un responsable"
+      ]
+    },
+    {
+      "id": "fiche-des-ages",
+      "name": "Fiche des âges",
+      "description": "Écrire la fiche des besoins par âge ; faite quand les 3 tranches sont remplies.",
+      "talents": [
+        "jeunes-par-age"
+      ],
+      "steps": [
+        "Chercher les repères de développement par âge",
+        "Remplir les 3 tranches : attention, motivation, ce qui marche",
+        "Ajouter un exemple tiré de ton activité"
+      ]
+    },
+    {
+      "id": "seance-coanimee",
+      "name": "Séance coanimée",
+      "description": "Coanimer une séance jeunes avec un encadrant et noter ce que tu as appris.",
+      "talents": [
+        "assistant"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "formation-initiateur",
+      "name": "Formation d'initiateur",
+      "description": "S'inscrire à la formation fédérale d'initiateur et suivre la première session.",
+      "talents": [
+        "diplome-initiateur"
+      ],
+      "steps": [
+        "Trouver la prochaine session",
+        "S'inscrire",
+        "Suivre la première session"
+      ]
+    },
+    {
+      "id": "regles-du-groupe",
+      "name": "Règles du groupe",
+      "description": "Poser et rappeler les règles en début de séance, puis noter comment le groupe a réagi.",
+      "talents": [
+        "gerer-groupe"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "premiere-seance-seul",
+      "name": "Première séance seul",
+      "description": "Préparer et animer seul une séance jeunes.",
+      "talents": [
+        "seance-autonome"
+      ],
+      "steps": [
+        "Préparer la séance (objectif, déroulé, matériel)",
+        "L'animer",
+        "Noter ce qui a marché et ce que tu changerais"
+      ]
+    },
+    {
+      "id": "organiser-tournoi",
+      "name": "Organiser un tournoi",
+      "description": "Organiser un tournoi ou des portes ouvertes jeunes ; fait quand l'événement a eu lieu.",
+      "talents": [
+        "evenement-jeunes"
+      ],
+      "steps": [
+        "Fixer la date et le format avec le club",
+        "Prévenir les familles et préparer le matériel",
+        "Tenir l'événement",
+        "Faire le bilan avec le club"
+      ]
+    }
+  ]
+}

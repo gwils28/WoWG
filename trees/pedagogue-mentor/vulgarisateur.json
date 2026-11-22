@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "pedagogue-mentor",
+    "name": "Mentor",
+    "icon": "game-icons:teacher"
+  },
+  "specialization": {
+    "id": "vulgarisateur",
+    "name": "Vulgarisateur",
+    "description": "Transmettre ce que tu sais (Data/IA, musique, bricolage, échecs) : rendre simple, montrer, faire faire et vérifier que c'est compris.",
+    "icon": "game-icons:light-bulb"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "analogies",
+      "name": "Analogies",
+      "description": "Relier une notion difficile à quelque chose que la personne connaît déjà.",
+      "icon": "game-icons:puzzle",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Carnet d'analogies : 5 analogies notées pour des notions de tes domaines (réseau de neurones, accord, levier, ouverture)",
+        "20 analogies au carnet, chacune testée une fois sur quelqu'un et annotée (marche ou à revoir)"
+      ]
+    },
+    {
+      "id": "partir-de-l-autre",
+      "name": "Partir de l'autre",
+      "description": "Savoir ce que la personne sait déjà avant d'expliquer.",
+      "icon": "game-icons:conversation",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "5 explications commencées par « qu'est-ce que tu en sais déjà ? », réponses notées",
+        "15 explications commencées ainsi, point de départ ajusté selon la réponse"
+      ]
+    },
+    {
+      "id": "comment-on-apprend",
+      "name": "Comment on apprend",
+      "description": "Connaître les mécanismes de l'apprentissage pour mieux enseigner.",
+      "icon": "game-icons:brain",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche des 4 piliers de l'apprentissage (attention, engagement actif, retour sur l'erreur, consolidation) écrite, avec un exemple tiré de tes domaines pour chacun",
+        "Tes 5 règles pour enseigner écrites à partir de cette fiche, relues avant chaque séance préparée"
+      ]
+    },
+    {
+      "id": "montrer-faire-faire",
+      "name": "Montrer, puis faire faire",
+      "description": "Transmettre un geste en trois temps : je montre, on fait ensemble, tu fais seul.",
+      "icon": "game-icons:hand",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 savoir-faire transmis en trois temps (je montre, on fait ensemble, tu fais seul), notés",
+        "15 savoir-faire transmis ainsi, dans au moins 3 de tes domaines"
+      ]
+    },
+    {
+      "id": "schema-main",
+      "name": "Un dessin vaut mieux",
+      "description": "Expliquer avec un croquis plutôt qu'avec des mots seuls.",
+      "icon": "game-icons:quill-ink",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 notions expliquées avec un croquis fait à la main sur le moment",
+        "Kit visuel : 10 croquis réutilisables rangés (photo ou fichier), un par notion clé de tes domaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "analogies",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "sans-jargon",
+      "name": "Sans jargon",
+      "description": "Dire les choses avec les mots de celui qui écoute.",
+      "icon": "game-icons:thought-bubble",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Lexique de 20 mots de jargon de tes domaines, chacun traduit en mots simples",
+        "3 explications à un non-initié où il n'a relevé aucun mot incompris (question posée à la fin)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "partir-de-l-autre",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "verifier-compris",
+      "name": "Vérifier la compréhension",
+      "description": "Faire reformuler ou refaire plutôt que demander « c'est clair ? ».",
+      "icon": "game-icons:magnifying-glass",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "5 explications suivies d'une reformulation ou d'un essai par la personne, au lieu de « c'est clair ? »",
+        "15 explications vérifiées ainsi, incompréhensions repérées notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "montrer-faire-faire",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "raconter",
+      "name": "Raconter une histoire",
+      "description": "Faire passer une notion par un récit : un personnage, un problème, une solution.",
+      "icon": "game-icons:scroll-unfurled",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 notions racontées sous forme d'histoire (l'origine des échecs, la naissance de l'IA, l'histoire d'un standard)",
+        "Une même histoire racontée à un enfant et à un adulte, deux versions adaptées notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "schema-main",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "preparer-seance",
+      "name": "Préparer une séance",
+      "description": "Concevoir un petit moment d'apprentissage plutôt que l'improviser.",
+      "icon": "game-icons:notebook",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Fiche de séance de 30 min écrite : objectif en une phrase, 3 étapes, un exercice, une question de vérification",
+        "3 fiches de séance pour 3 domaines différents"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "comment-on-apprend"
+        }
+      ]
+    },
+    {
+      "id": "exercices-gradues",
+      "name": "Exercices gradués",
+      "description": "Proposer des marches à la bonne hauteur, du facile au difficile.",
+      "icon": "game-icons:stairs",
+      "tier": 3,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Pour une notion, 3 exercices du plus facile au plus dur conçus et essayés par quelqu'un",
+        "3 notions équipées de leurs exercices gradués"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "verifier-compris",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "vulgariser-ia",
+      "name": "Vulgariser l'IA",
+      "description": "Expliquer ce qu'est une IA, ce qu'elle fait bien et ses limites, à des non-techniciens.",
+      "icon": "game-icons:robot-golem",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Explication de 5 min de « ce qu'est une IA générative et ses limites » donnée à un proche non-tech, qui la réexplique avec ses mots",
+        "Même explication adaptée à 3 profils différents (ado, senior, collègue non-tech)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "sans-jargon"
+        },
+        {
+          "talentId": "raconter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "retour-apprenant",
+      "name": "Avis de l'apprenant",
+      "description": "Demander à celui qui apprend ce qui l'a aidé et ce qui l'a perdu.",
+      "icon": "game-icons:talk",
+      "tier": 4,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Après 3 séances, avis de la personne recueilli (ce qui a aidé, ce qui a perdu) et noté",
+        "Une fiche de séance corrigée avec ces avis puis rejouée"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "preparer-seance",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "une-page",
+      "name": "Une page pour non-initiés",
+      "description": "Résumer un sujet de ton métier en une page lisible par tous.",
+      "icon": "game-icons:papers",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une page « l'essentiel pour non-initiés » sur un sujet data ou IA, relue par un non-tech qui la comprend",
+        "3 pages de ce type réutilisées par d'autres (collègues, proches) sans que tu aies à réexpliquer"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "vulgariser-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "atelier-proches",
+      "name": "Atelier pour les proches",
+      "description": "Animer un petit atelier d'initiation pour la famille ou des amis.",
+      "icon": "game-icons:chess-knight",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Atelier d'une heure pour des proches (initiation échecs, bricolage, musique) préparé avec une fiche de séance et animé",
+        "3 ateliers animés, dont un dans un autre de tes domaines"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "retour-apprenant",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "initier-enfant",
+      "name": "Initier l'enfant",
+      "description": "Proposer tes passions à ton enfant par le jeu, sans jamais forcer.",
+      "icon": "game-icons:sprout",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Un de tes domaines (rythme, outils, pièces d'échecs) proposé en jeu 10 fois, l'enfant libre d'arrêter, notés",
+        "L'enfant redemande de lui-même l'activité, 5 fois notées",
+        "Un projet mené ensemble de bout en bout à son rythme (cabane, petit morceau, partie complète)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "raconter",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "accompagner-progression",
+      "name": "Accompagner une progression",
+      "description": "Suivre un proche dans un apprentissage sur la durée, hors cadre pro.",
+      "icon": "game-icons:path-distance",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un proche accompagné 3 mois dans un apprentissage (échecs, instrument, bricolage), objectif fixé ensemble et étapes notées",
+        "L'objectif fixé ensemble est atteint"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "atelier-proches",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "passeur",
+      "name": "Passeur de savoirs",
+      "description": "Ce que tu transmets continue de se transmettre sans toi.",
+      "icon": "game-icons:torch",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une personne que tu as initiée transmet à son tour ce qu'elle a appris à quelqu'un d'autre",
+        "Ton enfant t'explique avec ses mots une chose qu'il a apprise seul"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "initier-enfant",
+          "rank": 1
+        },
+        {
+          "talentId": "accompagner-progression",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "analogie-de-la-semaine",
+      "name": "Analogie de la semaine",
+      "description": "Trouver une analogie pour une notion de tes domaines et l'écrire dans le carnet.",
+      "talents": [
+        "analogies"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "que-sais-tu-deja",
+      "name": "Que sais-tu déjà ?",
+      "description": "Ouvrir une explication par « qu'est-ce que tu en sais déjà ? » et noter la réponse.",
+      "talents": [
+        "partir-de-l-autre"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "fiche-quatre-piliers",
+      "name": "Fiche des 4 piliers",
+      "description": "Écrire la fiche des 4 piliers de l'apprentissage ; faite quand chaque pilier a son exemple.",
+      "talents": [
+        "comment-on-apprend"
+      ],
+      "steps": [
+        "Choisir une source (livre, vidéo ou podcast sur les sciences de l'apprentissage)",
+        "Noter les 4 piliers en une phrase chacun",
+        "Ajouter un exemple tiré de tes domaines pour chaque pilier"
+      ]
+    },
+    {
+      "id": "croquis-de-la-semaine",
+      "name": "Croquis de la semaine",
+      "description": "Accompagner une explication d'un croquis à la main, puis le photographier.",
+      "talents": [
+        "schema-main"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 5
+      }
+    },
+    {
+      "id": "faire-reformuler",
+      "name": "Fais-le-moi dire",
+      "description": "Après une explication, demander à la personne de reformuler ou d'essayer, et noter ce qui coince.",
+      "talents": [
+        "verifier-compris"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "premiere-fiche-seance",
+      "name": "Première fiche de séance",
+      "description": "Préparer une séance de 30 min sur un sujet que tu maîtrises ; faite quand la fiche est complète.",
+      "talents": [
+        "preparer-seance"
+      ],
+      "steps": [
+        "Écrire l'objectif en une phrase",
+        "Découper en 3 étapes",
+        "Prévoir un exercice et une question de vérification"
+      ]
+    },
+    {
+      "id": "avis-apres-seance",
+      "name": "Avis après la séance",
+      "description": "Demander à l'apprenant ce qui l'a aidé et ce qui l'a perdu, et le noter sur la fiche.",
+      "talents": [
+        "retour-apprenant"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "atelier-une-heure",
+      "name": "Atelier d'une heure",
+      "description": "Animer un atelier d'initiation pour des proches ; fait quand l'atelier a eu lieu et que leurs avis sont notés.",
+      "talents": [
+        "atelier-proches"
+      ],
+      "steps": [
+        "Choisir le domaine et inviter les proches",
+        "Préparer la fiche de séance et le matériel",
+        "Animer l'atelier",
+        "Noter les avis des participants"
+      ]
+    },
+    {
+      "id": "jeu-de-decouverte",
+      "name": "Jeu de découverte",
+      "description": "Proposer à l'enfant un petit jeu autour de l'un de tes domaines, l'arrêter dès qu'il décroche, et le noter.",
+      "talents": [
+        "initier-enfant"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    }
+  ]
+}

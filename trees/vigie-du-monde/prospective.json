@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "vigie-du-monde",
+    "name": "Vigie du monde",
+    "icon": "game-icons:spyglass"
+  },
+  "specialization": {
+    "id": "prospective",
+    "name": "Prospective",
+    "description": "Anticiper plutôt que subir : signaux faibles, scénarios, prévisions notées, et ce que cela change pour ton métier et ton activité.",
+    "icon": "game-icons:crystal-ball"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "signaux-faibles",
+      "name": "Signaux faibles",
+      "description": "Repérer tôt ce qui pourrait devenir une tendance.",
+      "icon": "game-icons:radio-tower",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Carnet de signaux : un signal faible noté par semaine (techno, géopolitique, société) pendant 4 semaines",
+        "Pendant 12 semaines",
+        "Pendant 26 semaines, signaux regroupés en 3 tendances"
+      ]
+    },
+    {
+      "id": "previsions",
+      "name": "Prévisions notées",
+      "description": "Écrire ses prévisions avec une probabilité, pour pouvoir se corriger.",
+      "icon": "game-icons:dice-target",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 3,
+      "ranks": [
+        "10 prévisions écrites avec une probabilité et une date (« 70 % : l'UE adopte X avant juin »)",
+        "30 prévisions tranchées, score de Brier calculé",
+        "100 prévisions tranchées, courbe de calibration tracée"
+      ]
+    },
+    {
+      "id": "megatendances",
+      "name": "Grandes tendances",
+      "description": "Connaître les forces lentes qui façonnent les 20 prochaines années.",
+      "icon": "game-icons:horizon-road",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Carte de 8 grandes tendances (climat, démographie, IA, multipolarité, énergie, urbanisation, dette, santé) avec un chiffre chacune",
+        "Pour chacune, effet attendu à 10 ans sur ta région et ton métier"
+      ]
+    },
+    {
+      "id": "metier-ia",
+      "name": "Ton métier face à l'IA",
+      "description": "Voir lucidement ce que l'IA change dans ton propre travail.",
+      "icon": "game-icons:cyber-eye",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Tes tâches d'une semaine listées et classées : automatisables, augmentées, humaines",
+        "Même exercice refait 12 mois plus tard, écarts notés"
+      ]
+    },
+    {
+      "id": "lire-prospective",
+      "name": "Lire les prospectivistes",
+      "description": "S'appuyer sur ceux dont c'est le métier d'anticiper.",
+      "icon": "game-icons:telescope",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 rapports de prospective lus (France Stratégie, AIE, Forum économique mondial, Futuribles), 5 idées clés chacun",
+        "Un rapport par trimestre pendant un an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "signaux-faibles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pieges-prevision",
+      "name": "Pièges de la prévision",
+      "description": "Savoir pourquoi les prévisions échouent.",
+      "icon": "game-icons:cracked-mask",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "10 prévisions célèbres ratées étudiées, cause de chaque échec notée (prolonger la tendance, expert unique, excès de confiance)",
+        "Tes 10 premières prévisions tranchées : erreurs analysées, 3 leçons écrites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "previsions",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "secteurs-porteurs",
+      "name": "Secteurs qui recrutent",
+      "description": "Mesurer où va la demande dans ton métier.",
+      "icon": "game-icons:factory",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Offres d'emploi data et IA relevées pendant 3 mois : compétences demandées et secteurs qui recrutent, tableau",
+        "Même relevé un an après, 3 tendances notées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "metier-ia",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "scenarios-monde",
+      "name": "Scénarios du monde",
+      "description": "Imaginer plusieurs futurs plutôt que parier sur un seul.",
+      "icon": "game-icons:crossroad",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 scénarios contrastés à 10 ans écrits sur un sujet (Europe et énergie, Taïwan, IA et emploi), avec leurs signaux annonciateurs",
+        "Signaux suivis un an, scénario le plus probable mis à jour"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "lire-prospective",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "niches",
+      "name": "Niches porteuses",
+      "description": "Repérer où un indépendant data et IA aura de la valeur demain.",
+      "icon": "game-icons:target-arrows",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "5 niches pour un indépendant data et IA tirées de ta veille, chacune avec un signal de demande",
+        "Revue annuelle des niches : abandonnées, confirmées, nouvelles"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "megatendances",
+          "rank": 1
+        },
+        {
+          "talentId": "secteurs-porteurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "pre-mortem",
+      "name": "Pré-mortem",
+      "description": "Imaginer l'échec avant de décider, pour l'éviter.",
+      "icon": "game-icons:tied-scroll",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Pré-mortem d'un projet perso ou pro : « dans 2 ans, c'est un échec, pourquoi ? », 10 causes et 3 parades",
+        "Fait avant 3 décisions importantes"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pieges-prevision",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "competences-avenir",
+      "name": "Compétences d'avenir",
+      "description": "Choisir quoi apprendre et quoi laisser tomber, à partir de la veille.",
+      "icon": "game-icons:brain",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Plan annuel tiré de la veille : 2 compétences à acquérir, 1 à abandonner",
+        "Plan tenu et revu au bout d'un an"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "secteurs-porteurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "chocs-activite",
+      "name": "Chocs pour ton activité",
+      "description": "Savoir quels chocs mondiaux frapperaient ton revenu.",
+      "icon": "game-icons:earth-crack",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "5 chocs mondiaux qui toucheraient ton activité listés (récession, rupture de l'IA, crise énergétique...), probabilité et impact notés",
+        "Pour les 2 plus graves, parade professionnelle écrite (compétence, type de client, offre de repli)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "scenarios-monde",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "concours-prevision",
+      "name": "Concours de prévision",
+      "description": "Confronter tes prévisions à celles des autres.",
+      "icon": "game-icons:podium",
+      "tier": 5,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Inscrit sur une plateforme de prévision (Metaculus, Good Judgment Open), 10 questions prévues",
+        "Meilleur que la médiane sur 20 questions tranchées"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "pre-mortem",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "decider-en-avance",
+      "name": "Décider en avance",
+      "description": "Agir sur une tendance avant qu'elle soit évidente.",
+      "icon": "game-icons:empty-hourglass",
+      "tier": 6,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Une décision professionnelle prise en avance sur une tendance (formation, offre, client), raisonnement écrit et daté",
+        "Son résultat évalué 12 mois après"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chocs-activite",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "revue-prospective",
+      "name": "Revue prospective",
+      "description": "Chaque année, confronter ce que tu avais vu venir à ce qui est arrivé.",
+      "icon": "game-icons:calendar",
+      "tier": 6,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Revue de fin d'année : prévisions, scénarios et signaux confrontés aux faits, 3 leçons écrites",
+        "2 années de suite"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "concours-prevision",
+          "rank": 1
+        },
+        {
+          "talentId": "competences-avenir",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "coup-d-avance",
+      "name": "Un coup d'avance",
+      "description": "Tu vois venir les choses, preuves datées à l'appui.",
+      "icon": "game-icons:all-seeing-eye",
+      "tier": 7,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Un choc ou une tendance annoncé par écrit au moins 6 mois avant de devenir évident, preuve datée",
+        "Score de Brier sous 0,2 sur 50 prévisions tranchées"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "decider-en-avance",
+          "rank": 1
+        },
+        {
+          "talentId": "revue-prospective",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "signal-de-la-semaine",
+      "name": "Signal de la semaine",
+      "description": "Noter un signal faible dans le carnet, avec sa source et pourquoi il compte.",
+      "talents": [
+        "signaux-faibles"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "previsions-de-la-semaine",
+      "name": "Prévisions de la semaine",
+      "description": "Écrire une prévision avec une probabilité et une date de vérification.",
+      "talents": [
+        "previsions"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "semaine-au-crible",
+      "name": "Semaine au crible",
+      "description": "Classer les tâches d'une semaine de travail selon ce que l'IA en fait.",
+      "talents": [
+        "metier-ia"
+      ],
+      "steps": [
+        "Noter chaque tâche de la semaine",
+        "Classer : automatisable, augmentée, humaine",
+        "Écrire 3 constats"
+      ]
+    },
+    {
+      "id": "rapport-du-mois",
+      "name": "Rapport du mois",
+      "description": "Lire un rapport de prospective et en noter 5 idées clés.",
+      "talents": [
+        "lire-prospective"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "releve-des-offres",
+      "name": "Relevé des offres",
+      "description": "Relever les offres d'emploi data et IA du mois : compétences et secteurs.",
+      "talents": [
+        "secteurs-porteurs"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "trois-futurs",
+      "name": "Trois futurs",
+      "description": "Écrire 3 scénarios contrastés à 10 ans sur un sujet ; faite quand chacun a ses signaux annonciateurs.",
+      "talents": [
+        "scenarios-monde"
+      ],
+      "steps": [
+        "Choisir le sujet et les 2 incertitudes principales",
+        "Écrire 3 scénarios contrastés",
+        "Noter pour chacun 2 signaux annonciateurs"
+      ]
+    },
+    {
+      "id": "pre-mortem-d-un-projet",
+      "name": "Pré-mortem d'un projet",
+      "description": "Faire le pré-mortem d'un projet en cours ; fait quand les 3 parades sont écrites.",
+      "talents": [
+        "pre-mortem"
+      ],
+      "steps": [
+        "Imaginer le projet en échec dans 2 ans",
+        "Lister 10 causes possibles",
+        "Écrire 3 parades"
+      ]
+    },
+    {
+      "id": "questions-du-concours",
+      "name": "Questions du concours",
+      "description": "Faire une prévision sur une question de la plateforme et noter ton raisonnement.",
+      "talents": [
+        "concours-prevision"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 5
+      }
+    }
+  ]
+}

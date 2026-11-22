@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "domain": {
+    "id": "vigie-du-monde",
+    "name": "Vigie du monde",
+    "icon": "game-icons:spyglass"
+  },
+  "specialization": {
+    "id": "macroeconomie",
+    "name": "Macroéconomie",
+    "description": "Comprendre taux, inflation, dettes, énergie et chaînes d'approvisionnement, et ce qu'ils changent pour ton foyer et ton métier.",
+    "icon": "game-icons:coins"
+  },
+  "grid": {
+    "tiers": 7,
+    "columns": 4
+  },
+  "talents": [
+    {
+      "id": "indicateurs",
+      "name": "Tableau de bord macro",
+      "description": "Suivre les quelques chiffres qui résument l'état de l'économie.",
+      "icon": "game-icons:pie-chart",
+      "tier": 1,
+      "column": 1,
+      "maxRank": 3,
+      "ranks": [
+        "Tableau des 6 indicateurs (croissance, inflation, chômage, taux de la BCE, taux à 10 ans, prix du baril) rempli pour la France et la zone euro, sources notées",
+        "Mis à jour chaque mois pendant 6 mois",
+        "Pendant 12 mois, avec une phrase d'interprétation par mois"
+      ]
+    },
+    {
+      "id": "notions-cles",
+      "name": "Les mots de l'économie",
+      "description": "Connaître le vocabulaire de base pour lire l'actualité économique.",
+      "icon": "game-icons:open-book",
+      "tier": 1,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "20 notions définies avec un exemple (inflation, taux directeur, spread, récession, déficit, balance commerciale...)",
+        "Quiz de 40 questions sur ces notions réussi à 90 %"
+      ]
+    },
+    {
+      "id": "banques-centrales",
+      "name": "Banques centrales",
+      "description": "Comprendre ce que décident la BCE et la Fed, et pourquoi.",
+      "icon": "game-icons:bank",
+      "tier": 1,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Un communiqué de la BCE lu et résumé : décision, raisons, effets attendus",
+        "Décisions de la BCE et de la Fed suivies pendant un an, 8 réunions chacune"
+      ]
+    },
+    {
+      "id": "chaines-appro",
+      "name": "Chaînes d'approvisionnement",
+      "description": "Voir d'où viennent les objets et où ça peut casser.",
+      "icon": "game-icons:cargo-ship",
+      "tier": 1,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Chaîne de fabrication d'un objet du quotidien (smartphone, voiture, médicament) tracée : pays, étapes, goulets",
+        "Une rupture récente analysée (masques 2020, puces 2021, canal de Suez 2021) : causes, durée, effets sur les prix"
+      ]
+    },
+    {
+      "id": "inflation",
+      "name": "Inflation",
+      "description": "Comprendre la hausse des prix, la tienne et celle du pays.",
+      "icon": "game-icons:money-stack",
+      "tier": 2,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Inflation du foyer calculée sur 12 mois à partir des dépenses réelles et comparée à l'indice de l'INSEE",
+        "Causes de l'inflation 2021-2023 (énergie, demande, marges) expliquées dans une note"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "indicateurs",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "dettes-publiques",
+      "name": "Dettes publiques",
+      "description": "Savoir lire la dette d'un État et ce qui la rend dangereuse.",
+      "icon": "game-icons:stone-tablet",
+      "tier": 2,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Dette et déficit de la France, de l'Italie, des États-Unis et du Japon comparés (en % du PIB, charge des intérêts)",
+        "Une crise de dette étudiée (Grèce 2010, Royaume-Uni 2022) : mécanisme et contagion"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "notions-cles",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "taux-et-foyer",
+      "name": "Les taux et toi",
+      "description": "Relier les décisions des banques centrales à la vie du foyer.",
+      "icon": "game-icons:house",
+      "tier": 2,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Effet d'une hausse de 1 point des taux chiffré pour le foyer (crédit, livrets, obligations, prix de l'immobilier)",
+        "Même calcul pour une baisse de 1 point, les deux comparés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "banques-centrales",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "commerce-mondial",
+      "name": "Commerce et douanes",
+      "description": "Comprendre les échanges entre pays et les guerres commerciales.",
+      "icon": "game-icons:anchor",
+      "tier": 2,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Balance commerciale de la France lue par grands postes et résumée",
+        "Effets d'une guerre commerciale récente (droits de douane américains) sur 3 secteurs notés"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "chaines-appro",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "crises-economiques",
+      "name": "Crises économiques",
+      "description": "Reconnaître les mécanismes des grandes crises.",
+      "icon": "game-icons:tower-fall",
+      "tier": 3,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "3 crises comparées (1929, 2008, 2020) : déclencheur, mécanisme, sortie",
+        "Signaux de récession (courbe des taux inversée, indices PMI, chômage) suivis 6 mois dans le tableau de bord"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "inflation",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "monnaie",
+      "name": "Monnaie et dollar",
+      "description": "Comprendre le rôle des monnaies dans les rapports de force.",
+      "icon": "game-icons:crown-coin",
+      "tier": 3,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Rôle du dollar (monnaie de réserve, sanctions, pétrole) et de l'euro résumés",
+        "Or, cryptomonnaies et euro numérique comparés : rôle et limites"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "taux-et-foyer",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "economie-ia",
+      "name": "Économie de l'IA",
+      "description": "Mettre des chiffres sur l'IA : argent, énergie, valeur.",
+      "icon": "game-icons:circuitry",
+      "tier": 4,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Chiffres clés de l'IA sourcés : investissements, coûts d'entraînement, électricité consommée par les centres de données",
+        "Valorisations et revenus des 5 grands acteurs de l'IA comparés, avis argumenté : bulle ou pas ?"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "crises-economiques",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "prix-energie",
+      "name": "Le prix de l'énergie",
+      "description": "Comprendre comment se forme le prix de l'électricité et du gaz.",
+      "icon": "game-icons:lightning-frequency",
+      "tier": 4,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Formation du prix de l'électricité et du gaz en Europe expliquée (marché, nucléaire, prix fixé par le gaz)",
+        "Choc énergétique de 2022 : effet chiffré sur l'inflation, l'industrie et ta facture"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "commerce-mondial",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "rapports-institutionnels",
+      "name": "Rapports de référence",
+      "description": "Lire les perspectives des institutions plutôt que les commentaires.",
+      "icon": "game-icons:book-pile",
+      "tier": 5,
+      "column": 1,
+      "maxRank": 2,
+      "ranks": [
+        "Perspectives économiques du FMI ou de la Banque de France lues : 5 messages clés notés",
+        "2 éditions successives comparées : ce qui a changé et pourquoi"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "crises-economiques",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "monde-dans-budget",
+      "name": "Le monde dans ton budget",
+      "description": "Voir quels postes du foyer dépendent des prix mondiaux.",
+      "icon": "game-icons:weight-scale",
+      "tier": 5,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Les 5 postes du foyer les plus sensibles aux prix mondiaux (énergie, alimentation, carburant, crédit) identifiés, avec leur variation sur 3 ans",
+        "Un calendrier d'achat ou un stock ajusté à ce suivi (carburant, denrées), gain chiffré"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "monnaie",
+          "rank": 1
+        },
+        {
+          "talentId": "prix-energie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "donnees-macro",
+      "name": "La macro en données",
+      "description": "Utiliser ton métier pour lire l'économie dans les données brutes.",
+      "icon": "game-icons:chart",
+      "tier": 6,
+      "column": 2,
+      "maxRank": 2,
+      "ranks": [
+        "Une série macro (inflation, chômage) téléchargée depuis l'INSEE ou FRED, tracée et commentée avec ton propre code",
+        "Tableau de bord automatique mis à jour chaque mois pendant 6 mois"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "economie-ia",
+          "rank": 1
+        },
+        {
+          "talentId": "rapports-institutionnels",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "budget-etat",
+      "name": "Budget de l'État",
+      "description": "Savoir d'où vient et où va l'argent public.",
+      "icon": "game-icons:receive-money",
+      "tier": 6,
+      "column": 4,
+      "maxRank": 2,
+      "ranks": [
+        "Budget de l'État lu : recettes, 5 premiers postes de dépenses, part des intérêts de la dette",
+        "Programmes économiques de 3 partis comparés à une évaluation indépendante (OFCE, Institut Montaigne, Cour des comptes)"
+      ],
+      "prerequisites": [
+        {
+          "talentId": "prix-energie",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "note-conjoncture",
+      "name": "Note de conjoncture",
+      "description": "Ton propre regard sur l'économie de l'année, confronté aux faits.",
+      "icon": "game-icons:scroll-quill",
+      "tier": 7,
+      "column": 3,
+      "maxRank": 2,
+      "ranks": [
+        "Note de conjoncture annuelle écrite (où en est l'économie, 3 risques, effets sur le foyer et sur ton métier), relue par quelqu'un du domaine",
+        "2 années, la note de l'année précédente confrontée aux faits"
+      ],
+      "ultimate": true,
+      "prerequisites": [
+        {
+          "talentId": "donnees-macro",
+          "rank": 1
+        },
+        {
+          "talentId": "budget-etat",
+          "rank": 1
+        },
+        {
+          "talentId": "monde-dans-budget",
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "id": "premier-tableau-de-bord",
+      "name": "Premier tableau de bord",
+      "description": "Remplir le tableau des 6 indicateurs ; fait quand chaque chiffre a sa source.",
+      "talents": [
+        "indicateurs"
+      ],
+      "steps": [
+        "Créer le tableau (France et zone euro)",
+        "Relever les 6 indicateurs sur les sites officiels (INSEE, BCE, Eurostat)",
+        "Noter la source et la date de chaque chiffre"
+      ]
+    },
+    {
+      "id": "notions-de-la-semaine",
+      "name": "Notions de la semaine",
+      "description": "Définir une notion d'économie avec un exemple et l'ajouter au lexique.",
+      "talents": [
+        "notions-cles"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 10
+      }
+    },
+    {
+      "id": "communique-bce",
+      "name": "Communiqué de la BCE",
+      "description": "Lire le dernier communiqué de la BCE et le résumer en 5 lignes.",
+      "talents": [
+        "banques-centrales"
+      ],
+      "steps": [
+        "Lire le communiqué de politique monétaire",
+        "Noter la décision et ses raisons",
+        "Écrire les effets attendus sur les prix et le crédit"
+      ]
+    },
+    {
+      "id": "objet-du-quotidien",
+      "name": "Un objet du quotidien",
+      "description": "Tracer d'où vient un objet du quotidien ; faite quand les goulets sont repérés.",
+      "talents": [
+        "chaines-appro"
+      ],
+      "steps": [
+        "Choisir un objet (smartphone, voiture, médicament)",
+        "Lister les étapes et les pays de fabrication",
+        "Repérer les goulets d'étranglement"
+      ]
+    },
+    {
+      "id": "inflation-du-foyer",
+      "name": "Inflation du foyer",
+      "description": "Calculer l'inflation du foyer sur 12 mois et la comparer à l'INSEE.",
+      "talents": [
+        "inflation"
+      ],
+      "steps": [
+        "Extraire les dépenses des 2 dernières années par poste",
+        "Calculer la variation par poste et l'inflation du foyer",
+        "Comparer à l'indice de l'INSEE et expliquer l'écart"
+      ]
+    },
+    {
+      "id": "dettes-comparees",
+      "name": "Dettes comparées",
+      "description": "Comparer dette, déficit et charge des intérêts de 4 pays dans un tableau.",
+      "talents": [
+        "dettes-publiques"
+      ],
+      "steps": [
+        "Relever dette et déficit en % du PIB (Eurostat, FMI)",
+        "Relever la charge des intérêts",
+        "Écrire 3 constats"
+      ]
+    },
+    {
+      "id": "une-crise-par-semaine",
+      "name": "Une crise par mois",
+      "description": "Étudier une grande crise (déclencheur, mécanisme, sortie) et la résumer en une page.",
+      "talents": [
+        "crises-economiques"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "chiffre-ia-de-la-semaine",
+      "name": "Chiffre de l'IA de la semaine",
+      "description": "Trouver un chiffre clé de l'économie de l'IA (investissement, coût, électricité), le sourcer et l'ajouter à la fiche.",
+      "talents": [
+        "economie-ia"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "macro-en-code",
+      "name": "La macro en code",
+      "description": "Tracer une série macro avec ton propre code ; faite quand le graphique est commenté.",
+      "talents": [
+        "donnees-macro"
+      ],
+      "steps": [
+        "Télécharger une série depuis l'INSEE ou FRED",
+        "La tracer avec ton propre code",
+        "Écrire 3 lignes de commentaire"
+      ]
+    }
+  ]
+}
