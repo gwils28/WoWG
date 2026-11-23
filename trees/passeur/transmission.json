@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "domain": {
     "id": "passeur",
-    "name": "Passeur",
+    "name": "Berger",
     "icon": "game-icons:family-tree"
   },
   "specialization": {

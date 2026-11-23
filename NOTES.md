@@ -12,6 +12,7 @@
 ## Choix conservateurs
 
 - Archive des classes (SPEC 11) : simple préférence `archivedDomains`, comme les épingles, plutôt qu'une colonne et une migration. Réversible, sauvegardée avec les préférences, sans toucher aux rangs ni au journal.
+- Classe Passeur renommée Berger le 2026-11-23 : seul le nom affiché change, l'id `passeur` (dossier `trees/passeur`, progression, quêtes, `portraits/passeur`) est conservé.
 
 - Points et niveau ne comptent que les talents encore définis : la progression orpheline est conservée mais n'entre pas dans le niveau.
 - Rang courant borné à 0 lors du cumul des événements (un retrait en trop n'a pas d'effet négatif).

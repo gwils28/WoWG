@@ -18,7 +18,7 @@ Si l'arbre existe déjà, lis-le d'abord et ne demande que ce qui change.
 
 ## 2. Conception
 
-- Grille : **10 paliers** pour le catalogue v2 (5 classes par rôle : Gardien, Guérisseur, Conquérant, Passeur, Pisteur ; SPEC 11), sans palier vide ; 4 colonnes par défaut, 5 si les axes le demandent. 26 à 30 talents, 55 à 65 points par arbre. Les 15 classes v1 (7 paliers) sont archivées : ne les modifie plus.
+- Grille : **10 paliers** pour le catalogue v2 (5 classes par rôle : Gardien, Guérisseur, Conquérant, Berger (id `passeur`), Pisteur ; SPEC 11), sans palier vide ; 4 colonnes par défaut, 5 si les axes le demandent. 26 à 30 talents, 55 à 65 points par arbre. Les 15 classes v1 (7 paliers) sont archivées : ne les modifie plus.
 - Courbe de difficulté commune (durée pour le rang max d'un talent typique ; talents par palier) : P1 jours (1 à 14 j), 4 ; P2 2 à 4 semaines, 4 ; P3 1 à 2 mois, 4 ; P4 2 à 3 mois, 3 ; P5 un trimestre, 3 ; P6 4 à 6 mois, 3 ; P7 6 à 9 mois, 2 ; P8 environ 1 an, 2 ; P9 1 à 2 ans, 2 ; P10 ultime, rang 1 vers 2 ans, rang max entre 3 et 5 ans. Le rang 1 d'un palier N ne demande jamais plus que le rang max du palier N-1.
 - Habitudes : les critères « X fois par semaine pendant N semaines » pèsent au plus 35 % des points d'un arbre ; un rang d'habitude ne dépasse pas 6 mois ; au plus 2 habitudes quotidiennes (moins de 15 min) par classe.
 - Progression : palier 1 = fondamentaux accessibles tout de suite, dernier palier = un seul talent `"ultimate": true` (l'objectif long terme).
