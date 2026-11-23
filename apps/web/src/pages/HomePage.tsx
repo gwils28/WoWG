@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import { LEVEL_TIERS, MAX_LEVEL } from '@wowg/shared';
 import { api, type Character } from '../lib/api';
@@ -13,6 +13,7 @@ export function HomePage() {
   return (
     <div className="home">
       <CharacterHero c={data} />
+      <Party c={data} />
       <TierTrack c={data} />
       <ImportHint c={data} />
     </div>
@@ -29,11 +30,20 @@ function CharacterHero({ c }: { c: Character }) {
     <section className={`panel hero hero--tier-${c.tier.index}`}>
       <div className="hero__portrait">
         {c.tier.portrait ? (
-          <img src={c.tier.portrait} alt={`Portrait du personnage, palier ${c.tier.name}`} />
+          <img
+            src={c.tier.portrait}
+            alt={`Portrait du ${c.hero?.domain.name ?? 'personnage'}, palier ${c.tier.name}`}
+          />
         ) : (
           <div className="hero__placeholder" aria-hidden>
-            <GameIcon icon="game-icons:hood" size={96} />
+            <GameIcon icon={c.hero?.domain.icon ?? 'game-icons:hood'} size={96} />
           </div>
+        )}
+        {c.hero && (
+          <Link to={`/classe/${c.hero.domain.id}`} className="hero__nameplate">
+            <GameIcon icon={c.hero.domain.icon} size={18} />
+            {c.hero.domain.name}
+          </Link>
         )}
       </div>
 
@@ -93,6 +103,57 @@ function CharacterHero({ c }: { c: Character }) {
           </div>
         </dl>
       </div>
+    </section>
+  );
+}
+
+/** Les personnages des classes actives ; un clic met le personnage choisi au premier plan. */
+function Party({ c }: { c: Character }) {
+  const qc = useQueryClient();
+  const focus = useMutation({
+    mutationFn: api.setHero,
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['character'] }),
+  });
+  if (c.domains.length === 0) return null;
+  return (
+    <section className="party" aria-label="Personnages des classes">
+      {c.domains.map((d) => {
+        const focused = c.hero?.domain.id === d.domain.id;
+        const pct = d.maxPoints ? Math.round((d.points / d.maxPoints) * 100) : 0;
+        return (
+          <button
+            key={d.domain.id}
+            type="button"
+            className={`party__member${focused ? ' party__member--focus' : ''}`}
+            aria-pressed={focused}
+            disabled={focus.isPending}
+            onClick={() => !focused && focus.mutate(d.domain.id)}
+            title={
+              focused
+                ? `${d.domain.name} au premier plan`
+                : `Mettre ${d.domain.name} au premier plan`
+            }
+          >
+            <span className="party__portrait">
+              {d.portrait ? (
+                <img src={d.portrait} alt="" loading="lazy" />
+              ) : (
+                <GameIcon icon={d.domain.icon} size={48} />
+              )}
+            </span>
+            <span className="party__name">
+              <GameIcon icon={d.domain.icon} size={16} />
+              {d.domain.name}
+            </span>
+            <span className="party__xp" aria-label={`${d.points} points sur ${d.maxPoints}`}>
+              <span style={{ width: `${pct}%` }} />
+            </span>
+            <span className="party__points muted">
+              {d.points} / {d.maxPoints}
+            </span>
+          </button>
+        );
+      })}
     </section>
   );
 }

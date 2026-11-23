@@ -7,6 +7,8 @@ import {
   placeTooltip,
   talentCenter,
   treeSize,
+  fitScale,
+  MIN_SCALE,
 } from '../src/lib/layout';
 
 describe('layout', () => {
@@ -68,5 +70,20 @@ describe('placeTooltip', () => {
     expect(
       placeTooltip(anchor(10, 10), { width: 500, height: 100 }, { width: 300, height: 600 }).x,
     ).toBe(8);
+  });
+});
+
+describe('fitScale', () => {
+  it('garde la taille réelle quand tout tient ou sur petit écran', () => {
+    expect(fitScale(2000, [400, 500])).toBe(1);
+    expect(fitScale(600, [500, 500, 500])).toBe(1);
+    expect(fitScale(0, [500])).toBe(1);
+    expect(fitScale(1200, [])).toBe(1);
+  });
+
+  it('réduit les arbres pour tenir sur une ligne, sans descendre sous le minimum', () => {
+    // 3 arbres de 472 px : 1376 - 3 x 28 - 2 x 16 = 1260 disponibles pour 1416
+    expect(fitScale(1376, [472, 472, 472])).toBe(0.88);
+    expect(fitScale(950, [472, 472, 472, 472, 472])).toBe(MIN_SCALE);
   });
 });

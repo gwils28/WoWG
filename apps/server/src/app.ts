@@ -34,6 +34,7 @@ import {
   ARCHIVED_DOMAINS,
   archivedDomains,
   character,
+  HERO_DOMAIN,
   isArchivedSpec,
   PINNED_DOMAINS,
   pinnedDomains,
@@ -76,7 +77,10 @@ const JournalQuery = z.object({
 });
 
 const PinBody = z.object({ pinned: z.boolean() });
+/** Id de domaine sûr pour un chemin de fichier (même forme que les slugs du schéma). */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ArchiveBody = z.object({ archived: z.boolean() });
+const HeroBody = z.object({ domainId: z.string().nullable() });
 
 const BackupSchema = z.object({
   format: z.literal('wowg-backup'),
@@ -226,11 +230,14 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
     return res.tree;
   }
 
-  /** Fichier du portrait d'un palier, s'il existe. */
-  function portraitFile(tier: number): { path: string; type: string } | null {
+  /**
+   * Fichier du portrait d'un palier, s'il existe : portraits/palier-N du personnage, ou
+   * portraits/<classe>/palier-N du personnage d'une classe (id de domaine déjà validé en slug).
+   */
+  function portraitFile(tier: number, domainId?: string): { path: string; type: string } | null {
     if (!portraitsDir) return null;
     for (const [ext, type] of Object.entries(PORTRAIT_TYPES)) {
-      const path = join(portraitsDir, `palier-${tier}.${ext}`);
+      const path = join(portraitsDir, domainId ?? '', `palier-${tier}.${ext}`);
       if (existsSync(path)) return { path, type };
     }
     return null;
@@ -238,13 +245,29 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
 
   app.get('/character', (c) =>
     c.json({
-      ...character(repo, (tier) => (portraitFile(tier) ? `/api/portraits/${tier}` : null)),
+      ...character(
+        repo,
+        (tier) => (portraitFile(tier) ? `/api/portraits/${tier}` : null),
+        (domainId, tier) =>
+          SLUG.test(domainId) && portraitFile(tier, domainId)
+            ? `/api/portraits/${domainId}/${tier}`
+            : null,
+      ),
       gold: questRepo.goldBalance(),
     }),
   );
 
   app.get('/portraits/:tier{[1-5]}', async (c) => {
     const file = portraitFile(Number(c.req.param('tier')));
+    if (!file) return c.json({ errors: ['portrait introuvable'] }, 404);
+    return c.body(await readFile(file.path), 200, {
+      'content-type': file.type,
+      'cache-control': 'no-cache',
+    });
+  });
+
+  app.get('/portraits/:domain{[a-z0-9-]+}/:tier{[1-5]}', async (c) => {
+    const file = portraitFile(Number(c.req.param('tier')), c.req.param('domain'));
     if (!file) return c.json({ errors: ['portrait introuvable'] }, 404);
     return c.body(await readFile(file.path), 200, {
       'content-type': file.type,
@@ -262,6 +285,21 @@ export function createApp({ db, treesDir, portraitsDir, now = () => new Date() }
     const next = pinned ? [...current, id] : current;
     repo.setPreference(PINNED_DOMAINS, next);
     return c.json({ pinned: next });
+  });
+
+  // classe incarnée sur la fiche de personnage (null : choix automatique)
+  app.put('/hero', async (c) => {
+    const { domainId } = await readBody(c, HeroBody);
+    if (domainId !== null) {
+      if (!repo.listSpecializations().some((s) => s.domainId === domainId)) {
+        return c.json({ errors: [`domaine "${domainId}" inconnu`] }, 404);
+      }
+      if (archivedDomains(repo).includes(domainId)) {
+        conflict("classe archivée : réactive-la d'abord");
+      }
+    }
+    repo.setPreference(HERO_DOMAIN, domainId);
+    return c.json({ hero: domainId });
   });
 
   app.put('/domains/:id/archive', async (c) => {

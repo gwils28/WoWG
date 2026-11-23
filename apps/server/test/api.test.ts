@@ -294,6 +294,83 @@ describe('personnage, journal et sauvegarde', () => {
     }
   });
 
+  it('sert le portrait du personnage de chaque classe selon sa progression', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'wowg-portraits-'));
+    try {
+      mkdirSync(join(dir, 'sport-sante'));
+      writeFileSync(join(dir, 'sport-sante', 'palier-2.webp'), 'webp');
+      const db = openDb(':memory:');
+      const withPortraits = createApp({ db, treesDir, portraitsDir: dir });
+      const req = (path: string, init?: RequestInit) => withPortraits.request(`/api${path}`, init);
+      await req('/import/apply', {
+        method: 'POST',
+        body: JSON.stringify({ path: 'sport-sante/course-a-pied.json' }),
+      });
+      const rank = (id: string) =>
+        req(`/specializations/course-a-pied/talents/${id}/ranks`, { method: 'POST', body: '{}' });
+      const domain = async () => ((await (await req('/character')).json()) as any).domains[0];
+      // 0/9 points : portrait 1, absent
+      expect(await domain()).toMatchObject({ portraitTier: 1, portrait: null });
+      await rank('endurance');
+      await rank('endurance');
+      // 2/9 points (22 %) : portrait 2
+      expect(await domain()).toMatchObject({
+        portraitTier: 2,
+        portrait: '/api/portraits/sport-sante/2',
+      });
+      const img = await req('/portraits/sport-sante/2');
+      expect(img.status).toBe(200);
+      expect(img.headers.get('content-type')).toBe('image/webp');
+      expect((await req('/portraits/sport-sante/3')).status).toBe(404);
+      expect((await req('/portraits/..%2Fsecret/2')).status).toBe(404);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('incarne une classe sur la fiche : portraits de sa classe, choix ou automatique', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'wowg-portraits-'));
+    try {
+      writeFileSync(join(dir, 'palier-1.png'), 'png');
+      mkdirSync(join(dir, 'sport-sante'));
+      writeFileSync(join(dir, 'sport-sante', 'palier-1.png'), 'png');
+      const withPortraits = createApp({ db: openDb(':memory:'), treesDir, portraitsDir: dir });
+      const req = (method: string, path: string, body?: unknown) =>
+        withPortraits.request(`/api${path}`, {
+          method,
+          body: body === undefined ? undefined : JSON.stringify(body),
+        });
+      const char = async () => (await (await req('GET', '/character')).json()) as any;
+
+      // aucune classe : portraits génériques, pas de classe incarnée
+      expect((await char()).hero).toBeNull();
+      expect((await char()).tier.portrait).toBe('/api/portraits/1');
+
+      await req('POST', '/import/apply', { path: 'sport-sante/course-a-pied.json' });
+      // automatique : la classe illustrée la plus avancée, et ses portraits suivent le niveau
+      let c = await char();
+      expect(c.hero).toMatchObject({ domain: { id: 'sport-sante' }, chosen: false });
+      expect(c.tier.portrait).toBe('/api/portraits/sport-sante/1');
+      expect(c.portraits).toEqual(['/api/portraits/sport-sante/1', null, null, null, null]);
+
+      expect((await req('PUT', '/hero', { domainId: 'sport-sante' })).status).toBe(200);
+      expect((await char()).hero.chosen).toBe(true);
+      expect((await req('PUT', '/hero', { domainId: 'inconnu' })).status).toBe(404);
+      expect((await req('PUT', '/hero', { domainId: 3 })).status).toBe(400);
+
+      // classe archivée : ni incarnable, ni incarnée
+      await req('PUT', '/domains/sport-sante/archive', { archived: true });
+      expect((await req('PUT', '/hero', { domainId: 'sport-sante' })).status).toBe(409);
+      c = await char();
+      expect(c.hero).toBeNull();
+      expect(c.tier.portrait).toBe('/api/portraits/1');
+
+      expect((await req('PUT', '/hero', { domainId: null })).status).toBe(200);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it('liste le journal enrichi, du plus récent au plus ancien, avec filtres', async () => {
     await removeRank('cadence');
     const all = (await call('GET', '/journal')).body;

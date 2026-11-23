@@ -1,4 +1,5 @@
 import {
+  classPortraitTier,
   LEVEL_TIERS,
   levelProgress,
   levelTier,
@@ -58,7 +59,19 @@ export function isArchivedSpec(repo: Repository, spec: StoredSpecialization): bo
   return archivedDomains(repo).includes(spec.tree.domain.id);
 }
 
-export function character(repo: Repository, portrait: (tier: number) => string | null) {
+export const HERO_DOMAIN = 'heroDomain';
+
+/** Classe incarnée choisie sur la fiche de personnage, ou null (choix automatique). */
+export function heroDomain(repo: Repository): string | null {
+  const raw = repo.preferences()[HERO_DOMAIN];
+  return typeof raw === 'string' ? raw : null;
+}
+
+export function character(
+  repo: Repository,
+  portrait: (tier: number) => string | null,
+  classPortrait: (domainId: string, tier: number) => string | null = () => null,
+) {
   const archived = new Set(archivedDomains(repo));
   const all = repo
     .listSpecializations()
@@ -106,6 +119,12 @@ export function character(repo: Repository, portrait: (tier: number) => string |
     return domains;
   };
 
+  const withPortrait = (groups: ReturnType<typeof group>) =>
+    [...groups.values()].map((d) => {
+      const portraitTier = classPortraitTier(d.points, d.maxPoints);
+      return { ...d, portraitTier, portrait: classPortrait(d.domain.id, portraitTier) };
+    });
+
   // le niveau ne compte que les classes actives ; l'archive garde son propre total
   const domains = group(all.filter((s) => !s.archived));
   const archivedGroups = group(all.filter((s) => s.archived));
@@ -115,17 +134,32 @@ export function character(repo: Repository, portrait: (tier: number) => string |
 
   const progress = levelProgress(totalPoints);
   const tier = levelTier(progress.level);
+
+  // personnage incarné : la classe choisie si elle est active, sinon la classe la plus avancée
+  // parmi celles qui ont des portraits (puis parmi toutes). Ses portraits suivent le niveau.
+  const classPortraits = (id: string) => LEVEL_TIERS.map((t) => classPortrait(id, t.index));
+  const chosen = heroDomain(repo);
+  const auto = [...domains.values()]
+    .map((d) => ({ d, illustrated: classPortraits(d.domain.id).some(Boolean) }))
+    .sort((a, b) => Number(b.illustrated) - Number(a.illustrated) || b.d.points - a.d.points)[0]?.d;
+  const heroGroup = (chosen && domains.get(chosen)) || auto;
+  const portraits = heroGroup
+    ? classPortraits(heroGroup.domain.id)
+    : LEVEL_TIERS.map((t) => portrait(t.index));
+
   return {
     ...progress,
-    tier: { ...tier, portrait: portrait(tier.index) },
+    tier: { ...tier, portrait: portraits[tier.index - 1] ?? null },
     /** Un portrait (ou null) par palier, dans l'ordre. */
-    portraits: LEVEL_TIERS.map((t) => portrait(t.index)),
+    portraits,
+    /** Classe incarnée par le personnage de la fiche ; chosen : choisie (sinon automatique). */
+    hero: heroGroup ? { domain: heroGroup.domain, chosen: heroGroup.domain.id === chosen } : null,
     pinned: pinned.filter((id) => domains.has(id)),
-    domains: [...domains.values()],
+    domains: withPortrait(domains),
     archive: {
       points: archivePoints,
       level: levelProgress(archivePoints).level,
-      domains: [...archivedGroups.values()],
+      domains: withPortrait(archivedGroups),
     },
   };
 }

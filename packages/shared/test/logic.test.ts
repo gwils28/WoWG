@@ -4,6 +4,7 @@ import {
   canRemoveRank,
   currentRanks,
   diffTrees,
+  classPortraitTier,
   levelCost,
   levelFromPoints,
   levelProgress,
@@ -118,6 +119,14 @@ describe('points et niveau', () => {
     expect(levelFromPoints(1030)).toBe(100);
     expect(levelFromPoints(9000)).toBe(100);
     expect(levelProgress(1050)).toEqual({ level: 100, points: 1050, intoLevel: 20, toNext: 0 });
+  });
+
+  it('choisit le portrait de classe par tranche de 20 % des points', () => {
+    expect([0, 35, 36, 71, 72, 143, 144, 180].map((p) => classPortraitTier(p, 180))).toEqual([
+      1, 1, 2, 2, 3, 4, 5, 5,
+    ]);
+    expect(classPortraitTier(5, 0)).toBe(1);
+    expect(classPortraitTier(999, 180)).toBe(5);
   });
 
   it('range le niveau dans un des 5 paliers', () => {

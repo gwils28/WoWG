@@ -52,12 +52,17 @@ export interface DomainSummary {
   lastActivityAt: string | null;
   pinned: boolean;
   specializations: SpecSummary[];
+  /** Portrait du personnage de la classe (1 à 5, selon ses points) et son image, si fournie. */
+  portraitTier: number;
+  portrait: string | null;
 }
 
 export interface Character extends LevelProgress {
   tier: LevelTier & { portrait: string | null };
   /** Un portrait (ou null) par palier, dans l'ordre des paliers. */
   portraits: (string | null)[];
+  /** Classe incarnée par le personnage de la fiche ; chosen : choisie (sinon automatique). */
+  hero: { domain: TreeFile['domain']; chosen: boolean } | null;
   /** Ids des domaines épinglés, dans l'ordre d'épinglage. */
   pinned: string[];
   domains: DomainSummary[];
@@ -266,6 +271,8 @@ export const api = {
   character: () => request<Character>('GET', '/character'),
   pinDomain: (domainId: string, pinned: boolean) =>
     request<{ pinned: string[] }>('PUT', `/domains/${domainId}/pin`, { pinned }),
+  setHero: (domainId: string | null) =>
+    request<{ hero: string | null }>('PUT', '/hero', { domainId }),
   archiveDomain: (domainId: string, archived: boolean) =>
     request<{ archived: string[] }>('PUT', `/domains/${domainId}/archive`, { archived }),
   specializations: () => request<SpecSummary[]>('GET', '/specializations'),

@@ -64,6 +64,16 @@ export const LEVEL_TIERS: readonly LevelTier[] = [
   { index: 5, name: 'Légende', from: 81, to: 100 },
 ];
 
+/**
+ * Portrait d'une classe (1 à 5) selon sa progression : un palier par tranche de 20 % de ses points
+ * (80 % et plus : portrait 5). Une classe vide montre le portrait 1.
+ */
+export function classPortraitTier(points: number, maxPoints: number): number {
+  if (maxPoints <= 0) return 1;
+  const ratio = Math.min(1, Math.max(0, points / maxPoints));
+  return Math.min(5, 1 + Math.floor(ratio * 5));
+}
+
 export function levelTier(level: number): LevelTier {
   return LEVEL_TIERS.find((t) => level <= t.to) ?? LEVEL_TIERS[LEVEL_TIERS.length - 1]!;
 }

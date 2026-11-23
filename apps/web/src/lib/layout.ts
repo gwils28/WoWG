@@ -17,6 +17,26 @@ export function treeSize(tree: TreeFile) {
   };
 }
 
+/** Marge d'un panneau d'arbre autour de l'arbre (padding et bordure) et écart entre panneaux. */
+export const PANEL_EXTRA = 28;
+export const PANEL_GAP = 16;
+/** En dessous, les arbres passent à la ligne (petits écrans) au lieu de rétrécir. */
+export const ROW_MIN_WIDTH = 900;
+export const MIN_SCALE = 0.55;
+
+/**
+ * Échelle commune qui fait tenir les arbres d'une classe sur une ligne de largeur `available`.
+ * 1 si tout tient, si la largeur est inconnue ou trop petite (affichage en colonnes) ; jamais sous
+ * MIN_SCALE.
+ */
+export function fitScale(available: number, treeWidths: number[]): number {
+  const natural = treeWidths.reduce((a, b) => a + b, 0);
+  if (available < ROW_MIN_WIDTH || natural === 0) return 1;
+  const fixed = treeWidths.length * PANEL_EXTRA + Math.max(0, treeWidths.length - 1) * PANEL_GAP;
+  const scale = (available - fixed) / natural;
+  return Math.max(MIN_SCALE, Math.min(1, Math.floor(scale * 100) / 100));
+}
+
 /** Centre de la case d'un talent. */
 export function talentCenter(t: Pick<Talent, 'tier' | 'column'>): Point {
   return {
