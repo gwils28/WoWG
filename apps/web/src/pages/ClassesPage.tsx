@@ -115,12 +115,8 @@ export function ClassCard({
   return (
     <li className={`class-card panel${d.pinned ? ' class-card--pinned' : ''}`}>
       <Link to={classPath(d.domain.id)} className="class-card__link">
-        <span className={`class-card__icon${d.portrait ? ' class-card__icon--portrait' : ''}`}>
-          {d.portrait ? (
-            <img src={d.portrait} alt="" loading="lazy" />
-          ) : (
-            <GameIcon icon={d.domain.icon} size={34} />
-          )}
+        <span className="class-card__icon">
+          <GameIcon icon={d.domain.icon} size={34} />
         </span>
         <span className="class-card__body">
           <span className="class-card__name">{d.domain.name}</span>
