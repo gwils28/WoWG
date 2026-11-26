@@ -529,5 +529,209 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "series-de-code",
+      "name": "Séries de code",
+      "description": "Trois fois par semaine, une série de 40 questions (20 min, pause déjeuner ou soir) avec correction des erreurs, score noté.",
+      "talents": [
+        "code-revise"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "reglages-du-poste",
+      "name": "Réglages du poste",
+      "description": "Prendre en main le véhicule à l'arrêt ; c'est fait quand toutes les commandes sont trouvées sans regarder en moins de 30 s.",
+      "talents": [
+        "prise-en-main"
+      ],
+      "steps": [
+        "Régler siège, volant, rétroviseurs et appuie-tête",
+        "Repérer feux, essuie-glaces, warning et désembuage à l'arrêt",
+        "Essai chronométré, yeux sur la route, puis journal de conduite ouvert"
+      ]
+    },
+    {
+      "id": "trajets-du-quotidien",
+      "name": "Trajets du quotidien",
+      "description": "Deux fois par semaine, conduire seul un trajet déjà prévu (courses, crèche, travail), sans temps en plus, noté au journal (date, durée, trajet).",
+      "talents": [
+        "trajets-connus"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "parking-du-dimanche",
+      "name": "Séances de bataille",
+      "description": "Deux fois par semaine, au bout d'un trajet déjà prévu (courses, crèche), 10 min de plus sur le parking d'arrivée peu fréquenté : marche arrière et places en bataille.",
+      "talents": [
+        "bataille"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seances-de-creneau",
+      "name": "Séances de créneau",
+      "description": "Deux fois par semaine, 10 à 15 min de créneaux greffés sur un trajet déjà prévu (parking d'arrivée, puis rue calme près de la destination), réussites notées.",
+      "talents": [
+        "creneau"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "premiere-autoroute",
+      "name": "Première autoroute",
+      "description": "Apprivoiser la voie rapide en partant d'une bretelle connue ; c'est fait quand le premier trajet de 30 min sur autoroute est noté au journal.",
+      "talents": [
+        "voie-rapide"
+      ],
+      "steps": [
+        "Repérer une bretelle proche et une heure creuse",
+        "Faire 5 insertions à la vitesse du flux",
+        "Premier trajet de 30 min sur autoroute avec péage"
+      ]
+    },
+    {
+      "id": "examens-blancs",
+      "name": "Examens blancs",
+      "description": "Chaque semaine, une séance de 30 min (soir ou week-end) : examen blanc de 40 questions en conditions réelles, erreurs relues et score noté.",
+      "talents": [
+        "examen-blanc"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "pluie-et-nuit",
+      "name": "Pluie et nuit",
+      "description": "Conduire dans des conditions dégradées sur des trajets connus ; c'est fait quand les trajets de pluie et de nuit sont notés au journal.",
+      "talents": [
+        "nuit-pluie"
+      ],
+      "steps": [
+        "3 trajets sous la pluie, vitesse et distances adaptées",
+        "Trajet connu de nuit, 3 fois, feux alternés",
+        "Une heure d'autoroute de nuit ou sous forte pluie"
+      ]
+    },
+    {
+      "id": "trousse-de-bord",
+      "name": "Trousse de bord",
+      "description": "Équiper le véhicule et répéter la panne et l'accident à l'arrêt ; c'est fait quand le triangle est posé en moins de 3 min et un constat d'entraînement rempli.",
+      "talents": [
+        "panne-constat"
+      ],
+      "steps": [
+        "Gilet, triangle, constat, stylo et attestation rangés dans le véhicule",
+        "Conduite à tenir en cas de panne sur autoroute écrite",
+        "Simulation à l'arrêt chronométrée : warning, gilet, triangle",
+        "Constat d'entraînement rempli avec le guide de l'assureur"
+      ]
+    },
+    {
+      "id": "premier-long-trajet",
+      "name": "Premier long trajet",
+      "description": "Préparer et faire un premier trajet de 150 km ; c'est fait quand il est noté au journal avec ses pauses.",
+      "talents": [
+        "long-trajet"
+      ],
+      "steps": [
+        "Choisir une destination à 150 km et préparer itinéraire et pause",
+        "Faire le trajet, pause comprise",
+        "Noter au journal durée, fatigue et ce qui a gêné"
+      ]
+    },
+    {
+      "id": "au-volant-chaque-jour",
+      "name": "Au volant chaque jour",
+      "description": "Quatre jours par semaine, prendre le volant pour un trajet déjà prévu (travail, crèche, courses), sans temps en plus, noté au journal.",
+      "talents": [
+        "conducteur-quotidien"
+      ],
+      "recurrence": {
+        "times": 4,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "voiture-chargee",
+      "name": "Voiture pleine",
+      "description": "Conduire avec toutes les places occupées, d'abord en court puis sur plus d'une heure ; c'est fait quand le grand trajet est noté au journal.",
+      "talents": [
+        "voiture-pleine"
+      ],
+      "steps": [
+        "Organiser 5 trajets courts à 5 personnes ou plus",
+        "Ajuster rétroviseurs, freinage et distances à la charge",
+        "Faire un trajet de plus d'une heure, places et coffre pleins",
+        "Noter au journal ce qui change avec une voiture pleine"
+      ]
+    },
+    {
+      "id": "preparer-le-grand-depart",
+      "name": "Grand départ",
+      "description": "Préparer seul puis conduire un départ en vacances de plus de 400 km ; c'est fait quand le débrief est écrit.",
+      "talents": [
+        "grand-depart"
+      ],
+      "steps": [
+        "Itinéraire et pauses toutes les 2 h préparés",
+        "Chargement réparti et arrimé",
+        "Pression des pneus réglée en mode charge",
+        "Trajet de plus de 400 km avec 5 passagers ou plus",
+        "Débrief écrit au journal"
+      ]
+    },
+    {
+      "id": "conduire-a-l-etranger",
+      "name": "Conduire à l'étranger",
+      "description": "Préparer puis vivre une semaine de conduite dans un autre pays ; c'est fait quand la semaine est consignée sans incident.",
+      "talents": [
+        "route-etrangere"
+      ],
+      "steps": [
+        "Relever les règles du pays (vitesses, péage ou vignette, alcool)",
+        "Réunir les équipements obligatoires et vérifier l'assurance ou la location",
+        "Conduire une semaine sur place",
+        "Consigner trajets et difficultés au journal"
+      ]
+    },
+    {
+      "id": "annee-sans-accroc",
+      "name": "Une année sans accroc",
+      "description": "Tenir un journal de conduite complet sur 12 mois ; c'est fait quand le bilan annuel constate zéro accrochage et zéro infraction dans toutes les conditions.",
+      "talents": [
+        "conducteur-sur"
+      ],
+      "steps": [
+        "Ouvrir le bilan : date de départ et conditions à couvrir (ville, autoroute, nuit, voiture pleine)",
+        "Bilan à 3 mois écrit",
+        "Bilan à 6 mois écrit, conditions manquantes planifiées",
+        "Solde de points consulté sur le service officiel",
+        "Bilan à 12 mois : aucun accrochage ni infraction, toutes les conditions couvertes"
+      ]
+    }
   ]
 }

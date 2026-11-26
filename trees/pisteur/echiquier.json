@@ -531,5 +531,208 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "seances-de-mats",
+      "name": "Séances de mats",
+      "description": "Trois fois par semaine, une séance de 15 à 20 min (pause déjeuner ou soir) de puzzles Lichess des thèmes Mat en 1 puis Mat en 2, taux de réussite noté.",
+      "talents": [
+        "mats-courts"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "parties-jouees-en-entier",
+      "name": "Parties jouées en entier",
+      "description": "Trois fois par semaine, le soir, une partie classée jouée jusqu'au bout sur Chess.com (20 à 25 min en rapide 10+0, ou deux blitz), sans abandon prématuré.",
+      "talents": [
+        "parties-classees"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "mats-de-base",
+      "name": "Mats de base",
+      "description": "Apprendre puis automatiser les mats roi et dame et roi et tour ; c'est fait quand les deux sont réussis dans le temps contre l'ordinateur.",
+      "talents": [
+        "mats-elementaires"
+      ],
+      "steps": [
+        "Étudier la méthode (boîte qui rétrécit, opposition des rois)",
+        "Mat roi et dame réussi contre l'ordinateur, temps noté",
+        "Mat roi et tour réussi contre l'ordinateur, temps noté"
+      ]
+    },
+    {
+      "id": "choisir-son-repertoire",
+      "name": "Choisir son répertoire",
+      "description": "Fixer tes ouvertures et les mettre en étude ; c'est fait quand l'étude Lichess ou Chess.com contient tes trois ouvertures.",
+      "talents": [
+        "repertoire"
+      ],
+      "steps": [
+        "Choisir l'ouverture avec les Blancs",
+        "Choisir les défenses contre 1.e4 et contre 1.d4",
+        "Créer une étude avec 3 variantes par ouverture"
+      ]
+    },
+    {
+      "id": "revue-des-defaites",
+      "name": "Revue des défaites",
+      "description": "Deux fois par semaine, une séance de 20 min le soir : analyse d'une partie perdue (d'abord seul, puis au moteur), erreur principale notée au carnet.",
+      "talents": [
+        "analyser-parties"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "lucena-et-philidor",
+      "name": "Lucena et Philidor",
+      "description": "Apprendre les deux positions clés des finales de tours ; c'est fait quand chacune est réussie contre l'ordinateur.",
+      "talents": [
+        "finales-tours"
+      ],
+      "steps": [
+        "Étudier la position de Lucena (construire le pont)",
+        "La gagner contre l'ordinateur",
+        "Étudier la position de Philidor (défense de la 3e rangée)",
+        "La tenir contre l'ordinateur"
+      ]
+    },
+    {
+      "id": "revue-d-ouverture",
+      "name": "Revue d'ouverture",
+      "description": "Deux fois par semaine, une séance de 20 min (pause déjeuner ou soir) à l'explorateur sur les ouvertures de tes dernières parties classées, écart au répertoire corrigé dans l'étude.",
+      "talents": [
+        "rester-en-theorie"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "etudier-des-structures",
+      "name": "Étudier des structures",
+      "description": "Apprendre deux structures de pions de ton répertoire et leurs plans types ; c'est fait quand 5 parties commentées sont rangées dans une étude.",
+      "talents": [
+        "structures-plans"
+      ],
+      "steps": [
+        "Choisir 2 structures issues de ton répertoire",
+        "Noter pour chacune le plan type des deux camps",
+        "Commenter 5 parties (maîtres ou tiennes) sur ces structures"
+      ]
+    },
+    {
+      "id": "seances-de-finales",
+      "name": "Séances de finales",
+      "description": "Deux fois par semaine, une séance de 20 min le soir de finales de fous et de cavaliers (exercices ou positions jouées contre l'ordinateur).",
+      "talents": [
+        "finales-legeres"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "calcul-sans-toucher",
+      "name": "Calcul sans toucher",
+      "description": "Installer une méthode de calcul puis passer au calcul à l'aveugle ; c'est fait quand les premiers puzzles à l'aveugle sont réussis.",
+      "talents": [
+        "calcul-visualisation"
+      ],
+      "steps": [
+        "Méthode de calcul écrite (coups candidats, échecs, prises, menaces)",
+        "Séries de Mat en 3 résolues sans déplacer les pièces",
+        "Premiers puzzles résolus à l'aveugle, position lue sans échiquier"
+      ]
+    },
+    {
+      "id": "convertir-l-avantage",
+      "name": "Convertir l'avantage",
+      "description": "S'entraîner à gagner les positions gagnantes ; c'est fait quand 10 positions à +3 ont été jouées jusqu'au mat ou à l'abandon de l'ordinateur.",
+      "talents": [
+        "conversion"
+      ],
+      "steps": [
+        "Réunir 10 positions à +3 tirées de tes parties ou d'un manuel",
+        "Les jouer contre l'ordinateur Lichess niveau 5",
+        "Noter les erreurs de conversion et la règle qui les évite"
+      ]
+    },
+    {
+      "id": "premier-tournoi",
+      "name": "Premier tournoi homologué",
+      "description": "Prendre ta licence et jouer un tournoi homologué en entier ; c'est fait quand chaque partie est analysée.",
+      "talents": [
+        "tournoi-homologue"
+      ],
+      "steps": [
+        "Prendre la licence FFE dans un club",
+        "Choisir un tournoi (rapide ou partie longue) et s'inscrire",
+        "Se préparer : répertoire revu et 3 parties longues en ligne",
+        "Jouer le tournoi en entier",
+        "Analyser chaque partie et noter 3 leçons"
+      ]
+    },
+    {
+      "id": "cycle-woodpecker",
+      "name": "Cycle Woodpecker",
+      "description": "Faire un cycle complet de la méthode Woodpecker ; c'est fait quand les 3 passages sont terminés et leurs temps notés.",
+      "talents": [
+        "woodpecker"
+      ],
+      "steps": [
+        "Choisir 300 puzzles (livre ou sélection Lichess) et noter la date",
+        "Premier passage complet, temps noté",
+        "Deuxième passage en moins de temps",
+        "Troisième passage en moins de temps encore"
+      ]
+    },
+    {
+      "id": "check-list-de-partie",
+      "name": "Check-list de partie",
+      "description": "Jouer contre plus fort avec une check-list et valider tes victoires ; c'est fait quand 3 victoires remplissent les 3 critères à l'analyse.",
+      "talents": [
+        "partie-complete"
+      ],
+      "steps": [
+        "Écrire ta check-list (répertoire suivi, plan en une phrase, technique de finale)",
+        "Jouer des parties rapides contre des adversaires mieux classés en suivant la check-list",
+        "Analyser chaque victoire et cocher les 3 critères"
+      ]
+    },
+    {
+      "id": "cap-sur-1500",
+      "name": "Cap sur 1500",
+      "description": "Mener un plan d'entraînement jusqu'à 1500 et à un classement officiel ; c'est fait quand le classement FFE ou FIDE obtenu est noté.",
+      "talents": [
+        "oeil-du-pisteur"
+      ],
+      "steps": [
+        "Plan d'entraînement écrit (tactique, finales, parties lentes, analyse) avec ses rythmes",
+        "Classements Chess.com relevés chaque mois",
+        "Inscription à un tournoi FFE en cadence lente",
+        "Tournoi joué et parties analysées",
+        "Classement Elo FFE ou FIDE consulté et noté avec la date"
+      ]
+    }
   ]
 }

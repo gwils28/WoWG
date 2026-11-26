@@ -522,5 +522,210 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "tournee-logement",
+      "name": "Tournée du logement",
+      "description": "Une séance de 20 min par semaine (soir ou week-end) : repérer et photographier un organe du logement (vanne, compteur, tableau, chauffe-eau) ou faire un entretien prévu, consigné dans le carnet.",
+      "talents": [
+        "carnet-maison"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "chantier-peinture",
+      "name": "Chantier peinture",
+      "description": "Mener un chantier de peinture de la préparation à la finition, photos avant et après à l'appui.",
+      "talents": [
+        "peinture-enduits"
+      ],
+      "steps": [
+        "Protéger, lessiver et reboucher les défauts",
+        "Poncer et appliquer la sous-couche",
+        "Passer les deux couches et faire les découpes",
+        "Prendre les photos avant et après"
+      ]
+    },
+    {
+      "id": "lire-le-bati",
+      "name": "Lire le bâti",
+      "description": "Une séance de 30 min le soir : étudier le bâti (fiche, vidéo, plan d'annonce annoté) et noter ce qui a été appris.",
+      "talents": [
+        "lire-batiment"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "gestes-electriques",
+      "name": "Gestes électriques",
+      "description": "Une séance de 30 min par semaine (soir ou week-end) : une petite intervention électrique consignée (couper, vérifier au VAT, intervenir, tester), notée avec le circuit concerné.",
+      "talents": [
+        "electricite-base"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "journee-jardin",
+      "name": "Journée au jardin",
+      "description": "Passer une journée d'entretien dans un jardin (proche ou jardin partagé) et noter ce qui a été fait.",
+      "talents": [
+        "entretien-jardin"
+      ],
+      "steps": [
+        "Trouver le jardin et fixer la journée",
+        "Tondre, tailler les bordures et désherber",
+        "Écrire la fiche de ce qui a été fait"
+      ]
+    },
+    {
+      "id": "chantier-plomberie",
+      "name": "Petite plomberie",
+      "description": "Faire une intervention de plomberie simple et vérifier l'absence de fuite.",
+      "talents": [
+        "plomberie-sanitaires"
+      ],
+      "steps": [
+        "Couper l'eau et préparer joints et outils",
+        "Démonter, nettoyer ou remplacer la pièce",
+        "Contrôler sans fuite après 48 h"
+      ]
+    },
+    {
+      "id": "seances-atelier-bois",
+      "name": "Séances d'atelier bois",
+      "description": "Une séance de 30 min (soir ou week-end) de coupes, réglages ou assemblage en bois, chez toi ou en atelier partagé, notée.",
+      "talents": [
+        "menuiserie"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "lire-des-diagnostics",
+      "name": "Dossier de diagnostics",
+      "description": "Une séance de 30 min le soir : lire le dossier de diagnostics d'une annonce réelle et lister les travaux à prévoir avec une estimation.",
+      "talents": [
+        "diagnostics"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "poser-un-sol",
+      "name": "Poser un sol",
+      "description": "Mener une pose de sol ou de plinthes sur une petite surface, du support aux finitions.",
+      "talents": [
+        "sols"
+      ],
+      "steps": [
+        "Trouver la pièce, le chantier ou la formation",
+        "Préparer le support et calepiner",
+        "Poser puis faire les finitions",
+        "Noter le temps passé et les photos"
+      ]
+    },
+    {
+      "id": "seances-ossature",
+      "name": "Stage d'ossature",
+      "description": "Suivre une formation ou un chantier encadré d'ossature et de cloison, une journée ou un week-end.",
+      "talents": [
+        "ossature-cloisons"
+      ],
+      "steps": [
+        "Trouver la formation ou le chantier et s'inscrire",
+        "Monter un cadre de 2 m d'équerre",
+        "Monter une cloison sur rails et montants, plaques vissées",
+        "Noter les photos et les points à retravailler"
+      ]
+    },
+    {
+      "id": "dossier-urbanisme",
+      "name": "Dossier d'urbanisme",
+      "description": "Préparer de bout en bout un dossier de déclaration préalable pour un projet réel ou une maison visée.",
+      "talents": [
+        "urbanisme"
+      ],
+      "steps": [
+        "Lire le PLU de la commune visée",
+        "Rédiger la notice et dessiner les plans",
+        "Réunir les pièces du dossier"
+      ]
+    },
+    {
+      "id": "formation-securite",
+      "name": "Formation sécurité",
+      "description": "Suivre une formation de sécurité reconnue et en garder l'attestation.",
+      "talents": [
+        "formations-securite"
+      ],
+      "steps": [
+        "Choisir la formation et s'inscrire",
+        "Suivre la formation",
+        "Ranger l'attestation avec le carnet"
+      ]
+    },
+    {
+      "id": "renover-une-piece",
+      "name": "Rénover une pièce",
+      "description": "Rénover une pièce de bout en bout en suivant un plan et une durée notée.",
+      "talents": [
+        "renovation-piece"
+      ],
+      "steps": [
+        "Plan des travaux et liste de matériel",
+        "Murs",
+        "Sol",
+        "Appareillage",
+        "Photos avant et après, durée notée"
+      ]
+    },
+    {
+      "id": "journee-chantier",
+      "name": "Journée de chantier",
+      "description": "Organiser une journée de chantier à plusieurs et en écrire le compte rendu.",
+      "talents": [
+        "chantiers-equipe"
+      ],
+      "steps": [
+        "Fixer la date et inviter l'équipe",
+        "Préparer matériel et consignes de sécurité",
+        "Mener la journée",
+        "Écrire le compte rendu"
+      ]
+    },
+    {
+      "id": "ouvrage-complet",
+      "name": "Ouvrage complet",
+      "description": "Construire un ouvrage de la fondation au toit, conforme à la déclaration préalable.",
+      "talents": [
+        "batisseur"
+      ],
+      "steps": [
+        "Déclaration préalable déposée et acceptée",
+        "Fondations coulées",
+        "Structure montée",
+        "Couverture posée",
+        "Conformité vérifiée, photos et budget consignés"
+      ]
+    }
   ]
 }

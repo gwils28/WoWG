@@ -540,5 +540,206 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "ecrire-positionnement",
+      "name": "Écrire son positionnement",
+      "description": "Rédiger ton positionnement, le soumettre à des gens du métier et intégrer leurs retours.",
+      "talents": [
+        "positionnement"
+      ],
+      "steps": [
+        "Rédiger cible, problème résolu et preuves",
+        "Envoyer à 5 personnes du métier",
+        "Intégrer les retours notés"
+      ]
+    },
+    {
+      "id": "choisir-statut",
+      "name": "Choisir son statut",
+      "description": "Comparer les statuts avec les simulateurs officiels et fixer une date de lancement.",
+      "talents": [
+        "statut"
+      ],
+      "steps": [
+        "Comparer les statuts selon le chiffre visé",
+        "Passer le simulateur officiel pour 2 statuts",
+        "Réunir les pièces et fixer la date"
+      ]
+    },
+    {
+      "id": "conversation-hebdo",
+      "name": "Conversation hebdo",
+      "description": "Une séance de 30 min par semaine (pause déjeuner ou soir) de conversation en anglais avec ton tuteur ou partenaire de tandem.",
+      "talents": [
+        "conversation-anglais"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seances-redaction",
+      "name": "Séances de rédaction",
+      "description": "Une séance de 30 min (soir ou week-end) de rédaction d'un article technique de fond, avancée du brouillon notée.",
+      "talents": [
+        "articles-techniques"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seances-prospection",
+      "name": "Séances de prospection",
+      "description": "Une séance de 30 min (pause déjeuner ou soir) de prospection : cibles identifiées, messages personnalisés envoyés, réponses notées.",
+      "talents": [
+        "prospection"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "ecrire-en-anglais",
+      "name": "Écrire en anglais",
+      "description": "Une séance de 20 min : écrire un e-mail ou une page professionnelle en anglais sans traducteur et le soumettre à ton tuteur.",
+      "talents": [
+        "ecrit-pro-anglais"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "parole-en-reunion",
+      "name": "Parole en réunion",
+      "description": "Une préparation de 15 min avant une réunion en anglais, puis une prise de parole pendant la réunion, ce qui a coincé noté.",
+      "talents": [
+        "reunions-anglais"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "decrocher-mission",
+      "name": "Décrocher une mission",
+      "description": "Transformer un prospect en mission signée.",
+      "talents": [
+        "premieres-missions"
+      ],
+      "steps": [
+        "Relancer 5 prospects chauds",
+        "Envoyer une proposition relue",
+        "Obtenir la signature"
+      ]
+    },
+    {
+      "id": "point-tresorerie",
+      "name": "Point trésorerie",
+      "description": "Un point de 20 min par semaine : saisir les encaissements, mettre de côté cotisations et impôts, relancer les retards.",
+      "talents": [
+        "tresorerie-pro"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "contribution-oss",
+      "name": "Contribution open source",
+      "description": "Mener une contribution à un projet open source tiers jusqu'à son acceptation.",
+      "talents": [
+        "contributions-oss"
+      ],
+      "steps": [
+        "Choisir une issue dans un projet tiers",
+        "Ouvrir la pull request",
+        "Traiter la revue jusqu'à la fusion"
+      ]
+    },
+    {
+      "id": "passer-le-b2",
+      "name": "Passer le B2",
+      "description": "Se préparer et passer une certification officielle B2.",
+      "talents": [
+        "certification-b2"
+      ],
+      "steps": [
+        "Passer un test blanc",
+        "Réviser les parties faibles",
+        "S'inscrire à la certification",
+        "Passer l'épreuve"
+      ]
+    },
+    {
+      "id": "donner-un-talk",
+      "name": "Donner un talk",
+      "description": "Obtenir une place dans une conférence et y donner ton talk.",
+      "talents": [
+        "conference"
+      ],
+      "steps": [
+        "Repérer les appels à propositions",
+        "Soumettre la proposition",
+        "Préparer et répéter le talk",
+        "Donner le talk"
+      ]
+    },
+    {
+      "id": "revue-pipeline",
+      "name": "Revue du pipeline",
+      "description": "Une revue de 20 min par semaine : mettre à jour prospects, propositions et signatures, et décider de la prochaine action pour chacun.",
+      "talents": [
+        "pipeline"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 12
+      }
+    },
+    {
+      "id": "viser-le-c1",
+      "name": "Viser le C1",
+      "description": "Se préparer et passer une certification officielle C1.",
+      "talents": [
+        "anglais-c1"
+      ],
+      "steps": [
+        "Passer un test blanc C1",
+        "Réviser les parties faibles",
+        "S'inscrire à la certification",
+        "Passer l'épreuve"
+      ]
+    },
+    {
+      "id": "tarif-haut-de-marche",
+      "name": "Tarif haut de marché",
+      "description": "Positionner ton tarif dans le quart supérieur et piloter un carnet plein.",
+      "talents": [
+        "expert-independant"
+      ],
+      "steps": [
+        "Relever le baromètre de ta spécialité et chiffrer le quart supérieur",
+        "Appliquer le nouveau tarif aux nouvelles propositions",
+        "Tenir chaque mois le planning de charge sur 6 mois",
+        "Noter les missions refusées faute de place"
+      ]
+    }
   ]
 }

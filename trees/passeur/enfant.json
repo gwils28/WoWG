@@ -535,5 +535,213 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "phrases-enrichies",
+      "name": "Phrases enrichies",
+      "description": "Pendant un repas ou le bain (10 min), reprendre chaque phrase de l'enfant en l'enrichissant d'un mot, puis noter la situation dans le carnet.",
+      "talents": [
+        "langage"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "coucher-en-images",
+      "name": "Coucher en images",
+      "description": "Fabriquer le tableau du coucher en images et le faire vivre jusqu'à ce que l'enfant enchaîne les étapes seul.",
+      "talents": [
+        "routine-coucher"
+      ],
+      "steps": [
+        "Écrire les étapes et l'heure du coucher",
+        "Photographier ou dessiner chaque étape et afficher le tableau à sa hauteur",
+        "Montrer le tableau chaque soir au lieu de rappeler à voix haute",
+        "Noter les soirs où il enchaîne 3 étapes sans rappel"
+      ]
+    },
+    {
+      "id": "lecture-du-soir",
+      "name": "Lecture du soir",
+      "description": "Au coucher, lire une histoire de 10 à 15 min (l'enfant choisit le livre au second rang), soir coché dans l'app.",
+      "talents": [
+        "histoire-du-soir"
+      ],
+      "recurrence": {
+        "times": 5,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "deux-options",
+      "name": "Deux options",
+      "description": "Au bain, au goûter ou au coucher, remplacer une consigne par un choix entre deux options et noter les choix offerts dans la soirée.",
+      "talents": [
+        "offrir-choix"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "dehors-ensemble",
+      "name": "Dehors ensemble",
+      "description": "Sortir 30 min pour une activité motrice (parc, draisienne, ballon), en fin de journée ou le week-end, sortie notée au journal.",
+      "talents": [
+        "motricite"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "tour-a-quatre-pattes",
+      "name": "Tour à quatre pattes",
+      "description": "Faire le tour du logement à hauteur d'enfant et traiter chaque risque relevé.",
+      "talents": [
+        "maison-securisee"
+      ],
+      "steps": [
+        "Parcourir chaque pièce à hauteur d'enfant, liste des risques écrite",
+        "Acheter ce qui manque (cache-prises, bloque-portes, barrière)",
+        "Poser les protections et ranger produits et médicaments en hauteur",
+        "Rayer chaque risque traité sur la liste"
+      ]
+    },
+    {
+      "id": "premiers-secours-enfant",
+      "name": "Premiers secours de l'enfant",
+      "description": "Suivre une formation aux premiers secours pédiatriques et garder la conduite à tenir sous la main.",
+      "talents": [
+        "urgences-enfant"
+      ],
+      "steps": [
+        "Écrire la conduite à tenir (fièvre, chute, étouffement, brûlure, centre antipoison) et l'afficher",
+        "S'inscrire à une formation premiers secours enfant et nourrisson",
+        "Suivre la formation et ranger l'attestation"
+      ]
+    },
+    {
+      "id": "laisser-faire",
+      "name": "Laisser faire",
+      "description": "Choisir les gestes à laisser faire à l'enfant et les accompagner jusqu'à ce qu'il les fasse seul ; fait quand chaque réussite est notée.",
+      "talents": [
+        "autonomie"
+      ],
+      "steps": [
+        "Choisir 3 gestes à sa mesure (manger, se déchausser, ranger) et les annoncer",
+        "Au repas ou au retour à la maison, le laisser faire jusqu'au bout sans reprendre la main",
+        "Noter chaque geste réussi seul et la date"
+      ]
+    },
+    {
+      "id": "jeux-de-tri",
+      "name": "Jeux de tri",
+      "description": "Le soir ou le week-end, faire 20 min de tri, couleurs, formes ou comptage, séance notée avec ce que l'enfant réussit.",
+      "talents": [
+        "premiers-apprentissages"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "raconte-moi",
+      "name": "Raconte-moi",
+      "description": "Au trajet, au bain ou au goûter (10 min), laisser l'enfant raconter et relancer sans corriger, échange coché dans l'app.",
+      "talents": [
+        "rituel-echange"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "charte-ecrans",
+      "name": "Charte écrans",
+      "description": "Écrire les règles écran d'après 3 ans et les mettre en place dès son anniversaire.",
+      "talents": [
+        "regles-ecrans"
+      ],
+      "steps": [
+        "Écrire durée, contenus choisis et moments interdits (repas, coucher)",
+        "Préparer une liste de 10 contenus adaptés à regarder avec lui",
+        "Noter chaque écart pendant les 3 premiers mois"
+      ]
+    },
+    {
+      "id": "cap-sur-la-maternelle",
+      "name": "Cap sur la maternelle",
+      "description": "Préparer la rentrée en maternelle puis suivre le premier trimestre avec l'enseignant.",
+      "talents": [
+        "rentree-maternelle"
+      ],
+      "steps": [
+        "Inscrire l'enfant (mairie puis école)",
+        "Visiter l'école avec lui",
+        "Lire ensemble 3 albums sur l'école",
+        "Caler coucher et lever sur l'horaire scolaire 2 semaines avant la rentrée",
+        "Demander un échange avec l'enseignant au premier trimestre",
+        "Noter les points à suivre et ce qui a été fait"
+      ]
+    },
+    {
+      "id": "bebes-nageurs",
+      "name": "Bébés nageurs",
+      "description": "Aller le week-end à la séance d'éveil aquatique (environ 45 min) avec l'enfant, séance cochée dans l'app.",
+      "talents": [
+        "eveil-aquatique"
+      ],
+      "steps": [
+        "S'inscrire pour un trimestre d'éveil aquatique"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 10
+      }
+    },
+    {
+      "id": "annee-scolaire-suivie",
+      "name": "Année scolaire suivie",
+      "description": "Préparer et tenir les rendez-vous de l'année avec l'école, puis suivre ce qui a été décidé.",
+      "talents": [
+        "scolarite"
+      ],
+      "steps": [
+        "Noter dans l'agenda la réunion de classe et demander l'entretien individuel",
+        "Préparer 3 questions pour l'enseignant",
+        "Assister à la réunion de classe",
+        "Faire l'entretien individuel",
+        "Écrire ce qui est décidé et vérifier un mois après que c'est suivi"
+      ]
+    },
+    {
+      "id": "bilan-de-l-annee",
+      "name": "Bilan de l'année",
+      "description": "Observer l'année de l'enfant sous trois angles et en faire le bilan avec l'enseignant.",
+      "talents": [
+        "enfant-epanoui"
+      ],
+      "steps": [
+        "Noter en début d'année 3 points à observer (autonomie, relations, plaisir d'apprendre)",
+        "Demander un rendez-vous à l'enseignant en milieu d'année",
+        "Lire le livret de fin d'année avec l'enfant",
+        "Écrire une page de bilan : ce qui va, ce qui reste à accompagner, confidences notées"
+      ]
+    }
   ]
 }

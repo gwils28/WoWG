@@ -516,5 +516,208 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "soirs-aux-fourneaux",
+      "name": "Soirs aux fourneaux",
+      "description": "Le soir (45 min environ), cuisiner seul le dîner du foyer sans plat préparé du commerce, dîner coché dans l'app.",
+      "talents": [
+        "cuisine-du-quotidien"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "cartographier-les-taches",
+      "name": "Cartographier les tâches",
+      "description": "Dresser l'inventaire complet des tâches du foyer, puis mesurer les tiennes pendant une semaine.",
+      "talents": [
+        "inventaire-taches"
+      ],
+      "steps": [
+        "Lister les tâches pièce par pièce avec leur fréquence",
+        "Ajouter les tâches invisibles (anticiper, racheter, prendre rendez-vous)",
+        "Noter tes propres tâches et leur durée pendant 7 jours"
+      ]
+    },
+    {
+      "id": "menus-du-dimanche",
+      "name": "Menus du dimanche",
+      "description": "Le week-end (30 min), planifier les menus de la semaine suivante et en tirer la liste de courses, menus affichés.",
+      "talents": [
+        "menus-semaine"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "fiche-sante-des-parents",
+      "name": "Fiche santé des parents",
+      "description": "Établir avec tes parents leur fiche santé et contacts, et la mettre à l'abri.",
+      "talents": [
+        "fiche-sante-parents"
+      ],
+      "steps": [
+        "Fixer un moment avec tes parents",
+        "Remplir la fiche avec eux (médecins, traitements, allergies, personne à prévenir)",
+        "Ranger une copie chez eux et chez toi, emplacement donné à ta fratrie"
+      ]
+    },
+    {
+      "id": "session-batch",
+      "name": "Session batch",
+      "description": "Deux week-ends par mois, faire une session de 2 h qui prépare au moins 3 repas d'avance, portions rangées au frigo ou au congélateur.",
+      "talents": [
+        "cuisine-avance"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "month",
+        "periods": 2
+      }
+    },
+    {
+      "id": "tour-de-fratrie",
+      "name": "Tour de fratrie",
+      "description": "Reprendre contact avec chaque frère ou sœur dans le mois et lancer une initiative commune.",
+      "talents": [
+        "fratrie"
+      ],
+      "steps": [
+        "Appeler ou voir chacun dans le mois",
+        "Proposer une initiative commune (cadeau, visite groupée, aide aux parents)",
+        "Noter qui fait quoi et la date"
+      ]
+    },
+    {
+      "id": "repas-de-restes",
+      "name": "Repas de restes",
+      "description": "Au dîner, cuisiner un repas à partir de restes ou de produits proches de la date (30 min), et peser ce qui part à la poubelle dans la semaine.",
+      "talents": [
+        "anti-gaspi"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "fiche-du-relais",
+      "name": "Fiche du relais",
+      "description": "Écrire la fiche des routines puis la tester en tenant seul le foyer un week-end.",
+      "talents": [
+        "fiche-relais"
+      ],
+      "steps": [
+        "Écrire horaires, repas, coucher et contacts de l'enfant",
+        "Planifier un week-end seul avec l'enfant",
+        "Tenir le week-end avec la fiche",
+        "Corriger la fiche avec ce qui a manqué"
+      ]
+    },
+    {
+      "id": "appel-du-dimanche",
+      "name": "Appel du dimanche",
+      "description": "Le week-end ou sur un trajet (20 min), appeler chacun de tes parents, appel noté dans l'app.",
+      "talents": [
+        "appel-parents"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "reseau-de-garde",
+      "name": "Réseau de garde",
+      "description": "Monter et briefer 3 solutions de garde de secours, puis en utiliser une.",
+      "talents": [
+        "garde-secours"
+      ],
+      "steps": [
+        "Identifier 3 solutions et saisir leurs contacts dans l'agenda",
+        "Remettre la fiche relais, l'accès au logement et les autorisations de récupérer l'enfant",
+        "Après une garde réelle, noter le retour et ajuster les consignes"
+      ]
+    },
+    {
+      "id": "memoire-familiale",
+      "name": "Mémoire familiale",
+      "description": "Recueillir l'histoire de la famille sur 3 générations jusqu'au livret imprimé pour l'enfant.",
+      "talents": [
+        "histoire-familiale"
+      ],
+      "steps": [
+        "Rassembler noms, dates et lieux sur 3 générations",
+        "Enregistrer des séances de récits avec les grands-parents (2 h au total)",
+        "Choisir photos et récits, mettre en page et imprimer le livret"
+      ]
+    },
+    {
+      "id": "linge-en-main",
+      "name": "Linge en main",
+      "description": "Le soir (20 min actives), faire une lessive complète, du tri au rangement, lessive cochée dans l'app.",
+      "talents": [
+        "linge"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "visites-de-l-annee",
+      "name": "Visites de l'année",
+      "description": "Rendre visite à tes parents avec l'enfant chaque trimestre et préparer avec ta fratrie le plan d'aide.",
+      "talents": [
+        "presence-parents"
+      ],
+      "steps": [
+        "Fixer les 4 visites de l'année dans l'agenda",
+        "Faire chaque visite avec l'enfant et la noter",
+        "Réunir ta fratrie (appel ou visio) sur l'autonomie de vos parents",
+        "Écrire le plan d'aide : qui fait quoi, logement, budget"
+      ]
+    },
+    {
+      "id": "semaine-en-solo",
+      "name": "Semaine en solo",
+      "description": "Tenir seul le foyer avec l'enfant pendant une semaine entière, fiches à jour.",
+      "talents": [
+        "foyer-sans-pilote"
+      ],
+      "steps": [
+        "Choisir la semaine (déplacement ou congé de l'autre parent)",
+        "Mettre à jour les fiches relais, imprévus et garde",
+        "Préparer menus et courses de la semaine",
+        "Tenir la semaine sans aide",
+        "Écrire le débrief : ce qui a manqué, fiches corrigées"
+      ]
+    },
+    {
+      "id": "grande-tablee",
+      "name": "Grande tablée",
+      "description": "Organiser une réunion de trois générations d'au moins 10 personnes, de l'invitation au bilan.",
+      "talents": [
+        "trois-generations"
+      ],
+      "steps": [
+        "Fixer la date 3 mois à l'avance et inviter 10 personnes ou plus",
+        "Réserver le lieu et l'hébergement",
+        "Écrire le programme, les menus et la répartition des tâches",
+        "Accueillir la réunion",
+        "Noter ce qu'il faut garder ou changer pour l'année suivante"
+      ]
+    }
   ]
 }

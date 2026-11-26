@@ -468,5 +468,207 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "semaine-guidee",
+      "name": "Méditation guidée",
+      "description": "Une semaine tenue = 5 séances de méditation guidée de 5 min (matin ou coucher), cochées dans l'appli ou le carnet.",
+      "talents": [
+        "meditation-guidee"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 2
+      }
+    },
+    {
+      "id": "point-de-depart-who5",
+      "name": "Météo intérieure",
+      "description": "Mesurer ton bien-être de départ puis tenir un carnet d'émotions ; fait quand les 10 moments sont notés.",
+      "talents": [
+        "meteo-interieure"
+      ],
+      "steps": [
+        "Remplir le WHO-5 et noter le score",
+        "Ouvrir un carnet d'émotions (papier ou téléphone)",
+        "Noter 10 moments : émotion, intensité, déclencheur"
+      ]
+    },
+    {
+      "id": "lecture-plaisir",
+      "name": "Lecture plaisir",
+      "description": "Séance de 30 min de lecture d'un livre choisi pour le plaisir (soir ou week-end), hors lectures techniques des autres classes, page atteinte notée.",
+      "talents": [
+        "coin-lecture"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "appel-de-la-semaine",
+      "name": "Appel de la semaine",
+      "description": "Appeler un ami hors famille pendant 20 min ou plus (trajet, soir), nom et date notés.",
+      "talents": [
+        "prendre-nouvelles"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "semaine-sans-guide",
+      "name": "Méditation autonome",
+      "description": "Une semaine tenue = 5 séances de 10 min de méditation sans guide, cochées au carnet.",
+      "talents": [
+        "meditation-autonome"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "lancer-un-rituel",
+      "name": "Rituel entre amis",
+      "description": "Lancer un rendez-vous régulier avec des amis hors du foyer ; fait quand les deux premiers rendez-vous ont eu lieu.",
+      "talents": [
+        "rituel-amis"
+      ],
+      "steps": [
+        "Choisir le format (repas, sortie, jeu) et 2 ou 3 amis",
+        "Fixer une date récurrente avec eux",
+        "Tenir le premier rendez-vous",
+        "Tenir le deuxième"
+      ]
+    },
+    {
+      "id": "semaine-sous-objectif",
+      "name": "Écrans tenus",
+      "description": "Une semaine tenue = temps d'écran de loisir sous ton objectif (relevé le dimanche en 5 min) et téléphone hors de la chambre chaque nuit.",
+      "talents": [
+        "ecrans-adulte"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "tester-trois-strategies",
+      "name": "Boîte à outils",
+      "description": "Tester 3 stratégies de régulation et garder la meilleure ; fait quand l'efficacité de chacune est notée.",
+      "talents": [
+        "reguler"
+      ],
+      "steps": [
+        "Choisir 3 stratégies (respiration, marche, mise à distance)",
+        "Tester chacune 3 fois en situation, efficacité notée de 1 à 10",
+        "Désigner la meilleure et l'écrire en tête du carnet"
+      ]
+    },
+    {
+      "id": "dire-non",
+      "name": "Dire non",
+      "description": "Préparer et pratiquer des refus courts pendant un mois ; fait quand le bilan des refus est écrit.",
+      "talents": [
+        "limites"
+      ],
+      "steps": [
+        "Écrire 3 phrases de refus types",
+        "Noter chaque refus pendant un mois",
+        "Écrire le bilan : ce qui a été facile, ce qui a coûté"
+      ]
+    },
+    {
+      "id": "conges-sans-pro",
+      "name": "Congés coupés",
+      "description": "Préparer une période de congés sans aucun message pro ; fait quand la période est passée et notée sans écart.",
+      "talents": [
+        "conges-coupes"
+      ],
+      "steps": [
+        "Choisir les dates et prévenir équipe et clients",
+        "Poser le répondeur et nommer un relais",
+        "Retirer les applis pro du téléphone pendant les congés",
+        "Noter au retour les écarts éventuels"
+      ]
+    },
+    {
+      "id": "moment-pour-soi",
+      "name": "Moment pour soi",
+      "description": "Un moment plaisir planifié pour toi de 30 min ou plus dans la semaine, hors lecture, musique, échecs, boxe et sport, noté après coup.",
+      "talents": [
+        "soin-de-soi"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "nouveaux-visages",
+      "name": "Nouveaux visages",
+      "description": "Aller vers de nouvelles personnes et en revoir certaines ; fait quand 3 personnes ont été revues au moins une fois.",
+      "talents": [
+        "nouvelles-amities"
+      ],
+      "steps": [
+        "Choisir 2 lieux de rencontre (cours, voisinage, événement) hors activités suivies ailleurs",
+        "Y aller 4 fois en tout",
+        "Proposer à 3 personnes de se revoir",
+        "Noter les personnes revues et quand"
+      ]
+    },
+    {
+      "id": "demandes-claires",
+      "name": "Demandes claires",
+      "description": "Apprendre la demande observation, ressenti, besoin, puis l'utiliser ; fait quand 5 demandes et leurs réponses sont notées.",
+      "talents": [
+        "exprimer-besoins"
+      ],
+      "steps": [
+        "Écrire une fiche d'une page sur la méthode",
+        "Préparer par écrit 5 demandes réelles",
+        "Formuler chaque demande et noter la réponse"
+      ]
+    },
+    {
+      "id": "semestre-ancre",
+      "name": "Méditation ancrée",
+      "description": "Installer la méditation sur 6 mois avec un lieu et une heure fixes ; fait quand le bilan du semestre est écrit.",
+      "talents": [
+        "meditation-ancree"
+      ],
+      "steps": [
+        "Fixer l'heure et le lieu de pratique (10 min)",
+        "Faire le point au bout de 3 mois",
+        "Tenir le deuxième trimestre",
+        "Écrire le bilan du semestre"
+      ]
+    },
+    {
+      "id": "annee-equilibree",
+      "name": "Année équilibrée",
+      "description": "Suivre ton WHO-5 chaque mois pendant un an et réagir aux baisses ; fait quand le bilan des 12 mois est écrit.",
+      "talents": [
+        "equilibre-interieur"
+      ],
+      "steps": [
+        "Programmer un rappel mensuel du WHO-5",
+        "Noter chaque score dans un tableau",
+        "Relire ton plan de résilience à chaque score sous 15",
+        "Écrire le bilan des 12 mois"
+      ]
+    }
   ]
 }

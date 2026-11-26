@@ -511,5 +511,209 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "metronome-sur-2-et-4",
+      "name": "Métronome sur 2 et 4",
+      "description": "Séance de 20 min le soir : noires sur une gamme, métronome sur 2 et 4, tempo monté de 10 dès que 2 min passent sans décrocher ; chaque séance notée avec son tempo.",
+      "talents": [
+        "time"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "theorie-des-accords",
+      "name": "Théorie des accords",
+      "description": "Séance de 20 min (pause déjeuner ou soir) : intervalles écrits à nommer, puis notes des 4 types d'accords sur 3 fondamentales, temps chronométré noté.",
+      "talents": [
+        "intervalles-accords"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "soiree-en-club",
+      "name": "Soirée en club",
+      "description": "Repérer les clubs et les jams de la région, puis aller écouter un concert de jazz ; fait quand le concert est noté dans le carnet.",
+      "talents": [
+        "concerts"
+      ],
+      "steps": [
+        "Relever l'agenda des clubs et des jams (lieux, jours, horaires)",
+        "Choisir une date et organiser la garde",
+        "Aller au concert et noter le lieu et le groupe"
+      ]
+    },
+    {
+      "id": "oreille-en-semaine",
+      "name": "Oreille d'intervalles",
+      "description": "Une semaine tenue = 4 séances de 10 min d'entraînement d'intervalles sur l'appli, ascendants puis descendants, score de la dernière noté.",
+      "talents": [
+        "oreille-intervalles"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "gammes-justes",
+      "name": "Gammes justes",
+      "description": "Séance de 20 min le soir : 3 gammes majeures en doigté Simandl puis un arpège sur bourdon, enregistré une fois par semaine et réécouté pour la justesse.",
+      "talents": [
+        "justesse"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "apprendre-un-standard",
+      "name": "Apprendre un standard",
+      "description": "Ajouter un standard au répertoire ; fait quand il est joué en entier sur play-along, grille et ligne de basse tenues.",
+      "talents": [
+        "repertoire"
+      ],
+      "steps": [
+        "Choisir le standard et écouter 3 versions",
+        "Écrire la grille et une ligne de basse",
+        "Le jouer en entier sur play-along sans arrêt"
+      ]
+    },
+    {
+      "id": "heure-hebdo",
+      "name": "Heure de contrebasse",
+      "description": "Cumuler 1 h de pratique dans la semaine, en 2 ou 3 séances de 20 à 30 min (soir ou week-end), total noté chaque dimanche.",
+      "talents": [
+        "pratique-reguliere"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "walking-du-soir",
+      "name": "Walking du soir",
+      "description": "Séance de 30 min le soir : walking sur blues en fa puis sur un AABA au play-along, tempo noté, enregistrement réécouté une fois par semaine.",
+      "talents": [
+        "walking-bass"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "relever-une-ligne",
+      "name": "Relever une ligne",
+      "description": "Relever à l'oreille une ligne de basse d'un disque ; fait quand la partie relevée est rejouée avec le disque sans décalage.",
+      "talents": [
+        "releve-lignes"
+      ],
+      "steps": [
+        "Choisir un enregistrement et le passage à relever",
+        "Relever la ligne et la noter",
+        "La rejouer avec le disque et enregistrer le résultat"
+      ]
+    },
+    {
+      "id": "premiere-repetition",
+      "name": "Jouer à plusieurs",
+      "description": "Trouver un ou deux musiciens et répéter ensemble ; fait quand la répétition est notée (morceaux, durée, ce qui a coincé).",
+      "talents": [
+        "jouer-avec-autres"
+      ],
+      "steps": [
+        "Trouver un musicien (annonce, école de musique, jam)",
+        "Choisir les standards et caler une date",
+        "Répéter et noter le déroulé"
+      ]
+    },
+    {
+      "id": "tour-des-feels",
+      "name": "Tour des feels",
+      "description": "Travailler un nouveau feel (bossa, valse, ballade) sur play-along jusqu'à le tenir sur tout le morceau ; fait quand l'enregistrement est réécouté et validé.",
+      "talents": [
+        "variations-feel"
+      ],
+      "steps": [
+        "Choisir le feel et le morceau",
+        "Écouter 3 bassistes de référence sur ce feel",
+        "Jouer le morceau en entier sur play-along et l'enregistrer"
+      ]
+    },
+    {
+      "id": "monter-sur-scene",
+      "name": "Monter sur scène",
+      "description": "Jouer un morceau devant un public avec d'autres musiciens ; fait quand le passage est consigné avec un retour d'un des musiciens.",
+      "talents": [
+        "scene-ouverte"
+      ],
+      "steps": [
+        "Repérer une scène ouverte, une audition ou la fête de la musique",
+        "S'inscrire ou se proposer",
+        "Répéter le morceau avec les musiciens",
+        "Jouer devant le public",
+        "Consigner le passage et le retour reçu"
+      ]
+    },
+    {
+      "id": "chorus-enregistre",
+      "name": "Chorus enregistré",
+      "description": "Préparer puis enregistrer un chorus de basse improvisé ; fait quand l'enregistrement est daté et rangé.",
+      "talents": [
+        "solo"
+      ],
+      "steps": [
+        "Choisir la grille (blues en fa ou standard AABA)",
+        "Relever et jouer 2 chorus de bassistes de référence",
+        "Improviser sur play-along pendant 2 semaines",
+        "Enregistrer le chorus d'une traite",
+        "Réécouter et noter 2 points à travailler"
+      ]
+    },
+    {
+      "id": "cours-archet",
+      "name": "Passer à l'archet",
+      "description": "Apprendre l'archet avec un professeur jusqu'à un enregistrement jugé juste ; fait quand le professeur a validé l'enregistrement.",
+      "talents": [
+        "archet"
+      ],
+      "steps": [
+        "Réserver des cours avec un professeur (archet prêté ou loué)",
+        "Travailler la gamme de ré sur 2 octaves",
+        "Enregistrer la gamme ou le thème choisi",
+        "Faire valider par le professeur (justesse, son)"
+      ]
+    },
+    {
+      "id": "premiere-jam",
+      "name": "Soir de jam",
+      "description": "Jouer en jam session publique ; fait quand la soirée est consignée (lieu, morceaux, musiciens).",
+      "talents": [
+        "soirs-de-jam"
+      ],
+      "steps": [
+        "Choisir la jam et le ou les morceaux à proposer",
+        "Préparer les morceaux par cœur, grille et ligne de basse",
+        "Organiser la garde de la soirée",
+        "Se présenter au maître de jam",
+        "Jouer, puis consigner la soirée"
+      ]
+    }
   ]
 }

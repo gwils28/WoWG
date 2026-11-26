@@ -539,5 +539,207 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "papier-de-la-semaine",
+      "name": "Lecture de papiers",
+      "description": "Une séance de 30 min (soir ou pause déjeuner) de lecture d'un papier technique, fiche complétée (problème, méthode, résultats, limites) à la fin de chaque papier.",
+      "talents": [
+        "fiches-papiers"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "construire-agent",
+      "name": "Construire un agent",
+      "description": "Construire un agent outillé pour une tâche réelle et observer ses échecs.",
+      "talents": [
+        "premier-agent"
+      ],
+      "steps": [
+        "Choisir une tâche réelle",
+        "Coder l'agent avec 2 outils, versionné",
+        "Classer les échecs observés"
+      ]
+    },
+    {
+      "id": "annoter-des-cas",
+      "name": "Annoter des cas",
+      "description": "Une séance de 30 min : annoter environ 7 cas d'éval et les ajouter au jeu versionné.",
+      "talents": [
+        "jeu-evaluation"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "chaine-ci",
+      "name": "Chaîne de CI",
+      "description": "Mettre en place une CI qui teste code, données et modèle.",
+      "talents": [
+        "ci-cd-ml"
+      ],
+      "steps": [
+        "Tests unitaires en CI",
+        "Tests de données",
+        "Tests de modèle avec seuil"
+      ]
+    },
+    {
+      "id": "seances-benchmark",
+      "name": "Séances de benchmark",
+      "description": "Une séance de 30 min pour avancer le benchmark de prévision (données, backtest, modèle, fuites), avancée notée.",
+      "talents": [
+        "benchmark-prevision"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seances-reimplementation",
+      "name": "Séances de réimplémentation",
+      "description": "Une séance de 30 min de réimplémentation d'une méthode publiée, écart aux résultats noté.",
+      "talents": [
+        "reimplementation"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "graphe-agents",
+      "name": "Graphe d'agents",
+      "description": "Construire un graphe d'agents robuste avec validation humaine.",
+      "talents": [
+        "orchestration"
+      ],
+      "steps": [
+        "État partagé et reprise après erreur",
+        "Point de validation humaine",
+        "Test sur le jeu d'éval"
+      ]
+    },
+    {
+      "id": "revue-monitoring",
+      "name": "Revue de monitoring",
+      "description": "Une revue de 20 min par semaine : relire dérive, latence et coût, trier les alertes et noter les actions.",
+      "talents": [
+        "monitoring-production"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "attaquer-ses-defenses",
+      "name": "Attaquer ses défenses",
+      "description": "Tester les défenses d'un agent contre l'injection de prompt et corriger.",
+      "talents": [
+        "garde-fous"
+      ],
+      "steps": [
+        "Écrire un jeu de 50 attaques",
+        "Lancer le jeu, noter les failles",
+        "Corriger et relancer"
+      ]
+    },
+    {
+      "id": "lancer-agent",
+      "name": "Lancer un agent",
+      "description": "Mettre un agent entre les mains de vrais utilisateurs et suivre sa qualité.",
+      "talents": [
+        "agent-production"
+      ],
+      "steps": [
+        "Recruter les utilisateurs pilotes",
+        "Traiter les retours de la première semaine",
+        "Suivre un indicateur de qualité au tableau de bord"
+      ]
+    },
+    {
+      "id": "seances-rapport",
+      "name": "Séances de rapport",
+      "description": "Une séance de 30 min (soir ou week-end) d'écriture du rapport technique (méthode, protocole, résultats, limites), section avancée notée.",
+      "talents": [
+        "preprint"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "etude-causale",
+      "name": "Étude causale",
+      "description": "Mener une étude d'impact causal publiée avec ses diagnostics.",
+      "talents": [
+        "inference-causale"
+      ],
+      "steps": [
+        "Choisir l'intervention et les données",
+        "Construire le contrefactuel",
+        "Lancer les tests placebos et de sensibilité",
+        "Publier l'étude"
+      ]
+    },
+    {
+      "id": "pipeline-documentaire",
+      "name": "Pipeline documentaire",
+      "description": "Construire et évaluer un pipeline d'extraction de documents, puis le proposer à une équipe.",
+      "talents": [
+        "assistant-documentaire"
+      ],
+      "steps": [
+        "Réunir un corpus de PDF, images et tableaux",
+        "Construire l'extraction",
+        "Mesurer la fidélité",
+        "Présenter l'assistant à une équipe"
+      ]
+    },
+    {
+      "id": "soumettre-papier",
+      "name": "Soumettre un papier",
+      "description": "Mener un papier de la soumission à la décision du comité.",
+      "talents": [
+        "papier-accepte"
+      ],
+      "steps": [
+        "Choisir le workshop ou la conférence",
+        "Soumettre le papier",
+        "Répondre aux relecteurs",
+        "Préparer la version finale"
+      ]
+    },
+    {
+      "id": "systeme-reference",
+      "name": "Système de référence",
+      "description": "Faire vivre un système d'IA complet en production pendant un an.",
+      "talents": [
+        "reference-metier"
+      ],
+      "steps": [
+        "Éval en CI, garde-fous et monitoring en place et documentés",
+        "50 utilisateurs actifs atteints",
+        "Revue de production à 6 mois écrite",
+        "Revue à 12 mois écrite",
+        "Méthode ou librairie publiée avec un guide d'adoption"
+      ]
+    }
   ]
 }

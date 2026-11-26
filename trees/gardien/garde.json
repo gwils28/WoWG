@@ -499,5 +499,209 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "shadow-du-soir",
+      "name": "Shadow du soir",
+      "description": "3 fois par semaine (20 min, le soir), fais 5 min d'échauffement puis des rounds de shadow jab-direct, garde remontée après chaque coup ; c'est fait quand la séance est notée.",
+      "talents": [
+        "jab-direct"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "premier-equipement",
+      "name": "Premier équipement",
+      "description": "Équipe-toi et apprends ce qui compte en boxe éducative ; c'est fait quand tu as expliqué une touche au coach.",
+      "talents": [
+        "equipement-regles"
+      ],
+      "steps": [
+        "Essayer et acheter casque, protège-dents moulé, gants et coquille",
+        "Lire le règlement de boxe éducative FFBoxe",
+        "Expliquer au coach ce qui fait une touche"
+      ]
+    },
+    {
+      "id": "corde-a-sauter",
+      "name": "Corde à sauter",
+      "description": "2 fois par semaine (20 min, le soir ou à la pause déjeuner), enchaîne des rounds de corde avec 1 min de repos ; c'est fait quand les rounds tenus sont notés.",
+      "talents": [
+        "corde"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "trajets-revus",
+      "name": "Trajets revus",
+      "description": "Revois tes trajets habituels pour savoir où ne pas aller et où te réfugier ; c'est fait quand les refuges sont enregistrés.",
+      "talents": [
+        "evitement"
+      ],
+      "steps": [
+        "Lister tes trajets habituels",
+        "Repérer zones à éviter et lieux refuges sur une carte",
+        "Enregistrer les refuges dans les favoris de ton appli de carte"
+      ]
+    },
+    {
+      "id": "rounds-au-sac",
+      "name": "Rounds au sac",
+      "description": "2 fois par semaine (30 min, en fin de séance du soir au club), enchaîne des rounds au sac sans t'arrêter, un round ou 1 min de plus quand c'est tenu ; c'est fait quand les rounds sont notés.",
+      "talents": [
+        "rounds-sac"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "fiche-legitime-defense",
+      "name": "Fiche légitime défense",
+      "description": "Résume sur une fiche ce que dit la loi et quoi faire après une agression ; c'est fait quand la fiche est rangée avec le plan familial.",
+      "talents": [
+        "cadre-legal"
+      ],
+      "steps": [
+        "Lire une source officielle sur la légitime défense",
+        "Résumer les conditions de la riposte",
+        "Résumer la conduite après une agression (sûreté, 17, plainte, aide aux victimes)"
+      ]
+    },
+    {
+      "id": "esquives-sous-la-corde",
+      "name": "Esquives sous la corde",
+      "description": "2 fois par semaine (20 min, le soir), fais du shadow défensif sous une corde tendue, amplitude adaptée au dos ; c'est fait quand la séance est notée.",
+      "talents": [
+        "esquives-blocages"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "stage-self-defense",
+      "name": "Stage de self-défense",
+      "description": "Suis une initiation encadrée à la self-défense ; c'est fait quand l'instructeur a validé tes dégagements.",
+      "talents": [
+        "self-defense"
+      ],
+      "steps": [
+        "Trouver une initiation ou un stage encadré près de chez toi",
+        "S'inscrire",
+        "Suivre les séances ou le stage",
+        "Noter les dégagements validés par l'instructeur"
+      ]
+    },
+    {
+      "id": "combinaisons-numerotees",
+      "name": "Combinaisons numérotées",
+      "description": "Apprends les combinaisons numérotées et montre-les sur appel ; c'est fait quand la vidéo de shadow est enregistrée.",
+      "talents": [
+        "combinaisons"
+      ],
+      "steps": [
+        "Apprendre la numérotation des coups et les 6 combinaisons de base",
+        "Les enchaîner sur pattes d'ours sur appel du coach",
+        "Filmer un shadow de 3 rounds avec les combinaisons"
+      ]
+    },
+    {
+      "id": "stage-desamorcage",
+      "name": "Stage de désamorçage",
+      "description": "Travaille posture et voix de désamorçage en stage ou au club ; c'est fait quand les mises en situation sont notées.",
+      "talents": [
+        "desamorcer"
+      ],
+      "steps": [
+        "Trouver un stage ou une séance dédiée",
+        "Vivre les mises en situation",
+        "Noter ce qui a marché (distance, phrases, sortie)"
+      ]
+    },
+    {
+      "id": "sparring-du-mois",
+      "name": "Sparring du mois",
+      "description": "2 fois par mois (30 min de sparring contrôlé, séance du soir ou du week-end au club), note le partenaire et un point à travailler ; c'est fait quand les 2 séances du mois sont notées.",
+      "talents": [
+        "sparring-regulier"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "scenario-surprise",
+      "name": "Scénario surprise",
+      "description": "Vis une mise en situation encadrée sous stress et débriefe-la ; c'est fait quand le débrief est écrit.",
+      "talents": [
+        "sang-froid"
+      ],
+      "steps": [
+        "Trouver un instructeur qui propose des scénarios surprise consentis",
+        "S'inscrire et convenir du cadre",
+        "Vivre la mise en situation",
+        "Écrire le débrief avec l'instructeur (réaction, distance, appel, loi)"
+      ]
+    },
+    {
+      "id": "premier-gala",
+      "name": "Premier gala",
+      "description": "Monte sur le ring pour un premier interclub ou une compétition ; c'est fait quand l'analyse vidéo est écrite.",
+      "talents": [
+        "premiere-competition"
+      ],
+      "steps": [
+        "Valider le projet avec le coach",
+        "Obtenir licence et certificat médical avec avis sur la scoliose",
+        "S'inscrire à l'interclub ou à la compétition",
+        "Disputer l'assaut",
+        "Analyser la vidéo et noter 3 points"
+      ]
+    },
+    {
+      "id": "passage-de-grade",
+      "name": "Passage de grade",
+      "description": "Prépare et passe le grade technique proposé par le club ; c'est fait quand le résultat est noté.",
+      "talents": [
+        "technicien-complet"
+      ],
+      "steps": [
+        "Demander au coach le programme du grade",
+        "Filmer un shadow complet et le faire valider",
+        "Passer l'examen",
+        "Noter le résultat et les points à revoir"
+      ]
+    },
+    {
+      "id": "campagne-officielle",
+      "name": "Campagne officielle",
+      "description": "Prépare une compétition officielle FFBoxe et vise la victoire ; c'est fait quand le débrief de l'assaut est écrit.",
+      "talents": [
+        "garde-de-fer"
+      ],
+      "steps": [
+        "Choisir une compétition officielle de ta catégorie avec le coach",
+        "Tenir le bloc de préparation fixé par le coach",
+        "Passer pesée et formalités",
+        "Disputer l'assaut",
+        "Écrire le débrief et le plan suivant"
+      ]
+    }
   ]
 }

@@ -13,6 +13,7 @@
 
 - Archive des classes (SPEC 11) : simple préférence `archivedDomains`, comme les épingles, plutôt qu'une colonne et une migration. Réversible, sauvegardée avec les préférences, sans toucher aux rangs ni au journal.
 - Classe Passeur renommée Berger le 2026-11-23 : seul le nom affiché change, l'id `passeur` (dossier `trees/passeur`, progression, quêtes, `portraits/passeur`) est conservé.
+- Phase 11 (2026-11-27) : 15 quêtes par arbre v2 (225 en tout), calées sur des journées pleines (travail, jeune enfant, sport le matin) : répétables de 10 à 30 min, 1 à 3 fois par semaine, durée écrite dans la description, logées dans des moments existants (routine sportive du matin pour Corps, bain, coucher et trajets pour Berger, trajets déjà prévus pour Route) ; l'effort lourd est réservé aux jalons ponctuels (stage, compétition, week-end). Exceptions assumées, imposées par le critère : `session-batch` (2 h, deux week-ends par mois), `creneau-benevole` (2 h, deux fois par mois), `seance-en-binome` et `saison-d-encadrant` (1 h par semaine à l'horaire du club). Les 5 quêtes du matin de Corps précisent qu'une séance ne compte que pour une quête. Talents d'attente ou d'état (`precaution`, `saison-sans-blessure`, `maitre-gabarit`, `lecteur`...) et talents dont l'action est déjà couverte (`puzzles-reguliers`) volontairement sans quête.
 
 - Points et niveau ne comptent que les talents encore définis : la progression orpheline est conservée mais n'entre pas dans le niveau.
 - Rang courant borné à 0 lors du cumul des événements (un retrait en trop n'a pas d'effet négatif).

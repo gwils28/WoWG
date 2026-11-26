@@ -514,5 +514,210 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "marche-course-du-matin",
+      "name": "Marche-course du matin",
+      "description": "Dans ta routine sportive du matin, séance de 25 à 30 min en alternant course et marche, alternance notée à chaque sortie. Une même séance ne compte que pour une seule quête du matin.",
+      "talents": [
+        "marche-course"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "pompes-du-matin",
+      "name": "Pompes progressives",
+      "description": "Dans ta routine du matin, bloc de 15 min de pompes inclinées puis au sol, séries et hauteur d'appui notées. Une même séance ne compte que pour une seule quête du matin.",
+      "talents": [
+        "pompes-inclinees"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "rendez-vous-kine",
+      "name": "Rendez-vous kiné",
+      "description": "Faire une séance de kiné pour la scoliose ; fait quand les 3 consignes (conseillé, à éviter) sont notées.",
+      "talents": [
+        "avis-kine"
+      ],
+      "steps": [
+        "Obtenir la prescription chez ton médecin",
+        "Prendre rendez-vous et faire la séance",
+        "Noter les 3 exercices ou consignes"
+      ]
+    },
+    {
+      "id": "semaine-dos",
+      "name": "Semaine du dos",
+      "description": "Une semaine tenue = la routine prescrite par le kiné (10 min, intégrée à ta routine du matin) faite 5 jours sur 7.",
+      "talents": [
+        "routine-dos"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "bilan-de-sante",
+      "name": "Bilan de santé",
+      "description": "Faire un bilan dédié chez ton médecin traitant puis le bilan sanguin ; fait quand les résultats ont été commentés avec lui.",
+      "talents": [
+        "bilan-medecin"
+      ],
+      "steps": [
+        "Prendre un rendez-vous de bilan (pas un certificat)",
+        "Noter tension, poids et tour de taille",
+        "Faire le bilan sanguin prescrit",
+        "Commenter les résultats avec le médecin"
+      ]
+    },
+    {
+      "id": "vers-les-cinq-km",
+      "name": "Vers les 5 km",
+      "description": "Dans ta routine du matin, sortie de 30 min en course continue, distance et allure notées. Une même séance ne compte que pour une seule quête du matin.",
+      "talents": [
+        "cinq-kilometres"
+      ],
+      "recurrence": {
+        "times": 3,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "cours-de-natation",
+      "name": "Cours de natation adulte",
+      "description": "Suivre des séances encadrées pour toi seul jusqu'aux premiers acquis ; fait quand les acquis de chaque séance sont notés.",
+      "talents": [
+        "aisance-aquatique"
+      ],
+      "steps": [
+        "Trouver un cours adulte ou un maître-nageur (pause déjeuner ou week-end)",
+        "S'inscrire",
+        "Suivre les séances",
+        "Noter ce qui est acquis (tête sous l'eau, flottaison, glisse)"
+      ]
+    },
+    {
+      "id": "squat-du-matin",
+      "name": "Squat contrôlé",
+      "description": "Dans ta routine du matin, bloc de 15 min de squats en amplitude complète, descente en 3 s, séries notées. Une même séance ne compte que pour une seule quête du matin.",
+      "talents": [
+        "squat-complet"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "calendrier-depistages",
+      "name": "Calendrier de prévention",
+      "description": "Établir la liste des dépistages, vaccins et examens de ton âge ; fait quand chaque élément a une date.",
+      "talents": [
+        "depistages"
+      ],
+      "steps": [
+        "Écrire la liste recommandée à ton âge (hors dentiste)",
+        "La faire valider par ton médecin",
+        "Prendre les rendez-vous ou noter la date prévue de chacun"
+      ]
+    },
+    {
+      "id": "longueurs-de-crawl",
+      "name": "Longueurs de crawl",
+      "description": "Séance de 30 min à la piscine (pause déjeuner ou week-end) : éducatifs puis longueurs de crawl, plus longue distance sans arrêt notée.",
+      "talents": [
+        "crawl"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "remise-en-selle",
+      "name": "Remise en selle",
+      "description": "Réapprendre le vélo sur parking vide puis sur voie verte ; fait quand l'essai du rang suivant est noté.",
+      "talents": [
+        "velo-adulte"
+      ],
+      "steps": [
+        "Trouver un vélo à ta taille (prêt ou location)",
+        "3 séances de 30 min sur parking vide le week-end",
+        "Tenter le critère du rang suivant et le noter"
+      ]
+    },
+    {
+      "id": "simulation-triathlon",
+      "name": "Simulation de triathlon",
+      "description": "Organiser un enchaînement nage, vélo, course dans la même matinée ; fait quand les temps et la transition sont consignés.",
+      "talents": [
+        "enchainements"
+      ],
+      "steps": [
+        "Choisir la date (week-end) et organiser la garde",
+        "Repérer piscine, boucle vélo et parcours de course",
+        "Préparer la zone de transition (sac, ordre des affaires)",
+        "Réaliser l'enchaînement",
+        "Consigner les temps de chaque partie"
+      ]
+    },
+    {
+      "id": "cycle-de-force",
+      "name": "Cycle de force",
+      "description": "Dans ta routine du matin, séance de 30 min alternant rowing, pompes, squat et gainage, charges et séries notées. Une même séance ne compte que pour une seule quête du matin.",
+      "talents": [
+        "force-complete"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 12
+      }
+    },
+    {
+      "id": "premier-triathlon",
+      "name": "Premier triathlon",
+      "description": "S'inscrire et terminer un triathlon officiel ; fait quand le résultat est consigné.",
+      "talents": [
+        "triathlon"
+      ],
+      "steps": [
+        "Choisir l'épreuve et s'inscrire (licence ou pass journée, certificat médical)",
+        "Suivre un plan de 8 semaines dans ta routine du matin",
+        "Repérer le parcours et préparer le matériel",
+        "Prendre le départ et terminer",
+        "Consigner temps et enseignements"
+      ]
+    },
+    {
+      "id": "test-annuel",
+      "name": "Test de forme annuel",
+      "description": "Préparer puis passer le test annuel des 4 épreuves dans la même semaine ; fait quand les résultats sont consignés.",
+      "talents": [
+        "forme-durable"
+      ],
+      "steps": [
+        "Fixer la semaine du test dans l'agenda",
+        "Passer un test blanc 2 mois avant et noter les écarts",
+        "Ajuster la routine du matin sur les épreuves faibles",
+        "Passer les 4 épreuves dans la même semaine",
+        "Consigner les résultats et les comparer à l'an dernier"
+      ]
+    }
   ]
 }

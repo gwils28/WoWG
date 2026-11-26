@@ -541,5 +541,206 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "page-des-engagements",
+      "name": "Page des engagements",
+      "description": "Mettre à plat tout ce que tu portes, choisir tes 3 priorités et libérer de la place ; c'est fait quand un engagement est arrêté ou reporté par écrit.",
+      "talents": [
+        "priorites-du-moment"
+      ],
+      "steps": [
+        "Lister sur une page tous tes engagements en cours",
+        "Choisir 3 priorités pour les 3 prochains mois",
+        "Arrêter ou reporter un engagement, raison notée"
+      ]
+    },
+    {
+      "id": "carnet-de-previsions",
+      "name": "Carnet de prévisions",
+      "description": "Deux fois par semaine, une séance de 15 min (pause déjeuner ou soir) : 3 prévisions datées avec une probabilité (monde, travail, vie perso) écrites dans le même carnet.",
+      "talents": [
+        "previsions"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "decisions-au-fil-de-l-eau",
+      "name": "Décisions au fil de l'eau",
+      "description": "Deux fois par semaine, 10 min pour noter au journal une décision non triviale au moment de la prendre (contexte, options, choix, confiance en %), hors investissement.",
+      "talents": [
+        "journal-decisions"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "releve-macro",
+      "name": "Relevé macro",
+      "description": "Remplir pour la première fois le tableau des 6 indicateurs et lire la BCE ; c'est fait quand le tableau sourcé et le résumé du communiqué sont écrits.",
+      "talents": [
+        "tableau-macro"
+      ],
+      "steps": [
+        "Trouver une source fiable pour chacun des 6 indicateurs (INSEE, Eurostat, BCE)",
+        "Remplir le tableau pour la France et la zone euro",
+        "Lire le dernier communiqué de la BCE et le résumer en 5 lignes"
+      ]
+    },
+    {
+      "id": "revue-du-dimanche",
+      "name": "Revue de la semaine",
+      "description": "Chaque week-end, une revue de 30 min (le soir, enfant couché) : bilan de la semaine écoulée, agenda de la suivante, 3 priorités notées.",
+      "talents": [
+        "revue-hebdo"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "tableur-de-brier",
+      "name": "Tableur de Brier",
+      "description": "Monter le tableur qui calcule ton score de Brier et y verser tes prévisions tranchées ; c'est fait quand le score s'affiche et se met à jour seul.",
+      "talents": [
+        "score-brier"
+      ],
+      "steps": [
+        "Créer le tableur (prévision, probabilité, date, issue, score)",
+        "Y saisir toutes les prévisions déjà tranchées",
+        "Ajouter une colonne catégorie et un score par catégorie"
+      ]
+    },
+    {
+      "id": "pre-mortem-du-projet",
+      "name": "Pré-mortem",
+      "description": "Faire le pré-mortem d'un projet en cours en 45 min ; c'est fait quand les causes d'échec et les parades sont écrites et une parade lancée.",
+      "talents": [
+        "pre-mortem"
+      ],
+      "steps": [
+        "Choisir un projet perso ou pro en cours",
+        "Écrire 10 causes d'un échec imaginé dans 2 ans",
+        "Choisir 3 parades et en lancer une dans la semaine"
+      ]
+    },
+    {
+      "id": "presse-de-trois-pays",
+      "name": "Presse de trois pays",
+      "description": "Deux fois par semaine, 20 min de lecture (pause déjeuner ou soir) sur une crise en cours dans des sources de 3 pays différents, points clés notés sur la fiche de la crise.",
+      "talents": [
+        "lire-une-crise"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "ouvrir-la-saison",
+      "name": "Ouvrir et fermer une saison",
+      "description": "Écrire une saison en début de trimestre, la suivre, puis la clore par un bilan ; c'est fait quand le bilan et la saison suivante sont écrits.",
+      "talents": [
+        "saison"
+      ],
+      "steps": [
+        "Choisir 2 classes en turbo et un objectif chiffré pour chacune",
+        "Point de mi-saison écrit (6 semaines)",
+        "Bilan de fin de trimestre et saison suivante choisie"
+      ]
+    },
+    {
+      "id": "seances-metaculus",
+      "name": "Séances de prévision en ligne",
+      "description": "Deux fois par semaine, une séance de 20 min (pause déjeuner ou soir) sur Metaculus ou Good Judgment Open : nouvelles questions prévues ou prévisions existantes mises à jour.",
+      "talents": [
+        "concours-prevision"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "instruire-une-decision",
+      "name": "Instruire une décision lourde",
+      "description": "Préparer par écrit une décision de vie importante et la trancher à la date prévue ; c'est fait quand le choix est daté au journal.",
+      "talents": [
+        "grande-decision"
+      ],
+      "steps": [
+        "Poser la question et fixer une date limite",
+        "Écrire au moins 3 options et des critères pondérés",
+        "Recueillir l'avis de 2 personnes extérieures",
+        "Décider à la date limite et noter le choix au journal"
+      ]
+    },
+    {
+      "id": "relecture-du-journal",
+      "name": "Relecture du journal",
+      "description": "Relire en une séance les 6 mois du journal de décisions et en tirer tes règles ; c'est fait quand les 3 règles sont écrites en tête du journal.",
+      "talents": [
+        "bilan-decisions"
+      ],
+      "steps": [
+        "Relire toutes les décisions des 6 derniers mois",
+        "Classer chacune : bonne ou mauvaise décision, bonne ou mauvaise issue",
+        "Écrire 3 règles personnelles tirées du classement"
+      ]
+    },
+    {
+      "id": "note-de-conjoncture",
+      "name": "Note de conjoncture",
+      "description": "Écrire ta note de conjoncture annuelle et la faire relire ; c'est fait quand la note datée est archivée avec sa date de confrontation.",
+      "talents": [
+        "note-conjoncture"
+      ],
+      "steps": [
+        "Mettre à jour le tableau macro et les grandes tendances",
+        "Rédiger la note : où en est l'économie, 3 risques, effets sur le foyer et le métier",
+        "La faire relire par quelqu'un du domaine et intégrer ses remarques",
+        "Archiver la note et programmer sa confrontation dans un an"
+      ]
+    },
+    {
+      "id": "rendez-vous-calibration",
+      "name": "Rendez-vous de calibration",
+      "description": "Chaque week-end, une séance de 30 min : écrire de nouvelles prévisions, trancher celles qui sont échues et les verser au tableur de Brier.",
+      "talents": [
+        "calibration"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 12
+      }
+    },
+    {
+      "id": "annonce-datee",
+      "name": "Annonce datée",
+      "description": "Annoncer par écrit un choc ou une tendance avant qu'il soit évident, avec une preuve de date, puis vérifier ; c'est fait quand la confrontation aux faits est consignée.",
+      "talents": [
+        "coup-d-avance"
+      ],
+      "steps": [
+        "Choisir un sujet suivi par ta veille où tu vois un signal faible",
+        "Écrire l'annonce argumentée avec une échéance et une probabilité",
+        "Lui donner une date certaine (mail à toi-même, dépôt public, note partagée)",
+        "Suivre les signaux chaque mois jusqu'à l'échéance",
+        "Confronter l'annonce aux faits et consigner le résultat"
+      ]
+    }
   ]
 }

@@ -494,5 +494,209 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "reserve-eau-progressive",
+      "name": "Réserve d'eau progressive",
+      "description": "Une fois par semaine (20 min, courses du week-end), ajoute des bouteilles ou un bidon à la réserve d'eau et saisis-le dans Shelterkwak ; c'est fait quand la semaine compte un ajout saisi.",
+      "talents": [
+        "eau-3-jours"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 3
+      }
+    },
+    {
+      "id": "tour-des-detecteurs",
+      "name": "Tour des détecteurs",
+      "description": "Fais le tour du logement pour poser et tester les détecteurs ; c'est fait quand chaque détecteur a sonné au test et que sa date de piles est notée.",
+      "talents": [
+        "detecteurs"
+      ],
+      "steps": [
+        "Repérer chaque niveau et chaque appareil à combustion",
+        "Poser ou remplacer les détecteurs manquants",
+        "Tester chacun au bouton et noter la date de changement des piles"
+      ]
+    },
+    {
+      "id": "plan-sur-papier",
+      "name": "Plan sur papier",
+      "description": "Écris le plan familial d'urgence et diffuse-le ; c'est fait quand chaque exemplaire est à sa place.",
+      "talents": [
+        "plan-familial"
+      ],
+      "steps": [
+        "Écrire rôles, points de rendez-vous et contacts",
+        "Imprimer et ranger un exemplaire avec le sac et dans la boîte à gants",
+        "L'envoyer à chaque adulte du foyer et au contact d'urgence"
+      ]
+    },
+    {
+      "id": "placard-de-reserve",
+      "name": "Placard de réserve",
+      "description": "Une fois par semaine (20 min, avec les courses), ajoute quelques aliments de longue conservation, dont du mangeable sans cuisson, et saisis-les dans Shelterkwak ; c'est fait quand l'ajout de la semaine est saisi.",
+      "talents": [
+        "vivres-3-jours"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "controle-des-batteries",
+      "name": "Contrôle des batteries",
+      "description": "Une fois par semaine (10 min, le soir), vérifie la charge des batteries externes et recharge celles sous 80 % ; c'est fait quand le contrôle de la semaine est noté.",
+      "talents": [
+        "recharger"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "plan-evacuation-incendie",
+      "name": "Plan d'évacuation incendie",
+      "description": "Dessine le plan d'évacuation du logement puis teste-le de nuit ; c'est fait quand le temps de l'exercice est noté.",
+      "talents": [
+        "sortir-fumee"
+      ],
+      "steps": [
+        "Dessiner le plan avec 2 sorties par pièce de vie et le point de rassemblement",
+        "Faire l'exercice de nuit avec l'enfant, chronométré",
+        "Noter le temps et ce qui a coincé"
+      ]
+    },
+    {
+      "id": "menus-de-reserve",
+      "name": "Menus de réserve",
+      "description": "Monte la réserve à 14 jours à partir de menus écrits ; c'est fait quand le niveau visé apparaît dans Shelterkwak.",
+      "talents": [
+        "reserve-14-jours"
+      ],
+      "steps": [
+        "Écrire 14 jours de menus réalisables sans réseau",
+        "Calculer les quantités d'eau et de nourriture pour le foyer",
+        "Acheter le manque en 2 ou 3 courses",
+        "Saisir le tout dans Shelterkwak"
+      ]
+    },
+    {
+      "id": "bilan-electrique",
+      "name": "Bilan électrique",
+      "description": "Chiffre tes besoins en Wh puis teste une station sur une journée ; c'est fait quand le relevé de la journée de test est noté.",
+      "talents": [
+        "station-electrique"
+      ],
+      "steps": [
+        "Chiffrer en Wh par jour lumière, téléphones, radio et froid",
+        "Choisir et acquérir une station adaptée",
+        "La recharger au solaire et tenir une journée dessus, relevés notés"
+      ]
+    },
+    {
+      "id": "repas-de-rotation",
+      "name": "Repas de rotation",
+      "description": "Une fois par semaine (30 min, le soir ou le week-end), cuisine un repas avec le produit le plus ancien de la réserve et remplace-le dans Shelterkwak ; c'est fait quand le remplacement de la semaine est saisi.",
+      "talents": [
+        "rotation-stocks"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 8
+      }
+    },
+    {
+      "id": "tisser-le-voisinage",
+      "name": "Tisser le voisinage",
+      "description": "Une fois par semaine (20 min, le week-end), prends le temps d'un vrai échange avec un voisin (discussion, service rendu, numéro échangé) ; c'est fait quand l'échange de la semaine est noté.",
+      "talents": [
+        "voisins-solidaires"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "piece-refuge",
+      "name": "Pièce refuge",
+      "description": "Écris le plan intrusion et répète-le de nuit avec l'enfant ; c'est fait quand le débrief est écrit.",
+      "talents": [
+        "plan-intrusion"
+      ],
+      "steps": [
+        "Écrire le plan (pièce refuge, téléphone chargé, appel au 17)",
+        "Préparer la pièce refuge (verrou, lampe, chargeur)",
+        "Simuler l'exercice de nuit avec l'enfant et l'appel",
+        "Écrire le débrief"
+      ]
+    },
+    {
+      "id": "vivre-sans-robinet",
+      "name": "Vivre sans robinet",
+      "description": "Vis la durée visée sur tes seules réserves d'eau ; c'est fait quand la consommation par jour et le débrief sont notés.",
+      "talents": [
+        "epreuve-eau"
+      ],
+      "steps": [
+        "Choisir les dates (un week-end pour 48 h, une semaine de congés pour 7 jours)",
+        "Préparer et mesurer la réserve d'eau",
+        "Fermer l'arrivée d'eau et tenir la durée visée",
+        "Noter la consommation par jour et débriefer"
+      ]
+    },
+    {
+      "id": "disjoncteur-coupe",
+      "name": "Disjoncteur coupé",
+      "description": "Coupe le disjoncteur général sur la durée visée sans abîmer le logement ; c'est fait quand le débrief est écrit.",
+      "talents": [
+        "coupure-electrique"
+      ],
+      "steps": [
+        "Choisir un week-end et protéger congélateur et chauffage",
+        "Préparer lumière, cuisson et charge des téléphones",
+        "Couper le disjoncteur général et tenir la durée visée",
+        "Rallumer, vérifier les appareils et écrire le débrief"
+      ]
+    },
+    {
+      "id": "semaine-solaire",
+      "name": "Semaine solaire",
+      "description": "Équipe-toi d'une station d'au moins 1 kWh et tiens une semaine de besoins prioritaires sur le solaire ; c'est fait quand les relevés de la semaine sont notés.",
+      "talents": [
+        "energie-solaire"
+      ],
+      "steps": [
+        "Dimensionner station et panneaux sur tes besoins chiffrés",
+        "S'équiper et installer",
+        "Tenir la semaine sur le solaire seul",
+        "Noter les relevés et les ajustements"
+      ]
+    },
+    {
+      "id": "soixante-douze-heures",
+      "name": "Soixante-douze heures",
+      "description": "Vis 72 h sur tes seules réserves, sans eau ni électricité du réseau ni ravitaillement ; c'est fait quand le débrief est écrit et Shelterkwak à jour.",
+      "talents": [
+        "foyer-autonome"
+      ],
+      "steps": [
+        "Fixer les dates et le lieu (logement ou lieu de repli)",
+        "Vérifier eau, vivres, énergie, hygiène et médicaments",
+        "Couper l'eau et l'électricité du réseau",
+        "Tenir 72 h sans ravitaillement",
+        "Écrire le débrief et mettre à jour Shelterkwak"
+      ]
+    }
   ]
 }

@@ -526,5 +526,208 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "saisie-hebdo",
+      "name": "Saisie hebdomadaire",
+      "description": "Une fois par semaine (20 min, le dimanche soir), saisis et pointe les transactions dans Kwak ; c'est fait quand il ne reste aucune transaction en attente.",
+      "talents": [
+        "saisie-kwak"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "tableau-des-assurances",
+      "name": "Tableau des assurances",
+      "description": "Rassemble tes contrats et repère doublons et trous ; c'est fait quand chaque point a une action décidée.",
+      "talents": [
+        "assurances"
+      ],
+      "steps": [
+        "Rassembler les contrats (habitation, auto, santé, prévoyance)",
+        "Faire le tableau des garanties et franchises",
+        "Noter doublons et trous, avec une action pour chacun"
+      ]
+    },
+    {
+      "id": "classer-le-mois",
+      "name": "Classer le mois",
+      "description": "Classe un mois complet de dépenses et fixe tes objectifs ; c'est fait quand chaque catégorie a son objectif.",
+      "talents": [
+        "categories"
+      ],
+      "steps": [
+        "Classer toutes les dépenses du mois, fourre-tout sous 5 %",
+        "Saisir les charges fixes avec leur périodicité",
+        "Fixer un objectif mensuel par catégorie"
+      ]
+    },
+    {
+      "id": "une-boite-par-semaine",
+      "name": "Une boîte par semaine",
+      "description": "Une fois par semaine (30 min, le soir ou le week-end), trie et numérise une catégorie de papiers du foyer ; c'est fait quand la catégorie est classée.",
+      "talents": [
+        "papiers-acces"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "revue-du-mois",
+      "name": "Revue du mois",
+      "description": "Une fois par mois (30 min, un soir en début de mois), fais la revue dans Kwak, vérifie la décision du mois précédent et notes-en une nouvelle ; c'est fait quand la décision est notée.",
+      "talents": [
+        "revue-mensuelle"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 2
+      }
+    },
+    {
+      "id": "chiffrer-sa-retraite",
+      "name": "Chiffrer sa retraite",
+      "description": "Estime le revenu voulu à la retraite et l'effet de l'âge de départ ; c'est fait quand l'âge visé est choisi.",
+      "talents": [
+        "besoin-retraite"
+      ],
+      "steps": [
+        "Estimer le revenu souhaité à la retraite",
+        "Calculer l'écart avec la pension estimée",
+        "Simuler un an de plus et de moins, puis choisir l'âge visé"
+      ]
+    },
+    {
+      "id": "provisions-annuelles",
+      "name": "Provisions annuelles",
+      "description": "Transforme les dépenses annuelles en provisions mensuelles ; c'est fait quand l'écart du trimestre est mesuré.",
+      "talents": [
+        "depenses-irregulieres"
+      ],
+      "steps": [
+        "Lister les dépenses annuelles (impôts, assurances, vacances, cadeaux)",
+        "Les convertir en provisions mensuelles dans Kwak",
+        "Mesurer l'écart entre prévu et réel en fin de trimestre"
+      ]
+    },
+    {
+      "id": "audit-des-frais",
+      "name": "Audit des frais",
+      "description": "Relève et chiffre les frais de tes enveloppes, puis agis ; c'est fait quand l'action choisie est notée.",
+      "talents": [
+        "frais"
+      ],
+      "steps": [
+        "Relever les frais de chaque enveloppe",
+        "Calculer leur coût en euros sur 20 ans",
+        "Choisir une action (transfert, changement de support) et noter l'économie"
+      ]
+    },
+    {
+      "id": "un-contrat-par-semaine",
+      "name": "Un contrat par semaine",
+      "description": "Une fois par semaine (30 min, le soir), mets un contrat (assurance, énergie, box, mobile) en concurrence ; c'est fait quand l'économie annuelle ou le statu quo est noté.",
+      "talents": [
+        "renegociation"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "rendez-vous-notaire",
+      "name": "Rendez-vous notaire",
+      "description": "Fais évaluer chez un notaire la protection de ton conjoint et de ton enfant ; c'est fait quand les options sont notées.",
+      "talents": [
+        "succession"
+      ],
+      "steps": [
+        "Prendre rendez-vous",
+        "Préparer les questions (statut du couple, testament, assurances-vie)",
+        "Faire le rendez-vous",
+        "Noter les options et la décision"
+      ]
+    },
+    {
+      "id": "suivi-allocation",
+      "name": "Suivi de l'allocation",
+      "description": "Une fois par mois (30 min, un soir), compare ton patrimoine à l'allocation cible dans Kwak et note l'écart ; c'est fait quand l'écart du mois est noté.",
+      "talents": [
+        "allocation-cible"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "month",
+        "periods": 4
+      }
+    },
+    {
+      "id": "bilan-de-l-annee",
+      "name": "Bilan de l'année",
+      "description": "Écris le bilan financier de l'année et prépare la suivante ; c'est fait quand le budget annuel est saisi dans Kwak.",
+      "talents": [
+        "bilan-annuel"
+      ],
+      "steps": [
+        "Exporter les dépenses de l'année par catégorie",
+        "Les comparer aux objectifs",
+        "Écrire 3 enseignements",
+        "Fixer les objectifs et saisir le budget de l'année suivante"
+      ]
+    },
+    {
+      "id": "projet-maison",
+      "name": "Projet maison",
+      "description": "Chiffre le projet maison et fais simuler ta capacité d'emprunt ; c'est fait quand l'objectif d'apport est créé dans Kwak.",
+      "talents": [
+        "apport-maison"
+      ],
+      "steps": [
+        "Écrire le budget cible (prix, notaire, travaux, équipement)",
+        "Prendre rendez-vous avec 2 banques ou un courtier",
+        "Noter la capacité d'emprunt simulée",
+        "Créer l'objectif d'apport dans Kwak"
+      ]
+    },
+    {
+      "id": "journal-investisseur",
+      "name": "Journal d'investisseur",
+      "description": "Ouvre un journal de décisions d'investissement et tiens-le ; c'est fait quand la relecture à 12 mois est écrite.",
+      "talents": [
+        "discipline-investisseur"
+      ],
+      "steps": [
+        "Créer le journal (date, raison, résultat)",
+        "Écrire ta règle de vente",
+        "Consigner chaque décision au moment de la prendre",
+        "Relire le journal à 12 mois"
+      ]
+    },
+    {
+      "id": "annee-d-avance",
+      "name": "Une année d'avance",
+      "description": "Construis une épargne mobilisable de 12 mois de dépenses ; c'est fait quand le constat est fait dans Kwak.",
+      "talents": [
+        "douze-mois-avance"
+      ],
+      "steps": [
+        "Calculer les dépenses totales annuelles du foyer",
+        "Définir l'épargne mobilisable (hors résidence, retraite, précaution, apport)",
+        "Fixer le plan de versements",
+        "Constater la couverture dans Kwak",
+        "Noter la date et le montant"
+      ]
+    }
   ]
 }

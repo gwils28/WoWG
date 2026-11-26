@@ -494,5 +494,210 @@
       ],
       "ultimate": true
     }
+  ],
+  "quests": [
+    {
+      "id": "analogie-de-la-semaine",
+      "name": "Analogie de la semaine",
+      "description": "À la pause déjeuner (15 min), trouver une analogie pour une notion de tes domaines, la tester sur quelqu'un et annoter si elle marche.",
+      "talents": [
+        "analogies"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "reperage-associatif",
+      "name": "Repérage associatif",
+      "description": "Repérer les associations de ton quartier et en rencontrer trois.",
+      "talents": [
+        "associations-du-coin"
+      ],
+      "steps": [
+        "Consulter l'annuaire de la mairie ou le forum des associations",
+        "Noter 10 associations et leur besoin",
+        "Aller à 3 permanences, assemblées générales ou stands"
+      ]
+    },
+    {
+      "id": "aux-urnes",
+      "name": "Aux urnes",
+      "description": "Préparer ton vote du prochain scrutin et voter.",
+      "talents": [
+        "voter"
+      ],
+      "steps": [
+        "Vérifier ton inscription et ton bureau de vote en ligne",
+        "Lire les professions de foi",
+        "Écrire ton choix avec 3 raisons",
+        "Voter"
+      ]
+    },
+    {
+      "id": "redis-le-moi",
+      "name": "Redis-le-moi",
+      "description": "Lors d'une explication déjà prévue (travail, proches, 10 min), demander à la personne de reformuler ou d'essayer, et noter ce qui n'est pas passé.",
+      "talents": [
+        "verifier-compris"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "week",
+        "periods": 4
+      }
+    },
+    {
+      "id": "seance-en-binome",
+      "name": "Séance en binôme",
+      "description": "Coanimer la séance jeunes de la semaine (environ 1 h, mercredi soir ou samedi) avec un encadrant, séance notée avec la partie que tu as menée.",
+      "talents": [
+        "assistant"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "au-conseil",
+      "name": "Au conseil",
+      "description": "Suivre un conseil municipal puis donner ton avis dans une instance ouverte au public.",
+      "talents": [
+        "conseil-municipal"
+      ],
+      "steps": [
+        "Repérer la date du prochain conseil",
+        "Suivre le conseil et noter 3 décisions",
+        "Donner un avis en réunion publique, concertation ou enquête publique"
+      ]
+    },
+    {
+      "id": "diplome-d-initiateur",
+      "name": "Diplôme d'initiateur",
+      "description": "Passer la formation fédérale d'initiateur puis animer seul tes premières séances.",
+      "talents": [
+        "initiateur"
+      ],
+      "steps": [
+        "S'inscrire à la formation (DIFFE, initiateur FFBoxe ou équivalent)",
+        "Suivre les modules et obtenir le diplôme",
+        "Préparer et animer seul 5 séances jeunes"
+      ]
+    },
+    {
+      "id": "fiche-de-seance",
+      "name": "Fiche de séance",
+      "description": "Le soir ou le week-end (30 min), écrire une fiche de séance (objectif, 3 étapes, un exercice, une question de vérification), fiche rangée dans ton classeur.",
+      "talents": [
+        "preparer-seance"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 6
+      }
+    },
+    {
+      "id": "l-ia-en-cinq-minutes",
+      "name": "L'IA en cinq minutes",
+      "description": "Préparer une explication de 5 min sur l'IA générative et l'adapter à plusieurs publics.",
+      "talents": [
+        "vulgariser-ia"
+      ],
+      "steps": [
+        "Écrire le plan de l'explication et ses limites à citer",
+        "La donner à un proche non-tech et lui demander de la réexpliquer",
+        "L'adapter puis la donner à un ado, un senior et un collègue non-tech"
+      ]
+    },
+    {
+      "id": "page-pour-non-inities",
+      "name": "Page pour non-initiés",
+      "description": "Écrire une page « l'essentiel » sur un sujet de tes domaines et la faire circuler.",
+      "talents": [
+        "une-page"
+      ],
+      "steps": [
+        "Choisir le sujet et écrire la page",
+        "La faire relire par un non-initié et corriger ce qu'il n'a pas compris",
+        "La donner à 3 personnes qui en ont besoin"
+      ]
+    },
+    {
+      "id": "creneau-benevole",
+      "name": "Créneau bénévole",
+      "description": "Le week-end ou un soir (2 h environ), tenir un créneau de bénévolat dans ton association, créneau noté dans l'app.",
+      "talents": [
+        "benevole-regulier"
+      ],
+      "recurrence": {
+        "times": 2,
+        "per": "month",
+        "periods": 3
+      }
+    },
+    {
+      "id": "saison-d-encadrant",
+      "name": "Saison d'encadrant",
+      "description": "Encadrer la séance jeunes de la semaine (environ 1 h, mercredi soir ou samedi), présence cochée dans l'app.",
+      "talents": [
+        "saison-complete"
+      ],
+      "steps": [
+        "Confirmer ton créneau auprès de la structure pour la saison"
+      ],
+      "recurrence": {
+        "times": 1,
+        "per": "week",
+        "periods": 12
+      }
+    },
+    {
+      "id": "outil-qui-dure",
+      "name": "Outil qui dure",
+      "description": "Livrer un outil à une association avec son guide et vérifier qu'il sert dans la durée.",
+      "talents": [
+        "outil-durable"
+      ],
+      "steps": [
+        "Livrer l'outil à l'association",
+        "Écrire le guide d'une page ou tourner la vidéo",
+        "Faire un point d'usage avec l'association 3 mois après",
+        "Présenter l'outil à une 2e association"
+      ]
+    },
+    {
+      "id": "compagnon-d-apprentissage",
+      "name": "Compagnon d'apprentissage",
+      "description": "Accompagner un proche adulte pendant 6 mois jusqu'à l'objectif fixé ensemble.",
+      "talents": [
+        "accompagner-progression"
+      ],
+      "steps": [
+        "Fixer avec le proche un objectif et une date",
+        "Écrire les étapes pour y arriver",
+        "Faire un point chaque mois et le noter",
+        "Constater l'objectif atteint"
+      ]
+    },
+    {
+      "id": "passer-la-main",
+      "name": "Passer la main",
+      "description": "Préparer ta sortie pour que la personne initiée ou le projet lancé continue sans toi.",
+      "talents": [
+        "passeur-de-relais"
+      ],
+      "steps": [
+        "Choisir la personne ou le projet à faire durer",
+        "Écrire ce qu'il faut savoir pour continuer (fiche, contacts, accès)",
+        "Passer la main à 2 personnes ou plus",
+        "Te retirer 3 mois et noter ce qui continue",
+        "Garder la preuve datée (séance animée par la personne, projet poursuivi)"
+      ]
+    }
   ]
 }
